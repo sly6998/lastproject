@@ -48,7 +48,9 @@ public class NotiListAction implements Action {
 			String whereFmt="upper(NOTI_CONTENT) like'%%'|| upper('%s') || '%%'";
 			cond = String.format(whereFmt, srchKey);
 		}
-		/* 			*/
+		
+		/*
+		*/
 		
 		
 		
