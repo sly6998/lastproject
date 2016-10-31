@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<context>
+    <Resource
+    maxActive="500" 
+    maxIdle="100" 
+    password="tiger"
+    username="scott" 
+    url="jdbc:oracle:thin:@localhost:1521:XE"
+    driverClassName="oracle.jdbc.driver.OracleDriver" 
+    type="javax.sql.DataSource"
+    auth="Container" 
+    name="jdbc/OracleDB" /> 
+ </context>
+    <!-- 
+    maxActive = "500" // 최대 연결 커넥션 수 
+    maxIdle = "100" // 항상 연결 상태를 유지하는 개수
+     -->
