@@ -174,4 +174,36 @@ public class BasketDAO {
 		}
 		return false;
 	}
+
+
+	public boolean basket_delete(String id, int num) {
+		String sql = "delete from basket where "
+				+ "BASKET_MEMBER_ID = ? and basket_num = ? ";
+		int result = 0;
+		
+		try{
+			
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, num);
+			result = pstmt.executeUpdate();
+			
+			
+			if(result == 1){
+				return true;
+			}
+			
+			return false;
+				
+		}catch(Exception e){
+			System.out.println("BasketModify Error : "+e);
+			e.printStackTrace();
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
 }
