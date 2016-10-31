@@ -157,7 +157,7 @@ public class QnaDAO {
 			
 			return list;
 		}catch(Exception e){
-			System.out.println("getQnaList error : "+e);
+			System.out.println("getQnaReplyList error : "+e);
 		}finally{
 			if(rs!=null) try{rs.close();}catch(SQLException ex){}
 			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
@@ -269,17 +269,16 @@ public class QnaDAO {
 		
 		try{
 			sql = "insert into qna_reply "
-					+ "(QNA_REPLY_MEMBER_NAME, QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, "
-					+ " QNA_REPLY_DATE, QNA_REPLY_NUM) "
-					+ "values (?,?,?,sysdate,?)";
+					+ "(QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM) "
+					+ "values (?,?,sysdate,?)";
 			
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, qnadata.getQnA_MEMBER_ID());
-			pstmt.setString(2, qnadata.getQnA_SUBJECT());
-			pstmt.setString(3, qnadata.getQnA_CONTENT());
-			pstmt.setInt(4, qnadata.getQnA_READCOUNT());
+			pstmt.setString(1, qnadata.getQnA_REPLY_MEMBER_ID());
+			pstmt.setString(2, qnadata.getQnA_REPLY_CONTENT());
+			pstmt.setInt(3, qnadata.getQnA_REPLY_NUM());
+			
 			
 			result = pstmt.executeUpdate();
 			if(result==0){

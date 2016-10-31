@@ -37,8 +37,11 @@
               </textarea></td>
             </TR>
             <tr>
-               <td><input type="button" value="글등록" onclick="qna_write_check()"> <input
-                  type="reset" value="취소"> <a href="./qna_list.html">목록보기</a></td>
+               <td>
+               		<input type="button" value="글등록ㅋ" onclick="qna_write_check()">
+                	<input type="reset" value="취소"> 
+                	<a href="./qna_list.html">목록보기</a>
+                </td>
             </tr>
          </table>
       </form>
