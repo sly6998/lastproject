@@ -33,6 +33,16 @@ input{
 text-align:center;
 }
 </style>
+<script>
+function modify(){
+	
+	var rownum = document.getElementById('rownum').value;
+	var amount = document.getElementById('amount').value;
+	
+	location = "./BasketModify.html?rownum="+rownum+"&amount="+amount;
+}
+
+</script>
 </head>
 <body >
 <h3 >장바구니</h3>
@@ -64,8 +74,9 @@ text-align:center;
          	</table>
          </td>
          <td>
-           <input type="text" name = "amount" size="1" class="num" value="<%=bl.getBASKET_AMOUNT()%>"><br>
- 			<a href="./BasketModify.html?rownum=<%=bl.getBASKET_NUM()%>">수정</a>
+           <input type="text" name = "amount" id ="amount" size="1" class="num" value="<%=bl.getBASKET_AMOUNT()%>"><br>
+ 		<input type="hidden" id = "rownum" value = "<%=bl.getBASKET_NUM()%>">	
+ 			<a onclick="modify()"href="#">수정</a>
          </td>
          <td>
            <span id="price">

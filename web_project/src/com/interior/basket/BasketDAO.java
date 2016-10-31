@@ -1,5 +1,6 @@
 package com.interior.basket;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -129,6 +130,43 @@ public class BasketDAO {
 			}
 		}catch(Exception e){
 			System.out.println("addBasket Error : "+e);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
+
+
+	public boolean basketModify(BasketBean basket) {
+		
+		String sql = "update basket set "
+				+ "BASKET_AMOUNT =?, BASKET_RESULT= BASKET_ITEM_PRICE*? "
+				+ "where BASKET_MEMBER_ID = (select rownum, BASKET_MEMBER_ID from basket where rownum=? and BASKET_MEMBER_ID=?)";
+		int result = 0;
+		
+		try{
+			
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, basket.getBASKET_AMOUNT());
+			pstmt.setInt(2, basket.getBASKET_AMOUNT());
+			pstmt.setInt(3, basket.getBASKET_NUM());
+			pstmt.setString(4, basket.getBASKET_MEMBER_ID());
+			result = pstmt.executeUpdate();
+			
+			
+			if(result == 1){
+				return true;
+			}
+			
+			return false;
+				
+		}catch(Exception e){
+			System.out.println("BasketModify Error : "+e);
+			e.printStackTrace();
 		}finally{
 			if(rs!=null) try{rs.close();}catch(SQLException ex){}
 			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}

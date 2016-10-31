@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
-
 import com.interior.sendemail.SendEmail;;
 
 public class MemberFindPWDAction implements Action {
