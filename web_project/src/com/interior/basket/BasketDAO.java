@@ -176,7 +176,7 @@ public class BasketDAO {
 	}
 
 
-	public boolean basket_delete(String id, int num) {
+	public boolean basket_delete(String id, int num) {//장바구니 선택 삭제
 		String sql = "delete from basket where "
 				+ "BASKET_MEMBER_ID = ? and basket_num = ? ";
 		int result = 0;
@@ -197,7 +197,34 @@ public class BasketDAO {
 			return false;
 				
 		}catch(Exception e){
-			System.out.println("BasketModify Error : "+e);
+			System.out.println("BasketDelete Error : "+e);
+			e.printStackTrace();
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
+
+
+	public boolean basket_all_delete(String id) {//장바구니 비우기
+		String sql = "delete from basket where "
+				+ "BASKET_MEMBER_ID = ?";
+		int result = 0;
+		
+		try{
+			
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+			
+			return true;
+				
+		}catch(Exception e){
+			System.out.println("Basket_all_delete Error : "+e);
 			e.printStackTrace();
 		}finally{
 			if(rs!=null) try{rs.close();}catch(SQLException ex){}
