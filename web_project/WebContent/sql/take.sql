@@ -223,12 +223,6 @@ drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
 
-/* 테스트 */
-insert into basket (BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_MEMBER_NAME, BASKET_ITEM_MODEL, BASKET_ITEM_BRAND, BASKET_ITEM_TYPE, BASKET_AMOUNT, BASKET_ITEM_PRICE, BASKET_DATE) 
-values ('test123', '없듬', '탁자A', '탁자01', '한샘', 'nomal', 1, 100, sysdate);
-
-insert into member_info (member_id, member_pwd) values ('admin','admin');
-
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
 select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info; /*복호화*/
