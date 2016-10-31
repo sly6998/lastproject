@@ -26,6 +26,8 @@ public class QnaReplyWriteAction implements Action {
 			qnadata.setQnA_REPLY_MEMBER_ID((String)request.getParameter("QNA_REPLY_MEMBER_ID"));
 			qnadata.setQnA_REPLY_CONTENT((String)request.getParameter("QNA_REPLY_CONTENT"));
 			qnadata.setQnA_REPLY_NUM(num2);
+			
+			
 		
 			result = qnadao.qnaReplyInsert(qnadata);
 			
@@ -35,6 +37,7 @@ public class QnaReplyWriteAction implements Action {
 			}
 
 			System.out.println("--QNA 댓글 등록 완료--");
+			System.out.println("***");
 
 			forward.setRedirect(true);
 			forward.setPath("./qna_detail.html?QNA_NUM="+num2);

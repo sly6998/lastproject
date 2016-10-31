@@ -66,18 +66,20 @@
    <tr>
     <Td colspan=3>
     	
-    	<form name="qna_reply_write_form" method="post" action="./QnaReplyWriteAction.html">
     	<table width=600>
     		<tr>
     			<td>
+    			<form name="qna_reply_write_form" method="post" action="./QnaReplyWriteAction.html">
     				<%=QNA_REPLY_MEMBER_ID %>
     				<input type="hidden" name="QNA_REPLY_MEMBER_ID" value="<%=QNA_REPLY_MEMBER_ID %>"/>
     		 		<input type="hidden" name="QNA_NUM" value="<%= qna2.getQnA_NUM() %>" />		
+    				
     			</td>
 					    		 		    		 		
     			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
     				<input style="width:400px; height:50px;" name="QNA_REPLY_CONTENT" type="text" />
     				<input type="submit" name="qna_reply_write_form" value="등록ㅋ">
+				</form>	   
     			</td> 
     		</tr>
     	
@@ -103,12 +105,22 @@
 		   			<%= bl2.getQnA_REPLY_DATE() %>
 		   			<% } %>
 		   			</font>
+		   		</td> 
+		   		
+		   		<td>  
+		   		 <form name="qna_reply_delete_form" method="post" action="./QnaReplyDeleteAction.html" >
+		   		 <%= bl2.getQnA_REPLY_SEQ() %> 
+		   		 <%= qna2.getQnA_NUM() %>
+		   		 <input type="hidden" name="QNA_REPLY_SEQ" value="<%= bl2.getQnA_REPLY_SEQ() %>" />	
+		   		 <input type="hidden" name="QNA_NUM" value="<%= qna2.getQnA_NUM() %>" /> 
+		   		 <input type="submit" name="qna_reply_delete_form" value="삭제">
+		   		</form>
+		   		 
 		   		</td>
-    		</tr>
+    		</tr> 
     		<% } %>
     		
     	</table> 
-		</form>	   
 	<tr bgcolor="cccccc">
     <td colspan="3" style="height:1px;"></td>
    </tr>

@@ -19,6 +19,7 @@ public class QnaReplyDeleteAction implements Action {
  
 		boolean result = false;
 		int num = Integer.parseInt(request.getParameter("QNA_REPLY_SEQ"));
+		int num2 = Integer.parseInt(request.getParameter("QNA_NUM"));//댓글
 
 		QnaDAO qnadao = new QnaDAO();
 		result = qnadao.qnaReplydelete(num);
@@ -35,7 +36,7 @@ public class QnaReplyDeleteAction implements Action {
 		System.out.println("QnA게시판 댓글 삭제 완료");
 
 		forward.setRedirect(true);
-		forward.setPath("./qna_list.html");
+		forward.setPath("./qna_detail.html?QNA_NUM="+num2);
 		return forward;
 	}
 }

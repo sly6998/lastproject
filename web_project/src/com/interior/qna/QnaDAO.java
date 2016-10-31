@@ -169,7 +169,7 @@ public class QnaDAO {
 	
 
 	public void setReadCountUpdate(int num) throws Exception{//qna 게시글 조회수 업데이트
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubqna_reply_seq.NEXTVAL	
 		String sql = "update qna_board set qna_readcount = "+
 		"qna_readcount+1 where qna_num = "+num;
 		
@@ -269,8 +269,8 @@ public class QnaDAO {
 		
 		try{
 			sql = "insert into qna_reply "
-					+ "(QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM) "
-					+ "values (?,?,sysdate,?)";
+					+ "(QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM, QNA_REPLY_SEQ) "
+					+ "values (?,?,sysdate,?,qna_reply_seq.NEXTVAL)";
 			
 			con=ds.getConnection();
 			
@@ -375,6 +375,31 @@ public class QnaDAO {
 			return true;
 		}catch(Exception e){
 			System.out.println("qnadelete error : "+e);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
+	
+	public boolean qnaReplydelete(int num) {//qna 게시글 삭제 action
+		// TODO Auto-generated method stub
+		String sql = "delete from qna_reply where qna_reply_seq=?";
+		
+		int result = 0;
+		
+		try{
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			result = pstmt.executeUpdate();
+			if(result==0){
+				return false;
+			}
+			return true;
+		}catch(Exception e){
+			System.out.println("qna reply delete error : "+e);
 		}finally{
 			if(rs!=null) try{rs.close();}catch(SQLException ex){}
 			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
