@@ -88,7 +88,7 @@ function modify(){
            
          </td>
          <td>
-         	<a href="#">삭제</a>
+        	<button type="button" onclick="location.href='./BasketDelete.html?num=<%=bl.getBASKET_NUM()%>'">삭제</button>
          </td>
       </tr>
       <%

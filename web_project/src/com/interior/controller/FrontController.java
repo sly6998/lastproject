@@ -13,6 +13,7 @@ import com.interior.advice.AdviceDetailAction;
 import com.interior.advice.AdviceListAction;
 import com.interior.advice.AdviceWriteAction;
 import com.interior.basket.AddBasketAction;
+import com.interior.basket.BasketDeleteAction;
 import com.interior.basket.BasketDetailAction;
 import com.interior.basket.BasketListAction;
 import com.interior.basket.BasketModifyAction;
@@ -340,6 +341,14 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 		} else if (command.equals("/BasketModify.html")) {// 장바구니 수정 action
 			
 			action = new BasketModifyAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/BasketDelete.html")) {// 장바구니 수정 action
+			
+			action = new BasketDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
