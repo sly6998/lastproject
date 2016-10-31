@@ -34,8 +34,8 @@ public class BasketDAO {
 
 	public List getBasketList(String id) {//Basket 리스트 불러오기
 		// TODO Auto-generated method stub
-		String sql = "select rownum, BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, "
-				+ "BASKET_ITEM_MODEL, BASKET_ITEM_BRAND, BASKET_ITEM_TYPE, BASKET_AMOUNT, BASKET_ITEM_PRICE "
+		String sql = "select basket_num, BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, "
+				+ "BASKET_ITEM_TYPE, BASKET_AMOUNT, BASKET_ITEM_PRICE, basket_result "
 				+ "from basket where BASKET_MEMBER_ID=?";
 		List basketlist = new ArrayList();
 		
@@ -47,15 +47,14 @@ public class BasketDAO {
 			
 			while(rs.next()){
 				BasketBean basket = new BasketBean();
-				basket.setBASKET_NUM(rs.getInt("ROWNUM"));
+				basket.setBASKET_NUM(rs.getInt("basket_num"));
 				basket.setBASKET_MEMBER_ID(rs.getString("BASKET_MEMBER_ID"));
 				basket.setBASKET_ITEM_IMAGE(rs.getString("BASKET_ITEM_IMAGE"));
 				basket.setBASKET_ITEM_NAME(rs.getString("BASKET_ITEM_NAME"));
-				basket.setBASKET_ITEM_MODEL(rs.getString("BASKET_ITEM_MODEL"));
-				basket.setBASKET_ITEM_BRAND(rs.getString("BASKET_ITEM_BRAND"));
 				basket.setBASKET_ITEM_TYPE(rs.getString("BASKET_ITEM_TYPE"));
 				basket.setBASKET_AMOUNT(rs.getInt("BASKET_AMOUNT"));
 				basket.setBASKET_ITEM_PRICE(rs.getInt("BASKET_ITEM_PRICE"));
+				basket.setBASKET_RESULT(rs.getInt("BASKET_RESULT"));
 				
 				basketlist.add(basket);
 			}
@@ -108,8 +107,8 @@ public class BasketDAO {
 	public boolean addBasket(BasketBean basketdata) {
 		// TODO Auto-generated method stub
 		String sql = "Insert into basket "
-				+ "(BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, BASKET_ITEM_TYPE, BASKET_ITEM_PRICE, BASKET_AMOUNT,BASKET_DATE) "
-				+ "values (?,?,?,?,?,?,sysdate)";
+				+ "(basket_num, BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, BASKET_ITEM_TYPE, BASKET_ITEM_PRICE, BASKET_RESULT, BASKET_AMOUNT,BASKET_DATE) "
+				+ "values (basket_seq.nextval,?,?,?,?,?,?,?,sysdate)";
 		int result = 0;
 		
 		try{
@@ -120,7 +119,8 @@ public class BasketDAO {
 			pstmt.setString(3, basketdata.getBASKET_ITEM_NAME());
 			pstmt.setString(4, basketdata.getBASKET_ITEM_TYPE());
 			pstmt.setInt(5, basketdata.getBASKET_ITEM_PRICE());
-			pstmt.setInt(6, basketdata.getBASKET_AMOUNT());
+			pstmt.setInt(6, basketdata.getBASKET_RESULT());
+			pstmt.setInt(7, basketdata.getBASKET_AMOUNT());
 			result = pstmt.executeUpdate();
 			
 			
@@ -143,20 +143,19 @@ public class BasketDAO {
 		
 		String sql = "update basket set "
 				+ "BASKET_AMOUNT =?, BASKET_RESULT= (BASKET_ITEM_PRICE*?) "
-				+ "where BASKET_MEMBER_ID = (select BASKET_MEMBER_ID from basket where BASKET_MEMBER_ID=?) "
-				+ ";
+				+ "where BASKET_MEMBER_ID = ? and basket_num = ? ";
 		int result = 0;
 		
 		try{
 			
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			
 			pstmt.setInt(1, basket.getBASKET_AMOUNT());
 			pstmt.setInt(2, basket.getBASKET_AMOUNT());
-			pstmt.setInt(3, basket.getBASKET_NUM());
-			pstmt.setString(4, basket.getBASKET_MEMBER_ID());
+			pstmt.setString(3, basket.getBASKET_MEMBER_ID());
+			pstmt.setInt(4, basket.getBASKET_NUM());
 			result = pstmt.executeUpdate();
+			System.out.println(result);
 			
 			
 			if(result == 1){

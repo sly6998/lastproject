@@ -28,7 +28,7 @@ public class BasketModifyAction implements Action {
 		boolean result = false;
 
 		basket.setBASKET_MEMBER_ID(ID);
-		basket.setBASKET_NUM(Integer.parseInt(request.getParameter("rownum")));
+		basket.setBASKET_NUM(Integer.parseInt(request.getParameter("num")));
 		basket.setBASKET_AMOUNT(Integer.parseInt(request.getParameter("amount")));
 		
 		result = basketdao.basketModify(basket);
