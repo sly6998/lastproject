@@ -22,6 +22,7 @@ public class NotiWriteAction implements Action {
 		  try {
 
 		    notidata.setNOTI_MEMBER_ID((String)request.getParameter("NOTI_MEMBER_ID"));
+		    System.out.println(request.getParameter("NOTI_MEMBER_NAME"));
 		    notidata.setNOTI_MEMBER_NAME((String)request.getParameter("NOTI_MEMBER_NAME"));
 		    notidata.setNOTI_SUBJECT((String)request.getParameter("NOTI_SUBJECT"));
 		    notidata.setNOTI_CONTENT((String)request.getParameter("NOTI_CONTENT"));

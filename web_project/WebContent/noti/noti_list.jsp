@@ -7,8 +7,10 @@
 <%
   String MEMBER_ID = "";
   String MEMBER_NAME = "";
+  
   if (session.getAttribute("MEMBER_ID") != null) {
   MEMBER_ID =(String)session.getAttribute("MEMBER_ID");
+  System.out.println(request.getAttribute("MEMBER_NAME"));
   }
 
   if (session.getAttribute("MEMBER_NAME") != null) {

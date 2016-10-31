@@ -48,7 +48,6 @@ public class MemberLoginAction implements Action {
 	      return null;
 	    }
 	    //로그인 성공
-	    session.setAttribute("MEMBER_ID", member.getMEMBER_ID());
 	    System.out.println("로그인 성공");
 	    
 		if(save_cookie==true){

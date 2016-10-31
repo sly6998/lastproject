@@ -66,11 +66,9 @@ public class MemberDAO {
 
 	public int isMember(MemberBean member,HttpServletRequest request) {  // 로그인 action
 		// TODO Auto-generated method stub
-		String sql = "select PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) as pwd from member_info where member_id=?";
+		String sql = "select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) as pwd from member_info where member_id=?";
 		int result = -1;
 		HttpSession session = request.getSession();
-		String id = "";
-		String name = "";
 		
 		try{
 			con=ds.getConnection();
