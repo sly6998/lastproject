@@ -96,6 +96,21 @@ function modify(){
       %>
     </table>
 
+
+
+<table>
+	<tr>
+		<td>
+			<button type="button" onclick="location.href='./BasketDelete.html">장바구니 비우기</button>
+		</td>
+		<td>
+			<button type="button" onclick="location.href='./ProductBuy.html">주문하기</button>
+		</td>
+		<td>
+			<button type="button" onclick="location.href='./product_list.html'">쇼핑계속하기</button>
+		</td>
+	</tr>
+</table>
 	
 	
 	
