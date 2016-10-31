@@ -36,10 +36,10 @@ text-align:center;
 <script>
 function modify(){
 	
-	var rownum = document.getElementById('rownum').value;
+	var num = document.getElementById('num').value;
 	var amount = document.getElementById('amount').value;
 	
-	location = "./BasketModify.html?rownum="+rownum+"&amount="+amount;
+	location = "./BasketModify.html?num="+num+"&amount="+amount;
 }
 
 </script>
@@ -54,6 +54,7 @@ function modify(){
         <td>수량</td>
         <td>가격</td>
         <td>삭제</td>
+        
       </tr>
 	 <%
          for (int i = 0; i < basketList.size(); i++) {
@@ -74,13 +75,15 @@ function modify(){
          	</table>
          </td>
          <td>
+         <form action="./BasketModify.html" method="post">
            <input type="text" name = "amount" id ="amount" size="1" class="num" value="<%=bl.getBASKET_AMOUNT()%>"><br>
- 		<input type="hidden" id = "rownum" value = "<%=bl.getBASKET_NUM()%>">	
- 			<a onclick="modify()"href="#">수정</a>
+ 			<input type="hidden" name ="num" value="<%=bl.getBASKET_NUM()%>">
+ 			<input type="submit" value="변경">
+         </form>
          </td>
          <td>
            <span id="price">
-           <%=bl.getBASKET_ITEM_PRICE()%>
+           <%=bl.getBASKET_RESULT()%>
            </span>
            
          </td>
