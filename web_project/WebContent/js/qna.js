@@ -20,6 +20,14 @@ function qna_write_check(){
 }
 
 
+function qna_reply_write_check(){
+	   
+	   var num = document.qna_reply_write_form.QNA_NUM.value;
+	   
+	   
+	   document.qna_reply_write_form.submit();
+	}
+
 
 
 function qna_modify_check(){

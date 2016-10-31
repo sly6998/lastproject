@@ -1,3 +1,4 @@
+<%@page import="org.omg.PortableInterceptor.SYSTEM_EXCEPTION"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.interior.qna.*" %>
@@ -73,12 +74,13 @@
     		<tr>
     			<td>
     				<%=QNA_REPLY_MEMBER_ID %>
-    		 		<input type="hidden" name="QNA_REPLY_MEMBER_ID" value="<%=QNA_REPLY_MEMBER_ID %>"/>
-    		 		<input type="hidden" name="QNA_NUM" value="<%= qna2.getQnA_NUM() %>" />					    		 		
+    				<input type="hidden" name="QNA_REPLY_MEMBER_ID" value="<%=QNA_REPLY_MEMBER_ID %>"/>
+    		 		<input type="hidden" name="QNA_NUM" value="<%= qna2.getQnA_NUM() %>" />		
     			</td>
+					    		 		    		 		
     			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
     				<input style="width:400px; height:50px;" name="QNA_REPLY_CONTENT" type="text" />
-    				<input type="submit" name="qna_reply_write_form" value="등록ㅋ"> 
+    				<input type="submit" name="qna_reply_write_form" value="등록ㅋ">
     			</td> 
     		</tr>
     	
