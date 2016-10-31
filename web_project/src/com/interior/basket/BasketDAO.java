@@ -142,8 +142,9 @@ public class BasketDAO {
 	public boolean basketModify(BasketBean basket) {
 		
 		String sql = "update basket set "
-				+ "BASKET_AMOUNT =?, BASKET_RESULT= BASKET_ITEM_PRICE*? "
-				+ "where BASKET_MEMBER_ID = (select rownum, BASKET_MEMBER_ID from basket where rownum=? and BASKET_MEMBER_ID=?)";
+				+ "BASKET_AMOUNT =?, BASKET_RESULT= (BASKET_ITEM_PRICE*?) "
+				+ "where BASKET_MEMBER_ID = (select BASKET_MEMBER_ID from basket where BASKET_MEMBER_ID=?) "
+				+ ";
 		int result = 0;
 		
 		try{

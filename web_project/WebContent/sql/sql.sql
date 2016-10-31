@@ -41,7 +41,8 @@ CREATE TABLE BASKET
  BASKET_DATE date,
  BASKET_AMOUNT number(5),
  BASKET_RESULT number(10),
- BASKET_ITEM_MODEL varchar2(200)
+ BASKET_ITEM_MODEL varchar2(200),
+ BASKET_NUM number(10)
 );
 
 
@@ -214,6 +215,7 @@ create sequence noti_seq start with 1 increment by 1;
 create sequence review_seq start with 1 increment by 1;
 create sequence qna_board_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1;
+create sequence basket_seq start with 1 increment by 1;
 
 /* drop sequence(시퀀스 삭제)*/
 
@@ -222,6 +224,7 @@ drop sequence noti_seq;
 drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
+drop sequence basket_seq;
 
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
