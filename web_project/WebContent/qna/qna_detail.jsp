@@ -64,9 +64,6 @@
   
    
    <tr>
-   
-   
-   
     <Td colspan=3>
     	
     	<form name="qna_reply_write_form" method="post" action="./QnaReplyWriteAction.html">
@@ -94,7 +91,7 @@
 					<%= bl2.getQnA_REPLY_MEMBER_ID() %>
 				</td>
 				
-			   	<td style="border:0px solid #ddd; font-size:small;" align="center" width="350">
+			   	<td style="border:0px solid #ddd; font-size:small;" align="left" width="350">
 			   		<%= bl2.getQnA_REPLY_CONTENT() %>
 			   	</td>
 			   	
