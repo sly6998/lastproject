@@ -14,7 +14,7 @@ public class QnaDeleteAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		request.setCharacterEncoding("utf-8");
-
+ 
 		boolean result = false;
 		int num = Integer.parseInt(request.getParameter("QNA_NUM"));
 
