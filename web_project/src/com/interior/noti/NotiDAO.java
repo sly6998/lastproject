@@ -290,7 +290,7 @@ public class NotiDAO {
 	
 	
 			// 공지사항 글 댓글 쓰기
-			public int NotiReplyWrite(NotiReplyBean notireplywrite){
+			public int NotiReplyWrite(NotiBean notireplywrite){
 				String noti_reply_sql = "select max(noti_reply_num) from noti_reply";
 				String sql="";
 				
@@ -338,7 +338,7 @@ public class NotiDAO {
 			}
 			
 			//공지사항 댓글 수정
-			public boolean NotiReplyModify(NotiReplyBean replymodify)throws Exception{
+			public boolean NotiReplyModify(NotiBean replymodify)throws Exception{
 				String sql = "update noti_reply set noti_reply_content=? where noti_reply_num=?";
 				
 				try{

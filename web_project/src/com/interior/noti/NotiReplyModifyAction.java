@@ -22,7 +22,7 @@ public class NotiReplyModifyAction implements Action{
 		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_NUM"));
 		
 		NotiDAO notidao = new NotiDAO();
-		NotiReplyBean notireplydata = new NotiReplyBean();
+		NotiBean notireplydata = new NotiBean();
 		
 		boolean usercheck = notidao.isNotiReplyWriter(num2, request.getParameter("NOTI_REPLY_MEMBER_ID"));
 		

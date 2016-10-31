@@ -1,5 +1,8 @@
 package com.interior.noti;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,34 +19,33 @@ public class NotiDetailAction implements Action {
 
 		  NotiDAO notidao = new NotiDAO();
 		  NotiBean notidata = new NotiBean();
+		  NotiBean notidata2 = new NotiBean(); //공지사항 댓글용
 		  
 
 		  int num = Integer.parseInt(request.getParameter("NOTI_NUM"));
+		  int num2 = Integer.parseInt(request.getParameter("NOTI_NUM")); //공지사항 댓글용
+		  
+		  List notireplylist = new ArrayList();
+		  
 		  notidao.setReadCountUpdate(num);//조회수 업데이트
 		  notidata = notidao.getDetail(num);//게시글 보기
+		  notidata2 = notidao.getDetail(num2);//공지사항 게시글의 댓글 보기
 		 
 		  if (notidata == null) {
 			  System.out.println("공지사항 상세보기 시스템 에러");
 			  return null;
 		  }
-		  
 		  System.out.println("공지사항 상세보기 성공");
 		  
-		  request.setAttribute("notidata", notidata);
-		  
-		  
-		  /*int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_NUM"));
-		  notidata = notidao.getReplyDetail(num2);//공지사항 글의 댓글 보기
-		  System.out.println("여기서부터안되는건가...asdfasdf");
-
-		  if(notidata == null){
-			  System.out.println("공지사항 댓글 보기 에러");
+		  if (notidata2 == null) {
+			  System.out.println("공지사항 댓글 보기 시스템 에러");
 			  return null;
 		  }
 		  System.out.println("공지사항 댓글 보기 성공");
 		  
-		  request.setAttribute("notidata", notidata);*/
 		  
+		  request.setAttribute("notidata", notidata);
+		  request.setAttribute("notidata2", notidata2);
 		  
 		  forward.setRedirect(false);
 		  forward.setPath("./noti/noti_detail.jsp");
