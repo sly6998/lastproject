@@ -109,8 +109,6 @@
 		   		
 		   		<td>  
 		   		 <form name="qna_reply_delete_form" method="post" action="./QnaReplyDeleteAction.html" >
-		   		 <%= bl2.getQnA_REPLY_SEQ() %> 
-		   		 <%= qna2.getQnA_NUM() %>
 		   		 <input type="hidden" name="QNA_REPLY_SEQ" value="<%= bl2.getQnA_REPLY_SEQ() %>" />	
 		   		 <input type="hidden" name="QNA_NUM" value="<%= qna2.getQnA_NUM() %>" /> 
 		   		 <input type="submit" name="qna_reply_delete_form" value="삭제">
