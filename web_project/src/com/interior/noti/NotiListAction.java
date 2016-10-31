@@ -18,7 +18,6 @@ public class NotiListAction implements Action {
 
 		NotiDAO notidao = new NotiDAO();
 		List boardlist = new ArrayList();
-		List noti_reply = new ArrayList();
 		response.setContentType("text/html;charset=utf-8");
 
 		int page = 1;
@@ -58,7 +57,6 @@ public class NotiListAction implements Action {
 		}
 		int listcount = notidao.getListCount(cond);// 총 리스트 수를 받아 옴
 		boardlist = notidao.getNotiList(page, limit, cond); // 공지사항 글 리스트를 받아옴
-		noti_reply = notidao.getNotiList(page, limit, cond); // 댓글 리스트
 
 		// 총 페이지 수
 		int maxpage = (int) ((double) listcount / limit + 0.95);// 0.95를 더해서 올림
@@ -77,7 +75,6 @@ public class NotiListAction implements Action {
 		request.setAttribute("endpage", endpage);// 현재 페이지에 표시할 끝 페이지 수
 		request.setAttribute("listcount", listcount);// 글 수
 		request.setAttribute("boardlist", boardlist);
-		request.setAttribute("noti_reply", noti_reply);
 		
 		request.setAttribute("srchKey", srchKey);
 		request.setAttribute("srchFlds", srchFlds);

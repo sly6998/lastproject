@@ -422,9 +422,9 @@ public class NotiDAO {
 		}
 		
 		//공지사항 글 댓글 보기
-		public NotiReplyBean getReplyDetail(int num2) throws Exception {
+		public NotiBean getReplyDetail(int num2) throws Exception {
 			// TODO Auto-generated method stub
-			NotiReplyBean notireply = null;
+			NotiBean notireply = null;
 						
 			try{
 				con=ds.getConnection();
@@ -434,7 +434,7 @@ public class NotiDAO {
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()){
-					notireply = new NotiReplyBean();
+					notireply = new NotiBean();
 					notireply.setNOTI_REPLY_NUM(rs.getInt("NOTI_REPLY_NUM"));
 					notireply.setNOTI_REPLY_MEMBER_NAME(rs.getString("NOTI_REPLY_MEMBER_NAME"));					
 					notireply.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));

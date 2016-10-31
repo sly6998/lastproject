@@ -4,7 +4,8 @@
 <%@ page import="com.interior.noti.*" %>
 <%
  	NotiBean noti=(NotiBean)request.getAttribute("notidata");
-	NotiBean renoti=(NotiBean)request.getAttribute("renotidata");
+
+System.out.println(noti.getNOTI_SUBJECT());
 	List noti_reply = (List)request.getAttribute("noti_reply");
 %>
 
@@ -72,7 +73,7 @@
   
   
   <!-- 댓글 -->
- <table>
+ <%-- <table>
   	<%
 	  for(int i=0; i<noti_reply.size(); i++){
 		NotiBean notireply = (NotiBean)noti_reply.get(i);
@@ -112,7 +113,7 @@
           <input type="submit" value="확인">
         </td>
       </tr>
-  </table> 
+  </table>  --%>
   
   
 </body>
