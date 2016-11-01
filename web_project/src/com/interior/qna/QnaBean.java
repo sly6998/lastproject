@@ -24,8 +24,16 @@ public class QnaBean {
 	private int QnA_REPLY_SEQ; 
 	private int QnA_REPLY_LEV;
 	
+	private int QnA_REPLY_AMOUNT;
 	
 	
+	
+	public int getQnA_REPLY_AMOUNT() {
+		return QnA_REPLY_AMOUNT;
+	}
+	public void setQnA_REPLY_AMOUNT(int qnA_REPLY_AMOUNT) {
+		QnA_REPLY_AMOUNT = qnA_REPLY_AMOUNT;
+	}
 	public String getQnA_REPLY_MEMBER_NAME() {
 		return QnA_REPLY_MEMBER_NAME;
 	}

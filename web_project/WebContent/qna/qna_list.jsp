@@ -11,7 +11,11 @@
   }
   
   List boardList = (List)request.getAttribute("boardlist");
+  List replyamount = (List)request.getAttribute("replyamount");
+
+  
   int listcount = ((Integer)request.getAttribute("listcount")).intValue();
+  
   int nowpage = ((Integer)request.getAttribute("page")).intValue();
   int maxpage = ((Integer)request.getAttribute("maxpage")).intValue();
   int startpage = ((Integer)request.getAttribute("startpage")).intValue();
@@ -64,6 +68,7 @@
       <%
          for (int i = 0; i < boardList.size(); i++) {
             QnaBean bl = (QnaBean) boardList.get(i);
+            QnaBean bl2 = (QnaBean) replyamount.get(i);
       %>
       <!-- 내용 -->
       <tr align="center" valign="middle" style="border: 1px solid #ddd;"
@@ -74,9 +79,11 @@
          </td>
 
          <td
-            style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+            style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000; " align='left'>
             <a href="./qna_detail.html?QNA_NUM=<%=bl.getQnA_NUM()%>" style='text-decoration: none;'><%=bl.getQnA_SUBJECT()%>
-         </a>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            [<%= bl2.getQnA_REPLY_AMOUNT() %>]
          </td>
 
          <td

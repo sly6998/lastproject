@@ -223,6 +223,21 @@ drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
 
+/*테스트*/
+
+select * from (select rownum rnum, qna_reply_member_id, qna_reply_content, qna_reply_date, qna_reply_num
+from (select * from qna_reply order by qna_reply_date asc)) 
+where qna_reply_num=41 and rnum>=1 and rnum<=100;
+
+
+
+
+
+
+ select aa.qna_num ,(select count(*) from qna_reply bb where 
+bb.qna_reply_num = aa.qna_num) as zzzzz from qna_board aa order by qna_date desc
+
+
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
 select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info; /*복호화*/

@@ -10,6 +10,7 @@
  QnaBean qna=(QnaBean)request.getAttribute("qnadata");
  QnaBean qna2=(QnaBean)request.getAttribute("qnadata2");
  List replyList2 = (List)request.getAttribute("replylist2");
+ 
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,11 +77,15 @@
     				
     			</td>
 					    		 		    		 		
-    			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
-    				<input style="width:400px; height:50px;" name="QNA_REPLY_CONTENT" type="text" />
+    			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=2  >
+    				<input style="width:450px; height:50px;" name="QNA_REPLY_CONTENT" type="text" />
+    			
+    			<td colspan=5>  
     				<input type="submit" name="qna_reply_write_form" value="등록ㅋ">
 				</form>	   
     			</td> 
+    			
+    			</td>
     		</tr>
     	
     		<%
@@ -98,7 +103,7 @@
 			   	</td>
 			   	
 		   		<td style="border:0px solid #ddd; font-size:small;" align="right">
-		   			<font color="#747474">
+		   			<font color="#747474">  
 		   			<% if(bl2.getQnA_REPLY_DATE() == null){ %>
 		   			-
 		   			<% }else{ %>
@@ -113,13 +118,17 @@
 		   		 <input type="hidden" name="QNA_NUM" value="<%= qna2.getQnA_NUM() %>" /> 
 		   		 <input type="submit" name="qna_reply_delete_form" value="삭제">
 		   		</form>
-		   		 
 		   		</td>
+				
+				 	   		 
     		</tr> 
     		<% } %>
     		
+    		
+    		 
+    		
     	</table> 
-	<tr bgcolor="cccccc">
+	<tr bgcolor="cccccc">	
     <td colspan="3" style="height:1px;"></td>
    </tr>
      

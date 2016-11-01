@@ -12,9 +12,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.interior.basket.AddBasketAction;
+
 public class QnaDAO {
 	
 	Connection con;
+	
 	PreparedStatement pstmt;
 	ResultSet rs;
 	DataSource ds;
@@ -50,19 +53,35 @@ public class QnaDAO {
 		return count;
 	}
 	
-	
-	public int getReplyListCount() {//qna 댓글 리스트의  수 구하기 
+	//////////////////////////////////////////////////////////////////////////////////////
+	public List getReplyListCount() {//qna 댓글 리스트의  수 구하기 
 		// TODO Auto-generated method stub
-		int count=0;
+		
+		String sql = "select aa.qna_num ,(select count(*) from qna_reply bb where "
+				   + "bb.qna_reply_num = aa.qna_num) as zzzzz from qna_board aa order by qna_date desc";
+				
+		
+		List list = new ArrayList(); 
 		
 		try{
 			con=ds.getConnection();
-			pstmt=con.prepareStatement("select count(*) from qna_reply");
+			pstmt=con.prepareStatement(sql);
+			
 			rs=pstmt.executeQuery();
 			
-			if(rs.next()){
-				count=rs.getInt(1);
+					
+			while(rs.next()){
+				
+				QnaBean qna2 = new QnaBean();
+				
+				qna2.setQnA_REPLY_AMOUNT(rs.getInt("zzzzz"));
+				
+				list.add(qna2);
+				
+				
 			}
+			
+			return list;
 		}catch(Exception e){
 			System.out.println("getReplyListCount error : "+e);
 		}finally{
@@ -70,8 +89,10 @@ public class QnaDAO {
 			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null) try{con.close();}catch(SQLException ex){}
 		}
-		return count;
+		return list;
 	}
+	
+	
 	
 	
 
@@ -95,7 +116,7 @@ public class QnaDAO {
 			pstmt.setInt(1, startrow);
 			pstmt.setInt(2, endrow);
 			rs=pstmt.executeQuery();
-			
+				
 			while(rs.next()){
 				QnaBean qna = new QnaBean();
 				qna.setQnA_NUM(rs.getInt("QNA_NUM"));
@@ -126,18 +147,19 @@ public class QnaDAO {
 	
 	
 	
-	
+	///////////////////////////////////////////////////////////////////////////////
 	public List getQnaReplyList(int num2) {//qna 댓글 목록 불러오기
+		
 		// TODO Auto-generated method stub
 		String sql =  "select * from qna_reply where qna_reply_num=?";
 		
 		List list = new ArrayList();
 		
-		
 		try{
 			con=ds.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num2);
+			
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()){
