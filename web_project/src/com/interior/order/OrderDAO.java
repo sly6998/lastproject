@@ -97,4 +97,34 @@ public class OrderDAO {
 		return null;
 	}
 
+	public boolean paymentInsert(OrderBean order) {
+		String sql = "insert into ORDER_LIST "
+				+ "()";
+		int result = 0;
+		
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			
+			OrderBean order = new OrderBean();
+			order.setORDER_MEMBER_NAME(rs.getString("MEMBER_NAME"));
+			order.setORDER_MEMBER_ADDR_1(rs.getString("MEMBER_ADDR_1"));
+			order.setORDER_MEMBER_ADDR_2(rs.getString("MEMBER_ADDR_2"));
+			order.setORDER_MEMBER_ZIP(rs.getString("MEMBER_ADDR_ZIP"));
+			order.setORDER_MEMBER_TEL(rs.getString("MEMBER_TEL"));
+			order.setORDER_MEMEBER_EMAIL(rs.getString("MEMBER_EMAIL"));
+			return order;
+		}catch(Exception e){
+			System.out.println("getOrder_OrderList error : "+e);
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null)try{con.close();}catch(SQLException ex){}
+		}
+		return null;
+	}
+
 }
