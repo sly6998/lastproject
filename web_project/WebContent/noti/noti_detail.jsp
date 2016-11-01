@@ -1,11 +1,14 @@
-<%@page import="java.util.List"%>
+<%@page import="org.omg.PortableInterceptor.SYSTEM_EXCEPTION"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="com.interior.noti.*" %>
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%
+	String NOTI_REPLY_MEMBER_ID = (String)session.getAttribute("MEMBER_ID");
  	NotiBean noti=(NotiBean)request.getAttribute("notidata");
-
-System.out.println(noti.getNOTI_SUBJECT());
+	NotiBean noti2=(NotiBean)request.getAttribute("notidata2");
+	System.out.println(noti.getNOTI_SUBJECT());
 	List noti_reply = (List)request.getAttribute("noti_reply");
 %>
 
@@ -69,52 +72,60 @@ System.out.println(noti.getNOTI_SUBJECT());
   </table>
   <!-- 게시판 수정 -->
   
-  
-  
-  
   <!-- 댓글 -->
- <%-- <table>
-  	<%
-	  for(int i=0; i<noti_reply.size(); i++){
-		NotiBean notireply = (NotiBean)noti_reply.get(i);
-	%>
-	
-	  <tr>
-  		<td>
-		  <%if(notireply.getNOTI_REPLY_LEV() != 0){ %>
-			<% for(int a=0; a<=notireply.getNOTI_REPLY_LEV()*2; a++){ %>
-			  &nbsp;
-			<%}%>
-			▶
-		  <%}else{%>
-			▶
-		  <%}%>
-		  <a href="#"><%= notireply.getNOTI_REPLY_MEMBER_NAME() %></a>
-		</td>
-		<td align="right">
-		  <%= notireply.getNOTI_REPLY_DATE() %>
-		</td>
-	  </tr>
-	  
-	  <tr>
-	    <td>
-		  <% for(int a=0; a<=notireply.getNOTI_REPLY_LEV()*2; a++){ %>
-			&nbsp;
-		  <%}%>
-		  <%= notireply.getNOTI_REPLY_CONTENT() %>
-		</td>
-	  </tr>
-		  <%}%>
-      <tr>
-        <td>
-		  <textarea rows="80" cols="30"></textarea>
-        </td>
-        <td>
-          <input type="submit" value="확인">
-        </td>
-      </tr>
-  </table>  --%>
-  
-  
+ <table width=600>
+    		<tr>
+    			<td>
+    			<form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
+    				<%=NOTI_REPLY_MEMBER_ID %>
+    				<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=NOTI_REPLY_MEMBER_ID %>"/>
+    		 		<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />		
+    				
+    			</td>
+					    		 		    		 		
+    			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
+    				<input style="width:400px; height:50px;" name="NOTI_REPLY_CONTENT" type="text" />
+    				<input type="submit" name="noti_reply_write_form" value="등록">
+				</form>	   
+    			</td> 
+    		</tr>
+    	
+    		<%
+       		  for (int i = 0; i < noti_reply.size(); i++) {
+              NotiBean notireply = (NotiBean)noti_reply.get(i);
+   			%>
+    		<tr> 
+				<td style="border:0px solid #ddd; font-size:small; font-weight:bold; ">
+					
+					<%= notireply.getNOTI_REPLY_MEMBER_ID() %>
+				</td>
+				
+			   	<td style="border:0px solid #ddd; font-size:small;" align="left" width="350">
+			   		<%= notireply.getNOTI_REPLY_CONTENT() %>
+			   	</td>
+			   	
+		   		<td style="border:0px solid #ddd; font-size:small;" align="right">
+		   			<font color="#747474">
+		   			<% if(notireply.getNOTI_REPLY_DATE() == null){ %>
+		   			-
+		   			<% }else{ %>
+		   			<%= notireply.getNOTI_REPLY_DATE() %>
+		   			<% } %>
+		   			</font>
+		   		</td> 
+		   		
+		   		<td>  
+		   		 <form name="qna_reply_delete_form" method="post" action="./QnaReplyDeleteAction.html" >
+		   		 <input type="hidden" name="QNA_REPLY_SEQ" value="<%= notireply.getNOTI_REPLY_SEQ() %>" />	
+		   		 <input type="hidden" name="QNA_NUM" value="<%= noti2.getNOTI_NUM() %>" /> 
+		   		 <input type="submit" name="noti_reply_delete_form" value="삭제">
+		   		</form>
+		   		 
+		   		</td>
+    		</tr> 
+    		<% } %>
+    		
+    	</table> 
+
 </body>
 </html>

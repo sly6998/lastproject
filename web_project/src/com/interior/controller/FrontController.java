@@ -231,13 +231,6 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		/*} else if (command.equals("/noti_detail.html")) { // 공지사항 댓글 같이 보기 & action
-			action = new NotiReplyDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}*/
 		} else if (command.equals("/noti_write.html")) { // 공지사항 글 쓰기 페이지 이동(관리자)
 			forward = new ActionForward();
 			forward.setRedirect(false);
