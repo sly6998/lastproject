@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.interior.qna.QnaBean;
+
 
 public class NotiDAO {
 	
@@ -288,54 +290,6 @@ public class NotiDAO {
 		return false;
 	}
 	
-	
-			// 공지사항 글 댓글 쓰기
-			public int NotiReplyWrite(NotiBean notireplywrite){
-				String noti_reply_sql = "select max(noti_reply_num) from noti_reply";
-				String sql="";
-				
-				int num=0;
-				int result=0;
-				
-				int reply_ref = notireplywrite.getNOTI_REPLY_REF();
-				int reply_seq = notireplywrite.getNOTI_REPLY_SEQ();
-				int reply_lev = notireplywrite.getNOTI_REPLY_LEV();
-				
-				try{
-					con=ds.getConnection();
-					pstmt=con.prepareStatement(noti_reply_sql);
-					rs=pstmt.executeQuery();
-					
-					if(rs.next()){
-						num=rs.getInt(1)+1;
-					}else{
-						num=1;
-					}
-					sql = "update NOTI_reply set noti_reply_seq=noti_reply_seq+1 where noti_reply_ref=? and noti_reply_seq>?";
-					
-					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, reply_ref);
-					pstmt.setInt(2, reply_seq);
-					
-					sql = "insert into noti_reply (noti_reply_num, noti_reply_member_NAME, noti_reply_content, noti_reply_ref, noti_reply_seq, noti_reply_lev, noti_reply_date) values (noti_reply_seq.nextval,?,?,?,?,?sysdate)";
-					
-					pstmt=con.prepareStatement(sql);
-					pstmt.setString(1, notireplywrite.getNOTI_REPLY_MEMBER_NAME());
-					pstmt.setString(2, notireplywrite.getNOTI_REPLY_CONTENT());
-					pstmt.setInt(3, reply_ref);
-					pstmt.setInt(4, reply_seq);
-					pstmt.setInt(5, reply_lev);
-					pstmt.executeUpdate();
-					return num;
-				}catch(Exception e){
-					System.out.println("NotiReplyWrite error : "+e);
-				}finally{
-					if(rs!=null)try{rs.close();}catch(SQLException e){}
-					if(pstmt!=null)try{pstmt.close();}catch(SQLException e){}
-					if(con!=null)try{con.close();}catch(SQLException e){}
-				}
-				return 0;
-			}
 			
 			//공지사항 댓글 수정
 			public boolean NotiReplyModify(NotiBean replymodify)throws Exception{
@@ -422,32 +376,38 @@ public class NotiDAO {
 			return false;
 		}
 		
-		//공지사항 글 댓글 보기
-		public NotiBean getReplyDetail(int num2) throws Exception {
+		//공지사항 글에 달린 댓글 보여주기
+		public List getNotiReplyList(int num2) {
 			// TODO Auto-generated method stub
-			NotiBean notireply = null;
-						
+			String sql =  "select * from noti_reply where noti_reply_num=?";
+			
+			List list = new ArrayList();
+			
+			
 			try{
 				con=ds.getConnection();
-				pstmt = con.prepareStatement("select * from noti_reply where noti_reply_num=?");
+				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, num2);
+				rs=pstmt.executeQuery();
 				
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()){
-					notireply = new NotiBean();
-					notireply.setNOTI_REPLY_NUM(rs.getInt("NOTI_REPLY_NUM"));
-					notireply.setNOTI_REPLY_MEMBER_NAME(rs.getString("NOTI_REPLY_MEMBER_NAME"));					
-					notireply.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
-					notireply.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
-					notireply.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
-					notireply.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
-					notireply.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
-					notireply.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+				while(rs.next()){
+					
+					NotiBean noti2 = new NotiBean();
+					noti2.setNOTI_REPLY_NUM(rs.getInt("NOTI_REPLY_NUM"));
+					noti2.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
+					noti2.setNOTI_REPLY_MEMBER_NAME(rs.getString("NOTI_REPLY_MEMBER_NAME"));
+					noti2.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
+					noti2.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
+					noti2.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
+					noti2.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
+					noti2.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+					list.add(noti2);
+					
 				}
-				return notireply;
+				
+				return list;
 			}catch(Exception e){
-				System.out.println("getReplyDetail error : "+e);
+				System.out.println("getNotiReplyList error : "+e);
 			}finally{
 				if(rs!=null) try{rs.close();}catch(SQLException ex){}
 				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}

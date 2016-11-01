@@ -17,25 +17,35 @@ public class NotiReplyWriteAction implements Action{
 		
 		NotiDAO notidao = new NotiDAO();
 		NotiBean notireplydata = new NotiBean();
-		int result=0;
 		
-		notireplydata.setNOTI_REPLY_NUM(Integer.parseInt(request.getParameter("NOTI_REPLY_NUM")));
-		notireplydata.setNOTI_REPLY_MEMBER_NAME(request.getParameter("NOTI_REPLY_MEMBER_NAME"));
-		notireplydata.setNOTI_REPLY_CONTENT(request.getParameter("NOTI_REPLY_CONTENT"));
-		notireplydata.setNOTI_REPLY_REF(Integer.parseInt(request.getParameter("NOTI_REPLY_REF")));
-		notireplydata.setNOTI_REPLY_SEQ(Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ")));
-		notireplydata.setNOTI_REPLY_LEV(Integer.parseInt(request.getParameter("NOTI_REPLY_LEV")));
+		int num2 = Integer.parseInt(request.getParameter("NOTI_NUM"));
 		
-		result = notidao.NotiReplyWrite(notireplydata);
 		
-		if(result==0){
-			System.out.println("NotiReplyWriteAction failed");
-			return null;
+		boolean result = false;
+		
+		try{
+			
+			notireplydata.setNOTI_MEMBER_ID((String)request.getParameter("NOTI_REPLY_MEMBER_ID"));
+			notireplydata.setNOTI_REPLY_CONTENT((String)request.getParameter("NOTI_REPLY_CONTENT"));
+			notireplydata.setNOTI_REPLY_NUM(num2);
+			
+			result = notidao.notiInsert(notireplydata);
+			
+			
+			if (result == false) {
+				System.out.println("NOTI 댓글 등록 시스템 에러");
+				return null;
+			}
+			
+			System.out.println("NOTI 댓글 등록 성공");
+			
+			forward.setRedirect(true);
+			forward.setPath("./noti_detail.html?NOTI_NUM="+num2);
+			return forward;
+			
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		System.out.println("NotiReplyWriteAction completed!");
-		
-		forward.setRedirect(true);
-		forward.setPath("./NotiDetailAction.bo?num="+result);
-		return forward;
+		return null;
 	}
 }
