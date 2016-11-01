@@ -207,7 +207,6 @@ Select * from qna_reply
 Select * from review;
 select * from NOTI_REPLY;
 
-
 /* Create Sequence(시퀀스 생성) */
 
 create sequence member_info_seq start with 1 increment by 1;

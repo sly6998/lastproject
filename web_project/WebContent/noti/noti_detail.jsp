@@ -1,4 +1,3 @@
-<%@page import="org.omg.PortableInterceptor.SYSTEM_EXCEPTION"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.interior.noti.*" %>
@@ -8,8 +7,7 @@
 	String NOTI_REPLY_MEMBER_ID = (String)session.getAttribute("MEMBER_ID");
  	NotiBean noti=(NotiBean)request.getAttribute("notidata");
 	NotiBean noti2=(NotiBean)request.getAttribute("notidata2");
-	System.out.println(noti.getNOTI_SUBJECT());
-	List noti_reply = (List)request.getAttribute("noti_reply");
+	List noti_reply = (List)request.getAttribute("notireplylist");
 %>
 
 <!DOCTYPE html>
