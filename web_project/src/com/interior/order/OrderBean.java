@@ -6,6 +6,7 @@ public class OrderBean {
 
 	private int ORDER_BASKET_NUM;
 	private String ORDER_ITEM_IMG;
+	private String ORDER_TRADE_STATUS;
 	private String ORDER_ITEM_TYPE;
 	private int ORDER_ITEM_PRICE;
 	private String ORDER_MEMBER_ID;
@@ -33,6 +34,12 @@ public class OrderBean {
 	private String ORDER_MEMEBER_EMAIL;
 	
 	
+	public String getORDER_TRADE_STATUS() {
+		return ORDER_TRADE_STATUS;
+	}
+	public void setORDER_TRADE_STATUS(String oRDER_TRADE_STATUS) {
+		ORDER_TRADE_STATUS = oRDER_TRADE_STATUS;
+	}
 	public String getORDER_MEMEBER_EMAIL() {
 		return ORDER_MEMEBER_EMAIL;
 	}

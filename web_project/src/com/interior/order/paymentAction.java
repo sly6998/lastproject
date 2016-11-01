@@ -2,11 +2,10 @@ package com.interior.order;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
-import com.interior.member.MemberBean;
-import com.interior.member.MemberDAO;
 
 public class paymentAction implements Action {
 
@@ -16,6 +15,8 @@ public class paymentAction implements Action {
 		request.setCharacterEncoding("utf-8");
 
 	    ActionForward forward = new ActionForward();
+	    HttpSession session = request.getSession();
+	    String id = (String) session.getAttribute("MEMBER_ID");
 	    
 	    OrderDAO orderdao = new OrderDAO();
 	    OrderBean order = new OrderBean();
@@ -23,31 +24,38 @@ public class paymentAction implements Action {
 	    
 	    boolean result = false;
 	    
-	    order.set
-	    	
-	    order.setMEMBER_NAME(request.getParameter("MEMBER_NAME"));
-	    member.setMEMBER_ID(request.getParameter("MEMBER_ID"));
-	    member.setMEMBER_PWD(request.getParameter("MEMBER_PWD"));
-	    member.setMEMBER_ADDR_1(request.getParameter("MEMBER_ADDR_1"));
-	    member.setMEMBER_ADDR_2(request.getParameter("MEMBER_ADDR_2"));
-	    member.setMEMBER_ADDR_ZIP(request.getParameter("MEMBER_ADDR_ZIP"));
-	    member.setMEMBER_TEL(request.getParameter("MEMBER_TEL"));
-	    member.setMEMBER_GENDER(request.getParameter("MEMBER_GENDER"));
-	    member.setMEMBER_YEAR(Integer.parseInt(request.getParameter("MEMBER_YEAR")));
-	    member.setMEMBER_MONTH(Integer.parseInt(request.getParameter("MEMBER_MONTH")));
-	    member.setMEMBER_DAY(Integer.parseInt(request.getParameter("MEMBER_DAY")));
+	    order.setORDER_TRADE_STATUS(request.getParameter("payment_status"));//결제상태	
+	    order.setORDER_TRADE_NUM(request.getParameter("payment_num"));//주문번호
+	    order.setORDER_ITEM_IMG(request.getParameter("item_img"));//제품이미지
+	    order.setORDER_ITEM_NAME(request.getParameter("item_name"));//제품명
+	    order.setORDER_ITEM_TYPE(request.getParameter("item_type"));//제품옵션
+	    order.setORDER_ITEM_AMOUNT(Integer.parseInt(request.getParameter("item_amount")));//제품 주문 수량
+	    order.setORDER_ITEM_PRICE(Integer.parseInt(request.getParameter("item_price")));//제품 가격
+	    order.setORDER_ITEM_PRICE_SUM(Integer.parseInt(request.getParameter("price_sum")));//결제 총 금액
+	    order.setORDER_MEMO(request.getParameter("order_memo"));
+	    order.setORDER_TRADE_TYPE(request.getParameter("buytype"));
+	    
+	    order.setORDER_MEMBER_ID(id);
+	    order.setORDER_MEMBER_NAME(request.getParameter("membername"));//회원 이름
+	    order.setORDER_MEMBER_TEL(request.getParameter("memberpone"));//회원 연락처
+	    order.setORDER_MEMEBER_EMAIL(request.getParameter("buyemail"));//주문 이메일
 	
+	    order.setORDER_NAME(request.getParameter("item_getname"));//수취인 이름
+	    order.setORDER_TEL(request.getParameter("item_getphone"));//수취인 연락처
+	    order.setORDER_ZIP(request.getParameter("item_getzip"));//수취인 주소
+	    order.setORDER_ADDR_1(request.getParameter("item_getaddr1"));//수취인 주소
+	    order.setORDER_ADDR_2(request.getParameter("item_getaddr2"));//수취인 주소
+	    
 	    
 
-	    result = memberdao.joinMember(member);
+	    result = orderdao.paymentInsert(order);
 	    
 	    if(result == false){
-	      System.out.println("회원가입 실패");
+	      System.out.println("paymentInsert 실패");
 	      return null;
 	    }
 	    
-	    //회원가입 성공
-	    forward.setRedirect(true);
+	    forward.setRedirect(false);
 	    forward.setPath("./mainpage.html");
 	    return forward;
 	}
