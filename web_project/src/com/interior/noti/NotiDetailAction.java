@@ -27,6 +27,9 @@ public class NotiDetailAction implements Action {
 		  
 		  List notireplylist = new ArrayList();
 		  
+		  int listcount2 = notidao.getNotiReplyListCount();// 총 리스트 수를 받아 옴(댓글)
+		  notireplylist = notidao.getNotiReplyList(num2);// 리스트를 받아옴(댓글)
+		  
 		  notidao.setReadCountUpdate(num);//조회수 업데이트
 		  notidata = notidao.getDetail(num);//게시글 보기
 		  notidata2 = notidao.getDetail(num2);//공지사항 게시글의 댓글 보기
@@ -46,6 +49,10 @@ public class NotiDetailAction implements Action {
 		  
 		  request.setAttribute("notidata", notidata);
 		  request.setAttribute("notidata2", notidata2);
+		  
+		  System.out.println("이거 나오나 안나오나");
+		  
+		  request.setAttribute("notireplylist", notireplylist);
 		  
 		  forward.setRedirect(false);
 		  forward.setPath("./noti/noti_detail.jsp");

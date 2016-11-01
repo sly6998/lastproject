@@ -415,4 +415,27 @@ public class NotiDAO {
 			}
 			return null;
 		}
+		
+		//공지사항 글의 댓글 수 구하기
+		public int getNotiReplyListCount() {//qna 댓글 리스트의  수 구하기 
+			// TODO Auto-generated method stub
+			int count=0;
+			
+			try{
+				con=ds.getConnection();
+				pstmt=con.prepareStatement("select count(*) from noti_reply");
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()){
+					count=rs.getInt(1);
+				}
+			}catch(Exception e){
+				System.out.println("getNotiReplyListCount error : "+e);
+			}finally{
+				if(rs!=null) try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null) try{con.close();}catch(SQLException ex){}
+			}
+			return count;
+		}
 }
