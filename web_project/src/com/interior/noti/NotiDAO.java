@@ -314,7 +314,7 @@ public class NotiDAO {
 			
 			//공지사항 댓글 삭제
 			public boolean NotiReplyDelete(int num){
-				String sql = "delete from noti_reply where noti_reply_num=?";
+				String sql = "delete from noti_reply where noti_reply_seq=?";
 				
 				int result=0;
 				
@@ -330,16 +330,9 @@ public class NotiDAO {
 				}catch(Exception e){
 					System.out.println("NotiReplyDelete error : "+e);
 				}finally{
-					try{
-						if(pstmt!=null){
-							pstmt.close();
-						}
-						if(con!=null){
-							con.close();
-						}
-					}catch(Exception ex){
-						
-					}
+					if(rs!=null) try{rs.close();}catch(SQLException ex){}
+					if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+					if(con!=null) try{con.close();}catch(SQLException ex){}
 				}
 				return false;
 			}

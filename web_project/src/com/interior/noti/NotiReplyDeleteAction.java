@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
+import com.interior.qna.QnaDAO;
 
 public class NotiReplyDeleteAction implements Action{
 
@@ -18,30 +19,23 @@ public class NotiReplyDeleteAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward = new ActionForward();
 		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
-		
 		boolean result = false;
-		boolean usercheck = false;
-		int num = Integer.parseInt(request.getParameter("num"));
-		
+		int num = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
+		int num2 = Integer.parseInt(request.getParameter("NOTI_NUM"));//댓글
+
 		NotiDAO notidao = new NotiDAO();
-		usercheck = notidao.isNotiReplyWriter(num, id);
+		result = notidao.NotiReplyDelete(num);
+
 		
-		if(usercheck==false){
-			response.setContentType("text/html;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('you cannot delete it.')");
-			out.println("location.href='./NotiList.bo';");
-			out.println("</script>");
-			out.close();
+		if (result == false) {
+			System.out.println("공지사항 게시판 댓글 삭제 시스템 에러");
 			return null;
 		}
-		
-		return null;
-	}
 
-	
-	
+		System.out.println("공지사항 게시판 댓글 삭제 완료");
+
+		forward.setRedirect(true);
+		forward.setPath("./noti_detail.html?NOTI_NUM="+num2);
+		return forward;
+	}
 }
