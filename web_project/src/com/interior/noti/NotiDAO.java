@@ -438,4 +438,40 @@ public class NotiDAO {
 			}
 			return count;
 		}
+		
+		//공지사항 글에 댓글 작성하기
+		public boolean NotiReplyInsert(NotiBean notidata) {
+			// TODO Auto-generated method stub
+			int num = 0;
+			String sql = "";
+			int result = 0;
+			
+			try{
+				sql = "insert into noti_reply "
+						+ "(noti_REPLY_MEMBER_ID, noti_REPLY_CONTENT, noti_REPLY_DATE, noti_REPLY_NUM, noti_REPLY_SEQ) "
+						+ "values (?,?,sysdate,?,noti_reply_seq.NEXTVAL)";
+				
+				con=ds.getConnection();
+				
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, notidata.getNOTI_REPLY_MEMBER_ID());
+				pstmt.setString(2, notidata.getNOTI_REPLY_CONTENT());
+				pstmt.setInt(3, notidata.getNOTI_REPLY_NUM());
+				
+				
+				result = pstmt.executeUpdate();
+				if(result==0){
+					return false; //0이 실패
+				}
+				return true;
+			}catch(Exception e){
+				System.out.println("NotiReplyInsert error : "+e);
+				e.printStackTrace();
+			}finally{
+				if(rs!=null) try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null) try{con.close();}catch(SQLException ex){}
+			}
+			return false;
+		}
 }

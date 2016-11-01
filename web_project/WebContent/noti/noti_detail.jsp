@@ -52,41 +52,18 @@
     </td>
    </tr>
    
+  </table>
+  
+  
    <tr bgcolor="cccccc">
     <td colspan="2" style="height:1px;"></td>
    </tr>
-   
    <tr><td colspan="2">&nbsp;</td></tr>
    
-   <tr align="center" valign="middle">
-    <td colspan="5">
-     <font size=2>
-      <a href="./noti_modify_view.html?NOTI_NUM=<%=noti.getNOTI_NUM() %>">[수정]</a>&nbsp;&nbsp;
-      <a href="./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM() %>">[삭제]</a>&nbsp;&nbsp;
-      <a href="./noti_list.html">[목록]</a>&nbsp;&nbsp;
-     </font>
-    </td>
-   </tr>
-  </table>
-  <!-- 게시판 수정 -->
+   <hr size=5></hr>
   
   <!-- 댓글 -->
  <table width=600>
-    		<tr>
-    			<td>
-    			<form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
-    				<%=NOTI_REPLY_MEMBER_ID %>
-    				<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=NOTI_REPLY_MEMBER_ID %>"/>
-    		 		<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />		
-    				
-    			</td>
-					    		 		    		 		
-    			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
-    				<input style="width:400px; height:50px;" name="NOTI_REPLY_CONTENT" type="text" />
-    				<input type="submit" name="noti_reply_write_form" value="등록">
-				</form>	   
-    			</td> 
-    		</tr>
     	
     		<%
        		  for (int i = 0; i < noti_reply.size(); i++) {
@@ -113,17 +90,42 @@
 		   		</td> 
 		   		
 		   		<td>  
-		   		 <form name="qna_reply_delete_form" method="post" action="./QnaReplyDeleteAction.html" >
-		   		 <input type="hidden" name="QNA_REPLY_SEQ" value="<%= notireply.getNOTI_REPLY_SEQ() %>" />	
-		   		 <input type="hidden" name="QNA_NUM" value="<%= noti2.getNOTI_NUM() %>" /> 
+		   		 <form name="noti_reply_delete_form" method="post" action="./NotiReplyDeleteAction.html" >
+		   		 <input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireply.getNOTI_REPLY_SEQ() %>" />	
+		   		 <input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" /> 
 		   		 <input type="submit" name="noti_reply_delete_form" value="삭제">
 		   		</form>
 		   		 
 		   		</td>
     		</tr> 
     		<% } %>
+   
+    		<tr>
+    			<td>
+    			<form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
+    				<%=NOTI_REPLY_MEMBER_ID %>
+    				<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=NOTI_REPLY_MEMBER_ID %>"/>
+    		 		<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />		
+    				
+    			</td>
+					    		 		    		 		
+    			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
+    				<input style="width:400px; height:50px;" name="NOTI_REPLY_CONTENT" type="text" />
+    				<input type="submit" name="noti_reply_write_form" value="등록">
+				</form>	   
+    			</td> 
+    		</tr>
     		
+    		
+   <tr align="center" valign="middle">
+    <td colspan="5">
+     <font size=2>
+      <a href="./noti_modify_view.html?NOTI_NUM=<%=noti.getNOTI_NUM() %>">[수정]</a>&nbsp;&nbsp;
+      <a href="./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM() %>">[삭제]</a>&nbsp;&nbsp;
+      <a href="./noti_list.html">[목록]</a>&nbsp;&nbsp;
+     </font>
+    </td>
+   </tr>
     	</table> 
-
 </body>
 </html>

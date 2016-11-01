@@ -49,9 +49,7 @@ public class NotiDetailAction implements Action {
 		  
 		  request.setAttribute("notidata", notidata);
 		  request.setAttribute("notidata2", notidata2);
-		  
-		  System.out.println("이거 나오나 안나오나");
-		  
+		  		  
 		  request.setAttribute("notireplylist", notireplylist);
 		  
 		  forward.setRedirect(false);

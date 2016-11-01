@@ -215,6 +215,7 @@ create sequence review_seq start with 1 increment by 1;
 create sequence qna_board_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1;
 create sequence basket_seq start with 1 increment by 1;
+create sequence noti_reply_seq start with 1 increment by 1;
 
 /* drop sequence(시퀀스 삭제)*/
 
