@@ -60,10 +60,10 @@ public class QnaDAO {
 		String sql = "select aa.qna_num ,(select count(*) from qna_reply bb where "
 				   + "bb.qna_reply_num = aa.qna_num) as zzzzz from qna_board aa order by qna_date desc";
 				
-		
+		 
 		List list = new ArrayList(); 
 		
-		try{
+		try{ 
 			con=ds.getConnection();
 			pstmt=con.prepareStatement(sql);
 			
