@@ -42,11 +42,22 @@ function modify(){
 	location = "./BasketModify.html?num="+num+"&amount="+amount;
 }
 
+function submit_f(str){
+	
+	if(str == 'modify'){
+		basketform.action = './BasketModify.html';
+	}else if(str == 'buy'){
+		basketform.action = './ProductBuy.html';
+	}
+	
+	
+	
+}
 </script>
 </head>
 <body >
 <h3 >장바구니</h3>
-
+ <form name ="basketform" method="post">
 <table border="1">
       <tr>
         <td>사진</td>
@@ -56,35 +67,41 @@ function modify(){
         <td>삭제</td>
         
       </tr>
+     
 	 <%
          for (int i = 0; i < basketList.size(); i++) {
         	 BasketBean bl = (BasketBean)basketList.get(i);
       %>
       <tr>
          <td>
-         <img src="<%=bl.getBASKET_ITEM_IMAGE()%>" width="150">
+         <img src="<%=bl.getBASKET_ITEM_IMAGE()%>" width="100">
+         <input type="hidden" name="product_img" value="<%=bl.getBASKET_ITEM_IMAGE()%>">
          </td>
          <td>
          	<table>
          	  <tr>
          	    <td><a href="#"><%=bl.getBASKET_ITEM_NAME()%></a><td>
+         	    <input type="hidden" name="product_name" value="<%=bl.getBASKET_ITEM_NAME()%>">
          	  </tr>
          	  <tr>
          	    <td>[옵션]<%=bl.getBASKET_ITEM_TYPE()%></td>
+         	    <input type="hidden" name="product_type" value="<%=bl.getBASKET_ITEM_TYPE()%>">
          	  </tr>
          	</table>
          </td>
          <td>
-         <form action="./BasketModify.html" method="post">
+         
            <input type="text" name = "amount" id ="amount" size="1" class="num" value="<%=bl.getBASKET_AMOUNT()%>"><br>
  			<input type="hidden" name ="num" value="<%=bl.getBASKET_NUM()%>">
- 			<input type="submit" value="변경">
-         </form>
+ 			<input type="submit" value="변경"  onclick="submit_f('modify')">
+        
          </td>
          <td>
            <span id="price">
            <%=bl.getBASKET_RESULT()%>
            </span>
+           <input type="hidden" name="product_result" value="<%=bl.getBASKET_RESULT()%>">
+           
            
          </td>
          <td>
@@ -94,6 +111,7 @@ function modify(){
       <%
          }
       %>
+       
     </table>
 
 
@@ -104,14 +122,14 @@ function modify(){
 			<button type="button" onclick="location.href='./BasketDelete.html'">장바구니 비우기</button>
 		</td>
 		<td>
-			<button type="button" onclick="location.href='./ProductBuy.html'">주문하기</button>
+			<input type="submit" value="주문하기" onclick="submit_f('buy')">
 		</td>
 		<td>
 			<button type="button" onclick="location.href='./product_list.html'">쇼핑계속하기</button>
 		</td>
 	</tr>
 </table>
-	
+	</form>
 	
 	
      

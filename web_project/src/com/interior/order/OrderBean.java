@@ -4,6 +4,10 @@ import java.sql.Date;
 
 public class OrderBean {
 
+	private int ORDER_BASKET_NUM;
+	private String ORDER_ITEM_IMG;
+	private String ORDER_ITEM_TYPE;
+	private int ORDER_ITEM_PRICE;
 	private String ORDER_MEMBER_ID;
 	private String ORDER_ITEM_MODEL;
 	private String ORDER_ITEM_NAME;
@@ -26,8 +30,39 @@ public class OrderBean {
 	private Date ORDER_DATE;
 	private String ORDER_STATUS;
 	private String ORDER_TRADE_NUM;
+	private String ORDER_MEMEBER_EMAIL;
 	
 	
+	public String getORDER_MEMEBER_EMAIL() {
+		return ORDER_MEMEBER_EMAIL;
+	}
+	public void setORDER_MEMEBER_EMAIL(String oRDER_MEMEBER_EMAIL) {
+		ORDER_MEMEBER_EMAIL = oRDER_MEMEBER_EMAIL;
+	}
+	public int getORDER_BASKET_NUM() {
+		return ORDER_BASKET_NUM;
+	}
+	public void setORDER_BASKET_NUM(int oRDER_BASKET_NUM) {
+		ORDER_BASKET_NUM = oRDER_BASKET_NUM;
+	}
+	public String getORDER_ITEM_IMG() {
+		return ORDER_ITEM_IMG;
+	}
+	public void setORDER_ITEM_IMG(String oRDER_ITEM_IMG) {
+		ORDER_ITEM_IMG = oRDER_ITEM_IMG;
+	}
+	public String getORDER_ITEM_TYPE() {
+		return ORDER_ITEM_TYPE;
+	}
+	public void setORDER_ITEM_TYPE(String oRDER_ITEM_TYPE) {
+		ORDER_ITEM_TYPE = oRDER_ITEM_TYPE;
+	}
+	public int getORDER_ITEM_PRICE() {
+		return ORDER_ITEM_PRICE;
+	}
+	public void setORDER_ITEM_PRICE(int oRDER_ITEM_PRICE) {
+		ORDER_ITEM_PRICE = oRDER_ITEM_PRICE;
+	}
 	public String getORDER_MEMBER_ID() {
 		return ORDER_MEMBER_ID;
 	}
