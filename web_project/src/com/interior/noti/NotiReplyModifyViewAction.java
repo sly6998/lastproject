@@ -40,8 +40,10 @@ public class NotiReplyModifyViewAction implements Action{
 		System.out.println("나오나요?");
 
 		forward.setRedirect(false);
-		forward.setPath("./noti/noti_reply_modify_view.jsp");
+		System.out.println("ddd");
+		forward.setPath("./noti/noti_detail.jsp");
 
+		System.out.println("fff");
 		return forward;
 	}
 }
