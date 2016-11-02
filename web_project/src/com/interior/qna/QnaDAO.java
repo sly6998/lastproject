@@ -57,8 +57,8 @@ public class QnaDAO {
 	public List getReplyListCount() {//qna 댓글 리스트의  수 구하기 
 		// TODO Auto-generated method stub
 		
-		String sql = "select aa.qna_num ,(select count(*) from qna_reply bb where "
-				   + "bb.qna_reply_num = aa.qna_num) as zzzzz from qna_board aa order by qna_date desc";
+		String sql = "select aa.qna_num ,(select count(*) from qna_reply bb where bb.qna_reply_num = aa.qna_num) as zzzzz"
+				   + " from qna_board aa order by qna_date desc";
 				
 		 
 		List list = new ArrayList(); 
