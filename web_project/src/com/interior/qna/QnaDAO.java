@@ -53,47 +53,6 @@ public class QnaDAO {
 		return count;
 	}
 	
-	//////////////////////////////////////////////////////////////////////////////////////
-	public List getReplyListCount() {//qna 댓글 리스트의  수 구하기 
-		// TODO Auto-generated method stub
-		
-		String sql = "select aa.qna_num ,(select count(*) from qna_reply bb where bb.qna_reply_num = aa.qna_num) as zzzzz"
-				   + " from qna_board aa order by qna_date desc";
-				
-		 
-		List list = new ArrayList(); 
-		
-		try{ 
-			con=ds.getConnection();
-			pstmt=con.prepareStatement(sql);
-			
-			rs=pstmt.executeQuery();
-			
-					
-			while(rs.next()){
-				
-				QnaBean qna2 = new QnaBean();
-				
-				qna2.setQnA_REPLY_AMOUNT(rs.getInt("zzzzz"));
-				
-				list.add(qna2);
-				
-				
-			}
-			
-			return list;
-		}catch(Exception e){
-			System.out.println("getReplyListCount error : "+e);
-		}finally{
-			if(rs!=null) try{rs.close();}catch(SQLException ex){}
-			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
-			if(con!=null) try{con.close();}catch(SQLException ex){}
-		}
-		return list;
-	}
-	
-	
-	
 	
 
 	public List getQnaList(int page, int limit) {//qna 게시글 목록 불러오기
@@ -101,7 +60,8 @@ public class QnaDAO {
 		String sql = "select * from " +
 		"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
 		"qna_subject, qna_content, qna_date, qna_seq, qna_ref, qna_lev," +
-		"qna_readcount from " +
+		"qna_readcount , " +
+		" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
 		"(select * from qna_board order by " +
 		"qna_date desc))" +
 		"where rnum>=? and rnum<=?";
@@ -129,6 +89,7 @@ public class QnaDAO {
 				qna.setQnA_REF(rs.getInt("qnA_REF"));
 				qna.setQnA_LEV(rs.getInt("qnA_LEV"));
 				qna.setQnA_READCOUNT(rs.getInt("qnA_READCOUNT"));
+				qna.setQnA_REPLY_AMOUNT(rs.getInt("zzzzz"));
 				list.add(qna);
 				
 			}
@@ -301,7 +262,7 @@ public class QnaDAO {
 			pstmt.setString(2, qnadata.getQnA_REPLY_CONTENT());
 			pstmt.setInt(3, qnadata.getQnA_REPLY_NUM());
 			
-			
+				
 			result = pstmt.executeUpdate();
 			if(result==0){
 				return false; //0이 실패

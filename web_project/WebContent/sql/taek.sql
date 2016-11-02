@@ -225,31 +225,6 @@ drop sequence advice_seq;
 
 /*테스트*/
 
-select * from (select rownum rnum, qna_reply_member_id, qna_reply_content, qna_reply_date, qna_reply_num
-from (select * from qna_reply order by qna_reply_date asc)) 
-where qna_reply_num=41 and rnum>=1 and rnum<=100;
-
-
-select count(*) from qna_board
-
-
-select * from 
-(select rownum rnum, qna_num, qna_content, qna_date from 
-(select * from qna_board order by  qna_date desc))
-where rnum>=1 and rnum<=10
-
-
-
-
-select * from QNA_BOARD 
-
-select rownum ,  qna_date, 
-(select (select count(*) from qna_reply bb where  bb.qna_reply_num = aa.qna_num) as zz
-from qna_board aa order by qna_date desc)
-from qna_board aa 
-
-select  (select count(*) from qna_reply bb where bb.qna_reply_num = aa.qna_num) as z from qna_board aa 
-order by qna_date desc
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
 select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info; /*복호화*/

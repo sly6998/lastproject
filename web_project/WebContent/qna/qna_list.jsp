@@ -15,11 +15,15 @@
 
   
   int listcount = ((Integer)request.getAttribute("listcount")).intValue();
+
+  
   
   int nowpage = ((Integer)request.getAttribute("page")).intValue();
   int maxpage = ((Integer)request.getAttribute("maxpage")).intValue();
   int startpage = ((Integer)request.getAttribute("startpage")).intValue();
   int endpage = ((Integer)request.getAttribute("endpage")).intValue();
+  
+
 %>
 <!DOCTYPE html>
 <html>
@@ -68,7 +72,7 @@
       <%
          for (int i = 0; i < boardList.size(); i++) {
             QnaBean bl = (QnaBean) boardList.get(i);
-            QnaBean bl2 = (QnaBean) replyamount.get(i);
+            
       %>
       <!-- 내용 -->
       <tr align="center" valign="middle" style="border: 1px solid #ddd;"
@@ -83,7 +87,7 @@
             <a href="./qna_detail.html?QNA_NUM=<%=bl.getQnA_NUM()%>" style='text-decoration: none;'><%=bl.getQnA_SUBJECT()%>
             </a>
             &nbsp;&nbsp;&nbsp;
-            [<%= bl2.getQnA_REPLY_AMOUNT() %>]
+           [<%= bl.getQnA_REPLY_AMOUNT() %>] 
          </td>
 
          <td
@@ -109,40 +113,42 @@
          }
       %>
 
-
-
-      <!-- [이전] / [1] [2] [3] / [다음] -->
+	
+	
+      <!-- [이전] / [1] [2] [3] / [다음] -->   
       <tr align="center" height="20">
          <td colspan="3"
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
 
 
-            <%
-               if (nowpage <= 1) {
-            %> [이전]&nbsp; <%
-    } else {
- %> <a
-            href="./qna_list.html?page=<%=nowpage - 1%>">[이전]</a>&nbsp; <%
-    }
- %> <%
-    for (int a = startpage; a <= endpage; a++) {
-       if (a == nowpage) {
- %> [<%=a%>] <%
-    } else {
- %> <a
-            href="./qna_list.html?page=<%=a%>">[<%=a%>]
-         </a> &nbsp; <%
-    }
- %> <%
-    }
- %> <%
-    if (nowpage >= maxpage) {
- %> [다음] <%
-    } else {
- %> <a
-            href="./qna_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
-    }
- %>
+            <% if (nowpage <= 1) { %> 
+               		[이전]&nbsp; 
+            <% } else { %> 
+            	<a href="./qna_list.html?page=<%=nowpage - 1%>"> [이전] </a>&nbsp; 
+ 			<% } %> 
+ 			
+ 			<!------------------------------------------------------------------------------------------------->
+ 			<%  for (int a = startpage ; a <= endpage ; a++) {
+      		 	   if (a == nowpage ) { %> 
+ 			
+ 				[<%=a%>] 
+ 			
+ 				<%} else { %> 
+ 			
+ 	 			<a href="./qna_list.html?page=<%=a%>"> [<%=a%>] </a> &nbsp; 
+         	
+         		<%}%> 
+         	<%} %> 
+         	<!------------------------------------------------------------------------------------------------->
+         	
+         	
+         	<% if (nowpage >= maxpage) {%> 
+	         	[다음] 
+         	<%} else {%> 
+         	
+         	<a href="./qna_list.html?page=<%=nowpage + 1%>"> [다음] </a> 
+         	
+         	<% } %>
 
 
          </td>
