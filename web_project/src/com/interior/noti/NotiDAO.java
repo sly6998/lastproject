@@ -467,4 +467,33 @@ public class NotiDAO {
 			}
 			return false;
 		}
+		
+		//공지사항 댓글 수정 화면으로 이동
+		public NotiBean notireplymodifyview(int num2) {
+			// TODO Auto-generated method stub
+			NotiBean notireplydata = null;
+			try{
+				con=ds.getConnection();
+				pstmt = con.prepareStatement("select * from noti_reply where noti_reply_num=?");
+				pstmt.setInt(1, num2);
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()){
+					notireplydata = new NotiBean();
+					notireplydata.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
+					notireplydata.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
+					notireplydata.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
+					notireplydata.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
+				}
+				return notireplydata;
+			}catch(Exception e){
+				System.out.println("notireplymodifyview error : "+e);
+			}finally{
+				if(rs!=null) try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null) try{con.close();}catch(SQLException ex){}
+			}
+			return null;
+		}
 }

@@ -20,9 +20,9 @@ public class NotiReplyModifyViewAction implements Action{
 		NotiDAO notidao = new NotiDAO();
 		NotiBean notireplydata = new NotiBean();
 
-		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_NUM"));
 		
-		notireplydata = notidao.notimodifyview(num2);
+		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
+		System.out.println("333");
 		
 		if (notireplydata == null) {
 			response.setContentType("text/html;charset=utf-8");
@@ -37,9 +37,10 @@ public class NotiReplyModifyViewAction implements Action{
 		System.out.println("공지사항 댓글 수정페이지 보기 성공");
 
 		request.setAttribute("notireplydata", notireplydata);
+		System.out.println("나오나요?");
 
 		forward.setRedirect(false);
-		forward.setPath("./noti/noti_detail.jsp");
+		forward.setPath("./noti/noti_reply_modify_view.jsp");
 
 		return forward;
 	}
