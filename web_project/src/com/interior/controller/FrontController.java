@@ -41,6 +41,7 @@ import com.interior.noti.NotiReplyModifyAction;
 import com.interior.noti.NotiReplyModifyViewAction;
 import com.interior.noti.NotiReplyWriteAction;
 import com.interior.noti.NotiWriteAction;
+import com.interior.order.OrderListAction;
 import com.interior.order.ProductBuyAction;
 import com.interior.order.paymentAction;
 import com.interior.qna.QnaDeleteAction;
@@ -514,7 +515,7 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 			
 			
 			
-		/* 주문 내역 조회 */
+		/* order */
 			
 		} else if (command.equals("/ProductBuy.html")) {// 구매 페이지 이동
 			action = new ProductBuyAction(); 
@@ -531,8 +532,8 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/basket_list.html")) {// 주문내역 페이지 이동
-			action = new BasketListAction(); 
+		} else if (command.equals("/OrderList.html")) {// 주문내역 LIST 페이지 이동
+			action = new OrderListAction(); 
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) { 

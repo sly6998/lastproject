@@ -71,10 +71,8 @@ public class paymentAction implements Action {
 			out.close();
 	    }
 	    
-	    request.setAttribute("orderdetail", order);
-	    
-	    forward.setRedirect(false);
-	    forward.setPath("./OrderDetail.html");
+	    forward.setRedirect(true);
+	    forward.setPath("./OrderList.html");
 	    return forward;
 	}
 

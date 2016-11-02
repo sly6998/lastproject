@@ -45,7 +45,7 @@
 					  } else {
 					%>
 					<a href="./basketlist.html">장바구니</a>
-					<a href="#">주문조회</a>
+					<a href="./OrderList.html">주문조회</a>
 					<a href="./member_modify.html">마이페이지</a>
 					<a href="./logout.html">로그아웃</a>
 					<%
