@@ -13,8 +13,9 @@ public class NotiReplyModifyViewAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		ActionForward forward = new ActionForward();
+		
 		request.setCharacterEncoding("utf-8");
+		ActionForward forward = new ActionForward();
 
 		NotiDAO notidao = new NotiDAO();
 		NotiBean notireplydata = new NotiBean();

@@ -92,7 +92,7 @@
 		   		<td>
 		   			<form name="noti_reply_modify_form" method="post" action="./NotiReplyModifyViewAction.html">
 		   			<input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireply.getNOTI_REPLY_SEQ() %>" />	
-		   			<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" /> 	   		 
+		   			<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />
 		   			<input type="submit" name="noti_reply_modify_form" value="수정">
 		   			</form>
 		   		</td>
