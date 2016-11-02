@@ -98,33 +98,52 @@ public class OrderDAO {
 	}
 
 	public boolean paymentInsert(OrderBean order) {
+		
 		String sql = "insert into ORDER_LIST "
-				+ "()";
+				+ "(ORDER_STATUS, ORDER_TRADE_NUM, ORDER_ITEM_IMG, ORDER_ITEM_NAME, "
+				+ "ORDER_ITEM_TYPE, ORDER_ITEM_AMOUNT, ORDER_ITEM_PRICE, ORDER_ITEM_PRICE_SUM, "
+				+ "ORDER_MEMO, ORDER_TRADE_TYPE, ORDER_MEMBER_ID, ORDER_MEMBER_NAME, ORDER_MEMBER_TEL, "
+				+ "ORDER_EMAIL, ORDER_NAME, ORDER_TEL, ORDER_ZIP, ORDER_ADDR_1, ORDER_ADDR_2, ORDER_DATE) "
+				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate)";
 		int result = 0;
 		
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			rs.next();
+			pstmt.setString(1, order.getORDER_TRADE_STATUS());
+			pstmt.setString(2, order.getORDER_TRADE_NUM());
+			pstmt.setString(3, order.getORDER_ITEM_IMG());
+			pstmt.setString(4, order.getORDER_ITEM_NAME());
+			pstmt.setString(5, order.getORDER_ITEM_TYPE());
+			pstmt.setInt(6, order.getORDER_ITEM_AMOUNT());
+			pstmt.setInt(7, order.getORDER_ITEM_PRICE());
+			pstmt.setInt(8, order.getORDER_ITEM_PRICE_SUM());
+			pstmt.setString(9, order.getORDER_MEMO());
+			pstmt.setString(10, order.getORDER_TRADE_TYPE());
+			pstmt.setString(11, order.getORDER_MEMBER_ID());
+			pstmt.setString(12, order.getORDER_MEMBER_NAME());
+			pstmt.setString(13, order.getORDER_MEMBER_TEL());
+			pstmt.setString(14, order.getORDER_MEMEBER_EMAIL());
+			pstmt.setString(15, order.getORDER_NAME());
+			pstmt.setString(16, order.getORDER_TEL());
+			pstmt.setString(17, order.getORDER_ZIP());
+			pstmt.setString(18, order.getORDER_ADDR_1());
+			pstmt.setString(19, order.getORDER_ADDR_2());
+			result = pstmt.executeUpdate();
 			
-			OrderBean order = new OrderBean();
-			order.setORDER_MEMBER_NAME(rs.getString("MEMBER_NAME"));
-			order.setORDER_MEMBER_ADDR_1(rs.getString("MEMBER_ADDR_1"));
-			order.setORDER_MEMBER_ADDR_2(rs.getString("MEMBER_ADDR_2"));
-			order.setORDER_MEMBER_ZIP(rs.getString("MEMBER_ADDR_ZIP"));
-			order.setORDER_MEMBER_TEL(rs.getString("MEMBER_TEL"));
-			order.setORDER_MEMEBER_EMAIL(rs.getString("MEMBER_EMAIL"));
-			return order;
+			if(result != 0){
+				return true;
+			}
+			
 		}catch(Exception e){
-			System.out.println("getOrder_OrderList error : "+e);
+			System.out.println("payment_insert error : "+e);
+			e.printStackTrace();
 		}finally{
 			if(rs!=null)try{rs.close();}catch(SQLException ex){}
 			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
 			if(con!=null)try{con.close();}catch(SQLException ex){}
 		}
-		return null;
+		return false;
 	}
 
 }

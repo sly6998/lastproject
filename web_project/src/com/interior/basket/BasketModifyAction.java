@@ -29,7 +29,9 @@ public class BasketModifyAction implements Action {
 
 		basket.setBASKET_MEMBER_ID(ID);
 		basket.setBASKET_NUM(Integer.parseInt(request.getParameter("num")));
+		System.out.println(basket.getBASKET_NUM());
 		basket.setBASKET_AMOUNT(Integer.parseInt(request.getParameter("amount")));
+		System.out.println(basket.getBASKET_AMOUNT());
 		
 		result = basketdao.basketModify(basket);
 

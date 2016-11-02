@@ -41,10 +41,8 @@ function buyfunction(){
 	     buyer_tel : memberphone,
 	 }, function(rsp) {
 	     if ( rsp.success ) {
-	         var msg = '결제가 완료되었습니다.';
-		     alert(msg);
-		     $('#payment_status').val() = rsp.status;
-		     $('#payment_num').val() = rsp.merchant_uid;
+ 		     $('#payment_status').val(rsp.status);
+		     $('#payment_num').val(rsp.merchant_uid);
 		 	/* ready(미결제), paid(결제완료), cancelled(결제취소, 부분취소포함), failed(결제실패) */
 	     } else {
 	         var msg = '결제에 실패하였습니다.';
@@ -64,7 +62,7 @@ function buyfunction(){
 <body>
 
 <h2>결제 페이지</h2>
-<form method="post" name="buyform" action="./abc.html">
+<form method="post" name="buyform" action="./payment.html">
 <input type="hidden" value="" id="payment_status" name="payment_status">
 <input type="hidden" value="" id="payment_num" name="payment_num">
 <span>주문상품</span>

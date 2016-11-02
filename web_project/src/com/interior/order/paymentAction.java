@@ -1,8 +1,12 @@
 package com.interior.order;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
@@ -47,16 +51,30 @@ public class paymentAction implements Action {
 	    order.setORDER_ADDR_2(request.getParameter("item_getaddr2"));//수취인 주소
 	    
 	    
-
 	    result = orderdao.paymentInsert(order);
 	    
 	    if(result == false){
-	      System.out.println("paymentInsert 실패");
-	      return null;
+	    	response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('결제가 실패 되었습니다.');");
+			out.println("location.href='./mainpage.html';");
+			out.println("</script>");
+			out.close();
+	        return null;
+	    }else if(result == true){
+	    	response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('결제가 성공적으로 완료 되었습니다.');");
+			out.println("</script>");
+			out.close();
 	    }
 	    
+	    request.setAttribute("orderdetail", order);
+	    
 	    forward.setRedirect(false);
-	    forward.setPath("./mainpage.html");
+	    forward.setPath("./OrderDetail.html");
 	    return forward;
 	}
 

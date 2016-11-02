@@ -90,10 +90,9 @@ function submit_f(str){
          	</table>
          </td>
          <td>
-         
-           <input type="text" name = "amount" id ="amount" size="1" class="num" value="<%=bl.getBASKET_AMOUNT()%>"><br>
- 			<input type="hidden" name ="num" value="<%=bl.getBASKET_NUM()%>">
- 			<input type="submit" value="변경"  onclick="submit_f('modify')">
+           <input type="text" name = "amount" id ="amount" size="1" value="<%=bl.getBASKET_AMOUNT()%>"><br>
+ 			<input type="hidden" name ="num" id="num" value="<%=bl.getBASKET_NUM()%>">
+ 			<input type="submit" value="변경" onclick="submit_f('modify')">
         
          </td>
          <td>

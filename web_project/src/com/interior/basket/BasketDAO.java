@@ -155,13 +155,14 @@ public class BasketDAO {
 			pstmt.setString(3, basket.getBASKET_MEMBER_ID());
 			pstmt.setInt(4, basket.getBASKET_NUM());
 			result = pstmt.executeUpdate();
-			System.out.println(result);
+			System.out.println("result : "+result);
 			
 			
 			if(result == 1){
 				return true;
 			}
 			
+			System.out.println("수량변경 실패result: "+result);
 			return false;
 				
 		}catch(Exception e){
