@@ -17,7 +17,7 @@
   int listcount = ((Integer)request.getAttribute("listcount")).intValue();
 
   
-  
+    
   int nowpage = ((Integer)request.getAttribute("page")).intValue();
   int maxpage = ((Integer)request.getAttribute("maxpage")).intValue();
   int startpage = ((Integer)request.getAttribute("startpage")).intValue();

@@ -30,7 +30,7 @@ public class QnaDAO {
 			return;
 		}
 	}
-
+  
 	public int getListCount() {//qna 게시판 리스트의 총 게시글 수 구하기 
 		// TODO Auto-generated method stub
 		int count=0;
