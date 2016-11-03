@@ -7,6 +7,7 @@
 	String NOTI_REPLY_MEMBER_ID = (String)session.getAttribute("MEMBER_ID");
  	NotiBean noti=(NotiBean)request.getAttribute("notidata");
 	NotiBean noti2=(NotiBean)request.getAttribute("notidata2");
+	NotiBean noti3 = (NotiBean)request.getAttribute("notidata3");
 	List noti_reply = (List)request.getAttribute("notireplylist");
 %>
 
@@ -28,7 +29,7 @@
     </td>
 
     <td style="font-family:돋움; font-size:12">
-     <%=noti.getNOTI_SUBJECT() %>
+     <%= noti.getNOTI_SUBJECT() %>
     </td>
    </tr>
    
@@ -67,51 +68,41 @@
     	
     		<%
        		  for (int i = 0; i < noti_reply.size(); i++) {
-              NotiBean notireply = (NotiBean)noti_reply.get(i);
+              NotiBean notireplymodifyview = (NotiBean)noti_reply.get(i);
    			%>
     		<tr> 
 				<td style="border:0px solid #ddd; font-size:small; font-weight:bold; ">
-					
-					<%= notireply.getNOTI_REPLY_MEMBER_ID() %>
+					<%= notireplymodifyview.getNOTI_REPLY_MEMBER_ID() %>
 				</td>
 				
 			   	<td style="border:0px solid #ddd; font-size:small;" align="left" width="350">
-			   		<%= notireply.getNOTI_REPLY_CONTENT() %>
+			   		<%= notireplymodifyview.getNOTI_REPLY_CONTENT() %>
 			   	</td>
 			   	
 		   		<td style="border:0px solid #ddd; font-size:small;" align="right">
 		   			<font color="#747474">
-		   			<% if(notireply.getNOTI_REPLY_DATE() == null){ %>
+		   			<% if(notireplymodifyview.getNOTI_REPLY_DATE() == null){ %>
 		   			-
 		   			<% }else{ %>
-		   			<%= notireply.getNOTI_REPLY_DATE() %>
+		   			<%= notireplymodifyview.getNOTI_REPLY_DATE() %>
 		   			<% } %>
 		   			</font>
 		   		</td> 
 		   		
 		   		<td>
 		   			<form name="noti_reply_modify_form" method="post" action="./NotiReplyModifyViewAction.html">
-		   			<input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireply.getNOTI_REPLY_SEQ() %>" />	
-		   			<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />
+		   			<input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireplymodifyview.getNOTI_REPLY_SEQ() %>" />	
+		   			<input type="hidden" name="NOTI_NUM" value="<%= noti3.getNOTI_NUM() %>" />
 		   			<input type="submit" name="noti_reply_modify_form" value="수정">
 		   			</form>
 		   		</td>
 		   		
-		   		
-		   		<td>  
-		   		 <form name="noti_reply_delete_form" method="post" action="./NotiReplyDeleteAction.html" >
-		   		 <input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireply.getNOTI_REPLY_SEQ() %>" />	
-		   		 <input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" /> 
-		   		 <input type="submit" name="noti_reply_delete_form" value="삭제">
-		   		</form>
-		   		 
-		   		</td>
-    		</tr> 
+    		</tr>
     		<% } %>
    
     		<tr>
     			<td>
-    			<form name="noti_reply_modify_form" method="post" action="./NotiReplyModifyAction.html">
+    			<form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
     				<%=NOTI_REPLY_MEMBER_ID %>
     				<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=NOTI_REPLY_MEMBER_ID %>"/>
     		 		<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />		
@@ -126,15 +117,7 @@
     		</tr>
     		
     		
-   <tr align="center" valign="middle">
-    <td colspan="5">
-     <font size=2>
-      <a href="./noti_modify_view.html?NOTI_NUM=<%=noti.getNOTI_NUM() %>">[수정]</a>&nbsp;&nbsp;
-      <a href="./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM() %>">[삭제]</a>&nbsp;&nbsp;
-      <a href="./noti_list.html">[목록]</a>&nbsp;&nbsp;
-     </font>
-    </td>
-   </tr>
-    	</table> 
+ 
+    	</table>
 </body>
 </html>

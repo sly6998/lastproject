@@ -18,13 +18,13 @@ public class NotiReplyModifyViewAction implements Action{
 		ActionForward forward = new ActionForward();
 
 		NotiDAO notidao = new NotiDAO();
-		NotiBean notireplydata = new NotiBean();
+		NotiBean notireplyviewdata = new NotiBean();
 
 		
 		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
 		System.out.println("333");
 		
-		if (notireplydata == null) {
+		if (notireplyviewdata == null) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -36,12 +36,12 @@ public class NotiReplyModifyViewAction implements Action{
 
 		System.out.println("공지사항 댓글 수정페이지 보기 성공");
 
-		request.setAttribute("notireplydata", notireplydata);
+		request.setAttribute("notireplydata", notireplyviewdata);
 		System.out.println("나오나요?");
 
 		forward.setRedirect(false);
 		System.out.println("ddd");
-		forward.setPath("./noti/noti_detail.jsp");
+		forward.setPath("./noti/noti_reply_modify_view.jsp");
 
 		System.out.println("fff");
 		return forward;

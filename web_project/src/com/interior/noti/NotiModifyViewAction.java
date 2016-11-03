@@ -39,6 +39,7 @@ public class NotiModifyViewAction implements Action {
 		forward.setRedirect(false);
 		forward.setPath("./noti/noti_detail.jsp");
 
+
 		return forward;
 
 	}
