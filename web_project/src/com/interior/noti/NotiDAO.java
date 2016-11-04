@@ -9,9 +9,11 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.interior.item.ItemBean;
 import com.interior.qna.QnaBean;
 
 
@@ -469,9 +471,9 @@ public class NotiDAO {
 		}
 		
 		//공지사항 댓글 수정 화면으로 이동
-		public List notireplymodifyview(int num2) {
+		/*public List notireplymodifyview(int num2) {
 			// TODO Auto-generated method stub
-			NotiBean notireplydata = null;
+			NotiBean jotka = null;
 			try{
 				con=ds.getConnection();
 				pstmt = con.prepareStatement("select * from noti_reply where noti_reply_num=?");
@@ -482,12 +484,12 @@ public class NotiDAO {
 
 				
 				if(rs.next()){
-					notireplydata = new NotiBean();
-					notireplydata.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
-					notireplydata.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
-					notireplydata.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
-					notireplydata.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
-					list.add(notireplydata);
+					jotka = new NotiBean();
+					jotka.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
+					jotka.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
+					jotka.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
+					jotka.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
+					list.add(jotka);
 				}
 				return list;
 			}catch(Exception e){
@@ -498,6 +500,104 @@ public class NotiDAO {
 				if(con!=null) try{con.close();}catch(SQLException ex){}
 			}
 			return null;
-		}
+		}*/
 		
+		//공지사항 글과 댓글을 동시에 보여주기
+		public NotiBean notireplymodifyview(int num1, int num2, HttpServletRequest request) {
+			String sql = "select * from noti where noti_num=?";
+			String sql_reply = "select * from noti_reply where noti_reply_num=? order by noti_reply_seq";
+			String modify_reply = "select * from noti_reply where noti_reply_seq=?";
+			int result = 0;
+			int result_reply = 0;
+			int noti_reply_seq = 0;
+			NotiBean noti = null;
+			NotiBean modify_re = null;
+			List reply = new ArrayList<>();
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num1);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					result =1;
+					noti = new NotiBean();
+					noti.setNOTI_NUM(rs.getInt("NOTI_NUM"));
+					noti.setNOTI_MEMBER_ID(rs.getString("NOTI_MEMBER_ID"));
+					noti.setNOTI_MEMBER_NAME(rs.getString("NOTI_MEMBER_NAME"));
+					noti.setNOTI_SUBJECT(rs.getString("NOTI_SUBJECT"));
+					noti.setNOTI_CONTENT(rs.getString("NOTI_CONTENT"));
+					noti.setNOTI_READCOUNT(rs.getInt("NOTI_READCOUNT"));
+					noti.setNOTI_DATE(rs.getDate("NOTI_DATE"));
+					
+				}
+				
+				//댓글 불러오기
+				pstmt = con.prepareStatement(sql_reply);
+				pstmt.setInt(1, num1);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					result_reply =1;
+					NotiBean noti2 = new NotiBean();
+					noti2.setNOTI_REPLY_NUM(rs.getInt("NOTI_REPLY_NUM"));
+					noti2.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
+					noti2.setNOTI_REPLY_MEMBER_NAME(rs.getString("NOTI_REPLY_MEMBER_NAME"));
+					noti2.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
+					noti2.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
+					noti2.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
+					noti2.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
+					noti2.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+					reply.add(noti2);
+				}
+				
+				
+				
+				//수정할 댓글 불러오기
+				pstmt = con.prepareStatement(modify_reply);
+				pstmt.setInt(1, num2);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					modify_re = new NotiBean();
+					modify_re.setNOTI_REPLY_NUM(rs.getInt("NOTI_REPLY_NUM"));
+					modify_re.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
+					modify_re.setNOTI_REPLY_MEMBER_NAME(rs.getString("NOTI_REPLY_MEMBER_NAME"));
+					modify_re.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
+					modify_re.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
+					modify_re.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
+					modify_re.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
+					modify_re.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+				}
+				if(result != 1 || result_reply !=1){
+					System.out.println("보여주기 실패");
+					return null;
+				}
+				System.out.println("보여주기 성공");
+				
+				request.setAttribute("replylist", reply);
+				request.setAttribute("modify_re", modify_re);
+				
+				return noti;
+				
+			} catch (Exception e) {
+				System.out.println("Show replies error : " + e);
+				e.printStackTrace();
+			} finally {
+				if (rs != null)
+					try {
+						rs.close();
+					} catch (SQLException ex) {
+					}
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (con != null)
+					try {
+						con.close();
+					} catch (SQLException ex) {
+					}
+			}
+			return null;
+		}
+
 }

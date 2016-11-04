@@ -18,7 +18,7 @@ public class NotiReplyWriteAction implements Action{
 		NotiDAO notidao = new NotiDAO();
 		NotiBean notireplydata = new NotiBean();
 		
-		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
+		int num2 = Integer.parseInt(request.getParameter("NOTI_NUM"));
 		
 		
 		boolean result = false;

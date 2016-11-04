@@ -34,7 +34,7 @@ public class NotiModifyViewAction implements Action {
 
 		System.out.println("공지사항 수정페이지 보기 성공");
 
-		request.setAttribute("notidata", notidata);
+		request.setAttribute("notireplymodifyviewcontent", notidata);
 
 		forward.setRedirect(false);
 		forward.setPath("./noti/noti_detail.jsp");

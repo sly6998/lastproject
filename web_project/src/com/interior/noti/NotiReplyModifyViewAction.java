@@ -20,17 +20,20 @@ public class NotiReplyModifyViewAction implements Action{
 		ActionForward forward = new ActionForward();
 
 		NotiDAO notidao = new NotiDAO();
-		NotiBean notireplymodifyviewdata = new NotiBean();
-		List notireplyviewlist = new ArrayList();
-
-		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
-
-		notireplymodifyviewdata = notidao.getDetail(num2);
-		notireplyviewlist =notidao.notireplymodifyview(num2);
+		NotiBean ssibal = new NotiBean(); //본문 내용
+		List replylist = new ArrayList<>(); // 불러온 댓글
+		NotiBean modify_reply = new NotiBean(); //수정할 댓글
 		
-		System.out.println("333");
+
+		int num1 = Integer.parseInt(request.getParameter("NOTI_NUM"));//본문 시퀀스
+		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));//댓글 시퀀스
 		
-		if (notireplyviewlist == null) {
+		
+		ssibal = notidao.notireplymodifyview(num1,num2, request);
+
+		
+		
+		if (ssibal == null) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -41,15 +44,16 @@ public class NotiReplyModifyViewAction implements Action{
 		}
 
 		System.out.println("공지사항 댓글 수정페이지 보기 성공");
+		replylist = (List) request.getAttribute("replylist");
+		modify_reply = (NotiBean) request.getAttribute("modify_re");
 
-		request.setAttribute("notireplyviewlist", notireplyviewlist);
-		System.out.println("나오나요?");
+		request.setAttribute("ssibal", ssibal);
+		request.setAttribute("replylist", replylist);
+		request.setAttribute("modify_reply", modify_reply);
+		
 
 		forward.setRedirect(false);
-		System.out.println("ddd");
 		forward.setPath("./noti/noti_reply_modify_view.jsp");
-
-		System.out.println("fff");
 		return forward;
 	}
 }

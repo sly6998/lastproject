@@ -227,6 +227,11 @@ drop sequence advice_seq;
 drop sequence basket_seq;
 
 
+
+select * from noti_reply where noti_reply_seq=28 order by noti_reply_seq;
+select * from noti_reply;
+
+
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
 select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info; /*복호화*/
 select PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info where member_ID='admin' and member_name='관리자' and member_tel='010-4455-4444' and member_year=1995 and member_month=12 and member_day=19;
