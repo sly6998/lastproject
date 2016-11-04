@@ -127,41 +127,45 @@ public class ItemDAO {
 
 	public boolean ItemInsert(ItemBean itemdata, HttpServletRequest request) {
 		String sql = "insert into item "
-				+ "(ITEM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TYPE, ITEM_CONTENT, ITEM_DATE) "
-				+ "values (ITEM_SEQ.NEXTVAL,?,?,?,?,?,SYSDATE)";
+				+ "(ITEM_SEQ, ITEM_NAME, ITEM_PRICE, ITEM_IMAGE, ITEM_TYPE_1, ITEM_TYPE_2, ITEM_TYPE_3, "
+				+ "ITEM_TYPE_4, ITEM_TYPE_5, ITEM_CONTENT, ITEM_DATE) "
+				+ "values (ITEM_SEQ.NEXTVAL,?,?,?,?,?,?,?,?,?,SYSDATE)";
+		
 		String sql_seq = "select * from (select * from item order by item_seq desc) where rownum= 1 ";
 		int result = 0;
 		int item_seq = 0;
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1,itemdata.getITEM_NAME());
+			pstmt.setString(1, itemdata.getITEM_NAME());
 			pstmt.setInt(2, itemdata.getITEM_PRICE());
-			pstmt.setString(3,itemdata.getITEM_IMAGE());
-			pstmt.setString(4,itemdata.getITEM_TYPE());
-			pstmt.setString(5,itemdata.getITEM_CONTENT());
-			
+			pstmt.setString(3, itemdata.getITEM_IMAGE());
+			pstmt.setString(4, itemdata.getITEM_TYPE_1());
+			pstmt.setString(5, itemdata.getITEM_TYPE_2());
+			pstmt.setString(6, itemdata.getITEM_TYPE_3());
+			pstmt.setString(7, itemdata.getITEM_TYPE_4());
+			pstmt.setString(8, itemdata.getITEM_TYPE_5());
+			pstmt.setString(9, itemdata.getITEM_CONTENT());
+
 			result = pstmt.executeUpdate();
-			
-			//seq 조회
+
+			// seq 조회
 			pstmt = con.prepareStatement(sql_seq);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
+			while (rs.next()) {
 				item_seq = rs.getInt("ITEM_SEQ");
 			}
-		
 
-			if(result != 1){
+			if (result != 1) {
 				System.out.println("제품등록 실패");
 				return false;
 			}
 			System.out.println("제품등록 성공");
-			
+
 			request.setAttribute("item_seq", item_seq);
-			
+
 			return true;
-			
-			
+
 		} catch (Exception e) {
 			System.out.println("Insert Item error : " + e);
 			e.printStackTrace();
@@ -183,6 +187,54 @@ public class ItemDAO {
 				}
 		}
 		return false;
+	}
+
+	public ItemBean getItemDetail(int item_seq) {
+		String sql = "select * from item where item_seq = ? ";
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, item_seq);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ItemBean item = new ItemBean();
+				item.setITEM_CONTENT(rs.getString("item_content"));
+				item.setITEM_IMAGE(rs.getString("ITEM_IMAGE"));
+				item.setITEM_NAME(rs.getString("item_name"));
+				item.setITEM_PRICE(rs.getInt("item_price"));
+				item.setITEM_SEQ(rs.getInt("item_seq"));
+				item.setITEM_TYPE_1(rs.getString("item_type_1"));
+				item.setITEM_TYPE_2(rs.getString("item_type_2"));
+				item.setITEM_TYPE_3(rs.getString("item_type_3"));
+				item.setITEM_TYPE_4(rs.getString("item_type_4"));
+				item.setITEM_TYPE_5(rs.getString("item_type_5"));
+
+				return item;
+			}
+
+			return null;
+
+		} catch (Exception e) {
+			System.out.println("제품 상세보기 실패 : " + e);
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return null;
 	}
 
 }

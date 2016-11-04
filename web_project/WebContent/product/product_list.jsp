@@ -68,8 +68,8 @@ String srchFlds = (String)request.getAttribute("srchFlds");
    											    %>
                                                     <article class="grid_4 alpha">
                                                         <div class="indent-left">
-                                                            <figure class="frame2 p2"><img src="<%=request.getContextPath()%>/upload/main_upload/<%=il.getITEM_IMAGE() %>" width="250" height="250"/></figure>
-                                                            <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
+                                                            <figure class="frame2 p2"><a href="./product_detail.html?item_seq=<%=il.getITEM_SEQ()%>"><img src="<%=request.getContextPath()%>/upload/main_upload/<%=il.getITEM_IMAGE() %>" width="250" height="250"/></a></figure>
+                                                            <p class="color-4 prev-indent-bot"><a href="./product_detail.html?item_seq=<%=il.getITEM_SEQ()%>"><%=il.getITEM_NAME() %></a></p>
                                                             <div class="wrapper">
                                                             	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
                                                             </div>

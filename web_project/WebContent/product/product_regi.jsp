@@ -25,7 +25,19 @@
      	</label><br/>
      	
      	<label>
-     		<input type="text" name="ITEM_TYPE" placeholder="제품옵션"/>
+     		<input type="text" name="ITEM_TYPE_1" placeholder="제품옵션 1"/>
+     	</label><br/>
+     	<label>
+     		<input type="text" name="ITEM_TYPE_2" placeholder="제품옵션 2"/>
+     	</label><br/>
+     	<label>
+     		<input type="text" name="ITEM_TYPE_3" placeholder="제품옵션 3"/>
+     	</label><br/>
+     	<label>
+     		<input type="text" name="ITEM_TYPE_4" placeholder="제품옵션 4"/>
+     	</label><br/>
+     	<label>
+     		<input type="text" name="ITEM_TYPE_5" placeholder="제품옵션 5"/>
      	</label><br/>
      	
      	<label>

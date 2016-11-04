@@ -53,7 +53,11 @@ CREATE TABLE ITEM
  ITEM_NAME varchar2(50),
  ITEM_PRICE number(10),
  ITEM_IMAGE varchar2(50),
- ITEM_TYPE varchar2(20),
+ ITEM_TYPE_1 varchar2(20),
+ ITEM_TYPE_2 varchar2(20),
+ ITEM_TYPE_3 varchar2(20),
+ ITEM_TYPE_4 varchar2(20),
+ ITEM_TYPE_5 varchar2(20),
  ITEM_BRAND varchar2(50),
  ITEM_CONTENT varchar2(2000),
  ITEM_DATE date

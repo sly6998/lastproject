@@ -34,7 +34,11 @@ public class ProductWriteAction implements Action {
 
 		    itemdata.setITEM_NAME(multi.getParameter("ITEM_NAME"));
 		    itemdata.setITEM_PRICE(Integer.parseInt(multi.getParameter("ITEM_PRICE")));
-		    itemdata.setITEM_TYPE(multi.getParameter("ITEM_TYPE"));
+		    itemdata.setITEM_TYPE_1(multi.getParameter("ITEM_TYPE_1"));
+		    itemdata.setITEM_TYPE_2(multi.getParameter("ITEM_TYPE_2"));
+		    itemdata.setITEM_TYPE_3(multi.getParameter("ITEM_TYPE_3"));
+		    itemdata.setITEM_TYPE_4(multi.getParameter("ITEM_TYPE_4"));
+		    itemdata.setITEM_TYPE_5(multi.getParameter("ITEM_TYPE_5"));
 		    itemdata.setITEM_IMAGE(multi.getFilesystemName((String) multi.getFileNames().nextElement()));
 		    itemdata.setITEM_CONTENT(multi.getParameter("ITEM_CONTENT"));
 

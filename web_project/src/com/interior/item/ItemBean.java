@@ -5,14 +5,45 @@ public class ItemBean {
 	private String ITEM_NAME;
 	private int ITEM_PRICE;
 	private String ITEM_IMAGE;
-	private String ITEM_TYPE;
+	private String ITEM_TYPE_1;
+	private String ITEM_TYPE_2;
+	private String ITEM_TYPE_3;
+	private String ITEM_TYPE_4;
+	private String ITEM_TYPE_5;
 	private String ITEM_CONTENT;
 	private int ITEM_SEQ;
 	private int ITEM_NUM;
 	
-	
-	
-	
+	public String getITEM_TYPE_1() {
+		return ITEM_TYPE_1;
+	}
+	public void setITEM_TYPE_1(String iTEM_TYPE_1) {
+		ITEM_TYPE_1 = iTEM_TYPE_1;
+	}
+	public String getITEM_TYPE_2() {
+		return ITEM_TYPE_2;
+	}
+	public void setITEM_TYPE_2(String iTEM_TYPE_2) {
+		ITEM_TYPE_2 = iTEM_TYPE_2;
+	}
+	public String getITEM_TYPE_3() {
+		return ITEM_TYPE_3;
+	}
+	public void setITEM_TYPE_3(String iTEM_TYPE_3) {
+		ITEM_TYPE_3 = iTEM_TYPE_3;
+	}
+	public String getITEM_TYPE_4() {
+		return ITEM_TYPE_4;
+	}
+	public void setITEM_TYPE_4(String iTEM_TYPE_4) {
+		ITEM_TYPE_4 = iTEM_TYPE_4;
+	}
+	public String getITEM_TYPE_5() {
+		return ITEM_TYPE_5;
+	}
+	public void setITEM_TYPE_5(String iTEM_TYPE_5) {
+		ITEM_TYPE_5 = iTEM_TYPE_5;
+	}
 	public int getITEM_NUM() {
 		return ITEM_NUM;
 	}
@@ -42,12 +73,6 @@ public class ItemBean {
 	}
 	public void setITEM_IMAGE(String iTEM_IMAGE) {
 		ITEM_IMAGE = iTEM_IMAGE;
-	}
-	public String getITEM_TYPE() {
-		return ITEM_TYPE;
-	}
-	public void setITEM_TYPE(String iTEM_TYPE) {
-		ITEM_TYPE = iTEM_TYPE;
 	}
 	public String getITEM_CONTENT() {
 		return ITEM_CONTENT;
