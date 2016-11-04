@@ -70,13 +70,13 @@ public class ItemDAO {
 				String sql = "select * from " + 	
 				"(select rownum rnum, ITEM_SEQ, ITEM_IMAGE, ITEM_NAME, ITEM_PRICE, ITEM_DATE from " +
 				"(select * from item order by " +
-				"ITEM_DATE desc)) " +
+				"ITEM_DATE)) " +
 				"where rnum>=? and rnum<=?";
 
 				String sql_2 = "select * from " +
 						"(select rownum rnum, ITEM_SEQ, ITEM_IMAGE, ITEM_NAME, ITEM_PRICE, ITEM_DATE form " +
 						"(select * from item where %s order by " +
-						"ITEM_DATE desc)) " +
+						"ITEM_DATE)) " +
 						"where rnum>=? and rnum<=?";
 				
 				if (cond != null && !cond.equals("")) {

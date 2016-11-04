@@ -1,2 +1,4 @@
-update basket set BASKET_AMOUNT =10, BASKET_RESULT= (BASKET_ITEM_PRICE*10) 
-where BASKET_MEMBER_ID = 'test123' and basket_num = 1;
+insert into item (ITEM_SEQ, ITEM_IMAGE, ITEM_NAME, ITEM_PRICE, ITEM_DATE) 
+values (ITEM_seq.nextval, '../images/sofa1.jpg','test10',5000,sysdate);
+
+

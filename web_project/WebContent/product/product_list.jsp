@@ -10,7 +10,6 @@
   
   if (session.getAttribute("MEMBER_ID") != null) {
   MEMBER_ID =(String)session.getAttribute("MEMBER_ID");
-  System.out.println(request.getAttribute("MEMBER_NAME"));
   }
 
   if (session.getAttribute("MEMBER_NAME") != null) {
@@ -62,13 +61,11 @@ String srchFlds = (String)request.getAttribute("srchFlds");
                                             	<div class="indent-left p2">
                                                 	<h3 class="p0">상품목록(list)</h3>
                                                 </div>
+                                                <div class="wrapper p4">
                                                 <%
-       										    int num =1;
-       										    for (int i = 1; i < itemlist.size(); i++) {
+       										    for (int i = 0; i < itemlist.size(); i++) {
         										ItemBean il = (ItemBean) itemlist.get(i);
    											    %>
-                                                <div class="wrapper p4">
-                                                <% if(il.getITEM_NUM() == (num+3) ||il.getITEM_NUM() == 1){%>
                                                     <article class="grid_4 alpha">
                                                         <div class="indent-left">
                                                             <figure class="frame2 p2"><img src="<%=il.getITEM_IMAGE() %>" width="250" height="250"/></figure>
@@ -78,37 +75,48 @@ String srchFlds = (String)request.getAttribute("srchFlds");
                                                             </div>
                                                         </div>
                                                     </article>
-                                                <%
-                                                 num = num++;
-                                                 }else if(il.getITEM_NUM() == (num+3) ||il.getITEM_NUM() == 2){ %>    
-                                                    <article class="grid_4">
-                                                        <div class="indent3">
-                                                            <figure class="frame2 p2"><img src="<%=il.getITEM_IMAGE() %>" width="250" height="250" /></figure>
-                                                            <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
-                                                            <div class="wrapper">
-                                                            	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                    
-                                                     <!-- else if get(i) ==  get(i)+3 ||get(i)==3-->
-                                                <% num = num++;
-                                                 }else if(il.getITEM_NUM() == (num+3) ||il.getITEM_NUM() == 3){ %>                                                    
-                                                    <article class="grid_4 omega">
-                                                        <div class="indent-right">
-                                                            <figure class="frame2 p2"><img src=""<%=il.getITEM_IMAGE() %>" width="250" height="250" /></figure>
-                                                            <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
-                                                            <div class="wrapper">
-                                                            	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
-                                                            </div>
-                                                        </div>
-                                                    </article>
+                                                <%}%>
+                                                     <!-- [이전] / [1] [2] [3] / [다음] -->
+                                                     
+
                                                 </div>
-                                                <%num = num++;	} %>
-                                                <%} %>
                                             </div>
                                         </div>
+                                                 <div>
+            <%
+               if (nowpage <= 1) {
+            %> [이전]&nbsp; <%
+    } else {
+ %> <a
+            href="./product_list.html?page=<%=nowpage - 1%>">[이전]</a>&nbsp; <%
+    }
+ %> <%
+    for (int a = startpage; a <= endpage; a++) {
+       if (a == nowpage) {
+ %> [<%=a%>] <%
+    } else {
+ %> <a
+            href="./product_list.html?page=<%=a%>">[<%=a%>]
+         </a> &nbsp; <%
+    }
+ %> <%
+    }
+ %> <%
+    if (nowpage >= maxpage) {
+ %> [다음] <%
+    } else {
+ %> <a
+            href="./product_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
+    }
+ %>
+ 
+ </div>
+                                        <div>
                                         <!-- 글등록.... -->
+                                        <%if(MEMBER_ID.equals("admin")){ %>
+                                        <input type="button" value="제품 등록" onclick="#">
+                                        <%} %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
