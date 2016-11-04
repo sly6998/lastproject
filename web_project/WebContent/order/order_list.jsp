@@ -83,7 +83,7 @@
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-            <div align="center"><a href="#">조회</a>
+            <div align="center"><a href="./orderDetail.html">조회</a>
             </div>
          </td>
 
