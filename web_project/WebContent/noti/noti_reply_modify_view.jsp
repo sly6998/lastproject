@@ -8,7 +8,7 @@
  	NotiBean noti=(NotiBean)request.getAttribute("notidata");
 	NotiBean noti2=(NotiBean)request.getAttribute("notidata2");
 	NotiBean noti3 = (NotiBean)request.getAttribute("notidata3");
-	List noti_reply = (List)request.getAttribute("notireplylist");
+	List noti_reply = (List)request.getAttribute("notireplyviewlist");
 %>
 
 <!DOCTYPE html>

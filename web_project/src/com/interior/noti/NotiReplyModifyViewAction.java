@@ -1,6 +1,8 @@
 package com.interior.noti;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,13 +20,17 @@ public class NotiReplyModifyViewAction implements Action{
 		ActionForward forward = new ActionForward();
 
 		NotiDAO notidao = new NotiDAO();
-		NotiBean notireplyviewdata = new NotiBean();
+		NotiBean notireplymodifyviewdata = new NotiBean();
+		List notireplyviewlist = new ArrayList();
 
-		
 		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
+
+		notireplymodifyviewdata = notidao.getDetail(num2);
+		notireplyviewlist =notidao.notireplymodifyview(num2);
+		
 		System.out.println("333");
 		
-		if (notireplyviewdata == null) {
+		if (notireplyviewlist == null) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -36,7 +42,7 @@ public class NotiReplyModifyViewAction implements Action{
 
 		System.out.println("공지사항 댓글 수정페이지 보기 성공");
 
-		request.setAttribute("notireplydata", notireplyviewdata);
+		request.setAttribute("notireplyviewlist", notireplyviewlist);
 		System.out.println("나오나요?");
 
 		forward.setRedirect(false);

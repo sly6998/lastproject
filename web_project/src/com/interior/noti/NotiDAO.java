@@ -469,7 +469,7 @@ public class NotiDAO {
 		}
 		
 		//공지사항 댓글 수정 화면으로 이동
-		public NotiBean notireplymodifyview(int num2) {
+		public List notireplymodifyview(int num2) {
 			// TODO Auto-generated method stub
 			NotiBean notireplydata = null;
 			try{
@@ -478,6 +478,8 @@ public class NotiDAO {
 				pstmt.setInt(1, num2);
 				
 				rs=pstmt.executeQuery();
+				List list = new ArrayList();
+
 				
 				if(rs.next()){
 					notireplydata = new NotiBean();
@@ -485,8 +487,9 @@ public class NotiDAO {
 					notireplydata.setNOTI_REPLY_MEMBER_ID(rs.getString("NOTI_REPLY_MEMBER_ID"));
 					notireplydata.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
 					notireplydata.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
+					list.add(notireplydata);
 				}
-				return notireplydata;
+				return list;
 			}catch(Exception e){
 				System.out.println("notireplymodifyview error : "+e);
 			}finally{
@@ -496,4 +499,5 @@ public class NotiDAO {
 			}
 			return null;
 		}
+		
 }
