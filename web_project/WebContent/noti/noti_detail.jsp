@@ -111,7 +111,7 @@
    
     		<tr>
     			<td>
-    			<form name="noti_reply_modify_form" method="post" action="./NotiReplyModifyAction.html">
+    			<form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
     				<%=NOTI_REPLY_MEMBER_ID %>
     				<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=NOTI_REPLY_MEMBER_ID %>"/>
     		 		<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />		

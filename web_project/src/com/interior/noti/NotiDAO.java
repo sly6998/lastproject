@@ -292,7 +292,7 @@ public class NotiDAO {
 	
 			
 			//공지사항 댓글 수정
-			public boolean NotiReplyModify(NotiBean replymodify)throws Exception{
+			public boolean notireplymodify(NotiBean replymodify)throws Exception{
 				String sql = "update noti_reply set noti_reply_content=? where noti_reply_num=?";
 				
 				try{

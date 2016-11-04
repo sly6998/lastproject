@@ -18,7 +18,7 @@
 <title></title>
 </head>
 <body>
-  <table cellpadding="0" cellspacing="0">
+  <%-- <table cellpadding="0" cellspacing="0">
    <tr align="center" valign="middle">
     <td colspan="5">MVC 게시판</td>
    </tr>
@@ -53,7 +53,7 @@
     </td>
    </tr>
    
-  </table>
+  </table> --%>
   
   
    <tr bgcolor="cccccc">
@@ -90,9 +90,9 @@
 		   		</td> 
 		   		
 		   		<td>
-		   			<form name="noti_reply_modify_form" method="post" action="./NotiReplyModifyViewAction.html">
-		   			<input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireplymodifyview.getNOTI_REPLY_SEQ() %>" />	
-		   			<input type="hidden" name="NOTI_NUM" value="<%= noti3.getNOTI_NUM() %>" />
+		   			<form name="noti_reply_modify_form" method="post" action="./NotiReplyModifyAction.html">
+		   			<input type="hidden" name="NOTI_REPLY_SEQ" value="<%= notireplymodifyview.getNOTI_REPLY_NUM() %>" />	
+		   			<input type="hidden" name="NOTI_NUM" value="<%= notireplymodifyview.getNOTI_NUM() %>" />
 		   			<input type="submit" name="noti_reply_modify_form" value="수정">
 		   			</form>
 		   		</td>
@@ -105,15 +105,16 @@
     			<form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
     				<%=NOTI_REPLY_MEMBER_ID %>
     				<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=NOTI_REPLY_MEMBER_ID %>"/>
-    		 		<input type="hidden" name="NOTI_NUM" value="<%= noti2.getNOTI_NUM() %>" />		
+    				<input type="hidden" name="NOTI_REPLY_SEQ" value="<%=noti.getNOTI_REPLY_SEQ()%>"/>
+    		 		<input type="hidden" name="NOTI_NUM" value="<%= noti.getNOTI_NUM() %>" />		
     				
     			</td>
 					    		 		    		 		
     			<td style="border:0px solid #ddd; font-size:small; font-weight:bold; " colspan=3>
     				<input style="width:400px; height:50px;" name="NOTI_REPLY_CONTENT" type="text" />
     				<input type="submit" name="noti_reply_write_form" value="등록">
-				</form>	   
-    			</td> 
+				</form>
+    			</td>
     		</tr>
     		
     		

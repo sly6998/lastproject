@@ -19,7 +19,7 @@ public class NotiReplyModifyAction implements Action{
 		ActionForward forward = new ActionForward();
 		boolean result=false;
 		
-		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_NUM"));
+		int num2 = Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ"));
 		
 		NotiDAO notidao = new NotiDAO();
 		NotiBean notireplydata = new NotiBean();
@@ -39,7 +39,7 @@ public class NotiReplyModifyAction implements Action{
 			notireplydata.setNOTI_REPLY_NUM(num2);
 			notireplydata.setNOTI_REPLY_CONTENT(request.getParameter("NOTI_REPLY_CONTENT"));
 			
-			result = notidao.NotiReplyModify(notireplydata);
+			result = notidao.notireplymodify(notireplydata);
 			
 			if(result == false){
 				System.out.println("NotiReplyModifyAction failed");
