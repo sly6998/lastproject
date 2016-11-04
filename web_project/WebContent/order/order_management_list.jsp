@@ -28,6 +28,12 @@
             height="26">
             <div align="center">주문번호</div>
          </td>
+         
+         <td
+            style="font-size: 12pt; border: 1px solid #ddd; font-weight: bold; width: 80px;"
+            height="26">
+            <div align="center">주문자 ID</div>
+         </td>
 
          <td style="font-size: 12pt; font-weight: bold; border: 1px solid #ddd;"
             width="400" height="26">
@@ -62,6 +68,11 @@
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
             <%=ol.getORDER_TRADE_NUM() %>
          </td>
+         
+         <td height="23"
+            style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+            <%=ol.getORDER_MEMBER_ID() %>
+         </td>
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
@@ -83,7 +94,7 @@
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-            <div align="center"><a href="./orderDetail.html?trade_num=<%=ol.getORDER_TRADE_NUM() %>">조회</a>
+            <div align="center"><a href="./orderManagementDetail.html?trade_num=<%=ol.getORDER_TRADE_NUM() %>">조회</a>
             </div>
          </td>
 

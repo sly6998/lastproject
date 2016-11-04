@@ -10,11 +10,11 @@ import javax.servlet.http.HttpSession;
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
 
-public class OrderDetailAction implements Action {
+public class OrderManagementDetailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("MEMBER_ID");
@@ -23,12 +23,12 @@ public class OrderDetailAction implements Action {
 		List orderdetail = new ArrayList();
 
 
-		orderdetail = orderdao.getOrderDetail(id,trade_num);// 상세페이지를 받아옴
+		orderdetail = orderdao.getOrderManagementDetail(trade_num);// 상세페이지를 받아옴
 
 		request.setAttribute("orderdetail", orderdetail);
 
 		forward.setRedirect(false);
-		forward.setPath("./order/orderdetail.jsp");
+		forward.setPath("./order/order_management_detail.jsp");
 
 		return forward;
 	}

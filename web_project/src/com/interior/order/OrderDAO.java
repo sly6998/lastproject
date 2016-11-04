@@ -199,9 +199,9 @@ public class OrderDAO {
 		return null;
 	}
 
-	public List getOrderDetail(String id) {
+	public List getOrderDetail(String id, String trade_num) {
 		// TODO Auto-generated method stub
-		String sql = "select * from ORDER_LIST where ORDER_MEMBER_ID = ? order by ORDER_DATE desc";
+		String sql = "select * from ORDER_LIST where ORDER_MEMBER_ID = ? and ORDER_TRADE_NUM = ? order by ORDER_DATE desc";
 		
 		List list = new ArrayList();
 		
@@ -209,6 +209,7 @@ public class OrderDAO {
 			con=ds.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			pstmt.setString(2,trade_num);
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -241,6 +242,108 @@ public class OrderDAO {
 			return list;
 		}catch(Exception e){
 			System.out.println("getOrderDetail error : "+e);
+			e.printStackTrace();
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return null;
+	}
+
+	public List getOrderManagementDetail(String trade_num) {
+		// TODO Auto-generated method stub
+				String sql = "select * from ORDER_LIST where ORDER_TRADE_NUM = ? order by ORDER_DATE desc";
+				System.out.println("as"+trade_num);
+				List list = new ArrayList();
+				
+				try{
+					con=ds.getConnection();
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1,trade_num);
+					rs=pstmt.executeQuery();
+					
+					while(rs.next()){
+						OrderBean order = new OrderBean();
+						order.setORDER_TRADE_STATUS(rs.getString("ORDER_STATUS"));//결제 상태
+					    order.setORDER_TRADE_NUM(rs.getString("ORDER_TRADE_NUM"));//주문번호	
+					    order.setORDER_ITEM_IMG(rs.getString("ORDER_ITEM_IMG"));//제품이미지	
+					    order.setORDER_ITEM_NAME(rs.getString("ORDER_ITEM_NAME"));//제품명	
+					    order.setORDER_ITEM_TYPE(rs.getString("ORDER_ITEM_TYPE"));//제품옵션	
+					    order.setORDER_ITEM_AMOUNT(rs.getInt("ORDER_ITEM_AMOUNT"));//제품 주문 수량		
+					    order.setORDER_ITEM_PRICE(rs.getInt("ORDER_ITEM_PRICE"));//제품 가격		
+					    order.setORDER_ITEM_PRICE_SUM(rs.getInt("ORDER_ITEM_PRICE_SUM"));//결제 총 금액	
+					    order.setORDER_MEMO(rs.getString("ORDER_MEMO"));	//주문 메모		
+					    order.setORDER_TRADE_TYPE(rs.getString("ORDER_TRADE_TYPE"));//결제타입	
+					    
+					    order.setORDER_MEMBER_ID(rs.getString("ORDER_MEMBER_ID"));						
+					    order.setORDER_MEMBER_NAME(rs.getString("ORDER_MEMBER_NAME"));//회원 이름	
+					    order.setORDER_MEMBER_TEL(rs.getString("ORDER_MEMBER_TEL"));//회원 연락처	
+					    order.setORDER_MEMEBER_EMAIL(rs.getString("ORDER_EMAIL"));//주문 이메일	
+					
+					    order.setORDER_NAME(rs.getString("ORDER_NAME"));//수취인 이름	
+					    order.setORDER_TEL(rs.getString("ORDER_TEL"));//수취인 연락처	
+					    order.setORDER_ZIP(rs.getString("ORDER_ZIP"));//수취인 주소	
+					    order.setORDER_ADDR_1(rs.getString("ORDER_ADDR_1"));//수취인 주소	
+					    order.setORDER_ADDR_2(rs.getString("ORDER_ADDR_2"));//수취인 주소
+					    order.setORDER_DATE(rs.getDate("ORDER_DATE"));//주문 날짜
+					    
+						list.add(order);
+					}
+					return list;
+				}catch(Exception e){
+					System.out.println("getOrderDetail error : "+e);
+					e.printStackTrace();
+				}finally{
+					if(rs!=null) try{rs.close();}catch(SQLException ex){}
+					if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+					if(con!=null) try{con.close();}catch(SQLException ex){}
+				}
+				return null;
+	}
+
+	public List getOrderManagementList() {
+		// TODO Auto-generated method stub
+		String sql = "select ORDER_MEMBER_ID, ORDER_TRADE_NUM, ORDER_ITEM_NAME, ORDER_DATE, ORDER_ITEM_PRICE_SUM "
+		+ "from ORDER_LIST order by ORDER_DATE desc";
+		
+		List list = new ArrayList();
+		
+		try{
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				OrderBean order = new OrderBean();
+				//order.setORDER_TRADE_STATUS(rs.getString("ORDER_STATUS"));
+			    order.setORDER_TRADE_NUM(rs.getString("ORDER_TRADE_NUM"));//주문번호	
+			    //order.setORDER_ITEM_IMG(rs.getString("ORDER_ITEM_IMG"));//제품이미지	
+			    order.setORDER_ITEM_NAME(rs.getString("ORDER_ITEM_NAME"));//제품명	
+			    //order.setORDER_ITEM_TYPE(rs.getString("ORDER_ITEM_TYPE"));//제품옵션	
+			    //order.setORDER_ITEM_AMOUNT(rs.getInt("ORDER_ITEM_AMOUNT"));//제품 주문 수량		
+			    //order.setORDER_ITEM_PRICE(rs.getInt("ORDER_ITEM_PRICE"));//제품 가격		
+			    order.setORDER_ITEM_PRICE_SUM(rs.getInt("ORDER_ITEM_PRICE_SUM"));//결제 총 금액	
+			    //order.setORDER_MEMO(rs.getString("ORDER_MEMO"));			
+			    //order.setORDER_TRADE_TYPE(rs.getString("ORDER_TRADE_TYPE"));			
+			    
+			    order.setORDER_MEMBER_ID(rs.getString("ORDER_MEMBER_ID"));						
+			    //order.setORDER_MEMBER_NAME(rs.getString("ORDER_MEMBER_NAME"));//회원 이름	
+			    //order.setORDER_MEMBER_TEL(rs.getString("ORDER_MEMBER_TEL"));//회원 연락처	
+			    //order.setORDER_MEMEBER_EMAIL(rs.getString("ORDER_EMAIL"));//주문 이메일	
+			
+			   // order.setORDER_NAME(rs.getString("ORDER_NAME"));//수취인 이름	
+			   // order.setORDER_TEL(rs.getString("ORDER_TEL"));//수취인 연락처	
+			   // order.setORDER_ZIP(rs.getString("ORDER_ZIP"));//수취인 주소	
+			  //  order.setORDER_ADDR_1(rs.getString("ORDER_ADDR_1"));//수취인 주소	
+			  //  order.setORDER_ADDR_2(rs.getString("ORDER_ADDR_2"));//수취인 주소
+			   order.setORDER_DATE(rs.getDate("ORDER_DATE"));//주문 날짜
+			    
+				list.add(order);
+			}
+			return list;
+		}catch(Exception e){
+			System.out.println("getOrderList error : "+e);
 			e.printStackTrace();
 		}finally{
 			if(rs!=null) try{rs.close();}catch(SQLException ex){}

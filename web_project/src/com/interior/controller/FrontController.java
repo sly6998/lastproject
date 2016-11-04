@@ -43,6 +43,8 @@ import com.interior.noti.NotiReplyWriteAction;
 import com.interior.noti.NotiWriteAction;
 import com.interior.order.OrderDetailAction;
 import com.interior.order.OrderListAction;
+import com.interior.order.OrderManagementDetailAction;
+import com.interior.order.OrderManagementListAction;
 import com.interior.order.ProductBuyAction;
 import com.interior.order.paymentAction;
 import com.interior.qna.QnaDeleteAction;
@@ -541,7 +543,23 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/orderDetail.html")) {// 주문내역 상세피이지 이동 & action
+		} else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action
+			action = new OrderManagementDetailAction(); 
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) { 
+				e.printStackTrace();
+			} 
+			
+		} else if (command.equals("/OrderManagementList.html")) {// 주문내역 LIST 페이지 이동(관리자)
+			action = new OrderManagementListAction(); 
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) { 
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action (관리자)
 			action = new OrderDetailAction(); 
 			try {
 				forward = action.execute(request, response);

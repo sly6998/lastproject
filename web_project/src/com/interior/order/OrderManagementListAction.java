@@ -10,27 +10,27 @@ import javax.servlet.http.HttpSession;
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
 
-public class OrderDetailAction implements Action {
+public class OrderManagementListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("MEMBER_ID");
-		String trade_num = (String)request.getParameter("trade_num");
 		OrderDAO orderdao = new OrderDAO();
-		List orderdetail = new ArrayList();
+		List orderlist = new ArrayList();
 
 
-		orderdetail = orderdao.getOrderDetail(id,trade_num);// 상세페이지를 받아옴
+		orderlist = orderdao.getOrderManagementList();// 리스트를 받아옴
 
-		request.setAttribute("orderdetail", orderdetail);
+		request.setAttribute("orderlist", orderlist);
 
 		forward.setRedirect(false);
-		forward.setPath("./order/orderdetail.jsp");
+		forward.setPath("./order/order_management_list.jsp");
 
 		return forward;
+		
 	}
 
 }
