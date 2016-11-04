@@ -48,6 +48,7 @@ CREATE TABLE BASKET
 
 CREATE TABLE ITEM
 (
+ ITEM_SEQ number(10),
  ITEM_MODEL varchar2(50),
  ITEM_NAME varchar2(50),
  ITEM_PRICE number(10),
@@ -220,6 +221,7 @@ create sequence review_seq start with 1 increment by 1;
 create sequence qna_board_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1;
 create sequence basket_seq start with 1 increment by 1;
+create sequence item_seq start with 1 increment by 1;
 
 /* drop sequence(시퀀스 삭제)*/
 
@@ -229,6 +231,7 @@ drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
+drop sequence item_seq;
 
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/

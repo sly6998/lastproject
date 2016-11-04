@@ -71,26 +71,22 @@ String srchFlds = (String)request.getAttribute("srchFlds");
                                                 <% if(il.getITEM_NUM() == (num+3) ||il.getITEM_NUM() == 1){%>
                                                     <article class="grid_4 alpha">
                                                         <div class="indent-left">
-                                                            <figure class="frame2 p2"><img src="<%=il.getITEM_IMAGE() %> alt="" width="250" height="250"/></figure>
+                                                            <figure class="frame2 p2"><img src="<%=il.getITEM_IMAGE() %>" width="250" height="250"/></figure>
                                                             <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
                                                             <div class="wrapper">
                                                             	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
-                                                                <a class="button fright" href="#">Read More</a>
                                                             </div>
                                                         </div>
                                                     </article>
-                                                    <!-- else if get(i) ==  get(i)+3 ||get(i)==2-->
                                                 <%
                                                  num = num++;
                                                  }else if(il.getITEM_NUM() == (num+3) ||il.getITEM_NUM() == 2){ %>    
                                                     <article class="grid_4">
                                                         <div class="indent3">
-                                                            <figure class="frame2 p2"><img src="images/page4-img2.jpg" alt="" /></figure>
-                                                            <p class="color-4 prev-indent-bot">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit.</p>
-                                                            <p>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt eque porro quisquam est, qui dolorem ipsum.</p>
+                                                            <figure class="frame2 p2"><img src="<%=il.getITEM_IMAGE() %>" width="250" height="250" /></figure>
+                                                            <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
                                                             <div class="wrapper">
-                                                            	<span class="price fleft">$54.99</span>
-                                                                <a class="button fright" href="#">Read More</a>
+                                                            	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
                                                             </div>
                                                         </div>
                                                     </article>
@@ -100,12 +96,10 @@ String srchFlds = (String)request.getAttribute("srchFlds");
                                                  }else if(il.getITEM_NUM() == (num+3) ||il.getITEM_NUM() == 3){ %>                                                    
                                                     <article class="grid_4 omega">
                                                         <div class="indent-right">
-                                                            <figure class="frame2 p2"><img src="images/page4-img3.jpg" alt="" /></figure>
-                                                            <p class="color-4 prev-indent-bot">Feque porro quisquam est, qui dolorem ipsum quia dolor sit consectetur.</p>
-                                                            <p>Adipisci velit, sed quia non numquam eius modi tempora incidu labore et dolore magnam aliquam quaerat voluptatem.</p>
+                                                            <figure class="frame2 p2"><img src=""<%=il.getITEM_IMAGE() %>" width="250" height="250" /></figure>
+                                                            <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
                                                             <div class="wrapper">
-                                                            	<span class="price fleft">$38.99</span>
-                                                                <a class="button fright" href="#">Read More</a>
+                                                            	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
                                                             </div>
                                                         </div>
                                                     </article>
