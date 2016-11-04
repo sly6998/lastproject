@@ -17,6 +17,7 @@ import com.interior.basket.BasketDeleteAction;
 import com.interior.basket.BasketDetailAction;
 import com.interior.basket.BasketListAction;
 import com.interior.basket.BasketModifyAction;
+import com.interior.item.ProductListAction;
 import com.interior.member.ManagementModifyAction;
 import com.interior.member.MemberFindIDAction;
 import com.interior.member.MemberFindPWDAction;
@@ -316,9 +317,12 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 			/* 제품 */
 
 		} else if (command.equals("/product_list.html")) {// 제품페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./product/product_list.jsp");
+			action = new ProductListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			
 			

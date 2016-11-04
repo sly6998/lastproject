@@ -9,8 +9,24 @@ public class ItemBean {
 	private String ITEM_TYPE;
 	private String ITEM_BRAND;
 	private String ITEM_CONTENT;
+	private int ITEM_SEQ;
+	private int ITEM_NUM;
 	
 	
+	
+	
+	public int getITEM_NUM() {
+		return ITEM_NUM;
+	}
+	public void setITEM_NUM(int iTEM_NUM) {
+		ITEM_NUM = iTEM_NUM;
+	}
+	public int getITEM_SEQ() {
+		return ITEM_SEQ;
+	}
+	public void setITEM_SEQ(int iTEM_SEQ) {
+		ITEM_SEQ = iTEM_SEQ;
+	}
 	public String getITEM_MODEL() {
 		return ITEM_MODEL;
 	}

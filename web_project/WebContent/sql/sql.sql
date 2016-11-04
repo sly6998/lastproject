@@ -54,7 +54,8 @@ CREATE TABLE ITEM
  ITEM_IMAGE varchar2(50),
  ITEM_TYPE varchar2(20),
  ITEM_BRAND varchar2(50),
- ITEM_CONTENT varchar2(2000)
+ ITEM_CONTENT varchar2(2000),
+ ITEM_DATE date
 );
 
 
