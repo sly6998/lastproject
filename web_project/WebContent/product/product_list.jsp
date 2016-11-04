@@ -68,7 +68,7 @@ String srchFlds = (String)request.getAttribute("srchFlds");
    											    %>
                                                     <article class="grid_4 alpha">
                                                         <div class="indent-left">
-                                                            <figure class="frame2 p2"><img src="<%=il.getITEM_IMAGE() %>" width="250" height="250"/></figure>
+                                                            <figure class="frame2 p2"><img src="<%=request.getContextPath()%>/upload/main_upload/<%=il.getITEM_IMAGE() %>" width="250" height="250"/></figure>
                                                             <p class="color-4 prev-indent-bot"><a href="#"><%=il.getITEM_NAME() %></a></p>
                                                             <div class="wrapper">
                                                             	<span class="price fleft"><%=il.getITEM_PRICE() %></span>
@@ -114,7 +114,7 @@ String srchFlds = (String)request.getAttribute("srchFlds");
                                         <div>
                                         <!-- 글등록.... -->
                                         <%if(MEMBER_ID.equals("admin")){ %>
-                                        <input type="button" value="제품 등록" onclick="#">
+                                        <input type="button" value="제품 등록" onclick="location.href='./product_write_view.html'">
                                         <%} %>
                                         </div>
                                     </div>

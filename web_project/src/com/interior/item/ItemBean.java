@@ -2,12 +2,10 @@ package com.interior.item;
 
 public class ItemBean {
 
-	private String ITEM_MODEL; 
 	private String ITEM_NAME;
 	private int ITEM_PRICE;
 	private String ITEM_IMAGE;
 	private String ITEM_TYPE;
-	private String ITEM_BRAND;
 	private String ITEM_CONTENT;
 	private int ITEM_SEQ;
 	private int ITEM_NUM;
@@ -26,12 +24,6 @@ public class ItemBean {
 	}
 	public void setITEM_SEQ(int iTEM_SEQ) {
 		ITEM_SEQ = iTEM_SEQ;
-	}
-	public String getITEM_MODEL() {
-		return ITEM_MODEL;
-	}
-	public void setITEM_MODEL(String iTEM_MODEL) {
-		ITEM_MODEL = iTEM_MODEL;
 	}
 	public String getITEM_NAME() {
 		return ITEM_NAME;
@@ -56,12 +48,6 @@ public class ItemBean {
 	}
 	public void setITEM_TYPE(String iTEM_TYPE) {
 		ITEM_TYPE = iTEM_TYPE;
-	}
-	public String getITEM_BRAND() {
-		return ITEM_BRAND;
-	}
-	public void setITEM_BRAND(String iTEM_BRAND) {
-		ITEM_BRAND = iTEM_BRAND;
 	}
 	public String getITEM_CONTENT() {
 		return ITEM_CONTENT;

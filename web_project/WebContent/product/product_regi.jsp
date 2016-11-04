@@ -3,99 +3,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>  
-    <title></title>
-    <meta charset="utf-8">
+<title></title>
+ <meta charset="utf-8">
+<script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
+
    
 </head> 
 <body >
+
+	<%@ include file="../page/header.jsp"%>
 <h3 >제품등록(관리자)</h3>
-         
         
-        
-     <form id="contact-form" method="post" enctype="multipart/form-data">                    
+     <form id="contact-form" method="post" action="./product_write.html" enctype="multipart/form-data">                    
   
-     
      	<label>
-     		<span class="text-form">모델명 :</span>
-     		<input name="ITEM_MODEL" type="text" />
-     	</label><br/>
-     	
-     	
-     	
-     	<label>
-     		<span class="text-form">제품명 :</span>
-     		<input name="ITEM_NAME" type="text" />
+     		<input name="ITEM_NAME" type="text" placeholder="제품명"/>
      	</label><br/>
      
      	<label>
-     		<span class="text-form">가            격  : </span>
-     		<input name="ITEM_PRICE" type="text" />
+     		<input name="ITEM_PRICE" type="text"  placeholder="가격"/>
      	</label><br/>
      	
      	<label>
-     		<span class="text-form">제품타입</span>
-     		<select name="ITEM_MODEL" >
-     			<option value="선택하세요" selected="selected">선택하세요</option>
-     			<option value="책상">책상</option>
-     			<option value="소파">소파</option>
-     			<option value="침대">침대</option>
-     			<option value="의자">의자</option>
-     			<option value="기타">기타</option>
-     		</select> 
+     		<input type="text" name="ITEM_TYPE" placeholder="제품옵션"/>
      	</label><br/>
      	
      	<label>
-     		<span class="text-form">제품브랜드</span>
-     		<select name="ITEM_BRAND" >
-     			<option value="선택하세요" selected="selected">선택하세요</option>
-     			<option value="이케아">이케아</option>
-     			<option value="까사미아">까사미아</option>
-     			<option value="HANSEM">HANSEM</option>
-     			<option value="한국가구">한구가구</option>
-     			<option value="기타">기타</option>
-     		</select> 
-     	</label><br/>
-     	
-     	
-     	<label>
-     		<span class="text-form">상품 이미지:</span>
-     		<input name="ITEM_IMAGE" type="file"/>
+     		<span class="text-form">상품 이미지</span>
+     		<input name="ITEM_IMAGE" type="file" value="상품이미지"/>
      	</label><br/>
      
      
      	<div class="wrapper">
-     		<div class="text-form">내 용 :</div>
-     		<textarea name="ITEM_CONTENT" style="width:500px; height:100px ">
-상품내용 작성부분
-     		
-product_regi.jsp
-     		
-모델명		ITEM_MODEL
-제품명		ITEM_NAME
-가격			ITEM_PRICE
-제품 이미지 	ITEM_IMAGE
-제품 타입 		ITEM_TYPE
-제품 브랜드	ITEM_BRAND
-내용			ITEM_CONTENT
-     		
-     		
+     		<textarea name="ITEM_CONTENT" id="contents"style="width:500px; height:100px ">
      		</textarea>
      	</div>
      	
-     	<label>
-   		</label>
-     	
-     	
 		<label>
-		<span class="text-form">	</span>
-     	
      	<input type="submit" value="등록">
      	<input type="reset" value="다시쓰기">
      	</label>
    						
      </form>
-	                               	
-                                                    
-                                                
+     
+     <script>
+    $(function(){
+         
+        CKEDITOR.replace( 'contents', {//해당 이름으로 된 textarea에 에디터를 적용
+            width:'100%',
+            height:'400px',
+            'filebrowserUploadUrl':'<%=request.getContextPath()%>/ckeditor/upload.jsp?'
+                              + 'realUrl=upload/img_upload/'
+                              + '&realDir=upload/img_upload',
+                        skin : 'kama'
+                     });
+
+         CKEDITOR.on('dialogDefinition', function(ev) {
+            var dialogName = ev.data.name;
+            var dialogDefinition = ev.data.definition;
+
+            switch (dialogName) {
+            case 'image': //Image Properties dialog
+               //dialogDefinition.removeContents('info');
+               dialogDefinition.removeContents('Link');
+               dialogDefinition.removeContents('advanced');
+               break;
+            }
+         });
+      });
+</script>
 </body>
 </html>

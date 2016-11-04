@@ -17,7 +17,9 @@ import com.interior.basket.BasketDeleteAction;
 import com.interior.basket.BasketDetailAction;
 import com.interior.basket.BasketListAction;
 import com.interior.basket.BasketModifyAction;
+import com.interior.item.ProductDetailAction;
 import com.interior.item.ProductListAction;
+import com.interior.item.ProductWriteAction;
 import com.interior.member.ManagementModifyAction;
 import com.interior.member.MemberFindIDAction;
 import com.interior.member.MemberFindPWDAction;
@@ -323,10 +325,25 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/product_write_view.html")) {// 제품등록 페이지 이동
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./product/product_regi.jsp");
+		} else if (command.equals("/product_write.html")) {// 제품등록 action
+			action = new ProductWriteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/product_detail.html")) {// 제품 상세보기 페이지 이동& action
+			action = new ProductDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
-			
-			
-			
 			/* 장바구니 */
 			
 		} else if (command.equals("/basketlist.html")) {// 장바구니 리스트 페이지 이동 & action
