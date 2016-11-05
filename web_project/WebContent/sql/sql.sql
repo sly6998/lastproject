@@ -226,6 +226,7 @@ create sequence qna_board_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1;
 create sequence basket_seq start with 1 increment by 1;
 create sequence item_seq start with 1 increment by 1;
+create sequence noti_reply_seq start with 1 increment by 1;
 
 /* drop sequence(시퀀스 삭제)*/
 
@@ -236,6 +237,7 @@ drop sequence qna_board_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
 drop sequence item_seq;
+drop sequence noti_reply_seq;
 
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/

@@ -31,13 +31,17 @@ public class NotiModifyViewAction implements Action {
 			out.close();
 			return null;
 		}
-
 		System.out.println("공지사항 수정페이지 보기 성공");
 
-		request.setAttribute("notireplymodifyviewcontent", notidata);
+		System.out.println(notidata.getNOTI_NUM());
+		System.out.println(notidata.getNOTI_MEMBER_ID());
+		System.out.println(notidata.getNOTI_MEMBER_NAME());
+		System.out.println(notidata.getNOTI_CONTENT());
+		System.out.println(notidata.getNOTI_SUBJECT());
+		request.setAttribute("notimodifyview", notidata);
 
 		forward.setRedirect(false);
-		forward.setPath("./noti/noti_detail.jsp");
+		forward.setPath("./noti/noti_modify_view.jsp");
 
 
 		return forward;

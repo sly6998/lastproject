@@ -116,9 +116,7 @@
           <div class="col-lg-12">
             <!-- 본문 시작 -->
             <div width="100%" align="center">
-              <h3 class="heading">
-                공지사항 글쓰기
-                </h3>
+              <h3 class="heading">공지사항</h3><br><br>
                 <p />
                 <br />
                 <form name="noti_write_form" method="post" action="./NotiWriteAction.html">
@@ -134,7 +132,7 @@
                     </TR>
                     <tr>
                       <td align="center"><p /><br />
-                      <input type="button" class="btn" value="글등록" onclick="noti_write_chek()">&nbsp;&nbsp;
+                      <input type="button" class="btn" value="글등록" onclick="noti_write_chek()">&nbsp;&nbsp;&nbsp;
                           <input type="button" class="btn" value="돌아가기" onclick="location.href='./noti_list.html'"></td>
                     </tr>
                   </table>

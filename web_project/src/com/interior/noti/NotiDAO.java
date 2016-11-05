@@ -218,6 +218,7 @@ public class NotiDAO {
 				noti = new NotiBean();
 				noti.setNOTI_NUM(rs.getInt("NOTI_NUM"));
 				noti.setNOTI_MEMBER_ID(rs.getString("NOTI_MEMBER_ID"));
+				noti.setNOTI_MEMBER_NAME(rs.getString("NOTI_MEMBER_NAME"));
 				noti.setNOTI_SUBJECT(rs.getString("NOTI_SUBJECT"));
 				noti.setNOTI_CONTENT(rs.getString("NOTI_CONTENT"));
 				noti.setNOTI_READCOUNT(rs.getInt("NOTI_READCOUNT"));
