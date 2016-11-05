@@ -64,8 +64,7 @@
 									href="<%=request.getContextPath()%>/mainpage.html">홈페이지 소개</a></li>
 								<li><a href="<%=request.getContextPath()%>/noti_list.html">공지사항</a></li>
 								<li><a href="<%=request.getContextPath()%>/catalogue.html">카탈로그</a></li>
-								<li><a
-									href="<%=request.getContextPath()%>/product_list.html">제품</a></li>
+								<li><a href="<%=request.getContextPath()%>/product_list.html">제품</a></li>
 								<li><a
 									href="<%=request.getContextPath()%>/review_list.html">고객 후기</a></li>
 								<li><a href="<%=request.getContextPath()%>/qna_list.html">질문게시판</a></li>
