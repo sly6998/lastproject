@@ -153,7 +153,7 @@
                 <%
                   }
                 %>
-                <input class="btn" type="button" value="목록" onclick="location.href='../noti_list.html'">
+                <input class="btn" type="button" value="목록" onclick="location.href='./noti_list.html'">
               </div>
             </form>
 
@@ -161,50 +161,72 @@
             <p>
               <br> <br> <br> <br>
             <form>
-                <%
+              <%
                 for (int i = 0; i < noti_reply.size(); i++) {
                   NotiBean rl = (NotiBean) noti_reply.get(i);
-                %>
+              %>
               <table width="100%">
-                <tr style="border-bottom: 1px; bor">
-                <td width="10%"><b><%=rl.getNOTI_REPLY_MEMBER_ID() %></b></td>
-                <td><%=rl.getNOTI_REPLY_DATE() %></td>
-                <td align="right">
-                <%if(id.equals(rl.getNOTI_REPLY_MEMBER_ID())||id.equals("admin")){ %>
-                  <a style="text-decoration:none;" href='./NotiReplyModifyViewAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>&NOTI_REPLY_SEQ=<%=rl.getNOTI_REPLY_SEQ()%>'>수정&nbsp;&nbsp;&nbsp;</a>
-                  <a style="text-decoration:none;" href='./NotiReplyDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>&NOTI_REPLY_SEQ=<%=rl.getNOTI_REPLY_SEQ()%>'>삭제&nbsp;&nbsp;&nbsp;</a>
-                <%}if(id !=""||id != null|| !id.equals("")){ %>
-                  <a style="text-decoration:none;" href="#">답글&nbsp;&nbsp;&nbsp;</a>
-                </td>
-                <%} %>
+                <tr style="border-bottom: 1px;">
+                  <td width="10%"><b><%=rl.getNOTI_REPLY_MEMBER_ID()%></b></td>
+                  <td><%=rl.getNOTI_REPLY_DATE()%></td>
+                  <td align="right">
+                    <%
+                      if (id.equals(rl.getNOTI_REPLY_MEMBER_ID()) || id.equals("admin")) {
+                    %> <a style="text-decoration: none;"
+                    href='./NotiReplyModifyViewAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>&NOTI_REPLY_SEQ=<%=rl.getNOTI_REPLY_SEQ()%>'>수정&nbsp;&nbsp;&nbsp;</a> <a style="text-decoration: none;"
+                    href='./NotiReplyDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>&NOTI_REPLY_SEQ=<%=rl.getNOTI_REPLY_SEQ()%>'>삭제&nbsp;&nbsp;&nbsp;</a> <%
+   }
+     if (id != "" || id != null || !id.equals("")) {
+ %>
+                    <a style="text-decoration: none;" href="#">답글&nbsp;&nbsp;&nbsp;</a>
+                  </td>
+                  <%
+                    }
+                  %>
                 </tr>
-                
+
                 <tr>
-                <td colspan="3"><br><%=rl.getNOTI_REPLY_CONTENT() %></td>
+                  <td colspan="3"><br><%=rl.getNOTI_REPLY_CONTENT()%></td>
                 </tr>
               </table>
-              <hr width="100%" size="1">  
-                <%} %>            
+              <hr width="100%" size="1">
+              <%
+                }
+              %>
             </form>
-              <!-- 댓글보기 end -->
-              
-              
-              <!-- 댓글 작성 -->
+            <!-- 댓글보기 end -->
+
+
+            <!-- 댓글 작성 -->
             <table width="100%">
-              <%if(id==""||id==null||id.equals("")){ %>
-              <p>
-                <a href="./login.html" data-toggle="modal" data-target="#loginModal">댓글을 작성하시려면 <font color="red">로그인</font> 하시기 바랍니다.
-                </a>
-              </p>
-              <%}else{ %>
+              <%
+                if (id == "" || id == null || id.equals("")) {
+              %>
+              <tr>
+                <td><br>
+                <br></td>
+              </tr>
+              <tr>
+                <td><a href="./login.html" data-toggle="modal" data-target="#loginModal">댓글을 작성하시려면 <font color="red">로그인</font> 하시기 바랍니다.
+                </a></td>
+              </tr>
+              <%
+                } else {
+              %>
               <form name="noti_reply_write_form" method="post" action="./NotiReplyWriteAction.html">
                 <tr>
+                  <td><br>
+                  <br></td>
+                </tr>
+                <tr>
                   <td width="10%"><input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="NOTI_NUM" value="<%=noti.getNOTI_NUM()%>" /> <b><%=id%></b></td>
-                  <td width="80%"><textarea name="NOTI_REPLY_CONTENT" type="text" style="width:100%; resize: none;"></textarea></td>
-                  <td width="10%" align="center"><input type="submit" name="noti_reply_write_form" value="등록"></td>
+                  <td width="80%"><textarea name="NOTI_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea></td>
+                  <td width="10%" align="center"><input type="submit" class="btn" name="noti_reply_write_form" value="등록"></td>
                 </tr>
               </form>
-              <%} %>
+              <%
+                }
+              %>
             </table>
             <!-- 댓글작성 end -->
 
@@ -317,4 +339,3 @@
     </div>
 </body>
 </html>
-				

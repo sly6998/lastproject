@@ -205,15 +205,15 @@ CREATE TABLE REVIEW_REPLY
 
 /* Select Tables */
 
-Select * from advice;
-Select * from basket;
-Select * from item;
-Select * from member_info;
-Select * from noti;
-Select * from order_list;
-Select * from qna_board;
-Select * from qna_reply 
-Select * from review;
+select * from advice;
+select * from basket;
+select * from item;
+select * from member_info;
+select * from noti;
+select * from order_list;
+select * from qna_board;
+select * from qna_reply 
+select * from review;
 select * from NOTI_REPLY;
 
 

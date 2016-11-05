@@ -601,4 +601,35 @@ public class NotiDAO {
 			return null;
 		}
 
+    public boolean notiModifyReply(NotiBean modifyreply) {//공지사항 댓글 수정
+      String sql ="update NOTI_REPLY set noti_reply_member_id=?, noti_reply_content=?, noti_reply_date=sysdate where noti_reply_seq=? and noti_reply_num=? ";
+      NotiBean noti = null;
+      int result = 0;
+          
+      try{
+        con=ds.getConnection();
+        pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, modifyreply.getNOTI_REPLY_MEMBER_ID());
+        pstmt.setString(2, modifyreply.getNOTI_REPLY_CONTENT());
+        pstmt.setInt(3, modifyreply.getNOTI_REPLY_SEQ());
+        pstmt.setInt(4, modifyreply.getNOTI_NUM());
+        
+        result = pstmt.executeUpdate();
+        
+        if(result != 1){
+          System.out.println("댓글수정 실패");
+          return false;
+        }
+        
+        return true;
+      }catch(Exception e){
+        System.out.println("reply modify error : "+e);
+      }finally{
+        if(rs!=null) try{rs.close();}catch(SQLException ex){}
+        if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+        if(con!=null) try{con.close();}catch(SQLException ex){}
+      }
+      return false;
+    }
+
 }
