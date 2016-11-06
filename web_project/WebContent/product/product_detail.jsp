@@ -23,7 +23,6 @@
 <!-- Theme skin -->
 <link href="<%=request.getContextPath()%>/skins/default.css" rel="stylesheet" />
 <!-- Script -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/noti.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
@@ -42,10 +41,14 @@
 					var n = $('.bt_up').index(this);
 					var num = $(".num:eq(" + n + ")").html();
 					num = $(".num:eq(" + n + ")").html(num * 1 + 1);
-
-					var sum_price = $('#item_price').html()
-							* $(".num:eq(" + n + ")").html();
-					$('#price_sum').html(sum_price);
+					
+					var item_price = $('#item_price').html().replace(/,/g,'');//연산을 위해 item_price 값의 ',' 를 제거
+					item_price = parseInt(item_price);//연산을 위해 item_price를 형변환
+					
+					var sum_price = item_price* $(".num:eq(" + n + ")").html();//연산
+					sum_price = String(sum_price);//sum_price태그에 연산값을 대입하기 위해 형변환
+					sum_price = sum_price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");//3자리마다 ',' 삽입
+					$('#price_sum').html(sum_price);//연산값 대입
 
 				});
 		$('.bt_down').click(
@@ -53,18 +56,29 @@
 					var n = $('.bt_down').index(this);
 					var num = $(".num:eq(" + n + ")").html();
 					num = $(".num:eq(" + n + ")").html(num * 1 - 1);
-
-					var sum_price = $('#item_price').html()
-							* $(".num:eq(" + n + ")").html();
-					$('#price_sum').html(sum_price);
+					
+					var item_price = $('#item_price').html().replace(/,/g,'');//연산을 위해 item_price 값의 ',' 를 제거
+					item_price = parseInt(item_price);//연산을 위해 item_price를 형변환
+					
+					var sum_price = item_price* $(".num:eq(" + n + ")").html();
+					sum_price = String(sum_price);//sum_price태그에 연산값을 대입하기 위해 형변환
+					sum_price = sum_price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");//3자리마다 ',' 삽입
+					$('#price_sum').html(sum_price);//연산값 대입
 				});
 	});
 	
 	function nowbuy(){
+		var id = <%=id%>;
+		if(id == null || id==""){
+			alert('구매하기 위해서는 로그인이 필요합니다.');
+			return;
+		}		
 		var item_img = $("#item_img").attr('src');
 		var item_name = $('#itemname').html();
-		var item_price = $('#item_price').html();
-		var price_sum = $('#price_sum').html();
+		var item_price = $('#item_price').html().replace(/,/g,'');//insert 될 DB 컬럼이 number이므로 ','제거 및 형변환
+		item_price = parseInt(item_price);
+		var price_sum = $('#price_sum').html().replace(/,/g,'');
+		price_sum = parseInt(price_sum);
 		var item_num = $('#item_num').html();
 		
 		var type = document.getElementById('item_type');
@@ -73,11 +87,19 @@
 		
 	}
 	function addbasket(){
+		var id = <%=id%>;
+		if(id == null || id==""){
+			alert('장바구니 이용시 로그인이 필요합니다.');
+			return;
+		}
 		var item_img = $("#item_img").attr('src');
 		var item_name = $('#itemname').html();
-		var item_price = $('#item_price').html();
-		var price_sum = $('#price_sum').html();
+		var item_price = $('#item_price').html().replace(/,/g,'');//insert 될 DB 컬럼이 number이므로 ','제거 및 형변환
+		item_price = parseInt(item_price);
+		var price_sum = $('#price_sum').html().replace(/,/g,'');
+		price_sum = parseInt(price_sum);
 		var item_num = $('#item_num').html();
+		
 		
 		var type = document.getElementById('item_type');
 		var item_type = type.options[type.selectedIndex].value;
@@ -163,7 +185,7 @@
         <div class="row">
           <div class="col-lg-12">
             <!-- 본문 시작 -->
-            <h3>상품보기(detail)</h3>
+            <h3>제품 상세보기</h3>
             <br> <br><br>
             <form name="product_detail" method="post" action="./../addBasket.html">
               <div class="row">
@@ -175,7 +197,7 @@
                   <div class="col-md-5" style="margin-top: 30px;">
                     <div>
                         <span style="display: inline; margin-right: 30px;"><font size="4"><b>상품명</b></font></span><span id="itemname" style="display: inline;"><%=item.getITEM_NAME()%></span><br><br>
-                        <span style="display: inline; margin-right: 45px;"><font size="4"><b>가격</b></font></span><span style="display: inline;" id="item_price" name="item_price"><%=item.getITEM_PRICE()%></span><br><br>
+                        <span style="display: inline; margin-right: 45px;"><font size="4"><b>가격</b></font></span><span style="display: inline;" id="item_price" name="item_price"><%=String.format("%,d", item.getITEM_PRICE())%></span> 원<br><br>
                         <span style="display: inline; margin-right: 40px;"><font size="4"><b>옵션</b></font></span>
                         <select name="item_type" id="item_type" class="form-control-u" style="width: 100px;">
                             <option selected="selected" >선택</option>
@@ -187,7 +209,7 @@
                         </select><br><br>
                         <span style="display: inline; margin-right: 50px;"><font size="4"><b>수량</b></font></span><span name="num" id="item_num" class="num" size="2" style="display: inline; text-align: center; margin-right: 20px;">1</span>
                         <img src="<%=request.getContextPath()%>/images/up_btn.png" alt="" width="10" valign="bottom" class="bt_up" />&nbsp;<img src="<%=request.getContextPath()%>/images/down_btn.png" alt="" width="10" valign="top" class="bt_down" /><br><br>
-                        <span style="margin-right: 30px; display: inline;"><font size="4"><b>총 금액</b></font></span><span style="display: inline;"name="price_sum" id="price_sum"><%=item.getITEM_PRICE()%></span><br>
+                        <span style="margin-right: 30px; display: inline;"><font size="4"><b>총 금액</b></font></span><span style="display: inline;"name="price_sum" id="price_sum"><%=String.format("%,d", item.getITEM_PRICE())%></span> 원<br>
                         <div style="margin-top: 40px;">
                         <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="nowbuy()">바로구매</button>&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="addbasket()">장바구니</button>
