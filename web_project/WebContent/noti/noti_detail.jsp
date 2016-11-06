@@ -143,7 +143,7 @@
                 </tr>
               </table>
 
-              <hr size=5>
+              <hr style="border: solid 2px #eeeeee; margin-top: 50px;"width="100%">
               <div align="center">
                 <%
                   if (id.equals(noti.getNOTI_REPLY_MEMBER_ID()) || id.equals("admin")) {
@@ -189,7 +189,7 @@
                   <td colspan="3"><br><%=rl.getNOTI_REPLY_CONTENT()%></td>
                 </tr>
               </table>
-              <hr width="100%" size="1">
+              <hr style="border: solid 1px #eeeeee;"width="100%">
               <%
                 }
               %>
