@@ -213,7 +213,7 @@
                 <td height="26"></td>
               </tr>
             </table>
-            <%-- <%
+            <%-- else구문 추가해야할듯. <%
               if (id.equals("admin")) {
             %>
             <p align="right">
