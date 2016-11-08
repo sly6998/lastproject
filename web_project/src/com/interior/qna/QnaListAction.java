@@ -24,6 +24,33 @@ public class QnaListAction implements Action {
 		int limit = 10;
 		
 		
+		/* 검색 기능*/
+		String srchKey = request.getParameter("srchKey");
+		String srchFlds = request.getParameter("srchFlds");
+		String cond = null;
+		if(srchKey == null || srchKey.equals("")){
+			cond = null;
+			
+		}else if(srchFlds.equals("all")){
+			String whereFmt = "upper(QNA_SUBJECT) like '%%'|| upper('%s') || '%%'"
+					+"or upper(QNA_MEMBER_NAME) like '%%'|| upper('%s') || '%%'"
+					+"or upper(QNA_CONTENT) like '%%'|| upper('%s') || '%%'";
+			cond = String.format(whereFmt, srchKey, srchKey, srchKey);
+			
+		}else if(srchFlds.equals("sub")){
+			String whereFmt="upper(QNA_SUBJECT) like'%%'|| upper('%s') || '%%'";
+			cond = String.format(whereFmt, srchKey);
+			
+		}else if(srchFlds.equals("au")){
+			String whereFmt="upper(QNA_MEMBER_NAME) like'%%'|| upper('%s') || '%%'";
+			cond = String.format(whereFmt, srchKey);
+			
+		}else if(srchFlds.equals("con")){
+			String whereFmt="upper(QNA_CONTENT) like'%%'|| upper('%s') || '%%'";
+			cond = String.format(whereFmt, srchKey);
+		}
+		
+		
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		
@@ -63,6 +90,9 @@ public class QnaListAction implements Action {
 		
 		request.setAttribute("listcount", listcount);// 글 수
 		request.setAttribute("boardlist", boardlist);
+		
+		request.setAttribute("srchKey", srchKey);
+		request.setAttribute("srchFlds", srchFlds);
 	
 		
 		forward.setRedirect(false);

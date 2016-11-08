@@ -213,7 +213,7 @@
                 <td height="26"></td>
               </tr>
             </table>
-            <%
+            <%-- <%
               if (id.equals("admin")) {
             %>
             <p align="right">
@@ -221,7 +221,7 @@
             <p />
             <%
               }
-            %>
+            %> --%>
             <table align="center">
               <!-- [이전] / [1] [2] [3] / [다음] -->
               <tr align="center" height="20">
