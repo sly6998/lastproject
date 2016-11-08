@@ -21,9 +21,9 @@ public class QnaModifyAction implements Action {
 		  QnaBean qnadata = new QnaBean(); 
 		  
 		  try{
-		    qnadata.setQnA_NUM(num);
-		    qnadata.setQnA_SUBJECT(request.getParameter("QNA_SUBJECT"));
-		    qnadata.setQnA_CONTENT(request.getParameter("QNA_CONTENT"));
+		    qnadata.setQNA_NUM(num);
+		    qnadata.setQNA_SUBJECT(request.getParameter("QNA_SUBJECT"));
+		    qnadata.setQNA_CONTENT(request.getParameter("QNA_CONTENT"));
 		    
 		    result = qnadao.qnaModify(qnadata);
 		    
@@ -36,7 +36,7 @@ public class QnaModifyAction implements Action {
 		  System.out.println("질문게시판 수정 완료");
 		  
 		  forward.setRedirect(true);
-		  forward.setPath("./qna_detail.html?QNA_NUM="+qnadata.getQnA_NUM());
+		  forward.setPath("./qna_detail.html?QNA_NUM="+qnadata.getQNA_NUM());
 		  
 		  }catch(Exception e){
 		    e.printStackTrace();

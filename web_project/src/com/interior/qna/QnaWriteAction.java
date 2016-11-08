@@ -20,9 +20,9 @@ public class QnaWriteAction implements Action {
 
 		try {
 			
-			qnadata.setQnA_MEMBER_ID((String)request.getParameter("QNA_MEMBER_ID"));
-			qnadata.setQnA_SUBJECT((String)request.getParameter("QNA_SUBJECT"));
-			qnadata.setQnA_CONTENT((String)request.getParameter("QNA_CONTENT"));
+			qnadata.setQNA_MEMBER_ID((String)request.getParameter("QNA_MEMBER_ID"));
+			qnadata.setQNA_SUBJECT((String)request.getParameter("QNA_SUBJECT"));
+			qnadata.setQNA_CONTENT((String)request.getParameter("QNA_CONTENT"));
 
 			result = qnadao.qnaInsert(qnadata);
 

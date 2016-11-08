@@ -10,9 +10,11 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import com.interior.basket.AddBasketAction;
+import com.interior.noti.NotiBean;
 
 public class QnaDAO {
 	
@@ -79,17 +81,17 @@ public class QnaDAO {
 				
 			while(rs.next()){
 				QnaBean qna = new QnaBean();
-				qna.setQnA_NUM(rs.getInt("QNA_NUM"));
-				qna.setQnA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
-				qna.setQnA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
-				qna.setQnA_SUBJECT(rs.getString("QNA_SUBJECT"));
-				qna.setQnA_CONTENT(rs.getString("QNA_CONTENT"));
-				qna.setQnA_DATE(rs.getDate("QNA_DATE"));
-				qna.setQnA_SEQ(rs.getInt("QNA_SEQ"));
-				qna.setQnA_REF(rs.getInt("qnA_REF"));
-				qna.setQnA_LEV(rs.getInt("qnA_LEV"));
-				qna.setQnA_READCOUNT(rs.getInt("qnA_READCOUNT"));
-				qna.setQnA_REPLY_AMOUNT(rs.getInt("zzzzz"));
+				qna.setQNA_NUM(rs.getInt("QNA_NUM"));
+				qna.setQNA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
+				qna.setQNA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
+				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
+				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
+				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
+				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
+				qna.setQNA_REF(rs.getInt("qnA_REF"));
+				qna.setQNA_LEV(rs.getInt("qnA_LEV"));
+				qna.setQNA_READCOUNT(rs.getInt("qnA_READCOUNT"));
+				qna.setQNA_REPLY_AMOUNT(rs.getInt("zzzzz"));
 				list.add(qna);
 				
 			}
@@ -126,14 +128,14 @@ public class QnaDAO {
 			while(rs.next()){
 				
 				QnaBean qna2 = new QnaBean();
-				qna2.setQnA_REPLY_NUM(rs.getInt("QNA_REPLY_NUM"));
-				qna2.setQnA_REPLY_MEMBER_ID(rs.getString("QNA_REPLY_MEMBER_ID"));
-				qna2.setQnA_REPLY_MEMBER_NAME(rs.getString("QNA_REPLY_MEMBER_NAME"));
-			   	qna2.setQnA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
-				qna2.setQnA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
-				qna2.setQnA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
-				qna2.setQnA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
-				qna2.setQnA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
+				qna2.setQNA_REPLY_NUM(rs.getInt("QNA_REPLY_NUM"));
+				qna2.setQNA_REPLY_MEMBER_ID(rs.getString("QNA_REPLY_MEMBER_ID"));
+				qna2.setQNA_REPLY_MEMBER_NAME(rs.getString("QNA_REPLY_MEMBER_NAME"));
+			   	qna2.setQNA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
+				qna2.setQNA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
+				qna2.setQNA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
+				qna2.setQNA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
+				qna2.setQNA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
 				list.add(qna2);
 				
 			}
@@ -188,16 +190,16 @@ public class QnaDAO {
 			
 			if(rs.next()){
 				qna = new QnaBean();
-				qna.setQnA_NUM(rs.getInt("QNA_NUM"));
-				qna.setQnA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
-				qna.setQnA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
-				qna.setQnA_SUBJECT(rs.getString("QNA_SUBJECT"));
-				qna.setQnA_CONTENT(rs.getString("QNA_CONTENT"));
-				qna.setQnA_DATE(rs.getDate("QNA_DATE"));
-				qna.setQnA_SEQ(rs.getInt("QNA_SEQ"));
-				qna.setQnA_REF(rs.getInt("QNA_REF"));
-				qna.setQnA_LEV(rs.getInt("QNA_LEV"));
-				qna.setQnA_READCOUNT(rs.getInt("QNA_READCOUNT"));
+				qna.setQNA_NUM(rs.getInt("QNA_NUM"));
+				qna.setQNA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
+				qna.setQNA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
+				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
+				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
+				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
+				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
+				qna.setQNA_REF(rs.getInt("QNA_REF"));
+				qna.setQNA_LEV(rs.getInt("QNA_LEV"));
+				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
 			} 
 			return qna;
 		}catch(Exception e){
@@ -223,10 +225,10 @@ public class QnaDAO {
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, qnadata.getQnA_MEMBER_ID());
-			pstmt.setString(2, qnadata.getQnA_SUBJECT());
-			pstmt.setString(3, qnadata.getQnA_CONTENT());
-			pstmt.setInt(4, qnadata.getQnA_READCOUNT());
+			pstmt.setString(1, qnadata.getQNA_MEMBER_ID());
+			pstmt.setString(2, qnadata.getQNA_SUBJECT());
+			pstmt.setString(3, qnadata.getQNA_CONTENT());
+			pstmt.setInt(4, qnadata.getQNA_READCOUNT());
 			
 			result = pstmt.executeUpdate();
 			if(result==0){
@@ -258,9 +260,9 @@ public class QnaDAO {
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, qnadata.getQnA_REPLY_MEMBER_ID());
-			pstmt.setString(2, qnadata.getQnA_REPLY_CONTENT());
-			pstmt.setInt(3, qnadata.getQnA_REPLY_NUM());
+			pstmt.setString(1, qnadata.getQNA_REPLY_MEMBER_ID());
+			pstmt.setString(2, qnadata.getQNA_REPLY_CONTENT());
+			pstmt.setInt(3, qnadata.getQNA_REPLY_NUM());
 			
 				
 			result = pstmt.executeUpdate();
@@ -295,16 +297,16 @@ public class QnaDAO {
 			
 			if(rs.next()){
 				qna = new QnaBean();
-				qna.setQnA_NUM(rs.getInt("QNA_NUM"));
-				qna.setQnA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
-				qna.setQnA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
-				qna.setQnA_SUBJECT(rs.getString("QNA_SUBJECT"));
-				qna.setQnA_CONTENT(rs.getString("QNA_CONTENT"));
-				qna.setQnA_REF(rs.getInt("QNA_REF"));
-				qna.setQnA_LEV(rs.getInt("QNA_LEV"));
-				qna.setQnA_SEQ(rs.getInt("QNA_SEQ"));
-				qna.setQnA_READCOUNT(rs.getInt("QNA_READCOUNT"));
-				qna.setQnA_DATE(rs.getDate("QNA_DATE"));
+				qna.setQNA_NUM(rs.getInt("QNA_NUM"));
+				qna.setQNA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
+				qna.setQNA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
+				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
+				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
+				qna.setQNA_REF(rs.getInt("QNA_REF"));
+				qna.setQNA_LEV(rs.getInt("QNA_LEV"));
+				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
+				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
+				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
 			}
 			return qna;
 		}catch(Exception e){
@@ -326,9 +328,9 @@ public class QnaDAO {
 		try{
 			con=ds.getConnection();
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, qnadata.getQnA_SUBJECT());
-			pstmt.setString(2, qnadata.getQnA_CONTENT());
-			pstmt.setInt(3, qnadata.getQnA_NUM());
+			pstmt.setString(1, qnadata.getQNA_SUBJECT());
+			pstmt.setString(2, qnadata.getQNA_CONTENT());
+			pstmt.setInt(3, qnadata.getQNA_NUM());
 			pstmt.executeUpdate();
 			return true;
 		}catch(Exception e){
@@ -390,4 +392,161 @@ public class QnaDAO {
 		}
 		return false;
 	}
+	
+	//질문게시판 글에 달린 댓글 수 구하기
+	public int getQnaReplyListCount() { 
+		// TODO Auto-generated method stub
+		int count=0;
+		
+		try{
+			con=ds.getConnection();
+			pstmt=con.prepareStatement("select count(*) from qna_reply");
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				count=rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("getQnaReplyListCount error : "+e);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return count;
+	}
+	
+	
+	
+	
+	//질문게시판 댓글 수정화면 보이게 하기
+	public QnaBean qnareplymodifyview(int num1, int num2, HttpServletRequest request) {
+		String sql = "select * from qna_board where qna_num=?";
+		String sql_reply = "select * from qna_reply where qna_reply_num=? order by qna_reply_seq";
+		String modify_reply = "select * from qna_reply where qna_reply_seq=?";
+		int result = 0;
+		int result_reply = 0;
+		int qna_reply_seq = 0;
+		QnaBean qna = null;
+		QnaBean modify_re = null;
+		List reply = new ArrayList<>();
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num1);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				result =1;
+				qna = new QnaBean();
+				qna.setQNA_NUM(rs.getInt("QNA_NUM"));
+				qna.setQNA_MEMBER_ID(rs.getString("QNA_MEMBER_ID"));
+				qna.setQNA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
+				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
+				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
+				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
+				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
+				
+			}
+			
+			//댓글 불러오기
+			pstmt = con.prepareStatement(sql_reply);
+			pstmt.setInt(1, num1);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				result_reply =1;
+				QnaBean qna2 = new QnaBean();
+				qna2.setQNA_REPLY_NUM(rs.getInt("QNA_REPLY_NUM"));
+				qna2.setQNA_REPLY_MEMBER_ID(rs.getString("QNA_REPLY_MEMBER_ID"));
+				qna2.setQNA_REPLY_MEMBER_NAME(rs.getString("QNA_REPLY_MEMBER_NAME"));
+				qna2.setQNA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
+				qna2.setQNA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
+				qna2.setQNA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
+				qna2.setQNA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
+				qna2.setQNA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
+				reply.add(qna2);
+			}
+			
+			
+			
+			//수정할 댓글 불러오기
+			pstmt = con.prepareStatement(modify_reply);
+			pstmt.setInt(1, num2);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				modify_re = new QnaBean();
+				modify_re.setQNA_REPLY_NUM(rs.getInt("QNA_REPLY_NUM"));
+				modify_re.setQNA_REPLY_MEMBER_ID(rs.getString("QNA_REPLY_MEMBER_ID"));
+				modify_re.setQNA_REPLY_MEMBER_NAME(rs.getString("QNA_REPLY_MEMBER_NAME"));
+				modify_re.setQNA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
+				modify_re.setQNA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
+				modify_re.setQNA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
+				modify_re.setQNA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
+				modify_re.setQNA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
+			}
+			if(result != 1 || result_reply !=1){
+				System.out.println("질문게시판 수정할 댓글 보여주기 실패");
+				return null;
+			}
+			System.out.println("질문게시판 수정할 댓글 보여주기 성공");
+			
+			request.setAttribute("replylist", reply);
+			request.setAttribute("modify_re", modify_re);
+			
+			return qna;
+			
+		} catch (Exception e) {
+			System.out.println("Show replies error : " + e);
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return null;
+	}
+	
+	
+	//질문게시판 댓글 수정
+	public boolean QnaModifyReply(QnaBean qnamodifyreply) {
+	      String sql ="update qna_REPLY set qna_reply_member_id=?, qna_reply_content=?, qna_reply_date=sysdate where qna_reply_seq=? and qna_reply_num=? ";
+	      QnaBean qna = null;
+	      int result = 0;
+	          
+	      try{
+	        con=ds.getConnection();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, qnamodifyreply.getQNA_REPLY_MEMBER_ID());
+	        pstmt.setString(2, qnamodifyreply.getQNA_REPLY_CONTENT());
+	        pstmt.setInt(3, qnamodifyreply.getQNA_REPLY_SEQ());
+	        pstmt.setInt(4, qnamodifyreply.getQNA_NUM());
+	        
+	        result = pstmt.executeUpdate();
+	        
+	        if(result != 1){
+	          System.out.println("댓글수정 실패");
+	          return false;
+	        }
+	        
+	        return true;
+	      }catch(Exception e){
+	        System.out.println("qna reply modify error : "+e);
+	      }finally{
+	        if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	        if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	        if(con!=null) try{con.close();}catch(SQLException ex){}
+	      }
+	      return false;
+	    }
 }

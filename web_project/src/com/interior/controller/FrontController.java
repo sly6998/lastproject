@@ -55,6 +55,8 @@ import com.interior.qna.QnaListAction;
 import com.interior.qna.QnaModifyAction;
 import com.interior.qna.QnaModifyView;
 import com.interior.qna.QnaReplyDeleteAction;
+import com.interior.qna.QnaReplyModifyAction;
+import com.interior.qna.QnaReplyModifyViewAction;
 import com.interior.qna.QnaReplyWriteAction;
 import com.interior.qna.QnaWriteAction;
 import com.interior.review.ReviewDeleteAction;
@@ -514,16 +516,30 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/QnaReplyWriteAction.html")) {// 질문게시판 댓글 등록 action
+		} else if (command.equals("/QnaReplyWriteAction.html")) {// qna 댓글 쓰기
 			action = new QnaReplyWriteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/QnaReplyDeleteAction.html")) {// 질문게시판 댓글 등록 action
+		} else if (command.equals("/QnaReplyModifyViewAction.html")) { // qna 댓글 수정 페이지 이동
+			action = new QnaReplyModifyViewAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/QnaReplyModify.html")) {// qna 댓글 수정 action
+			action = new QnaReplyModifyAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/QnaReplyDeleteAction.html")) {// qna 댓글 삭제
 			action = new QnaReplyDeleteAction();
-			try { 
+			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

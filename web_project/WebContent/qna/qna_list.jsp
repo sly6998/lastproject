@@ -79,32 +79,32 @@
          onmouseover="this.style.backgroundColor='#F8F8F8'">
          <td height="23"
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-            <%=bl.getQnA_NUM() %>
+            <%=bl.getQNA_NUM() %>
          </td>
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000; " align='left'>
-            <a href="./qna_detail.html?QNA_NUM=<%=bl.getQnA_NUM()%>" style='text-decoration: none;'><%=bl.getQnA_SUBJECT()%>
+            <a href="./qna_detail.html?QNA_NUM=<%=bl.getQNA_NUM()%>" style='text-decoration: none;'><%=bl.getQNA_SUBJECT()%>
             </a>
             &nbsp;&nbsp;&nbsp;
-           [<%= bl.getQnA_REPLY_AMOUNT() %>] 
+           [<%= bl.getQNA_REPLY_AMOUNT() %>] 
          </td>
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-            <div align="center"><%=bl.getQnA_MEMBER_ID()%>
+            <div align="center"><%=bl.getQNA_MEMBER_ID()%>
             </div>
          </td>
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
             <div align="center">
-               <%=bl.getQnA_DATE()%></div>
+               <%=bl.getQNA_DATE()%></div>
          </td>
 
          <td
             style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-            <div align="center"><%=bl.getQnA_READCOUNT()%>
+            <div align="center"><%=bl.getQNA_READCOUNT()%>
             </div>
          </td>
 

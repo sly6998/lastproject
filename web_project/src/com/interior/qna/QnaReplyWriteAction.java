@@ -23,9 +23,9 @@ public class QnaReplyWriteAction implements Action {
 
 		try {
 				
-			qnadata.setQnA_REPLY_MEMBER_ID((String)request.getParameter("QNA_REPLY_MEMBER_ID"));
-			qnadata.setQnA_REPLY_CONTENT((String)request.getParameter("QNA_REPLY_CONTENT"));
-			qnadata.setQnA_REPLY_NUM(num2);
+			qnadata.setQNA_REPLY_MEMBER_ID((String)request.getParameter("QNA_REPLY_MEMBER_ID"));
+			qnadata.setQNA_REPLY_CONTENT((String)request.getParameter("QNA_REPLY_CONTENT"));
+			qnadata.setQNA_REPLY_NUM(num2);
 			
 			
 		

@@ -413,7 +413,7 @@ public class NotiDAO {
 		}
 		
 		//공지사항 글의 댓글 수 구하기
-		public int getNotiReplyListCount() {//qna 댓글 리스트의  수 구하기 
+		public int getNotiReplyListCount() { 
 			// TODO Auto-generated method stub
 			int count=0;
 			

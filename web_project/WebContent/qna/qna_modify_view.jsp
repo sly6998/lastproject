@@ -26,12 +26,12 @@
          
         
         
-    <form name="qna_modify_form" method="post" action="./QnaModifyAction.html?QNA_NUM=<%=qna.getQnA_NUM()%>">                    
+    <form name="qna_modify_form" method="post" action="./QnaModifyAction.html?QNA_NUM=<%=qna.getQNA_NUM()%>">                    
     <table>
      	<tr>
      		<td>제 목  :</td>
      		<td>
-     		<input name="QNA_SUBJECT" type="text" value="<%=qna.getQnA_SUBJECT()%>"/>
+     		<input name="QNA_SUBJECT" type="text" value="<%=qna.getQNA_SUBJECT()%>"/>
      		</td>
      	</tr>
      	  
@@ -39,7 +39,7 @@
      		<td>내 용 :</td>
      		<td>
      		<textarea id="contents" name="QNA_CONTENT">
-     		<%=qna.getQnA_CONTENT() %>
+     		<%=qna.getQNA_CONTENT() %>
      		</textarea>
      		</td>
      	</TR>
