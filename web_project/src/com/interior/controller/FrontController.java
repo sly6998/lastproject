@@ -14,7 +14,6 @@ import com.interior.advice.AdviceListAction;
 import com.interior.advice.AdviceWriteAction;
 import com.interior.basket.AddBasketAction;
 import com.interior.basket.BasketDeleteAction;
-import com.interior.basket.BasketDetailAction;
 import com.interior.basket.BasketListAction;
 import com.interior.basket.BasketModifyAction;
 import com.interior.item.ProductDetailAction;
@@ -63,6 +62,10 @@ import com.interior.review.ReviewDetailAction;
 import com.interior.review.ReviewListAction;
 import com.interior.review.ReviewModifyAction;
 import com.interior.review.ReviewModifyView;
+import com.interior.review.ReviewReplyDeleteAction;
+import com.interior.review.ReviewReplyModifyAction;
+import com.interior.review.ReviewReplyModifyViewAction;
+import com.interior.review.ReviewReplyWriteAction;
 import com.interior.review.ReviewWriteAction;
 
 
@@ -427,6 +430,35 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/ReviewReplyWriteAction.html")) {// review 댓글 쓰기
+				action = new ReviewReplyWriteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (command.equals("/ReviewReplyModifyViewAction.html")) { // review 댓글 수정 페이지 이동
+				action = new ReviewReplyModifyViewAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (command.equals("/ReviewReplyModify.html")) {// review 댓글 수정 action
+				action = new ReviewReplyModifyAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (command.equals("/ReviewReplyDeleteAction.html")) {// review 댓글 삭제
+				action = new ReviewReplyDeleteAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 			
 
 			
