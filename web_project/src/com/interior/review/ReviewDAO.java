@@ -318,24 +318,36 @@ public class ReviewDAO {
 	
 	//REVIEW 게시판 글에 댓글 수정
 	public boolean ReviewReplyModify(ReviewBean reviewremodify)throws Exception{
-		String sql = "update review_reply set review_reply_content=? where review_reply_num=?";
+		String sql = "update review_REPLY set review_reply_member_id=?, review_reply_content=?, review_reply_date=sysdate where review_reply_seq=? and review_reply_num=? ";
 		
-		try{
-			con=ds.getConnection();
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, reviewremodify.getREVIEW_REPLY_CONTENT());
-			pstmt.setInt(2, reviewremodify.getREVIEW_REPLY_NUM());
-			pstmt.executeUpdate();
-			return true;
-		}catch(Exception e){
-			System.out.println("ReviewReplyModify error : "+e);
-		}finally{
-			if(rs!=null)try{rs.close();}catch(SQLException ex){}
-			if(pstmt!=null)try{pstmt.close();}catch(SQLException ex){}
-			if(con!=null)try{con.close();}catch(SQLException ex){}
-		}
-		return false;
-	}
+	      ReviewBean review = null;
+	      int result = 0;
+	          
+	      try{
+	        con=ds.getConnection();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, reviewremodify.getREVIEW_REPLY_MEMBER_ID());
+	        pstmt.setString(2, reviewremodify.getREVIEW_REPLY_CONTENT());
+	        pstmt.setInt(3, reviewremodify.getREVIEW_REPLY_SEQ());
+	        pstmt.setInt(4, reviewremodify.getREVIEW_NUM());
+	        
+	        result = pstmt.executeUpdate();
+	        
+	        if(result != 1){
+	          System.out.println("댓글수정 실패");
+	          return false;
+	        }
+	        
+	        return true;
+	      }catch(Exception e){
+	        System.out.println("review reply modify error : "+e);
+	      }finally{
+	        if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	        if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	        if(con!=null) try{con.close();}catch(SQLException ex){}
+	      }
+	      return false;
+	    }
 	
 	
 	//REVIEW 게시판 글에 댓글 삭제
@@ -366,7 +378,7 @@ public class ReviewDAO {
 	//REVIEW 글에 달린 댓글 보여주기(list형식)
 	public List getReviewReplyList(int num2) {
 		// TODO Auto-generated method stub
-		String sql =  "select * from review_reply where noti_reply_num=?";
+		String sql =  "select * from review_reply where review_reply_num=?";
 		
 		List list = new ArrayList();
 		

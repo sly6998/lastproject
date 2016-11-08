@@ -20,6 +20,7 @@ public class ReviewReplyModifyAction implements Action {
 
     ReviewDAO reviewdao = new ReviewDAO();
     ReviewBean modifyreply = new ReviewBean();
+    
     int num = Integer.parseInt(request.getParameter("num"));
     modifyreply.setREVIEW_NUM(num);
     modifyreply.setREVIEW_REPLY_SEQ(Integer.parseInt(request.getParameter("REVIEW_REPLY_SEQ")));
