@@ -4,142 +4,182 @@ import java.sql.Date;
 
 public class QnaBean {
 
-	private String QnA_MEMBER_ID;
-	private String QnA_MEMBER_NAME;
-	private int QnA_NUM;
-	private String QnA_SUBJECT;
-	private String QnA_CONTENT;
-	private Date QnA_DATE;
-	private int QnA_SEQ;
-	private int QnA_REF;
-	private int QnA_LEV;
-	private int QnA_READCOUNT;
+	private String QNA_MEMBER_ID;
+	private String QNA_MEMBER_NAME;
+	private int QNA_NUM;
+	private String QNA_SUBJECT;
+	private String QNA_CONTENT;
+	private Date QNA_DATE;
+	private int QNA_SEQ;
+	private int QNA_REF;
+	private int QNA_LEV;
+	private int QNA_READCOUNT;
 	
-	private String QnA_REPLY_MEMBER_NAME; 
-	private String QnA_REPLY_MEMBER_ID; 
-	private String QnA_REPLY_CONTENT; 
-	private Date QnA_REPLY_DATE; 
-	private int QnA_REPLY_NUM; 
-	private int QnA_REPLY_REF; 
-	private int QnA_REPLY_SEQ; 
-	private int QnA_REPLY_LEV;
+	private String QNA_REPLY_MEMBER_NAME; 
+	private String QNA_REPLY_MEMBER_ID; 
+	private String QNA_REPLY_CONTENT; 
+	private Date QNA_REPLY_DATE; 
+	private int QNA_REPLY_NUM; 
+	private int QNA_REPLY_REF; 
+	private int QNA_REPLY_SEQ; 
+	private int QNA_REPLY_LEV;
 	
-	private int QnA_REPLY_AMOUNT;
+	private int QNA_REPLY_AMOUNT;
+	
+	
+
+	public String getQNA_MEMBER_ID() {
+		return QNA_MEMBER_ID;
+	}
+
+	public void setQNA_MEMBER_ID(String qNA_MEMBER_ID) {
+		QNA_MEMBER_ID = qNA_MEMBER_ID;
+	}
+
+	public String getQNA_MEMBER_NAME() {
+		return QNA_MEMBER_NAME;
+	}
+
+	public void setQNA_MEMBER_NAME(String qNA_MEMBER_NAME) {
+		QNA_MEMBER_NAME = qNA_MEMBER_NAME;
+	}
+
+	public int getQNA_NUM() {
+		return QNA_NUM;
+	}
+
+	public void setQNA_NUM(int qNA_NUM) {
+		QNA_NUM = qNA_NUM;
+	}
+
+	public String getQNA_SUBJECT() {
+		return QNA_SUBJECT;
+	}
+
+	public void setQNA_SUBJECT(String qNA_SUBJECT) {
+		QNA_SUBJECT = qNA_SUBJECT;
+	}
+
+	public String getQNA_CONTENT() {
+		return QNA_CONTENT;
+	}
+
+	public void setQNA_CONTENT(String qNA_CONTENT) {
+		QNA_CONTENT = qNA_CONTENT;
+	}
+
+	public Date getQNA_DATE() {
+		return QNA_DATE;
+	}
+
+	public void setQNA_DATE(Date qNA_DATE) {
+		QNA_DATE = qNA_DATE;
+	}
+
+	public int getQNA_SEQ() {
+		return QNA_SEQ;
+	}
+
+	public void setQNA_SEQ(int qNA_SEQ) {
+		QNA_SEQ = qNA_SEQ;
+	}
+
+	public int getQNA_REF() {
+		return QNA_REF;
+	}
+
+	public void setQNA_REF(int qNA_REF) {
+		QNA_REF = qNA_REF;
+	}
+
+	public int getQNA_LEV() {
+		return QNA_LEV;
+	}
+
+	public void setQNA_LEV(int qNA_LEV) {
+		QNA_LEV = qNA_LEV;
+	}
+
+	public int getQNA_READCOUNT() {
+		return QNA_READCOUNT;
+	}
+
+	public void setQNA_READCOUNT(int qNA_READCOUNT) {
+		QNA_READCOUNT = qNA_READCOUNT;
+	}
+
+	public String getQNA_REPLY_MEMBER_NAME() {
+		return QNA_REPLY_MEMBER_NAME;
+	}
+
+	public void setQNA_REPLY_MEMBER_NAME(String qNA_REPLY_MEMBER_NAME) {
+		QNA_REPLY_MEMBER_NAME = qNA_REPLY_MEMBER_NAME;
+	}
+
+	public String getQNA_REPLY_MEMBER_ID() {
+		return QNA_REPLY_MEMBER_ID;
+	}
+
+	public void setQNA_REPLY_MEMBER_ID(String qNA_REPLY_MEMBER_ID) {
+		QNA_REPLY_MEMBER_ID = qNA_REPLY_MEMBER_ID;
+	}
+
+	public String getQNA_REPLY_CONTENT() {
+		return QNA_REPLY_CONTENT;
+	}
+
+	public void setQNA_REPLY_CONTENT(String qNA_REPLY_CONTENT) {
+		QNA_REPLY_CONTENT = qNA_REPLY_CONTENT;
+	}
+
+	public Date getQNA_REPLY_DATE() {
+		return QNA_REPLY_DATE;
+	}
+
+	public void setQNA_REPLY_DATE(Date qNA_REPLY_DATE) {
+		QNA_REPLY_DATE = qNA_REPLY_DATE;
+	}
+
+	public int getQNA_REPLY_NUM() {
+		return QNA_REPLY_NUM;
+	}
+
+	public void setQNA_REPLY_NUM(int qNA_REPLY_NUM) {
+		QNA_REPLY_NUM = qNA_REPLY_NUM;
+	}
+
+	public int getQNA_REPLY_REF() {
+		return QNA_REPLY_REF;
+	}
+
+	public void setQNA_REPLY_REF(int qNA_REPLY_REF) {
+		QNA_REPLY_REF = qNA_REPLY_REF;
+	}
+
+	public int getQNA_REPLY_SEQ() {
+		return QNA_REPLY_SEQ;
+	}
+
+	public void setQNA_REPLY_SEQ(int qNA_REPLY_SEQ) {
+		QNA_REPLY_SEQ = qNA_REPLY_SEQ;
+	}
+
+	public int getQNA_REPLY_LEV() {
+		return QNA_REPLY_LEV;
+	}
+
+	public void setQNA_REPLY_LEV(int qNA_REPLY_LEV) {
+		QNA_REPLY_LEV = qNA_REPLY_LEV;
+	}
+
+	public int getQNA_REPLY_AMOUNT() {
+		return QNA_REPLY_AMOUNT;
+	}
+
+	public void setQNA_REPLY_AMOUNT(int qNA_REPLY_AMOUNT) {
+		QNA_REPLY_AMOUNT = qNA_REPLY_AMOUNT;
+	}
 	
 	
 	
-	public int getQnA_REPLY_AMOUNT() {
-		return QnA_REPLY_AMOUNT;
-	}
-	public void setQnA_REPLY_AMOUNT(int qnA_REPLY_AMOUNT) {
-		QnA_REPLY_AMOUNT = qnA_REPLY_AMOUNT;
-	}
-	public String getQnA_REPLY_MEMBER_NAME() {
-		return QnA_REPLY_MEMBER_NAME;
-	}
-	public void setQnA_REPLY_MEMBER_NAME(String qnA_REPLY_MEMBER_NAME) {
-		QnA_REPLY_MEMBER_NAME = qnA_REPLY_MEMBER_NAME;
-	}
-	public String getQnA_REPLY_MEMBER_ID() {
-		return QnA_REPLY_MEMBER_ID;
-	}
-	public void setQnA_REPLY_MEMBER_ID(String qnA_REPLY_MEMBER_ID) {
-		QnA_REPLY_MEMBER_ID = qnA_REPLY_MEMBER_ID;
-	}
-	public String getQnA_REPLY_CONTENT() {
-		return QnA_REPLY_CONTENT;
-	}
-	public void setQnA_REPLY_CONTENT(String qnA_REPLY_CONTENT) {
-		QnA_REPLY_CONTENT = qnA_REPLY_CONTENT;
-	}
-	public Date getQnA_REPLY_DATE() {
-		return QnA_REPLY_DATE;
-	}
-	public void setQnA_REPLY_DATE(Date qnA_REPLY_DATE) {
-		QnA_REPLY_DATE = qnA_REPLY_DATE;
-	}
-	public int getQnA_REPLY_NUM() {
-		return QnA_REPLY_NUM;
-	}
-	public void setQnA_REPLY_NUM(int qnA_REPLY_NUM) {
-		QnA_REPLY_NUM = qnA_REPLY_NUM;
-	}
-	public int getQnA_REPLY_REF() {
-		return QnA_REPLY_REF;
-	}
-	public void setQnA_REPLY_REF(int qnA_REPLY_REF) {
-		QnA_REPLY_REF = qnA_REPLY_REF;
-	}
-	public int getQnA_REPLY_SEQ() {
-		return QnA_REPLY_SEQ;
-	}
-	public void setQnA_REPLY_SEQ(int qnA_REPLY_SEQ) {
-		QnA_REPLY_SEQ = qnA_REPLY_SEQ;
-	}
-	public int getQnA_REPLY_LEV() {
-		return QnA_REPLY_LEV;
-	}
-	public void setQnA_REPLY_LEV(int qnA_REPLY_LEV) {
-		QnA_REPLY_LEV = qnA_REPLY_LEV;
-	}
-	public String getQnA_MEMBER_ID() {
-		return QnA_MEMBER_ID;
-	}
-	public void setQnA_MEMBER_ID(String qnA_MEMBER_ID) {
-		QnA_MEMBER_ID = qnA_MEMBER_ID;
-	}
-	public String getQnA_MEMBER_NAME() {
-		return QnA_MEMBER_NAME;
-	}
-	public void setQnA_MEMBER_NAME(String qnA_MEMBER_NAME) {
-		QnA_MEMBER_NAME = qnA_MEMBER_NAME;
-	}
-	public int getQnA_NUM() {
-		return QnA_NUM;
-	}
-	public void setQnA_NUM(int qnA_NUM) {
-		QnA_NUM = qnA_NUM;
-	}
-	public String getQnA_SUBJECT() {
-		return QnA_SUBJECT;
-	}
-	public void setQnA_SUBJECT(String qnA_SUBJECT) {
-		QnA_SUBJECT = qnA_SUBJECT;
-	}
-	public String getQnA_CONTENT() {
-		return QnA_CONTENT;
-	}
-	public void setQnA_CONTENT(String qnA_CONTENT) {
-		QnA_CONTENT = qnA_CONTENT;
-	}
-	public Date getQnA_DATE() {
-		return QnA_DATE;
-	}
-	public void setQnA_DATE(Date qnA_DATE) {
-		QnA_DATE = qnA_DATE;
-	}
-	public int getQnA_SEQ() {
-		return QnA_SEQ;
-	}
-	public void setQnA_SEQ(int qnA_SEQ) {
-		QnA_SEQ = qnA_SEQ;
-	}
-	public int getQnA_REF() {
-		return QnA_REF;
-	}
-	public void setQnA_REF(int qnA_REF) {
-		QnA_REF = qnA_REF;
-	}
-	public int getQnA_LEV() {
-		return QnA_LEV;
-	}
-	public void setQnA_LEV(int qnA_LEV) {
-		QnA_LEV = qnA_LEV;
-	}
-	public int getQnA_READCOUNT() {
-		return QnA_READCOUNT;
-	}
-	public void setQnA_READCOUNT(int qnA_READCOUNT) {
-		QnA_READCOUNT = qnA_READCOUNT;
-	}
 }

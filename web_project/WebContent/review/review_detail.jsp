@@ -62,7 +62,7 @@
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
               <li><a href="./mainpage.html">Home</a></li>
-              <li class="active"><a href="./noti_list.html">Review</a></li>
+              <li class="active"><a href="./noti_list.html">Noti</a></li>
               <li><a href="./catalogue.html">Portfolio</a></li>
               <li><a href="./product_list.html">Product</a></li>
               <li><a href="./review_list.html">Review</a></li>

@@ -100,11 +100,12 @@ public class ItemDAO {
 				item.setITEM_IMAGE(rs.getString("ITEM_IMAGE"));
 				item.setITEM_NAME(rs.getString("ITEM_NAME"));
 				item.setITEM_PRICE(rs.getInt("ITEM_PRICE"));
+				item.setITEM_DATE(rs.getDate("ITEM_DATE"));
 				list.add(item);
 			}
 			return list;
 		} catch (Exception e) {
-			System.out.println("getNotiList error : " + e);
+			System.out.println("getItemList error : " + e);
 		} finally {
 			if (rs != null)
 				try {
