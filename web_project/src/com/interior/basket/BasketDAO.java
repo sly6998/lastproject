@@ -35,7 +35,7 @@ public class BasketDAO {
 	public List getBasketList(String id) {//Basket 리스트 불러오기
 		// TODO Auto-generated method stub
 		String sql = "select basket_num, BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, "
-				+ "BASKET_ITEM_TYPE, BASKET_AMOUNT, BASKET_ITEM_PRICE, basket_result "
+				+ "BASKET_ITEM_TYPE, BASKET_AMOUNT, BASKET_ITEM_PRICE, basket_result, basket_item_seq "
 				+ "from basket where BASKET_MEMBER_ID=?";
 		List basketlist = new ArrayList();
 		
@@ -55,6 +55,7 @@ public class BasketDAO {
 				basket.setBASKET_AMOUNT(rs.getInt("BASKET_AMOUNT"));
 				basket.setBASKET_ITEM_PRICE(rs.getInt("BASKET_ITEM_PRICE"));
 				basket.setBASKET_RESULT(rs.getInt("BASKET_RESULT"));
+				basket.setBASKET_ITEM_SEQ(rs.getInt("basket_item_seq"));
 				
 				basketlist.add(basket);
 			}
@@ -107,8 +108,8 @@ public class BasketDAO {
 	public boolean addBasket(BasketBean basketdata) {
 		// TODO Auto-generated method stub
 		String sql = "Insert into basket "
-				+ "(basket_num, BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, BASKET_ITEM_TYPE, BASKET_ITEM_PRICE, BASKET_RESULT, BASKET_AMOUNT,BASKET_DATE) "
-				+ "values (basket_seq.nextval,?,?,?,?,?,?,?,sysdate)";
+				+ "(basket_num, BASKET_MEMBER_ID, BASKET_ITEM_IMAGE, BASKET_ITEM_NAME, BASKET_ITEM_TYPE, BASKET_ITEM_PRICE, BASKET_RESULT, BASKET_AMOUNT, BASKET_ITEM_SEQ, BASKET_DATE) "
+				+ "values (basket_seq.nextval,?,?,?,?,?,?,?,?,sysdate)";
 		int result = 0;
 		
 		try{
@@ -121,6 +122,7 @@ public class BasketDAO {
 			pstmt.setInt(5, basketdata.getBASKET_ITEM_PRICE());
 			pstmt.setInt(6, basketdata.getBASKET_RESULT());
 			pstmt.setInt(7, basketdata.getBASKET_AMOUNT());
+			pstmt.setInt(8, basketdata.getBASKET_ITEM_SEQ());
 			result = pstmt.executeUpdate();
 			
 			

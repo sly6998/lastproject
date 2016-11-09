@@ -32,7 +32,8 @@ public class AddBasketAction implements Action {
 	    basketdata.setBASKET_ITEM_PRICE(Integer.parseInt(request.getParameter("item_price")));
 	    basketdata.setBASKET_AMOUNT(Integer.parseInt(request.getParameter("item_num")));
 	    basketdata.setBASKET_RESULT(Integer.parseInt(request.getParameter("price_sum")));
-	    basketdata.setBASKET_ITEM_IMAGE(request.getParameter("item_img"));
+	    basketdata.setBASKET_ITEM_IMAGE(request.getParameter("item_img")); 
+	    basketdata.setBASKET_ITEM_SEQ(Integer.parseInt(request.getParameter("item_seq"))); 
 	    
 	    result = basketdao.addBasket(basketdata);
 	    

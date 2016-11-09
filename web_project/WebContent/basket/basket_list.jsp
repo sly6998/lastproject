@@ -177,7 +177,7 @@
                 <td align="center" style="vertical-align: middle;"><img src="<%=bl.getBASKET_ITEM_IMAGE()%>" id="basket_img" width="200"></td>
 
                 <td align="center" style="vertical-align: middle;">
-                  <a href="#" style='text-decoration: none;'>
+                  <a href="./product_detail.html?item_seq=<%=bl.getBASKET_ITEM_SEQ()%>" style='text-decoration: none;'>
                     <span id="basket_name"><%=bl.getBASKET_ITEM_NAME()%></span>
                  </a><br> 
                  <span id="basket_type"><%=bl.getBASKET_ITEM_TYPE()%></span>
