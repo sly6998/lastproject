@@ -67,15 +67,17 @@ public class QnaDAO {
 		"qna_subject, qna_content, qna_date, qna_seq, qna_ref, qna_lev," +
 		"qna_readcount , " +
 		" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
-		"(select * from qna_board order by " +
+		"(select * from qna_board  order by " +
 		"qna_date desc))" +
 		"where rnum>=? and rnum<=?";
 		
 		String sql_2 = "select * from " +
-				"(select rownum rnum, QNA_num, QNA_MEMBER_NAME, QNA_subject, QNA_content," +
-				"QNA_readcount, QNA_date from " +
-				"(select * from QNA_BOARD where %s order by " +
-				"QNA_date desc)) " +
+				"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
+				"qna_subject, qna_content, qna_date, qna_seq, qna_ref, qna_lev," +
+				"qna_readcount , " +
+				" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
+				"(select * from qna_board  where %s order by " +
+				"qna_date desc))" +
 				"where rnum>=? and rnum<=?";
 		
 		if (cond != null && !cond.equals("")) {
@@ -235,15 +237,16 @@ public class QnaDAO {
 		int result = 0;
 		
 		try{
-			sql = "insert into qna_board (qna_NUM, qna_MEMBER_ID, qna_SUBJECT, qna_CONTENT, qna_READCOUNT, qna_DATE) values (qna_board_seq.nextval,?,?,?,?,sysdate)";
+			sql = "insert into qna_board (qna_NUM, qna_MEMBER_ID, QNA_MEMBER_NAME, qna_SUBJECT, qna_CONTENT, qna_READCOUNT, qna_DATE) values (qna_board_seq.nextval,?,?,?,?,?,sysdate)";
 			
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, qnadata.getQNA_MEMBER_ID());
-			pstmt.setString(2, qnadata.getQNA_SUBJECT());
-			pstmt.setString(3, qnadata.getQNA_CONTENT());
-			pstmt.setInt(4, qnadata.getQNA_READCOUNT());
+			pstmt.setString(2, qnadata.getQNA_MEMBER_NAME());
+			pstmt.setString(3, qnadata.getQNA_SUBJECT());
+			pstmt.setString(4, qnadata.getQNA_CONTENT());
+			pstmt.setInt(5, qnadata.getQNA_READCOUNT());
 			
 			result = pstmt.executeUpdate();
 			if(result==0){

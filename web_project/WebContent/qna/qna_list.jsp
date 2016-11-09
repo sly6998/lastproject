@@ -153,6 +153,7 @@
               </form>
             </div>
             <p />
+
             <!-- 검색 기능 end -->
 
             <table class="table table-hover" width="100%">
@@ -194,7 +195,7 @@
 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                  <div align="center"><%=bl.getQNA_MEMBER_ID()%>
+                  <div align="center"><%=bl.getQNA_MEMBER_NAME()%>
                   </div>
                 </td>
 
@@ -232,7 +233,8 @@
      if (a == nowpage) {
  %> [<%=a%>] <%
    } else {
- %> <a href="./qna_list.html?page=<%=a%>">[<%=a%>]
+ %> 
+ <a href="./qna_list.html?page=<%=a%>">[<%=a%>]
                 </a> &nbsp; <%
    }
  %> <%

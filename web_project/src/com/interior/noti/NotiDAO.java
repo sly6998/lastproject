@@ -76,7 +76,7 @@ public class NotiDAO {
 		
 		if (cond != null && !cond.equals("")) {
 			sql = String.format(sql_2, cond);
-		} 
+		}
 		
 		
 		List list = new ArrayList();
