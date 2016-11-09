@@ -35,7 +35,7 @@ public class ItemReplyDeleteAction implements Action{
 		System.out.println("공지사항 게시판 댓글 삭제 완료");
 
 		forward.setRedirect(true);
-		forward.setPath("./product_detail.html?ITEM_seq="+num2);
+		forward.setPath("./product_detail.html?item_seq="+num2);
 		return forward;
 	}
 }

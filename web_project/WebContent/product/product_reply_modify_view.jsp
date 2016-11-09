@@ -228,7 +228,7 @@ $(function(){
                 </tr>
                 <tr>
                   <td width="10%"><input type="hidden" name="ITEM_REPLY_MEMBER_ID" value="<%=id%>" /> 
-                  <input type="hidden" name="num" value="<%=item_reply.getITEM_SEQ()%>" /> 
+                  <input type="hidden" name="num" value="<%=item.getITEM_SEQ()%>" /> 
                   <b><%=id%></b></td>
                   <td width="80%"><textarea name="ITEM_REPLY_CONTENT" id="ITEM_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"><%=item_reply.getITEM_REPLY_CONTENT() %></textarea></td>
                   <input type="hidden" name="ITEM_REPLY_SEQ" value="<%=item_reply.getITEM_REPLY_SEQ()%>">

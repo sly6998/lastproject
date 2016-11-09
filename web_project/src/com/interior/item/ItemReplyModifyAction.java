@@ -38,7 +38,7 @@ public class ItemReplyModifyAction implements Action {
 
     forward.setRedirect(true);
     System.out.println(num);
-    forward.setPath("./product_detail.html?ITEM_SEQ="+num);
+    forward.setPath("./product_detail.html?item_seq="+num);
 
     return forward;
   }
