@@ -185,8 +185,12 @@
               <tr align="center" valign="middle" style="border: 1px solid #ddd;" onmouseover="this.style.backgroundColor='#F8F8F8'">
                 <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getQNA_NUM()%></td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><a class="navbar-link" href="./qna_detail.html?QNA_NUM=<%=bl.getQNA_NUM()%>" style='text-decoration: none;'><%=bl.getQNA_SUBJECT()%>
-                </a></td>
+                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                	<a class="navbar-link" href="./qna_detail.html?QNA_NUM=<%=bl.getQNA_NUM()%>" style='text-decoration: none;'>
+                	<%=bl.getQNA_SUBJECT()%>
+                	</a>
+                	&nbsp;[<%= bl.getQNA_REPLY_AMOUNT() %>]
+                </td>
 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
