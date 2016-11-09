@@ -35,39 +35,34 @@
 <script src="<%=request.getContextPath()%>/js/animate.js"></script>
 <script src="<%=request.getContextPath()%>/js/custom.js"></script>
 <script>
-	function modify() {
-
-		var num = $('#num').val();
-		var amount = $('#basket_amount').html();
-
-		location = "./BasketModify.html?num=" + num + "&amount=" + amount;
-	}
-
-	function submit_f(str) {
+	function action_f(str) {
 
 		if (str == 'modify') {
-			basketform.action = './BasketModify.html';
+			var num = $('#num').val();
+			var amount = $('#basket_amount').html().replace(/,/g, '');//insert 될 DB 컬럼이 number이므로 ','제거 및 형변환
+			amount = parseInt(amount);
+
+			location = "./BasketModify.html?num=" + num + "&amount=" + amount;
+
 		} else if (str == 'buy') {
-			basketform.action = './ProductBuy.html';
+			location = './ProductBuy.html';
 		}
 
 	}
-	
+
 	//수량변경
 	$(function() {
-		$('.bt_up').click(
-				function() {
-					var n = $('.bt_up').index(this);
-					var num = $(".num:eq(" + n + ")").html();
-					num = $(".num:eq(" + n + ")").html(num * 1 + 1);
+		$('.bt_up').click(function() {
+			var n = $('.bt_up').index(this);
+			var num = $(".num:eq(" + n + ")").html();
+			num = $(".num:eq(" + n + ")").html(num * 1 + 1);
 
-				});
-		$('.bt_down').click(
-				function() {
-					var n = $('.bt_down').index(this);
-					var num = $(".num:eq(" + n + ")").html();
-					num = $(".num:eq(" + n + ")").html(num * 1 - 1);
-				});
+		});
+		$('.bt_down').click(function() {
+			var n = $('.bt_down').index(this);
+			var num = $(".num:eq(" + n + ")").html();
+			num = $(".num:eq(" + n + ")").html(num * 1 - 1);
+		});
 	});
 </script>
 </head>
@@ -149,10 +144,9 @@
           <div class="col-lg-12">
             <!-- 본문 시작 -->
             <h3>장바구니</h3>
+            <% int sum_price = 0; %>
 
-            <form name="basketform" method="post">
-              
-              <table class="table table-hover" width="100%">
+            <table class="table table-hover" width="100%">
               <!-- 항목 (번호/제목 / 글쓴이 / 날짜 / 조회수 ) -->
               <tr align="center" style="background-color: #EFEFEF">
                 <td style="font-size: 12pt; font-weight: bold; width: 250px;">
@@ -180,29 +174,27 @@
                   BasketBean bl = (BasketBean) basketList.get(i);
               %>
               <tr>
-                <td align="center" style="vertical-align:middle;">
-                  <img src="<%=bl.getBASKET_ITEM_IMAGE()%>" id="basket_img" width="200">
+                <td align="center" style="vertical-align: middle;"><img src="<%=bl.getBASKET_ITEM_IMAGE()%>" id="basket_img" width="200"></td>
+
+                <td align="center" style="vertical-align: middle;">
+                  <a href="#" style='text-decoration: none;'>
+                    <span id="basket_name"><%=bl.getBASKET_ITEM_NAME()%></span>
+                 </a><br> 
+                 <span id="basket_type"><%=bl.getBASKET_ITEM_TYPE()%></span>
                 </td>
 
-                <td align="center" style="vertical-align:middle;">
-                  <a href="#" style='text-decoration: none;'><span id="basket_name"><%=bl.getBASKET_ITEM_NAME()%></span></a><br>
-                  <span id="basket_type"><%=bl.getBASKET_ITEM_TYPE() %></span>
+                <td align="center" style="vertical-align: middle;"><span name="basket_amount" id="basket_amount" class="num" size="1"
+                  style="display: inline; text-align: center; margin-right: 5px;"><%=bl.getBASKET_AMOUNT()%></span> <img src="<%=request.getContextPath()%>/images/up_btn.png" alt="" width="10"
+                  valign="bottom" class="bt_up" />&nbsp; <img src="<%=request.getContextPath()%>/images/down_btn.png" alt="" width="10" valign="top" class="bt_down" /><br> <br> <input
+                  type="hidden" name="num" id="num" value="<%=bl.getBASKET_NUM()%>">
+                  <button type="button" class="btn" onclick="action_f('modify')">변경</td>
                 </td>
 
-                <td align="center" style="vertical-align:middle;">
-                  <span name="basket_amount" id="basket_amount" class="num" size="1" style="display: inline; text-align: center; margin-right: 5px;"><%=bl.getBASKET_AMOUNT()%></span>
-                  <img src="<%=request.getContextPath()%>/images/up_btn.png" alt="" width="10" valign="bottom" class="bt_up" />&nbsp;
-                  <img src="<%=request.getContextPath()%>/images/down_btn.png" alt="" width="10" valign="top" class="bt_down" /><br><br>
-                  <input type="hidden" name="num" id="num" value="<%=bl.getBASKET_NUM()%>">
-                  <button type="button" class="btn" onclick="modify()">변경</td>
-                </td>
+                <td align="center" style="vertical-align: middle;"><span id="basket_price"><%=String.format("%,d", bl.getBASKET_RESULT())%> 원<br></span></td>
+                <% sum_price += bl.getBASKET_RESULT(); %>
 
-                <td align="center" style="vertical-align:middle;">
-                    <span id="basket_price"><%=bl.getBASKET_RESULT()%><br></span>
-                </td>
-
-                <td align="center" style="vertical-align:middle;">
-                   <button type="button" class="btn" onclick="location.href='./BasketDelete.html?num=<%=bl.getBASKET_NUM()%>'">삭제</button>
+                <td align="center" style="vertical-align: middle;">
+                  <button type="button" class="btn" onclick="location.href='./BasketDelete.html?num=<%=bl.getBASKET_NUM()%>'">삭제</button>
                 </td>
 
               </tr>
@@ -210,73 +202,17 @@
               <%
                 }
               %>
-              <tr>
-                <td height="26"></td>
-              </tr>
             </table>
-              
-              
-              
-              
-              <table border="1">
-                <tr>
-                  <td>사진</td>
-                  <td>제품명</td>
-                  <td>수량</td>
-                  <td>가격</td>
-                  <td>삭제</td>
-
-                </tr>
-
-                <%
-                  for (int i = 0; i < basketList.size(); i++) {
-                    BasketBean bl = (BasketBean) basketList.get(i);
-                %>
-                <tr>
-                  <td><img src="<%=bl.getBASKET_ITEM_IMAGE()%>" width="100"> <input type="hidden" name="product_img" value="<%=bl.getBASKET_ITEM_IMAGE()%>"></td>
-                  <td>
-                    <table>
-                      <tr>
-                        <td><a href="#"><%=bl.getBASKET_ITEM_NAME()%></a>
-                        <td><input type="hidden" name="product_name" value="<%=bl.getBASKET_ITEM_NAME()%>">
-                      </tr>
-                      <tr>
-                        <td>[옵션]<%=bl.getBASKET_ITEM_TYPE()%></td>
-                        <input type="hidden" name="product_type" value="<%=bl.getBASKET_ITEM_TYPE()%>">
-                      </tr>
-                    </table>
-                  </td>
-                  <td><input type="text" name="amount" id="amount" size="1" value="<%=bl.getBASKET_AMOUNT()%>"><br> 
-                  <input type="hidden" name="num" id="num"
-                    value="<%=bl.getBASKET_NUM()%>"> <input type="submit" value="변경" onclick="submit_f('modify')"></td>
-                  <td><span id="price"> <%=bl.getBASKET_RESULT()%>
-                  </span> <input type="hidden" name="product_result" value="<%=bl.getBASKET_RESULT()%>"></td>
-                  <td>
-                    <button type="button" onclick="location.href='./BasketDelete.html?num=<%=bl.getBASKET_NUM()%>'">삭제</button>
-                  </td>
-                </tr>
-                <%
-                  }
-                %>
-
-              </table>
-
-
-
-              <table>
-                <tr>
-                  <td>
-                    <button type="button" onclick="location.href='./BasketDelete.html'">장바구니 비우기</button>
-                  </td>
-                  <td><input type="submit" value="주문하기" onclick="submit_f('buy')"></td>
-                  <td>
-                    <button type="button" onclick="location.href='./product_list.html'">쇼핑계속하기</button>
-                  </td>
-                </tr>
-              </table>
-            </form>
-
-
+            <div class="row">
+            <div class="col-md-8" align="left">
+              <font size="4"><span style="margin-left: 50px;"><b>총 결제 금액</b></span>&nbsp;&nbsp;<span><%=String.format("%,d", sum_price)%> 원</span></font>
+            </div>
+            <div class="col-md-4" align="right">
+              <button type="button" class="btn" onclick="location.href='./BasketDelete.html'">장바구니 비우기</button>&nbsp;&nbsp;
+              <button type="button" class="btn" onclick="action_f('buy')">주문하기</button>&nbsp;&nbsp;
+              <button type="button" class="btn" onclick="location.href='./product_list.html'">쇼핑계속하기</button>
+            </div>
+            </div>
 
 
             <!-- 제품 상세설명 end -->

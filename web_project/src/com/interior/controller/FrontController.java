@@ -14,6 +14,7 @@ import com.interior.advice.AdviceListAction;
 import com.interior.advice.AdviceWriteAction;
 import com.interior.basket.AddBasketAction;
 import com.interior.basket.BasketDeleteAction;
+import com.interior.basket.BasketDetailAction;
 import com.interior.basket.BasketListAction;
 import com.interior.basket.BasketModifyAction;
 import com.interior.item.ProductDetailAction;
@@ -70,608 +71,586 @@ import com.interior.review.ReviewReplyModifyViewAction;
 import com.interior.review.ReviewReplyWriteAction;
 import com.interior.review.ReviewWriteAction;
 
-
 @WebServlet("/ForntController")
 public class FrontController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+  protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String RequestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = RequestURI.substring(contextPath.length());
-		ActionForward forward = null;
-		Action action = null;
-		System.out.println(command);
+    String RequestURI = request.getRequestURI();
+    String contextPath = request.getContextPath();
+    String command = RequestURI.substring(contextPath.length());
+    ActionForward forward = null;
+    Action action = null;
+    System.out.println(command);
 
-		
-		
-		/* Main */
+    /* Main */
 
-		if (command.equals("/mainpage.html")) {// 메인페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./page/mainpage.jsp");
+    if (command.equals("/mainpage.html")) {// 메인페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./page/mainpage.jsp");
 
-		} else if (command.equals("/login.html")) {// 로그인페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./page/login.jsp");
-		} else if (command.equals("/logout.html")) {// 로그아웃페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./page/logout.jsp");
-			
-		/* MEMBER */
+    } else if (command.equals("/login.html")) {// 로그인페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./page/login.jsp");
+    } else if (command.equals("/logout.html")) {// 로그아웃페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./page/logout.jsp");
 
-		}else if (command.equals("/join.html")) {// 회원가입 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./member/member_join.jsp");
+      /* MEMBER */
 
-		}else if (command.equals("/member_leave.html")) {// 회원탈퇴 action
-			action = new MemberLeaveAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (command.equals("/overlapId.html")) {// 아이디 중복체크 페이지 이동 & action
-			action = new OverlapIdAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (command.equals("/login.html")) {// 로그인 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./page/login.jsp");
+    } else if (command.equals("/join.html")) {// 회원가입 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./member/member_join.jsp");
 
-		}else if (command.equals("/idfind.html")) {// 아이디 찾기 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./member/member_find_id.jsp");
+    } else if (command.equals("/member_leave.html")) {// 회원탈퇴 action
+      action = new MemberLeaveAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/overlapId.html")) {// 아이디 중복체크 페이지 이동 & action
+      action = new OverlapIdAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/login.html")) {// 로그인 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./page/login.jsp");
 
-		} else if (command.equals("/pwdfind.html")) {// 비밀번호 찾기 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./member/member_find_pw.jsp");
+    } else if (command.equals("/idfind.html")) {// 아이디 찾기 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./member/member_find_id.jsp");
 
-		} else if (command.equals("/member_modify.html")) {// 마이페이지 이동 & action
-			action = new MemberModifyViewAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/member_view.html")) {// 회원정보 보기 페이지 이동 & action
-			action = new MemberViewAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/member_management.html")) {// 회원관리 페이지 이동 & action(관리자)
-			action = new MemberManagementAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/MemberJoinAction.html")) {// 회원가입 action
-			action = new MemberJoinAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/MemberLoginAction.html")) {// 로그인 action
-			action = new MemberLoginAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/MemberFindIDAction.html")) {// 아이디 찾기 action
-			action = new MemberFindIDAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    } else if (command.equals("/pwdfind.html")) {// 비밀번호 찾기 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./member/member_find_pw.jsp");
 
-		} else if (command.equals("/MemberFindPWDAction.html")) {// 비밀번호 찾기 action
-			action = new MemberFindPWDAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    } else if (command.equals("/member_modify.html")) {// 마이페이지 이동 & action
+      action = new MemberModifyViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/member_view.html")) {// 회원정보 보기 페이지 이동 & action
+      action = new MemberViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/member_management.html")) {// 회원관리 페이지 이동 & action(관리자)
+      action = new MemberManagementAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/MemberJoinAction.html")) {// 회원가입 action
+      action = new MemberJoinAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/MemberLoginAction.html")) {// 로그인 action
+      action = new MemberLoginAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/MemberFindIDAction.html")) {// 아이디 찾기 action
+      action = new MemberFindIDAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-		} else if (command.equals("/MemberModifyAction.html")) {// 마이페이지 수정 action
-			action = new MemberModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/MemberManagementModify.html")) {// 회원정보 수정(관리자)
-			action = new MemberManagementModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/MemberManagementModifyView.html")) {// 회원정보 수정페이지 &action(관리자 페이지)
-			action = new MemberManagementModifyViewAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/ManagementModify.html")) {// 회원정보 수정 action(관리자 페이지)
-			action = new ManagementModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/management_member_leave.html")) {// 회원탈퇴 action(관리자 페이지)
-			action = new MemberManagementLeaveAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			
-			
-			/* 공지사항 */
+    } else if (command.equals("/MemberFindPWDAction.html")) {// 비밀번호 찾기 action
+      action = new MemberFindPWDAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-		} else if (command.equals("/noti_list.html")){// 공지사항페이지 이동 & action
-			action = new NotiListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/noti_detail.html")) { // 공지사항 상세보기 페이지 이동 & action
-			action = new NotiDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/noti_write.html")) { // 공지사항 글 쓰기 페이지 이동(관리자)
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./noti/noti_write.jsp");
-		} else if (command.equals("/noti_modify_view.html")) { // 공지사항 글 수정 페이지 이동 & action(관리자)
-			action = new NotiModifyViewAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiWriteAction.html")) {// 공지사항 글쓰기 페이지 이동 & action(관리자)
-			action = new NotiWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiModifyAction.html")) {// 공지사항 글 수정(관리자)
-			action = new NotiModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiDeleteAction.html")) {// 공지사항 글 삭제(관리자)
-			action = new NotiDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiReplyWriteAction.html")) {// 공지사항 댓글 쓰기
-			action = new NotiReplyWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiReplyModifyViewAction.html")) { // 공지사항 댓글 수정 페이지 이동
-			action = new NotiReplyModifyViewAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiReplyModify.html")) {// 공지사항 댓글 수정 action
-			action = new NotiReplyModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/NotiReplyDeleteAction.html")) {// 공지사항 댓글 삭제
-			action = new NotiReplyDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    } else if (command.equals("/MemberModifyAction.html")) {// 마이페이지 수정 action
+      action = new MemberModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/MemberManagementModify.html")) {// 회원정보 수정(관리자)
+      action = new MemberManagementModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/MemberManagementModifyView.html")) {// 회원정보 수정페이지 &action(관리자 페이지)
+      action = new MemberManagementModifyViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ManagementModify.html")) {// 회원정보 수정 action(관리자 페이지)
+      action = new ManagementModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/management_member_leave.html")) {// 회원탈퇴 action(관리자 페이지)
+      action = new MemberManagementLeaveAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-			
-			
-			
-			
-			/* 카탈로그 */
+      /* 공지사항 */
 
-		} else if (command.equals("/catalogue.html")) {// 카탈로그페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./catalogue/catalogue.jsp");
+    } else if (command.equals("/noti_list.html")) {// 공지사항페이지 이동 & action
+      action = new NotiListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/noti_detail.html")) { // 공지사항 상세보기 페이지 이동 & action
+      action = new NotiDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/noti_write.html")) { // 공지사항 글 쓰기 페이지 이동(관리자)
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./noti/noti_write.jsp");
+    } else if (command.equals("/noti_modify_view.html")) { // 공지사항 글 수정 페이지 이동 & action(관리자)
+      action = new NotiModifyViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiWriteAction.html")) {// 공지사항 글쓰기 페이지 이동 & action(관리자)
+      action = new NotiWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiModifyAction.html")) {// 공지사항 글 수정(관리자)
+      action = new NotiModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiDeleteAction.html")) {// 공지사항 글 삭제(관리자)
+      action = new NotiDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiReplyWriteAction.html")) {// 공지사항 댓글 쓰기
+      action = new NotiReplyWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiReplyModifyViewAction.html")) { // 공지사항 댓글 수정 페이지 이동
+      action = new NotiReplyModifyViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiReplyModify.html")) {// 공지사항 댓글 수정 action
+      action = new NotiReplyModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/NotiReplyDeleteAction.html")) {// 공지사항 댓글 삭제
+      action = new NotiReplyDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-			
-			
-			
-			
-			/* 제품 */
+      /* 카탈로그 */
 
-		} else if (command.equals("/product_list.html")) {// 제품페이지 이동
-			action = new ProductListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/product_write_view.html")) {// 제품등록 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./product/product_regi.jsp");
-		} else if (command.equals("/product_write.html")) {// 제품등록 action
-			action = new ProductWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/product_detail.html")) {// 제품 상세보기 페이지 이동& action
-			action = new ProductDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    } else if (command.equals("/catalogue.html")) {// 카탈로그페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./catalogue/catalogue.jsp");
 
-			/* 장바구니 */
-			
-		} else if (command.equals("/basketlist.html")) {// 장바구니 리스트 페이지 이동 & action
-			action = new BasketListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/addBasket.html")) {// 장바구니 추가 action
-			action = new AddBasketAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/BasketModify.html")) {// 장바구니 수정 action
-			
-			action = new BasketModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/BasketDelete.html")) {// 장바구니 수정 action
-			
-			action = new BasketDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			
-			
-			/* 후기 */
+      /* 제품 */
 
-		} else if (command.equals("/review_list.html")) {// review 게시판 이동 & action
-			action = new ReviewListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/review_detail.html")) {// review 게시판 상세보기 페이지 이동 & action
-			action = new ReviewDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/review_write.html")) {// review 게시판 글쓰기 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./review/review_write.jsp");
-			
-		} else if (command.equals("/ReviewWriteAction.html")) {// review 게시판 글쓰기 action
-			action = new ReviewWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/review_modify_view.html")) {// review 게시판 글 수정 페이지 이동 & action
-			action = new ReviewModifyView();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/ReviewModifyAction.html")) {// review 게시판 글 수정 action
-			action = new ReviewModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/ReviewDeleteAction.html")) {// review 게시판 글 삭제 action
-			action = new ReviewDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/ReviewReplyWriteAction.html")) {// review 댓글 쓰기
-				action = new ReviewReplyWriteAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else if (command.equals("/ReviewReplyModifyViewAction.html")) { // review 댓글 수정 페이지 이동
-				action = new ReviewReplyModifyViewAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else if (command.equals("/ReviewReplyModify.html")) {// review 댓글 수정 action
-				action = new ReviewReplyModifyAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else if (command.equals("/ReviewReplyDeleteAction.html")) {// review 댓글 삭제
-				action = new ReviewReplyDeleteAction();
-				try {
-					forward = action.execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+    } else if (command.equals("/product_list.html")) {// 제품페이지 이동
+      action = new ProductListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/product_write_view.html")) {// 제품등록 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./product/product_regi.jsp");
+    } else if (command.equals("/product_write.html")) {// 제품등록 action
+      action = new ProductWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/product_detail.html")) {// 제품 상세보기 페이지 이동& action
+      action = new ProductDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-			
+      /* 장바구니 */
 
-			
-			
-			
-			
-			/* 질문게시판 */
+    } else if (command.equals("/basketlist.html")) {// 장바구니 리스트 페이지 이동 & action
+      action = new BasketListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/addBasket.html")) {// 장바구니 추가 action
+      action = new AddBasketAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/BasketModify.html")) {// 장바구니 수정 action
 
-		} else if (command.equals("/qna_list.html")) {// 질문게시판 이동 & action
-			action = new QnaListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/qna_detail.html")) {// 질문게시판 상세보기 페이지 이동 & action
-			action = new QnaDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/qna_write.html")) {// 질문게시판 글쓰기 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./qna/qna_write.jsp");
-			
-		} else if (command.equals("/QnaWriteAction.html")) {// 질문게시판 글쓰기 action
-			action = new QnaWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/qna_modify_view.html")) {// 질문게시판 글 수정 페이지 이동 & action
-			action = new QnaModifyView();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/QnaModifyAction.html")) {// 질문게시판 글 수정 action
-			action = new QnaModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/QnaDeleteAction.html")) {// 질문게시판 글 삭제 action
-			action = new QnaDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/QnaReplyWriteAction.html")) {// qna 댓글 쓰기
-			action = new QnaReplyWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/QnaReplyModifyViewAction.html")) { // qna 댓글 수정 페이지 이동
-			action = new QnaReplyModifyViewAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/QnaReplyModify.html")) {// qna 댓글 수정 action
-			action = new QnaReplyModifyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/QnaReplyDeleteAction.html")) {// qna 댓글 삭제
-			action = new QnaReplyDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
+      action = new BasketModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/BasketDelete.html")) {// 장바구니 삭제 action
 
-			
-		/* 상담신청 */
+      action = new BasketDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/BasketDetail.html")) {// 장바구니 상세보기 action
 
-		} else if (command.equals("/advice_request.html")) { // 상담신청 페이지 이동
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./advice/advice_request.jsp");
-		} else if (command.equals("/advice_list.html")) { //상담신청 리스트 페이지 이동(관리자)
-			action = new AdviceListAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/advice_detail.html")) { //상담신청 글 상세보기 (관리자)
-			action = new AdviceDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/AdviceDeleteAction.html")) { // 상담신청 글 삭제(관리자)
-			action = new AdviceDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/AdviceWriteAction.html")) {// advice 게시판 글쓰기 action
-			action = new AdviceWriteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			
-			
-			
-			
-		/* order */
-			
-		} else if (command.equals("/ProductBuy.html")) {// 구매 페이지 이동
-			action = new ProductBuyAction(); 
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) { 
-				e.printStackTrace();
-			}
-		} else if (command.equals("/payment.html")) {// 결제 action
-			action = new paymentAction(); 
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) { 
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/OrderList.html")) {// 주문내역 LIST 페이지 이동
-			action = new OrderListAction(); 
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) { 
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action
-			action = new OrderManagementDetailAction(); 
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) { 
-				e.printStackTrace();
-			} 
-			
-		} else if (command.equals("/OrderManagementList.html")) {// 주문내역 LIST 페이지 이동(관리자)
-			action = new OrderManagementListAction(); 
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) { 
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action (관리자)
-			action = new OrderDetailAction(); 
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) { 
-				e.printStackTrace();
-			} 
+      action = new BasketDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-		} else if (command.equals("")) {
+      /* 후기 */
 
-		} else if (command.equals("")) {
+    } else if (command.equals("/review_list.html")) {// review 게시판 이동 & action
+      action = new ReviewListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/review_detail.html")) {// review 게시판 상세보기 페이지 이동 & action
+      action = new ReviewDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/review_write.html")) {// review 게시판 글쓰기 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./review/review_write.jsp");
 
-		} else if (command.equals("")) {
+    } else if (command.equals("/ReviewWriteAction.html")) {// review 게시판 글쓰기 action
+      action = new ReviewWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/review_modify_view.html")) {// review 게시판 글 수정 페이지 이동 & action
+      action = new ReviewModifyView();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ReviewModifyAction.html")) {// review 게시판 글 수정 action
+      action = new ReviewModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ReviewDeleteAction.html")) {// review 게시판 글 삭제 action
+      action = new ReviewDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ReviewReplyWriteAction.html")) {// review 댓글 쓰기
+      action = new ReviewReplyWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ReviewReplyModifyViewAction.html")) { // review 댓글 수정 페이지 이동
+      action = new ReviewReplyModifyViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ReviewReplyModify.html")) {// review 댓글 수정 action
+      action = new ReviewReplyModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/ReviewReplyDeleteAction.html")) {// review 댓글 삭제
+      action = new ReviewReplyDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-		} else if (command.equals("")) {
+      /* 질문게시판 */
 
-		} else if (command.equals("")) {
+    } else if (command.equals("/qna_list.html")) {// 질문게시판 이동 & action
+      action = new QnaListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/qna_detail.html")) {// 질문게시판 상세보기 페이지 이동 & action
+      action = new QnaDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/qna_write.html")) {// 질문게시판 글쓰기 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./qna/qna_write.jsp");
 
-		} else if (command.equals("")) {
+    } else if (command.equals("/QnaWriteAction.html")) {// 질문게시판 글쓰기 action
+      action = new QnaWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/qna_modify_view.html")) {// 질문게시판 글 수정 페이지 이동 & action
+      action = new QnaModifyView();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/QnaModifyAction.html")) {// 질문게시판 글 수정 action
+      action = new QnaModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/QnaDeleteAction.html")) {// 질문게시판 글 삭제 action
+      action = new QnaDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/QnaReplyWriteAction.html")) {// qna 댓글 쓰기
+      action = new QnaReplyWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/QnaReplyModifyViewAction.html")) { // qna 댓글 수정 페이지 이동
+      action = new QnaReplyModifyViewAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/QnaReplyModify.html")) {// qna 댓글 수정 action
+      action = new QnaReplyModifyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/QnaReplyDeleteAction.html")) {// qna 댓글 삭제
+      action = new QnaReplyDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-		} else if (command.equals("")) {
+      /* 상담신청 */
 
-		}
+    } else if (command.equals("/advice_request.html")) { // 상담신청 페이지 이동
+      forward = new ActionForward();
+      forward.setRedirect(false);
+      forward.setPath("./advice/advice_request.jsp");
+    } else if (command.equals("/advice_list.html")) { // 상담신청 리스트 페이지 이동(관리자)
+      action = new AdviceListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/advice_detail.html")) { // 상담신청 글 상세보기 (관리자)
+      action = new AdviceDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/AdviceDeleteAction.html")) { // 상담신청 글 삭제(관리자)
+      action = new AdviceDeleteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/AdviceWriteAction.html")) {// advice 게시판 글쓰기 action
+      action = new AdviceWriteAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-		if (forward != null) {
-			if (forward.isRedirect()) {
-				response.sendRedirect(forward.getPath());
-			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
-				dispatcher.forward(request, response);
-			}
-		}
-	}
+      /* order */
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("get방식");
-		doProcess(request, response);
+    } else if (command.equals("/ProductBuy.html")) {// 구매 페이지 이동
+      action = new ProductBuyAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else if (command.equals("/payment.html")) {// 결제 action
+      action = new paymentAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-	}
+    } else if (command.equals("/OrderList.html")) {// 주문내역 LIST 페이지 이동
+      action = new OrderListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("post방식");
-		doProcess(request, response);
-	}
+    } else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action
+      action = new OrderManagementDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    } else if (command.equals("/OrderManagementList.html")) {// 주문내역 LIST 페이지 이동(관리자)
+      action = new OrderManagementListAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    } else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action (관리자)
+      action = new OrderDetailAction();
+      try {
+        forward = action.execute(request, response);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+    } else if (command.equals("")) {
+
+    } else if (command.equals("")) {
+
+    } else if (command.equals("")) {
+
+    } else if (command.equals("")) {
+
+    } else if (command.equals("")) {
+
+    } else if (command.equals("")) {
+
+    } else if (command.equals("")) {
+
+    }
+
+    if (forward != null) {
+      if (forward.isRedirect()) {
+        response.sendRedirect(forward.getPath());
+      } else {
+        RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
+        dispatcher.forward(request, response);
+      }
+    }
+  }
+
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    System.out.println("get방식");
+    doProcess(request, response);
+
+  }
+
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    System.out.println("post방식");
+    doProcess(request, response);
+  }
 
 }
