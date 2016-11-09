@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
+import com.interior.noti.NotiBean;
+
 public class ItemDAO {
 	Connection con;
 	PreparedStatement pstmt;
@@ -235,4 +237,102 @@ public class ItemDAO {
 		return null;
 	}
 
+	
+	
+	
+	//여기서 부터 ITEM_REPLY 관련 DAO 입니다..................
+	
+	//ITEM 댓글 삭제
+	public boolean ItemReplyDelete(int num){
+		String sql = "delete from item_reply where item_reply_seq=?";
+		
+		int result=0;
+		
+		try{
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			result=pstmt.executeUpdate();
+			if(result==0){
+				return false;
+			}
+			return true;
+		}catch(Exception e){
+			System.out.println("ItemReplyDelete error : "+e);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
+	
+	//ITEM 댓글 작성하기 
+	public boolean ItemReplyInsert(ItemBean itemdata) {
+		// TODO Auto-generated method stub
+		int num = 0;
+		String sql = "";
+		int result = 0;
+		
+		try{
+			sql = "insert into item_reply "
+					+ "(item_REPLY_MEMBER_ID, item_REPLY_CONTENT, item_REPLY_DATE, item_REPLY_NUM, item_REPLY_SEQ) "
+					+ "values (?,?,sysdate,?,item_reply_seq.NEXTVAL)";
+			
+			con=ds.getConnection();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, itemdata.getITEM_REPLY_MEMBER_ID());
+			pstmt.setString(2, itemdata.getITEM_REPLY_CONTENT());
+			pstmt.setInt(3, itemdata.getITEM_REPLY_NUM());
+			
+			
+			result = pstmt.executeUpdate();
+			if(result==0){
+				return false; //0이 실패
+			}
+			return true;
+		}catch(Exception e){
+			System.out.println("ItemReplyInsert error : "+e);
+			e.printStackTrace();
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return false;
+	}
+	
+	
+	//ITEM 댓글 수정하기
+	public boolean ItemModifyReply(ItemBean modifyreply) {
+	      String sql ="update NOTI_REPLY set noti_reply_member_id=?, noti_reply_content=?, noti_reply_date=sysdate where noti_reply_seq=? and noti_reply_num=? ";
+	      NotiBean noti = null;
+	      int result = 0;
+	          
+	      try{
+	        con=ds.getConnection();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, modifyreply.getNOTI_REPLY_MEMBER_ID());
+	        pstmt.setString(2, modifyreply.getNOTI_REPLY_CONTENT());
+	        pstmt.setInt(3, modifyreply.getNOTI_REPLY_SEQ());
+	        pstmt.setInt(4, modifyreply.getNOTI_NUM());
+	        
+	        result = pstmt.executeUpdate();
+	        
+	        if(result != 1){
+	          System.out.println("댓글수정 실패");
+	          return false;
+	        }
+	        
+	        return true;
+	      }catch(Exception e){
+	        System.out.println("reply modify error : "+e);
+	      }finally{
+	        if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	        if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	        if(con!=null) try{con.close();}catch(SQLException ex){}
+	      }
+	      return false;
+	    }
 }

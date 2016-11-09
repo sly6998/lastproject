@@ -4,7 +4,9 @@ import java.sql.Date;
 
 public class BasketBean {
 	
+	
 
+	private int BASKET_ITEM_SEQ;
 	private String BASKET_MEMBER_ID;
 	private String BASKET_MEMBER_NAME;
 	private String BASKET_ITEM_NAME;
@@ -19,6 +21,12 @@ public class BasketBean {
 	private int BASKET_NUM;
 	
 	
+	public int getBASKET_ITEM_SEQ() {
+		return BASKET_ITEM_SEQ;
+	}
+	public void setBASKET_ITEM_SEQ(int bASKET_ITEM_SEQ) {
+		BASKET_ITEM_SEQ = bASKET_ITEM_SEQ;
+	}
 	public int getBASKET_NUM() {
 		return BASKET_NUM;
 	}
