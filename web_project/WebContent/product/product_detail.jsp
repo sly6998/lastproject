@@ -251,8 +251,8 @@ if (session.getAttribute("MEMBER_NAME") != null) {
                     <%
                       if (id.equals(rl.getITEM_REPLY_MEMBER_ID()) || id.equals("admin")) {
                     %> <a style="text-decoration: none;"
-                    href='./ItemReplyModifyViewAction.html?ITEM_NUM=<%=item.getITEM_NUM()%>&ITEM_REPLY_SEQ=<%=rl.getITEM_REPLY_SEQ()%>'>수정&nbsp;&nbsp;&nbsp;</a> <a style="text-decoration: none;"
-                    href='./ItemReplyDeleteAction.html?ITEM_NUM=<%=item.getITEM_NUM()%>&ITEM_REPLY_SEQ=<%=rl.getITEM_REPLY_SEQ()%>'>삭제&nbsp;&nbsp;&nbsp;</a> <%
+                    href='./ItemReplyModifyViewAction.html?ITEM_NUM=<%=item.getITEM_SEQ()%>&ITEM_REPLY_SEQ=<%=rl.getITEM_REPLY_SEQ()%>'>수정&nbsp;&nbsp;&nbsp;</a> <a style="text-decoration: none;"
+                    href='./ItemReplyDeleteAction.html?ITEM_NUM=<%=item.getITEM_SEQ()%>&ITEM_REPLY_SEQ=<%=rl.getITEM_REPLY_SEQ()%>'>삭제&nbsp;&nbsp;&nbsp;</a> <%
    }
      if (id != "" || id != null || !id.equals("")) {
  %>
@@ -297,7 +297,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
                   <br></td>
                 </tr>
                 <tr>
-                  <td width="10%"><input type="hidden" name="ITEM_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="ITEM_NUM" value="<%=item.getITEM_NUM()%>" /> <b><%=id%></b></td>
+                  <td width="10%"><input type="hidden" name="ITEM_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="ITEM_NUM" value="<%=item.getITEM_SEQ()%>" /> <b><%=id%></b></td>
                   <td width="80%"><textarea name="ITEM_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea></td>
                   <td width="10%" align="center"><input type="submit" class="btn" name="item_reply_write_form" value="등록"></td>
                 </tr>

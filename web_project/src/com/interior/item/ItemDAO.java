@@ -305,18 +305,17 @@ public class ItemDAO {
 	
 	
 	//ITEM 댓글 수정하기
-	public boolean ItemModifyReply(ItemBean modifyreply) {
-	      String sql ="update item_REPLY set item_reply_member_id=?, item_reply_content=?, item_reply_date=sysdate where item_reply_seq=? and item_reply_num=? ";
+	public boolean ItemModifyReply(ItemBean itemreplylist) {
+	      String sql ="update item_REPLY set item_reply_member_id=?, item_reply_content=?, item_reply_date=sysdate where item_reply_seq=?";
 	      ItemBean item = null;
 	      int result = 0;
 	          
 	      try{
 	        con=ds.getConnection();
 	        pstmt = con.prepareStatement(sql);
-	        pstmt.setString(1, modifyreply.getITEM_REPLY_MEMBER_ID());
-	        pstmt.setString(2, modifyreply.getITEM_REPLY_CONTENT());
-	        pstmt.setInt(3, modifyreply.getITEM_REPLY_SEQ());
-	        pstmt.setInt(4, modifyreply.getITEM_SEQ());
+	        pstmt.setString(1, itemreplylist.getITEM_REPLY_MEMBER_ID());
+	        pstmt.setString(2, itemreplylist.getITEM_REPLY_CONTENT());
+	        pstmt.setInt(3, itemreplylist.getITEM_REPLY_SEQ());
 	        
 	        result = pstmt.executeUpdate();
 	        
@@ -438,4 +437,72 @@ public class ItemDAO {
 		}
 		return null;
 	}
+	
+	
+	
+	//댓글 수 구하기
+	public int getItemReplyListCount() { 
+		// TODO Auto-generated method stub
+		int count=0;
+		
+		try{
+			con=ds.getConnection();
+			pstmt=con.prepareStatement("select count(*) from item_reply");
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				count=rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("getItemReplyListCount error : "+e);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return count;
+	}
+	
+	
+	//댓글 리스트 보여주기
+	public List getItemReplyList(int num2) {
+		// TODO Auto-generated method stub
+		String sql =  "select * from item_reply where item_reply_num=?";
+		
+		List list = new ArrayList();
+		
+		
+		try{
+			con=ds.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num2);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				ItemBean item2 = new ItemBean();
+				item2.setITEM_REPLY_NUM(rs.getInt("ITEM_REPLY_NUM"));
+				item2.setITEM_REPLY_MEMBER_ID(rs.getString("ITEM_REPLY_MEMBER_ID"));
+				item2.setITEM_REPLY_MEMBER_NAME(rs.getString("ITEM_REPLY_MEMBER_NAME"));
+				item2.setITEM_REPLY_CONTENT(rs.getString("ITEM_REPLY_CONTENT"));
+				item2.setITEM_REPLY_DATE(rs.getDate("ITEM_REPLY_DATE"));
+				item2.setITEM_REPLY_SEQ(rs.getInt("ITEM_REPLY_SEQ"));
+				item2.setITEM_REPLY_REF(rs.getInt("ITEM_REPLY_REF"));
+				item2.setITEM_REPLY_LEV(rs.getInt("ITEM_REPLY_LEV"));
+				list.add(item2);
+				
+			}
+			
+			return list;
+		}catch(Exception e){
+			System.out.println("getItemReplyList error : "+e);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
+		}
+		return null;
+	}
+	
+	
 }
