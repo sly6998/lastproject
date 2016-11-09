@@ -9,11 +9,8 @@ import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
-
-import com.interior.noti.NotiBean;
 
 public class ItemDAO {
 	Connection con;
