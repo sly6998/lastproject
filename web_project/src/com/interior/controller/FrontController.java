@@ -14,9 +14,12 @@ import com.interior.advice.AdviceListAction;
 import com.interior.advice.AdviceWriteAction;
 import com.interior.basket.AddBasketAction;
 import com.interior.basket.BasketDeleteAction;
-import com.interior.basket.BasketDetailAction;
 import com.interior.basket.BasketListAction;
 import com.interior.basket.BasketModifyAction;
+import com.interior.item.ItemReplyDeleteAction;
+import com.interior.item.ItemReplyModifyAction;
+import com.interior.item.ItemReplyModifyViewAction;
+import com.interior.item.ItemReplyWriteAction;
 import com.interior.item.ProductDetailAction;
 import com.interior.item.ProductListAction;
 import com.interior.item.ProductWriteAction;
@@ -334,7 +337,39 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
       } catch (Exception e) {
         e.printStackTrace();
       }
+    } else if (command.equals("/ItemReplyWriteAction.html")) {// 제품 상세 댓글 쓰기
+        action = new ItemReplyWriteAction();
+        try {
+          forward = action.execute(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else if (command.equals("/ItemReplyModifyViewAction.html")) { // 제품 상세 댓글 수정 페이지 이동
+        action = new ItemReplyModifyViewAction();
+        try {
+          forward = action.execute(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else if (command.equals("/ItemReplyModify.html")) {// 제품 상세 댓글 수정 action
+        action = new ItemReplyModifyAction();
+        try {
+          forward = action.execute(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else if (command.equals("/ItemReplyDeleteAction.html")) {// 제품 상세 댓글 삭제
+        action = new ItemReplyDeleteAction();
+        try {
+          forward = action.execute(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
 
+      
+      
+      
+      
       /* 장바구니 */
 
     } else if (command.equals("/basketlist.html")) {// 장바구니 리스트 페이지 이동 & action
