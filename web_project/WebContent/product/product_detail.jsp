@@ -188,7 +188,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
         </div>
       </div>
     </section>
-    <!-- 위치 end -->
+    <!-- 위치 end --> 
 
 
     <section id="content">
