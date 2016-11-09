@@ -367,14 +367,6 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
       } catch (Exception e) {
         e.printStackTrace();
       }
-    } else if (command.equals("/BasketDetail.html")) {// 장바구니 상세보기 action
-
-      action = new BasketDetailAction();
-      try {
-        forward = action.execute(request, response);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
 
       /* 후기 */
 

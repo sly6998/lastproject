@@ -109,12 +109,11 @@ if (session.getAttribute("MEMBER_NAME") != null) {
 		var price_sum = $('#price_sum').html().replace(/,/g,'');
 		price_sum = parseInt(price_sum);
 		var item_num = $('#item_num').html();
-		var item_seq =<%=item.getITEM_SEQ()%>;
 		
 		
 		var type = document.getElementById('item_type');
 		var item_type = type.options[type.selectedIndex].value;
-		location="./addBasket.html?item_img="+item_img+"&item_name="+item_name+"&item_price="+item_price+"&price_sum="+price_sum+"&item_num="+item_num+"&item_type="+item_type+"&item_seq="+item_seq;
+		location="./addBasket.html?item_img="+item_img+"&item_name="+item_name+"&item_price="+item_price+"&price_sum="+price_sum+"&item_num="+item_num+"&item_type="+item_type;
 		
 	}
 </script>
@@ -188,7 +187,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
         </div>
       </div>
     </section>
-    <!-- 위치 end --> 
+    <!-- 위치 end -->
 
 
     <section id="content">
