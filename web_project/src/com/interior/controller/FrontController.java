@@ -619,8 +619,8 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
         e.printStackTrace();
       }
 
-    } else if (command.equals("/orderManagementDetail.html")) {// 주문내역 상세피이지 이동 & action
-      action = new OrderManagementDetailAction();
+    } else if (command.equals("/orderDetail.html")) {// 주문내역 상세피이지 이동 & action
+      action = new OrderDetailAction();
       try {
         forward = action.execute(request, response);
       } catch (Exception e) {

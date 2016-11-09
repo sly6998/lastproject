@@ -225,7 +225,7 @@ height: 40px;
                     <div align="center">가격</div>
                   </td>
                 </tr>
-
+                <% int total_price = 0; %>
                 <%
                   for (int i = 0; i < basketlist.size(); i++) {
                     OrderBean ol = (OrderBean) basketlist.get(i);
@@ -250,16 +250,16 @@ height: 40px;
                   <input type="hidden" name="item_price" value="<%=ol.getORDER_ITEM_PRICE()%>">
                   </td>
                 </tr>
-                <tr>
-                  <td colspan="4" align="right"><sapn> 
-                    <font size="4"><b>총 결제 금액</b>&nbsp;&nbsp;<span><%=String.format("%,d", ol.getORDER_ITEM_PRICE_SUM())%> 원</sapn></font>
-                    <input type="hidden" id="price_sum" name="price_sum" value="<%=ol.getORDER_ITEM_PRICE_SUM()%>">
-                  </td>
-                </tr>
-
                 <%
+                  total_price +=ol.getORDER_ITEM_PRICE_SUM();
                   }
                 %>
+                <tr>
+                  <td colspan="4" align="right"><sapn> 
+                    <font size="4"><b>총 결제 금액</b>&nbsp;&nbsp;<span><%=String.format("%,d", total_price)%> 원</sapn></font>
+                    <input type="hidden" id="price_sum" name="price_sum" value="<%=total_price%>">
+                  </td>
+                </tr>
               </table>
               <br> <br> <br> <span><font size="4"><b>주문자 정보</b></font></span>
               <hr width="100%">
