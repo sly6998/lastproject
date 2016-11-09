@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
+import com.interior.basket.BasketDAO;
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
 
@@ -18,7 +19,7 @@ public class paymentAction implements Action {
 
 		request.setCharacterEncoding("utf-8");
 
-	    ActionForward forward = new ActionForward();
+	    //ActionForward forward = new ActionForward();
 	    HttpSession session = request.getSession();
 	    String id = (String) session.getAttribute("MEMBER_ID");
 	    
@@ -41,7 +42,7 @@ public class paymentAction implements Action {
 	    
 	    order.setORDER_MEMBER_ID(id);
 	    order.setORDER_MEMBER_NAME(request.getParameter("membername"));//회원 이름
-	    order.setORDER_MEMBER_TEL(request.getParameter("memberpone"));//회원 연락처
+	    order.setORDER_MEMBER_TEL(request.getParameter("memberphone"));//회원 연락처
 	    order.setORDER_MEMEBER_EMAIL(request.getParameter("buyemail"));//주문 이메일
 	
 	    order.setORDER_NAME(request.getParameter("item_getname"));//수취인 이름
@@ -65,15 +66,17 @@ public class paymentAction implements Action {
 	    }else if(result == true){
 	    	response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
+			BasketDAO basket = new BasketDAO();
+			basket.basket_all_delete(id);//장바구니 비우기
 			out.println("<script>");
 			out.println("alert('결제가 성공적으로 완료 되었습니다.');");
+			out.println("location.href='./OrderList.html'");
 			out.println("</script>");
 			out.close();
 	    }
-	    
-	    forward.setRedirect(true);
-	    forward.setPath("./OrderList.html");
-	    return forward;
+	    //forward.setRedirect(true);
+	    //forward.setPath("./OrderList.html");
+	    return null;
 	}
 
 }

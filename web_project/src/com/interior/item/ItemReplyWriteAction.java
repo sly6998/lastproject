@@ -18,7 +18,7 @@ public class ItemReplyWriteAction implements Action{
 		ItemDAO itemdao = new ItemDAO();
 		ItemBean itemreplydata = new ItemBean();
 		
-		int num2 = Integer.parseInt(request.getParameter("ITEM_SEQ"));
+		int num2 = Integer.parseInt(request.getParameter("ITEM_NUM"));
 		
 		
 		boolean result = false;
@@ -40,7 +40,8 @@ public class ItemReplyWriteAction implements Action{
 			System.out.println("ITEM 댓글 등록 성공");
 			
 			forward.setRedirect(true);
-			forward.setPath("./item_detail.html?ITEM_SEQ="+num2);
+			System.out.println(num2);
+			forward.setPath("./product_detail.html?item_seq="+num2);
 			return forward;
 			
 		}catch(Exception e){

@@ -19,14 +19,15 @@ public class ItemReplyModifyAction implements Action {
     boolean result = false;
 
     ItemDAO itemdao = new ItemDAO();
-    ItemBean itemmodifyreply = new ItemBean();
+    ItemBean itemreplylist = new ItemBean();
     int num = Integer.parseInt(request.getParameter("num"));
-    itemmodifyreply.setITEM_SEQ(num);
-    itemmodifyreply.setITEM_REPLY_SEQ(Integer.parseInt(request.getParameter("ITEM_REPLY_SEQ")));
-    itemmodifyreply.setITEM_REPLY_MEMBER_ID(request.getParameter("ITEM_REPLY_MEMBER_ID"));
-    itemmodifyreply.setITEM_REPLY_CONTENT(request.getParameter("ITEM_REPLY_CONTENT"));
+    System.out.println(num);
+    itemreplylist.setITEM_SEQ(num);
+    itemreplylist.setITEM_REPLY_SEQ(Integer.parseInt(request.getParameter("ITEM_REPLY_SEQ")));
+    itemreplylist.setITEM_REPLY_MEMBER_ID(request.getParameter("ITEM_REPLY_MEMBER_ID"));
+    itemreplylist.setITEM_REPLY_CONTENT(request.getParameter("ITEM_REPLY_CONTENT"));
 
-    result = itemdao.ItemModifyReply(itemmodifyreply);
+    result = itemdao.ItemModifyReply(itemreplylist);
 
     if (result == false) {
       System.out.println("제품 관련 댓글 수정 에러");
@@ -36,7 +37,8 @@ public class ItemReplyModifyAction implements Action {
     System.out.println("제품 관련 댓글 수정 완료");
 
     forward.setRedirect(true);
-    forward.setPath("./item_detail.html?ITEM_SEQ="+num);
+    System.out.println(num);
+    forward.setPath("./product_detail.html?ITEM_SEQ="+num);
 
     return forward;
   }

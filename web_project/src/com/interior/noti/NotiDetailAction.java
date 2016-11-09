@@ -22,6 +22,7 @@ public class NotiDetailAction implements Action {
 		  List notireplylist = new ArrayList();
 		  int num = Integer.parseInt(request.getParameter("NOTI_NUM"));
 		  
+		  
 		  notidao.setReadCountUpdate(num);//조회수 업데이트
 		  int listcount2 = notidao.getNotiReplyListCount();// 총 리스트 수를 받아 옴(댓글)
 		  notidata = notidao.getDetail(num);//게시글 보기

@@ -22,6 +22,7 @@ public class NotiReplyModifyAction implements Action {
     NotiBean modifyreply = new NotiBean();
     int num = Integer.parseInt(request.getParameter("num"));
     modifyreply.setNOTI_NUM(num);
+    System.out.println(num);
     modifyreply.setNOTI_REPLY_SEQ(Integer.parseInt(request.getParameter("NOTI_REPLY_SEQ")));
     modifyreply.setNOTI_REPLY_MEMBER_ID(request.getParameter("NOTI_REPLY_MEMBER_ID"));
     modifyreply.setNOTI_REPLY_CONTENT(request.getParameter("NOTI_REPLY_CONTENT"));

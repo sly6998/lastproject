@@ -47,15 +47,20 @@ CREATE TABLE BASKET
 
 CREATE TABLE ITEM
 (
+ ITEM_SEQ number(10),
  ITEM_MODEL varchar2(50),
  ITEM_NAME varchar2(50),
  ITEM_PRICE number(10),
  ITEM_IMAGE varchar2(50),
- ITEM_TYPE varchar2(20),
+ ITEM_TYPE_1 varchar2(20),
+ ITEM_TYPE_2 varchar2(20),
+ ITEM_TYPE_3 varchar2(20),
+ ITEM_TYPE_4 varchar2(20),
+ ITEM_TYPE_5 varchar2(20),
  ITEM_BRAND varchar2(50),
- ITEM_CONTENT varchar2(2000)
+ ITEM_CONTENT varchar2(2000),
+ ITEM_DATE date
 );
-
 
 CREATE TABLE ITEM_REPLY
 (
@@ -205,6 +210,7 @@ Select * from qna_board;
 Select * from qna_reply 
 Select * from review;
 select * from NOTI_REPLY;
+select * from item_reply;
 
 /* Create Sequence(시퀀스 생성) */
 
@@ -217,6 +223,9 @@ create sequence qna_reply_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1;
 create sequence basket_seq start with 1 increment by 1;
 create sequence noti_reply_seq start with 1 increment by 1;
+create sequence item_reply_seq start with 1 increment by 1;
+create sequence item_seq start with 1 increment by 1;
+
 
 /* drop sequence(시퀀스 삭제)*/
 
@@ -226,6 +235,8 @@ drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
+drop sequence item_seq;
+drop sequence item_reply_seq;
 
 
 

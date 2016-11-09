@@ -22,10 +22,10 @@ public class ItemReplyModifyViewAction implements Action{
 		ItemDAO itemdao = new ItemDAO();
 		ItemBean ssibal = new ItemBean(); //본문 내용
 		List replylist = new ArrayList<>(); // 불러온 댓글
-		ItemBean modify_reply = new ItemBean(); //수정할 댓글
+		ItemBean item_reply = new ItemBean(); //수정할 댓글
 		
 
-		int num1 = Integer.parseInt(request.getParameter("ITEM_SEQ"));//본문 시퀀스
+		int num1 = Integer.parseInt(request.getParameter("ITEM_NUM"));//본문 시퀀스
 		int num2 = Integer.parseInt(request.getParameter("ITEM_REPLY_SEQ"));//댓글 시퀀스
 		
 		
@@ -45,15 +45,15 @@ public class ItemReplyModifyViewAction implements Action{
 
 		System.out.println("공지사항 댓글 수정페이지 보기 성공");
 		replylist = (List) request.getAttribute("replylist");
-		modify_reply = (ItemBean) request.getAttribute("modify_re");
+		item_reply = (ItemBean) request.getAttribute("modify_re");
 
 		request.setAttribute("ssibal", ssibal);
 		request.setAttribute("replylist", replylist);
-		request.setAttribute("modify_reply", modify_reply);
+		request.setAttribute("item_reply", item_reply);
 		
 
 		forward.setRedirect(false);
-		forward.setPath("./item/item_reply_modify_view.jsp");
+		forward.setPath("./product/product_reply_modify_view.jsp");
 		return forward;
 	}
 }

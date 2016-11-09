@@ -19,13 +19,15 @@ public class ProductDetailAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		ActionForward forward = new ActionForward();
 
-		ItemDAO notidao = new ItemDAO();
+		ItemDAO itemdao = new ItemDAO();
 		ItemBean itemdata = null;
 		List itemreplylist = new ArrayList();
-
 		int item_seq = Integer.parseInt(request.getParameter("item_seq"));//제품 시퀀스
 
-		itemdata = notidao.getItemDetail(item_seq);// 제품 상세보기
+		
+		itemdata = itemdao.getItemDetail(item_seq);// 제품 상세보기
+		int listcount2 = itemdao.getItemReplyListCount();// 총 리스트 수를 받아 옴(댓글)
+		itemreplylist = itemdao.getItemReplyList(item_seq);// 리스트를 받아옴(댓글)
 
 		if (itemdata == null) {
 			System.out.println("제품 상세보기 에러");
