@@ -218,7 +218,7 @@
             %>
             <p align="right">
               <button class="btn" onclick="location.href='./noti_write.html'">글쓰기</button>
-            <p />
+            <p /> 
             <%
               }
             %>
