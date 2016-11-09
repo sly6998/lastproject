@@ -11,7 +11,7 @@
 	if (session.getAttribute("MEMBER_ID") != null) {
   		id = (String) session.getAttribute("MEMBER_ID");
 	} 
-
+ 
 	if (session.getAttribute("MEMBER_NAME") != null) {
   		MEMBER_NAME = (String) session.getAttribute("MEMBER_NAME");
 	}
