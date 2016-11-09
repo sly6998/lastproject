@@ -50,7 +50,7 @@
 <!-- Theme skin -->
 <link href="<%=request.getContextPath()%>/skins/default.css" rel="stylesheet" />
 <!-- Script -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/noti.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/qna.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
@@ -348,7 +348,7 @@
       <div class="modal-dialog">
         <div class="modal-content"></div>
       </div>
-    </div>
+    </div>2
     <!-- id찾기 모달 -->
     <div class="modal fade" id="idModal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">

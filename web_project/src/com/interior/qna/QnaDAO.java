@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import com.interior.basket.AddBasketAction;
-import com.interior.noti.NotiBean;
+
 
 public class QnaDAO {
 	
@@ -33,18 +33,21 @@ public class QnaDAO {
 		}
 	}
   
-	public int getListCount() {//qna 게시판 리스트의 총 게시글 수 구하기 
+	public int getListCount(String cond) {//qna 게시판 리스트의 총 게시글 수 구하기 
 		// TODO Auto-generated method stub
 		int count=0;
-		
+		String sql = "select count(*) from qna_board";
+		if (cond != null && !cond.equals("")) {
+			sql = sql + " where " + cond;
+		}
 		try{
-			con=ds.getConnection();
-			pstmt=con.prepareStatement("select count(*) from qna_board");
-			rs=pstmt.executeQuery();
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
 				count=rs.getInt(1);
-			}
+			}	
 		}catch(Exception e){
 			System.out.println("getListCount error : "+e);
 		}finally{
@@ -57,7 +60,7 @@ public class QnaDAO {
 	
 	
 
-	public List getQnaList(int page, int limit) {//qna 게시글 목록 불러오기
+	public List getQnaList(int page, int limit, String cond) {//qna 게시글 목록 불러오기
 		// TODO Auto-generated method stub
 		String sql = "select * from " +
 		"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
@@ -67,6 +70,18 @@ public class QnaDAO {
 		"(select * from qna_board order by " +
 		"qna_date desc))" +
 		"where rnum>=? and rnum<=?";
+		
+		String sql_2 = "select * from " +
+				"(select rownum rnum, QNA_num, QNA_MEMBER_NAME, QNA_subject, QNA_content," +
+				"QNA_readcount, QNA_date from " +
+				"(select * from QNA_BOARD where %s order by " +
+				"QNA_date desc)) " +
+				"where rnum>=? and rnum<=?";
+		
+		if (cond != null && !cond.equals("")) {
+			sql = String.format(sql_2, cond);
+		}
+		
 		
 		List list = new ArrayList();
 		

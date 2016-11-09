@@ -18,11 +18,11 @@ public class QnaListAction implements Action {
 
 		QnaDAO qnadao = new QnaDAO();
 		List boardlist = new ArrayList();
+		response.setContentType("text/html;charset=utf-8");
 		
 		
 		int page = 1;
 		int limit = 10;
-		
 		
 		/* 검색 기능*/
 		String srchKey = request.getParameter("srchKey");
@@ -50,17 +50,17 @@ public class QnaListAction implements Action {
 			cond = String.format(whereFmt, srchKey);
 		}
 		
+		/*
+		*/
+		
 		
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
-		
 		}
 		
+		int listcount = qnadao.getListCount(cond);// 총 리스트 수를 받아 옴
+		boardlist = qnadao.getQnaList(page, limit, cond);// 리스트를 받아옴
 		
-		
-		int listcount = qnadao.getListCount();// 총 리스트 수를 받아 옴
-		
-		boardlist = qnadao.getQnaList(page, limit);// 리스트를 받아옴
 	    
 		
 		
@@ -93,7 +93,6 @@ public class QnaListAction implements Action {
 		
 		request.setAttribute("srchKey", srchKey);
 		request.setAttribute("srchFlds", srchFlds);
-	
 		
 		forward.setRedirect(false);
 		forward.setPath("./qna/qna_list.jsp");

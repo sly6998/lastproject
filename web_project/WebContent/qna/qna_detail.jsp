@@ -32,7 +32,7 @@
 <!-- Theme skin -->
 <link href="<%=request.getContextPath()%>/skins/default.css" rel="stylesheet" />
 <!-- Script -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/noti.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/qna.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
@@ -60,11 +60,11 @@
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
               <li><a href="./mainpage.html">Home</a></li>
-              <li class="active"><a href="./noti_list.html">Noti</a></li>
+              <li ><a href="./noti_list.html">Noti</a></li>
               <li><a href="./catalogue.html">Portfolio</a></li>
               <li><a href="./product_list.html">Product</a></li>
               <li><a href="./review_list.html">Review</a></li>
-              <li><a href="./qna_list.html">QnA</a></li>
+              <li class="active"><a href="./qna_list.html">QnA</a></li>
               <li><a href="./advice_request.html">Contact</a></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Member<b class=" icon-angle-down"></b></a>
                 <ul class="dropdown-menu">
@@ -121,7 +121,7 @@
         <div class="row">
           <div class="col-lg-12">
             <!-- 본문 시작 -->
-            <h3 class="heading">공지사항</h3>
+            <h3 class="heading">QNA</h3>
             <br> <br>
             <form method="post" action="./qna_modify_view.html">
               <input type="hidden" name="QNA_NUM" value="<%=qna.getQNA_NUM()%>">

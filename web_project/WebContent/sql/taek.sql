@@ -224,6 +224,12 @@ drop sequence qna_board_seq;
 drop sequence advice_seq;
 
 /*테스트*/
+select * from 
+(select rownum rnum, noti_num, NOTI_MEMBER_NAME, noti_subject, noti_content, 
+noti_readcount, noti_date from  
+(select * from noti where %s order by  
+noti_date desc))
+where rnum>=1 and rnum<=10;
 
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
