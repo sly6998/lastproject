@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
+import com.interior.basket.BasketDAO;
 import com.interior.controller.Action;
 import com.interior.controller.ActionForward;
 
@@ -65,6 +66,8 @@ public class paymentAction implements Action {
 	    }else if(result == true){
 	    	response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
+			BasketDAO basket = new BasketDAO();
+			basket.basket_all_delete(id);//장바구니 비우기
 			out.println("<script>");
 			out.println("alert('결제가 성공적으로 완료 되었습니다.');");
 			out.println("location.href='./OrderList.html'");
