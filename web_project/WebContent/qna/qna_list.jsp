@@ -213,23 +213,17 @@
               <%
                 }
               %>
-              <tr>
-                <td height="26"></td>
-              </tr>
             </table>
+             
             
-            <p align="right">
-              <button class="btn" onclick="location.href='./qna_write.html'">글쓰기</button>
-            <p />
-            
-            <table align="center">
-              <!-- [이전] / [1] [2] [3] / [다음] -->
-              <tr align="center" height="20">
-                <td colspan="3" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                
-                  <%
-                    if (nowpage <= 1) {
-                  %> [이전]&nbsp; <%
+<table width="100%">
+<tr>
+<td >
+
+ 
+<%
+	if (nowpage <= 1) {
+ %> [이전]&nbsp; <%
    } else {
  %> <a href="./qna_list.html?page=<%=nowpage - 1%>">[이전]</a>&nbsp; <%
    }
@@ -250,9 +244,17 @@
  %> <a href="./qna_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
    }
  %>
-                
-            </table>
-            <!-- 본문 end -->
+<!-- 본문 end -->
+
+</td>
+
+<td align="right">
+ <button class="btn" onclick="location.href='./qna_write.html'">글쓰기</button>
+</td>
+</tr>
+</table>    
+
+
           </div>
         </div>
       </div>

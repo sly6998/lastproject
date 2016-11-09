@@ -156,7 +156,7 @@
 <td width="500px" style="border:0px solid #ddd" align="left">
 <!-- 다음 지도 표시  -->
 <div id="map" style="width:500px;height:240px;"></div>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=69441167f5fd1088fb45c5ceddf8255c"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=943c889b0c9caf80874a77e20a763146"></script>
 <script>
 		var container = document.getElementById('map');
 		var options = {
@@ -175,7 +175,7 @@
 		});
 
 		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
+		marker.setMap(map); 
 
 		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 		// marker.setMap(null);    
