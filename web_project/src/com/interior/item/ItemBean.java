@@ -17,7 +17,19 @@ public class ItemBean {
 	private int ITEM_NUM;
 	private Date ITEM_DATE;
 	
-	
+	//상품관련댓글
+	 private String ITEM_REPLY_MEMBER_NAME; 
+	 private String ITEM_REPLY_MEMBER_ID; 
+	 private String ITEM_REPLY_CONTENT; 
+	 private Date ITEM_REPLY_DATE; 
+	 private int ITEM_REPLY_NUM; 
+	 private int ITEM_REPLY_REF; 
+	 private int ITEM_REPLY_SEQ; 
+	 private int ITEM_REPLY_LEV;
+	 
+	 
+	 
+	 
 	public String getITEM_NAME() {
 		return ITEM_NAME;
 	}
@@ -90,7 +102,56 @@ public class ItemBean {
 	public void setITEM_DATE(Date iTEM_DATE) {
 		ITEM_DATE = iTEM_DATE;
 	}
+	public String getITEM_REPLY_MEMBER_NAME() {
+		return ITEM_REPLY_MEMBER_NAME;
+	}
+	public void setITEM_REPLY_MEMBER_NAME(String iTEM_REPLY_MEMBER_NAME) {
+		ITEM_REPLY_MEMBER_NAME = iTEM_REPLY_MEMBER_NAME;
+	}
+	public String getITEM_REPLY_MEMBER_ID() {
+		return ITEM_REPLY_MEMBER_ID;
+	}
+	public void setITEM_REPLY_MEMBER_ID(String iTEM_REPLY_MEMBER_ID) {
+		ITEM_REPLY_MEMBER_ID = iTEM_REPLY_MEMBER_ID;
+	}
+	public String getITEM_REPLY_CONTENT() {
+		return ITEM_REPLY_CONTENT;
+	}
+	public void setITEM_REPLY_CONTENT(String iTEM_REPLY_CONTENT) {
+		ITEM_REPLY_CONTENT = iTEM_REPLY_CONTENT;
+	}
+	public Date getITEM_REPLY_DATE() {
+		return ITEM_REPLY_DATE;
+	}
+	public void setITEM_REPLY_DATE(Date iTEM_REPLY_DATE) {
+		ITEM_REPLY_DATE = iTEM_REPLY_DATE;
+	}
+	public int getITEM_REPLY_NUM() {
+		return ITEM_REPLY_NUM;
+	}
+	public void setITEM_REPLY_NUM(int iTEM_REPLY_NUM) {
+		ITEM_REPLY_NUM = iTEM_REPLY_NUM;
+	}
+	public int getITEM_REPLY_REF() {
+		return ITEM_REPLY_REF;
+	}
+	public void setITEM_REPLY_REF(int iTEM_REPLY_REF) {
+		ITEM_REPLY_REF = iTEM_REPLY_REF;
+	}
+	public int getITEM_REPLY_SEQ() {
+		return ITEM_REPLY_SEQ;
+	}
+	public void setITEM_REPLY_SEQ(int iTEM_REPLY_SEQ) {
+		ITEM_REPLY_SEQ = iTEM_REPLY_SEQ;
+	}
+	public int getITEM_REPLY_LEV() {
+		return ITEM_REPLY_LEV;
+	}
+	public void setITEM_REPLY_LEV(int iTEM_REPLY_LEV) {
+		ITEM_REPLY_LEV = iTEM_REPLY_LEV;
+	} 
 	
-	
-	
+	 
+	 
+	 
 }
