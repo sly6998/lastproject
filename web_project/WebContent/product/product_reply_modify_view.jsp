@@ -3,19 +3,19 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%
-
-String id = "";
-String MEMBER_NAME = "";
-if (session.getAttribute("MEMBER_ID") != null) {
-  id = (String) session.getAttribute("MEMBER_ID");
-}
-if (session.getAttribute("MEMBER_NAME") != null) {
-  MEMBER_NAME = (String) session.getAttribute("MEMBER_NAME");
-}
-
-			ItemBean item = (ItemBean) request.getAttribute("itemdata");
-			List item_reply = (List) request.getAttribute("itemreplylist");
+  String id = "";
+  String MEMBER_NAME = "";
+  if (session.getAttribute("MEMBER_ID") != null) {
+    id = (String) session.getAttribute("MEMBER_ID");
+  }
+  if (session.getAttribute("MEMBER_NAME") != null) {
+    MEMBER_NAME = (String) session.getAttribute("MEMBER_NAME");
+  }
+  List replylist = (List) request.getAttribute("replylist");
+  ItemBean item = (ItemBean) request.getAttribute("ssibal");
+  ItemBean item_reply = (ItemBean) request.getAttribute("item_reply");
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +33,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
 <!-- Theme skin -->
 <link href="<%=request.getContextPath()%>/skins/default.css" rel="stylesheet" />
 <!-- Script -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/noti.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
@@ -45,80 +46,11 @@ if (session.getAttribute("MEMBER_NAME") != null) {
 <script src="<%=request.getContextPath()%>/js/animate.js"></script>
 <script src="<%=request.getContextPath()%>/js/custom.js"></script>
 <script>
-	$(function() {
-		$('.bt_up').click(
-				function() {
-					var n = $('.bt_up').index(this);
-					var num = $(".num:eq(" + n + ")").html();
-					num = $(".num:eq(" + n + ")").html(num * 1 + 1);
-					
-					var item_price = $('#item_price').html().replace(/,/g,'');//연산을 위해 item_price 값의 ',' 를 제거
-					item_price = parseInt(item_price);//연산을 위해 item_price를 형변환
-					
-					var sum_price = item_price* $(".num:eq(" + n + ")").html();//연산
-					sum_price = String(sum_price);//sum_price태그에 연산값을 대입하기 위해 형변환
-					sum_price = sum_price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");//3자리마다 ',' 삽입
-					$('#price_sum').html(sum_price);//연산값 대입
-
-				});
-		$('.bt_down').click(
-				function() {
-					var n = $('.bt_down').index(this);
-					var num = $(".num:eq(" + n + ")").html();
-					num = $(".num:eq(" + n + ")").html(num * 1 - 1);
-					
-					var item_price = $('#item_price').html().replace(/,/g,'');//연산을 위해 item_price 값의 ',' 를 제거
-					item_price = parseInt(item_price);//연산을 위해 item_price를 형변환
-					
-					var sum_price = item_price* $(".num:eq(" + n + ")").html();
-					sum_price = String(sum_price);//sum_price태그에 연산값을 대입하기 위해 형변환
-					sum_price = sum_price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");//3자리마다 ',' 삽입
-					$('#price_sum').html(sum_price);//연산값 대입
-				});
-	});
-	
-	function nowbuy(){
-		var id = '<%=id%>';
-		if(id == null || id==""){
-			alert('구매하기 위해서는 로그인이 필요합니다.');
-			return;
-		}		
-		var item_img = $("#item_img").attr('src');
-		var item_name = $('#itemname').html();
-		var item_price = $('#item_price').html().replace(/,/g,'');//insert 될 DB 컬럼이 number이므로 ','제거 및 형변환
-		item_price = parseInt(item_price);
-		var price_sum = $('#price_sum').html().replace(/,/g,'');
-		price_sum = parseInt(price_sum);
-		var item_num = $('#item_num').html();
-		
-		var type = document.getElementById('item_type');
-		var item_type = type.options[type.selectedIndex].value;
-		location="#";
-		
-	}
-	function addbasket(){
-		var id = '<%=id%>';
-		if(id == null || id==""){
-			alert('장바구니 이용시 로그인이 필요합니다.');
-			return;
-		}
-		var item_img = $("#item_img").attr('src');
-		var item_name = $('#itemname').html();
-		var item_price = $('#item_price').html().replace(/,/g,'');//insert 될 DB 컬럼이 number이므로 ','제거 및 형변환
-		item_price = parseInt(item_price);
-		var price_sum = $('#price_sum').html().replace(/,/g,'');
-		price_sum = parseInt(price_sum);
-		var item_num = $('#item_num').html();
-		
-		
-		var type = document.getElementById('item_type');
-		var item_type = type.options[type.selectedIndex].value;
-		location="./addBasket.html?item_img="+item_img+"&item_name="+item_name+"&item_price="+item_price+"&price_sum="+price_sum+"&item_num="+item_num+"&item_type="+item_type;
-		
-	}
+$(function(){ 
+	$('#ITEM_REPLY_CONTENT').focus();
+});
 </script>
 </head>
-<body>
 <body>
   <div id="wrapper">
     <!-- start header -->
@@ -134,9 +66,9 @@ if (session.getAttribute("MEMBER_NAME") != null) {
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
               <li><a href="./mainpage.html">Home</a></li>
-              <li><a href="./noti_list.html">Noti</a></li>
+              <li class="active"><a href="./noti_list.html">Noti</a></li>
               <li><a href="./catalogue.html">Portfolio</a></li>
-              <li class="active"><a href="./product_list.html">Product</a></li>
+              <li><a href="./product_list.html">Product</a></li>
               <li><a href="./review_list.html">Review</a></li>
               <li><a href="./qna_list.html">QnA</a></li>
               <li><a href="./advice_request.html">Contact</a></li>
@@ -181,7 +113,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
           <div class="col-lg-12">
             <ul class="breadcrumb">
               <li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-              <li class="active">Product</li>
+              <li class="active">Item</li>
             </ul>
           </div>
         </div>
@@ -274,15 +206,14 @@ if (session.getAttribute("MEMBER_NAME") != null) {
             </form>
             <!-- 댓글보기 end -->
 
-
+            
             <!-- 댓글 작성 -->
             <table width="100%">
               <%
                 if (id == "" || id == null || id.equals("")) {
               %>
               <tr>
-                <td><br>
-                <br></td>
+                <td><br> <br></td>
               </tr>
               <tr>
                 <td><a href="./login.html" data-toggle="modal" data-target="#loginModal">댓글을 작성하시려면 <font color="red">로그인</font> 하시기 바랍니다.
@@ -291,15 +222,17 @@ if (session.getAttribute("MEMBER_NAME") != null) {
               <%
                 } else {
               %>
-              <form name="item_reply_write_form" method="post" action="./ItemReplyWriteAction.html">
+              <form name="item_reply_modify_form" method="post" action="./ItemReplyModify.html">
                 <tr>
-                  <td><br>
-                  <br></td>
+                  <td><br> <br></td>
                 </tr>
                 <tr>
-                  <td width="10%"><input type="hidden" name="ITEM_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="ITEM_NUM" value="<%=item.getITEM_NUM()%>" /> <b><%=id%></b></td>
-                  <td width="80%"><textarea name="ITEM_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea></td>
-                  <td width="10%" align="center"><input type="submit" class="btn" name="item_reply_write_form" value="등록"></td>
+                  <td width="10%"><input type="hidden" name="ITEM_REPLY_MEMBER_ID" value="<%=id%>" /> 
+                  <input type="hidden" name="num" value="<%=item.getITEM_NUM()%>" /> 
+                  <b><%=id%></b></td>
+                  <td width="80%"><textarea name="ITEM_REPLY_CONTENT" id="ITEM_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"><%=item_reply.getITEM_REPLY_CONTENT() %></textarea></td>
+                  <input type="hidden" name="ITEM_REPLY_SEQ" value="<%=item_reply.getITEM_REPLY_SEQ()%>">
+                  <td width="10%" align="center"><input type="submit" class="btn" value="수정"></td>
                 </tr>
               </form>
               <%
@@ -309,15 +242,11 @@ if (session.getAttribute("MEMBER_NAME") != null) {
             <!-- 댓글작성 end -->
 
 
-
-
-            <!-- 제품 상세설명 end -->
             <!-- 본문 end -->
           </div>
         </div>
       </div>
     </section>
-
     <footer>
       <div class="container">
         <div class="row">
