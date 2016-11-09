@@ -190,7 +190,7 @@
 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                  <div align="center"><%=bl.getREVIEW_MEMBER_NAME()%>
+                  <div align="center"><%=bl.getREVIEW_MEMBER_ID()%>
                   </div>
                 </td>
 
