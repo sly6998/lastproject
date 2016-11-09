@@ -35,7 +35,7 @@ public class AdviceWriteAction implements Action {
 			System.out.println("상담 게시판 등록 완료");
 
 			forward.setRedirect(true);
-			forward.setPath("./advice_list.html");
+			forward.setPath("./advice_request.html");
 			return forward;
 		} catch (Exception e) {
 			e.printStackTrace();

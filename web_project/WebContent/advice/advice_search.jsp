@@ -81,6 +81,6 @@
         </div>
     </section>
     
-	<%@ include file="../page/footer.jsp"%>
+	
 </body>
 </html>

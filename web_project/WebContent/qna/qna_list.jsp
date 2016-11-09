@@ -64,7 +64,7 @@
 <script src="<%=request.getContextPath()%>/js/custom.js"></script>
 </head>
 <body>
-  <div id="wrapper">
+
     <!-- start header -->
     <header>
       <div class="navbar navbar-default navbar-static-top">
@@ -78,11 +78,11 @@
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
               <li><a href="./mainpage.html">Home</a></li>
-              <li class="active"><a href="./noti_list.html">Noti</a></li>
+              <li ><a href="./noti_list.html">Noti</a></li>
               <li><a href="./catalogue.html">Portfolio</a></li>
               <li><a href="./product_list.html">Product</a></li>
               <li><a href="./review_list.html">Review</a></li>
-              <li><a href="./qna_list.html">QnA</a></li>
+              <li class="active"><a href="./qna_list.html">QnA</a></li>
               <li><a href="./advice_request.html">Contact</a></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Member<b class=" icon-angle-down"></b></a>
                 <ul class="dropdown-menu">
