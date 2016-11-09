@@ -190,7 +190,7 @@
 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                  <div align="center"><%=bl.getQNA_MEMBER_NAME()%>
+                  <div align="center"><%=bl.getQNA_MEMBER_ID()%>
                   </div>
                 </td>
 
@@ -213,15 +213,11 @@
                 <td height="26"></td>
               </tr>
             </table>
-            <%
-              if (id.equals("admin")) {
-            %>
+            
             <p align="right">
               <button class="btn" onclick="location.href='./qna_write.html'">글쓰기</button>
             <p />
-            <%
-              }
-            %>
+            
             <table align="center">
               <!-- [이전] / [1] [2] [3] / [다음] -->
               <tr align="center" height="20">
