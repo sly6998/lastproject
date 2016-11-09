@@ -34,6 +34,7 @@
 <script src="<%=request.getContextPath()%>/js/jquery.flexslider.js"></script>
 <script src="<%=request.getContextPath()%>/js/animate.js"></script>
 <script src="<%=request.getContextPath()%>/js/custom.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function action_f(str) {
 

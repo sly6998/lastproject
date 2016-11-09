@@ -5,7 +5,21 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member_form.css">
 <script src="<%=request.getContextPath()%>/js/join.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>	
+
+
+<script src="<%=request.getContextPath()%>/js/jquery.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
+<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.fancybox.pack.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.fancybox-media.js"></script>
+<script src="<%=request.getContextPath()%>/js/google-code-prettify/prettify.js"></script>
+<script src="<%=request.getContextPath()%>/js/portfolio/jquery.quicksand.js"></script>
+<script src="<%=request.getContextPath()%>/js/portfolio/setting.js"></script>
+<script src="<%=request.getContextPath()%>/js/jquery.flexslider.js"></script>
+<script src="<%=request.getContextPath()%>/js/animate.js"></script>
+<script src="<%=request.getContextPath()%>/js/custom.js"></script>
+<script src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 
 
