@@ -68,7 +68,7 @@
 	});
 	
 	function nowbuy(){
-		var id = <%=id%>;
+		var id = '<%=id%>';
 		if(id == null || id==""){
 			alert('구매하기 위해서는 로그인이 필요합니다.');
 			return;
@@ -87,7 +87,7 @@
 		
 	}
 	function addbasket(){
-		var id = <%=id%>;
+		var id = '<%=id%>';
 		if(id == null || id==""){
 			alert('장바구니 이용시 로그인이 필요합니다.');
 			return;
