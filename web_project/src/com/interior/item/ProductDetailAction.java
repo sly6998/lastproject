@@ -21,6 +21,7 @@ public class ProductDetailAction implements Action {
 
 		ItemDAO notidao = new ItemDAO();
 		ItemBean itemdata = null;
+		List itemreplylist = new ArrayList();
 
 		int item_seq = Integer.parseInt(request.getParameter("item_seq"));//제품 시퀀스
 
@@ -33,6 +34,7 @@ public class ProductDetailAction implements Action {
 		System.out.println("제품 상세보기 성공");
 
 		request.setAttribute("itemdata", itemdata);
+		request.setAttribute("itemreplylist", itemreplylist);
 
 		forward.setRedirect(false);
 		forward.setPath("./product/product_detail.jsp");

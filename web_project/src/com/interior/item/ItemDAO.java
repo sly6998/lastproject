@@ -241,7 +241,6 @@ public class ItemDAO {
 	
 	
 	//여기서 부터 ITEM_REPLY 관련 DAO 입니다..................
-	
 	//ITEM 댓글 삭제
 	public boolean ItemReplyDelete(int num){
 		String sql = "delete from item_reply where item_reply_seq=?";
@@ -287,6 +286,7 @@ public class ItemDAO {
 			pstmt.setInt(3, itemdata.getITEM_REPLY_NUM());
 			
 			
+			
 			result = pstmt.executeUpdate();
 			if(result==0){
 				return false; //0이 실패
@@ -306,17 +306,17 @@ public class ItemDAO {
 	
 	//ITEM 댓글 수정하기
 	public boolean ItemModifyReply(ItemBean modifyreply) {
-	      String sql ="update NOTI_REPLY set noti_reply_member_id=?, noti_reply_content=?, noti_reply_date=sysdate where noti_reply_seq=? and noti_reply_num=? ";
-	      NotiBean noti = null;
+	      String sql ="update item_REPLY set item_reply_member_id=?, item_reply_content=?, item_reply_date=sysdate where item_reply_seq=? and item_reply_num=? ";
+	      ItemBean item = null;
 	      int result = 0;
 	          
 	      try{
 	        con=ds.getConnection();
 	        pstmt = con.prepareStatement(sql);
-	        pstmt.setString(1, modifyreply.getNOTI_REPLY_MEMBER_ID());
-	        pstmt.setString(2, modifyreply.getNOTI_REPLY_CONTENT());
-	        pstmt.setInt(3, modifyreply.getNOTI_REPLY_SEQ());
-	        pstmt.setInt(4, modifyreply.getNOTI_NUM());
+	        pstmt.setString(1, modifyreply.getITEM_REPLY_MEMBER_ID());
+	        pstmt.setString(2, modifyreply.getITEM_REPLY_CONTENT());
+	        pstmt.setInt(3, modifyreply.getITEM_REPLY_SEQ());
+	        pstmt.setInt(4, modifyreply.getITEM_SEQ());
 	        
 	        result = pstmt.executeUpdate();
 	        
@@ -327,7 +327,7 @@ public class ItemDAO {
 	        
 	        return true;
 	      }catch(Exception e){
-	        System.out.println("reply modify error : "+e);
+	        System.out.println("item reply modify error : "+e);
 	      }finally{
 	        if(rs!=null) try{rs.close();}catch(SQLException ex){}
 	        if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
@@ -335,4 +335,107 @@ public class ItemDAO {
 	      }
 	      return false;
 	    }
+	
+	
+	
+	//ITEM 댓글 같이 보기(수정)
+	public ItemBean ItemReplyModifyView(int num1, int num2, HttpServletRequest request) {
+		String sql = "select * from item where item_seq=?";
+		String sql_reply = "select * from item_reply where item_reply_num=? order by item_reply_seq";
+		String modify_reply = "select * from item_reply where item_reply_seq=?";
+		int result = 0;
+		int result_reply = 0;
+		int item_reply_seq = 0;
+		ItemBean item = null;
+		ItemBean modify_re = null;
+		List reply = new ArrayList<>();
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num1);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				result =1;
+				item = new ItemBean();
+				item.setITEM_CONTENT(rs.getString("item_content"));
+				item.setITEM_IMAGE(rs.getString("ITEM_IMAGE"));
+				item.setITEM_NAME(rs.getString("item_name"));
+				item.setITEM_PRICE(rs.getInt("item_price"));
+				item.setITEM_SEQ(rs.getInt("item_seq"));
+				item.setITEM_TYPE_1(rs.getString("item_type_1"));
+				item.setITEM_TYPE_2(rs.getString("item_type_2"));
+				item.setITEM_TYPE_3(rs.getString("item_type_3"));
+				item.setITEM_TYPE_4(rs.getString("item_type_4"));
+				item.setITEM_TYPE_5(rs.getString("item_type_5"));
+
+			}
+			
+			//댓글 불러오기
+			pstmt = con.prepareStatement(sql_reply);
+			pstmt.setInt(1, num1);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				result_reply =1;
+				ItemBean item2 = new ItemBean();
+				item2.setITEM_REPLY_NUM(rs.getInt("ITEM_REPLY_NUM"));
+				item2.setITEM_REPLY_MEMBER_ID(rs.getString("ITEM_REPLY_MEMBER_ID"));
+				item2.setITEM_REPLY_MEMBER_NAME(rs.getString("ITEM_REPLY_MEMBER_NAME"));
+				item2.setITEM_REPLY_CONTENT(rs.getString("ITEM_REPLY_CONTENT"));
+				item2.setITEM_REPLY_DATE(rs.getDate("ITEM_REPLY_DATE"));
+				item2.setITEM_REPLY_SEQ(rs.getInt("ITEM_REPLY_SEQ"));
+				item2.setITEM_REPLY_REF(rs.getInt("ITEM_REPLY_REF"));
+				item2.setITEM_REPLY_LEV(rs.getInt("ITEM_REPLY_LEV"));
+				reply.add(item2);
+			}
+			
+			
+			
+			//수정할 댓글 불러오기
+			pstmt = con.prepareStatement(modify_reply);
+			pstmt.setInt(1, num2);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				modify_re = new ItemBean();
+				modify_re.setITEM_REPLY_NUM(rs.getInt("ITEM_REPLY_NUM"));
+				modify_re.setITEM_REPLY_MEMBER_ID(rs.getString("ITEM_REPLY_MEMBER_ID"));
+				modify_re.setITEM_REPLY_MEMBER_NAME(rs.getString("ITEM_REPLY_MEMBER_NAME"));
+				modify_re.setITEM_REPLY_CONTENT(rs.getString("ITEM_REPLY_CONTENT"));
+				modify_re.setITEM_REPLY_DATE(rs.getDate("ITEM_REPLY_DATE"));
+				modify_re.setITEM_REPLY_SEQ(rs.getInt("ITEM_REPLY_SEQ"));
+				modify_re.setITEM_REPLY_REF(rs.getInt("ITEM_REPLY_REF"));
+				modify_re.setITEM_REPLY_LEV(rs.getInt("ITEM_REPLY_LEV"));
+			}
+			if(result != 1 || result_reply !=1){
+				System.out.println("보여주기 실패");
+				return null;
+			}
+			System.out.println("보여주기 성공");
+			
+			request.setAttribute("replylist", reply);
+			request.setAttribute("modify_re", modify_re);
+			
+			return item;
+			
+		} catch (Exception e) {
+			System.out.println("Show replies error : " + e);
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return null;
+	}
 }
