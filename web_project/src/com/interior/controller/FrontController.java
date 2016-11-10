@@ -432,7 +432,7 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
         e.printStackTrace();
       }
     } else if (command.equals("/review_modify_view.html")) {// review 게시판 글 수정 페이지 이동 & action
-      action = new ReviewModifyView();
+      action = new ReviewModifyView(); 
       try {
         forward = action.execute(request, response);
       } catch (Exception e) {
