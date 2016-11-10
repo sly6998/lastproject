@@ -26,4 +26,13 @@ function review_modify_check(){
 	
 	document.review_modify_form.submit();
 
+	
+	
 }
+
+function submitSrchForm() {
+	document.srchForm.srchKey.value = document.srchForm.srchKey.value.trim();
+	document.srchForm.submit();
+}
+
+

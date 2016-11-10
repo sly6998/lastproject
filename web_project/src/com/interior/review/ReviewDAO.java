@@ -115,10 +115,13 @@ public class ReviewDAO {
 		return null;
 	}
 
-	public int getListCount() {//Review 게시글 총 수
+	public int getListCount(String cond) {//Review 게시글 총 수
 		// TODO Auto-generated method stub
 		int count = 0;
 		String sql = "select count(*) from review";
+		if (cond != null && !cond.equals("")) {
+			sql = sql + " where " + cond;
+		}
 		
 		try{
 			con=ds.getConnection();
@@ -138,14 +141,28 @@ public class ReviewDAO {
 		return count;
 	}
 
-	public List getReviewList(int page, int limit) {//Review 게시글 리스트 보기
+	public List getReviewList(int page, int limit, String cond) {//Review 게시글 리스트 보기
 		// TODO Auto-generated method stub
 		String sql = "select * from " +
 		"(select rownum rnum, review_num, review_member_id, review_member_name," +
 		"review_subject, review_content, review_readcount," +
-		"review_date from " +
+		"review_date, " +
+		" (select count(*) from review_reply bb where  bb.review_reply_num = review_num) as zzzzz from "+
 		"(select * from review order by review_date desc)) " +
 		"where rnum>=? and rnum<=?";
+		
+		String sql_2 = "select * from " +
+				"(select rownum rnum, review_num, review_member_id, review_member_name," +
+				"review_subject, review_content, review_readcount," +
+				"review_date, " +
+				" (select count(*) from review_reply bb where  bb.review_reply_num = review_num) as zzzzz from "+
+				"(select * from review where %s order by review_date desc)) " +
+				"where rnum>=? and rnum<=?";
+		
+		if (cond != null && !cond.equals("")) {
+			sql = String.format(sql_2, cond);
+		}
+		
 		
 		List list = new ArrayList();
 		
@@ -168,6 +185,8 @@ public class ReviewDAO {
 				review.setREVIEW_SUBJECT(rs.getString("REVIEW_SUBJECT"));
 				review.setREVIEW_CONTENT(rs.getString("REVIEW_CONTENT"));
 				review.setREVIEW_DATE(rs.getDate("REVIEW_DATE"));
+				review.setREVIEW_REPLY_AMOUNT(rs.getInt("zzzzz"));
+				
 				list.add(review);
 			}
 			return list;
@@ -292,6 +311,11 @@ public class ReviewDAO {
 					+ "(review_REPLY_MEMBER_ID, review_REPLY_CONTENT, review_REPLY_DATE, review_REPLY_NUM, review_REPLY_SEQ) "
 					+ "values (?,?,sysdate,?,review_reply_seq.NEXTVAL)";
 			
+			/*/////////////////////////////////
+			sql = "insert into qna_reply "
+					+ "(QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM, QNA_REPLY_SEQ) "
+					+ "values (?,?,sysdate,?,qna_reply_seq.NEXTVAL)";
+			*/
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);

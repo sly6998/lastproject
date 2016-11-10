@@ -19,7 +19,16 @@ public class ReviewBean {
 	private int REVIEW_REPLY_REF;
 	private int REVIEW_REPLY_SEQ;
 	private int REVIEW_REPLY_LEV;
+	private int REVIEW_REPLY_AMOUNT;
 	
+	
+	
+	public int getREVIEW_REPLY_AMOUNT() {
+		return REVIEW_REPLY_AMOUNT;
+	}
+	public void setREVIEW_REPLY_AMOUNT(int rEVIEW_REPLY_AMOUNT) {
+		REVIEW_REPLY_AMOUNT = rEVIEW_REPLY_AMOUNT;
+	}
 	public String getREVIEW_MEMBER_ID() {
 		return REVIEW_MEMBER_ID;
 	}

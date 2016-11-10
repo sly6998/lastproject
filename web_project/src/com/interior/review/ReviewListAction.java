@@ -19,11 +19,12 @@ public class ReviewListAction implements Action {
 
 		ReviewDAO reviewdao = new ReviewDAO();
 		List boardlist = new ArrayList();
-
+		response.setContentType("text/html;charset=utf-8");
+		
 		int page = 1;
 		int limit = 10;
 		
-		/* 검색 기능*/
+		/* 검색 기능*/ 
 		String srchKey = request.getParameter("srchKey");
 		String srchFlds = request.getParameter("srchFlds");
 		String cond = null;
@@ -55,8 +56,8 @@ public class ReviewListAction implements Action {
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		int listcount = reviewdao.getListCount();// 총 리스트 수를 받아 옴
-		boardlist = reviewdao.getReviewList(page, limit);// 리스트를 받아옴
+		int listcount = reviewdao.getListCount(cond);// 총 리스트 수를 받아 옴
+		boardlist = reviewdao.getReviewList(page, limit, cond);// 리스트를 받아옴
 
 		// 총 페이지 수
 		int maxpage = (int) ((double) listcount / limit + 0.95);// 0.95를 더해서 올림

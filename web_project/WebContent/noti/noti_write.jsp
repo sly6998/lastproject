@@ -117,15 +117,14 @@
             <!-- 본문 시작 -->
             <div width="100%" align="center">
               <h3 class="heading">공지사항</h3><br><br>
-                <p />
-                <br />
                 <form name="noti_write_form" method="post" action="./NotiWriteAction.html">
-                  <input type="hidden" name="NOTI_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="NOTI_MEMBER_NAME" value="<%=MEMBER_NAME%>" />
+                  <input type="hidden" name="NOTI_MEMBER_ID" value="<%=id%>" /> 
+                  <input type="hidden" name="NOTI_MEMBER_NAME" value="<%=MEMBER_NAME%>" />
                   <table>
                     <tr>
                       <td><input name="NOTI_SUBJECT" class="form-control" type="text" placeholder="제목을 입력하세요." size="100%" /><br />
                         <p></td>
-                    </tr>
+                    </tr> 
 
                     <TR>
                       <td><textarea name="NOTI_CONTENT" id="contents"></textarea></td>

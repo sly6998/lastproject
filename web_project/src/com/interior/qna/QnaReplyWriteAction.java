@@ -37,7 +37,7 @@ public class QnaReplyWriteAction implements Action {
 			}
 
 			System.out.println("--QNA 댓글 등록 완료--");
-			System.out.println("***");
+			
 
 			forward.setRedirect(true);
 			forward.setPath("./qna_detail.html?QNA_NUM="+num2);

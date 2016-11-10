@@ -146,7 +146,7 @@
               <hr style="border: solid 2px #eeeeee; margin-top: 50px;"width="100%">
               <div align="center">
                 <%
-                  if (id.equals(qna.getQNA_REPLY_MEMBER_ID()) || id.equals("admin")) {
+                  if (id.equals(qna.getQNA_MEMBER_ID()) || id.equals("admin")) {
                 %>
                 <input class="btn" type="submit" value="수정">&nbsp;&nbsp; <input class="btn" type="button" value="삭제"
                   onclick="location.href='./QnaDeleteAction.html?QNA_NUM=<%=qna.getQNA_NUM()%>'">&nbsp;&nbsp;
@@ -193,7 +193,7 @@
               <%
                 }
               %>
-            </form>
+            </form>	
             <!-- 댓글보기 end -->
 
 

@@ -21,6 +21,8 @@ public class ReviewWriteAction implements Action {
 		try {
 
 			reviewdata.setREVIEW_MEMBER_ID((String)request.getParameter("REVIEW_MEMBER_ID"));
+			reviewdata.setREVIEW_MEMBER_NAME((String)request.getParameter("REVIEW_MEMBER_NAME"));
+			
 			reviewdata.setREVIEW_SUBJECT((String)request.getParameter("REVIEW_SUBJECT"));
 			reviewdata.setREVIEW_CONTENT((String)request.getParameter("REVIEW_CONTENT"));
 

@@ -204,6 +204,7 @@ Select * from order_list;
 Select * from qna_board;
 Select * from qna_reply 
 Select * from review;
+Select * from review_reply;
 select * from NOTI_REPLY;
 
 
@@ -213,6 +214,7 @@ create sequence member_info_seq start with 1 increment by 1;
 create sequence noti_seq start with 1 increment by 1;
 create sequence review_seq start with 1 increment by 1;
 create sequence qna_board_seq start with 1 increment by 1;
+create sequence qna_reply_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1;
 
 /* drop sequence(시퀀스 삭제)*/
@@ -222,15 +224,21 @@ drop sequence noti_seq;
 drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
+drop sequnece qna_reply_seq;
 
 /*테스트*/
-select * from 
-(select rownum rnum, noti_num, NOTI_MEMBER_NAME, noti_subject, noti_content, 
-noti_readcount, noti_date from  
-(select * from noti where %s order by  
-noti_date desc))
-where rnum>=1 and rnum<=10;
+insert into review_reply 
+(review_REPLY_MEMBER_ID, review_REPLY_CONTENT, review_REPLY_DATE, review_REPLY_NUM, review_REPLY_SEQ)
+values ('gksrudxor','내용1',sysdate,1,review_reply_seq.NEXTVAL)
 
+select sequence qna_board_seq
+
+insert into qna_reply 
+(qna_REPLY_MEMBER_ID, qna_REPLY_CONTENT, qna_REPLY_DATE, qna_REPLY_NUM, qna_REPLY_SEQ)
+values ('gksrudxor','내용1',sysdate,14,qna_reply_seq.NEXTVAL)
+
+
+sELECT* FROM USER_SEQUENCES
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
 select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info; /*복호화*/

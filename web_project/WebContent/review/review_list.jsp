@@ -50,7 +50,7 @@
 <!-- Theme skin -->
 <link href="<%=request.getContextPath()%>/skins/default.css" rel="stylesheet" />
 <!-- Script -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/noti.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/review.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
@@ -78,10 +78,10 @@
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
               <li><a href="./mainpage.html">Home</a></li>
-              <li class="active"><a href="./noti_list.html">Noti</a></li>
+              <li ><a href="./noti_list.html">Noti</a></li>
               <li><a href="./catalogue.html">Portfolio</a></li>
               <li><a href="./product_list.html">Product</a></li>
-              <li><a href="./review_list.html">Review</a></li>
+              <li class="active"><a href="./review_list.html">Review</a></li>
               <li><a href="./qna_list.html">QnA</a></li>
               <li><a href="./advice_request.html">Contact</a></li>
               <li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Member<b class=" icon-angle-down"></b></a>
@@ -139,15 +139,15 @@
         <div class="row">
           <div class="col-lg-12">
             <!-- 본문 시작 -->
-            <h3 class="heading">공지사항</h3>
+            <h3 class="heading">리뷰게시판</h3>
             <!-- 검색 기능 추가 -->
             <div width="100%" align="right">
               <form name="srchForm" action="./review_list.html" method="post">
                 <select name="srchFlds" class="form-control-u" style="width: 80px;">
                   <option value="all" <%=srchFlds.equals("all") ? "selected='selected'" : ""%>>모두</option>
                   <option value="sub" <%=srchFlds.equals("sub") ? "selected='selected'" : ""%>>제목</option>
-                  <option value="au" <%=srchFlds.equals("au") ? "selected='selected'" : ""%>>글쓴이</option>
-                  <option value="con" <%=srchFlds.equals("con") ? "selected='selected'" : ""%>>내용</option>
+	                  <option value="au" <%=srchFlds.equals("au") ? "selected='selected'" : ""%>>글쓴이</option>
+	                  <option value="con" <%=srchFlds.equals("con") ? "selected='selected'" : ""%>>내용</option>
                 </select> <input type="text" name="srchKey" class="form-control-u" style="width: 250px" maxlength="50" value="<%=srchKey%>" /> <input type="button" value="검색" class="btn"
                   onClick="submitSrchForm()" />
               </form>
@@ -183,14 +183,20 @@
                   ReviewBean bl = (ReviewBean) boardList.get(i);
               %>
               <tr align="center" valign="middle" style="border: 1px solid #ddd;" onmouseover="this.style.backgroundColor='#F8F8F8'">
-                <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getREVIEW_NUM()%></td>
+                <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                	<%=bl.getREVIEW_NUM()%>
+                </td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>" style='text-decoration: none;'><%=bl.getREVIEW_SUBJECT()%>
-                </a></td>
+                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                	<a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>" style='text-decoration: none;'>
+                	<%=bl.getREVIEW_SUBJECT()%>
+                	</a>
+                	&nbsp;[<%= bl.getREVIEW_REPLY_AMOUNT() %>]
+                </td>
 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                  <div align="center"><%=bl.getREVIEW_MEMBER_ID()%>
+                  <div align="center"><%=bl.getREVIEW_MEMBER_NAME()%>
                   </div>
                 </td>
 
@@ -209,25 +215,16 @@
               <%
                 }
               %>
-              <tr>
-                <td height="26"></td>
-              </tr>
+             
             </table>
-            <%-- else구문 추가해야할듯. <%
-              if (id.equals("admin")) {
-            %>
-            <p align="right">
-              <button class="btn" onclick="location.href='./review_write.html'">글쓰기</button>
-            <p />
-            <%
-              }
-            %> --%>
-            <table align="center">
+
+
+            
+<table width="100%">
+<tr>
+<td >
               <!-- [이전] / [1] [2] [3] / [다음] -->
-              <tr align="center" height="20">
-                <td colspan="3" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                
-                  <%
+                 <%
                     if (nowpage <= 1) {
                   %> [이전]&nbsp; <%
    } else {
@@ -250,9 +247,21 @@
  %> <a href="./review_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
    }
  %>
-                
-            </table>
-            <!-- 본문 end -->
+      
+</td>
+
+
+            
+<td align="right">
+<button class="btn" onclick="location.href='./review_write.html'">글쓰기</button>
+</td>
+</tr>
+</table>
+
+            
+
+
+
           </div>
         </div>
       </div>
