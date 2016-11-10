@@ -12,7 +12,7 @@
 
 
 <div class="text-center">
-	<div class="member_logo">Modify</div>
+	<div class="member_logo" style="margin-top: 100px; margin-bottom: 100px;">Modify</div>
 	<div class="login-form-2">
 		<form id="mypage_form" name="mypage_form" class="text-left" method="post" action="./ManagementModify.html">
 			<input type="hidden" id="id_isChk" name="id_isChk" value="1" />
