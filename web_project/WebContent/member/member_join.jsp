@@ -25,7 +25,7 @@
 
 
 <div class="text-center" style="padding:50px 0">
-	<div class="member_logo">register</div>
+	<div class="member_logo" style="margin-top: 50px; margin-bottom: 150px;">Register</div>
 	<div class="login-form-1">
 		<form id="joinform" name="joinform" class="text-left" method="post" action="./MemberJoinAction.html">
 			<input type="hidden" id="id_isChk" name="id_isChk" value="1" />

@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div class="text-center" style="padding: 50px 0">
-		<div class="member_logo">Login</div>
+		<div class="member_logo" style="margin-top: 50px; margin-bottom: 100px;">Login</div>
 		<div class="login-form-1">
 			<form name="loginform" class="text-left" method="post" action="./MemberLoginAction.html">
 				<div class="login-form-main-message"></div>
