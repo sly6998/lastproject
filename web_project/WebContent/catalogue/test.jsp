@@ -95,7 +95,8 @@
       </div>
     </header>
     <!-- end header -->
-
+    
+    <!-- 본문 시작 -->
     <section id="featured">
       <!-- start slider -->
       <div class="container">
@@ -115,11 +116,11 @@
                   </li>
               </ul>
             </div>
-            <!-- end slider -->
+            <!-- end slider 슬라이더 끝 -->
           </div>
         </div>
       </div>
-    </section>
+     </section>
     
     
     <section class="callaction">
@@ -129,7 +130,7 @@
             <div class="big-cta">
               <div class="cta-text">
                 <h2>
-                  <span>Moderna</span> Interior Project
+                  <span>Mordena</span> Interior Portfolio since 2016
                 </h2>
               </div>
             </div>
@@ -163,25 +164,25 @@
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="STUDYROOM DESIGN" href="img/works/work7.jpg"> <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="STUDYROOM DESIGN" href="../img/works/work7.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="img/works/work7.jpg"
+                  </a> <!-- Thumb Image and Description --> <img src="../img/works/work7.jpg"
                     alt="Try to let your children dream fantastic future by themselves.<br/>당신의 아이들이 스스로 환상적인 미래를 꿈꾸게 하세요.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BATHROOM DESIGN" href="img/works/work6.jpg"> <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BATHROOM DESIGN" href="../img/works/work6.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="img/works/work6.jpg"
+                  </a> <!-- Thumb Image and Description --> <img src="../img/works/work6.jpg"
                     alt="You can get calmness. Have time to recharge yourself.<br/>모던아의 욕실에서 평온함과 재충전의 시간을 가지세요.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KITCHEN DESIGN" href="img/works/work8.jpg"> <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KITCHEN DESIGN" href="../img/works/work8.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="img/works/work8.jpg"
+                  </a> <!-- Thumb Image and Description --> <img src="../img/works/work8.jpg"
                     alt="Delicious, Sweety, Tasty, Amazing, Comfortable, what you need more?<br/>맛있고 달콤하고 환상적인 음식, 편안한 주방. 모던아의 주방입니다.">
                   </li>
                   <!-- End Item Project -->
@@ -190,120 +191,10 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
-
-
-
-
-
-
-
-
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="widget">
-              <h5 class="widgetheading">Get in touch with us</h5>
-              <address>
-                <strong>Moderna company Inc</strong><br> Modernbuilding suite V124, AB 01<br> Someplace 16425 Earth
-              </address>
-              <p>
-                <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br> <i class="icon-envelope-alt"></i> email@domainname.com
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="widget">
-              <h5 class="widgetheading">Pages</h5>
-              <ul class="link-list">
-                <li><a href="#">Press release</a></li>
-                <li><a href="#">Terms and conditions</a></li>
-                <li><a href="#">Privacy policy</a></li>
-                <li><a href="#">Career center</a></li>
-                <li><a href="#">Contact us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="widget">
-              <h5 class="widgetheading">Latest posts</h5>
-              <ul class="link-list">
-                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-                <li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="widget">
-              <h5 class="widgetheading">Flickr photostream</h5>
-              <div class="flickr_badge">
-                <script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-              </div>
-              <div class="clear"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="sub-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="copyright">
-                <p>&copy; Moderna Theme. All right reserved.</p>
-                <div class="credits">
-                  <!-- 
-                                All the links in the footer should remain intact. 
-                                You can delete the links only if you purchased the pro version.
-                                Licensing information: https://bootstrapmade.com/license/
-                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Moderna
-                            -->
-                  <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="social-network">
-                <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-  <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-
-  <!-- 회원가입 모달 -->
-  <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content"></div>
-    </div>
-  </div>
-  <!-- 로그인 모달 -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content"></div>
-    </div>
-  </div>
-  <!-- id찾기 모달 -->
-  <div class="modal fade" id="idModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content"></div>
-    </div>
-  </div>
-  <!-- pw찾기 모달 -->
-  <div class="modal fade" id="pwdModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content"></div>
-    </div>
-  </div>
-</body>
+    
+    
+    
+</body> 
 </html>

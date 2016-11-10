@@ -232,6 +232,7 @@ create sequence item_seq start with 1 increment by 1;
 drop sequence member_info_seq;
 drop sequence noti_seq;
 drop sequence review_seq;
+drop sequence review_reply_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
@@ -239,10 +240,10 @@ drop sequence item_seq;
 drop sequence item_reply_seq;
 
 
-
+/*test*/
 select * from noti_reply where noti_reply_seq=28 order by noti_reply_seq;
 select * from noti_reply;
-
+select * from USER_SEQUENCES
 
 /* 데이터베이스 암호화 복호화 (삭제 하지 마세요)*/
 select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) from member_info; /*복호화*/
