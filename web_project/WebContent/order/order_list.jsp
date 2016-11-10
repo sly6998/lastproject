@@ -153,11 +153,11 @@
                   OrderBean ol = (OrderBean) orderlist.get(i);
               %>
               <tr>
-                <td><%=ol.getORDER_TRADE_NUM()%></td>
-                <td><%=ol.getORDER_ITEM_NAME()%></td>
-                <td><div align="center"><%=ol.getORDER_ITEM_PRICE_SUM()%></div></td>
-                <td><div align="center"><%=ol.getORDER_DATE()%></div></td>
-                <td><div align="center">
+                <td align="center"><%=ol.getORDER_TRADE_NUM()%></td>
+                <td align="center"><%=ol.getORDER_ITEM_NAME()%></td>
+                <td align="center"><div align="center"><%=String.format("%,d", ol.getORDER_ITEM_PRICE_SUM())%> 원</div></td>
+                <td align="center"><div align="center"><%=ol.getORDER_DATE()%></div></td>
+                <td align="center"><div align="center">
                     <a href="./orderDetail.html?trade_num=<%=ol.getORDER_TRADE_NUM()%>">조회</a>
                   </div></td>
               </tr>
