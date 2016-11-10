@@ -151,7 +151,7 @@
               <%
                 for (int i = 0; i < orderlist.size(); i++) {
                   OrderBean ol = (OrderBean) orderlist.get(i);
-              %>
+              %> 
               <tr>
                 <td align="center"><%=ol.getORDER_TRADE_NUM()%></td>
                 <td align="center"><%=ol.getORDER_ITEM_NAME()%></td>
