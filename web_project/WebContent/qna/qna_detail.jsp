@@ -198,6 +198,7 @@
 
 
             <!-- 댓글 작성 -->
+            <form name="qna_reply_write_form" method="post" action="./QnaReplyWriteAction.html">
             <table width="100%">
               <%
                 if (id == "" || id == null || id.equals("")) {
@@ -213,7 +214,8 @@
               <%
                 } else {
               %>
-              <form name="qna_reply_write_form" method="post" action="./QnaReplyWriteAction.html">
+              
+
                 <tr>
                   <td><br>
                   <br></td>
@@ -227,18 +229,23 @@
                   </td>
                   
                   <td width="80%">
-                  		<textarea name="QNA_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea>
+                  		<textarea name="QNA_REPLY_CONTENT"  style="width: 100%; height: 150px; resize: none;"></textarea>
                   </td>
                   
                   <td width="10%" align="center">	
-                  		<input type="submit" class="btn" onclick="qna_reply_write();" value="등	록">
+                  		<input type="submit" class="btn" onclick="alert('댓글이 등록되었습니다');" value="등	록">
+                  		
+                  		<input type="button" class="btn" value="등록33" onclick="qna_reply_write()">
+                  		<button class="btn" value="등록44"  onclick="qna_reply_write()">등록444</button>
+                  		
                   </td>
-                </tr> 
-              </form>
+                </tr>  
+             
               <%
                 }
               %>
             </table>
+            </form>
             <!-- 댓글작성 end -->
 
 
@@ -247,6 +254,8 @@
         </div>
       </div>
     </section>
+    </div>
+    
     <footer>
       <div class="container">
         <div class="row">
