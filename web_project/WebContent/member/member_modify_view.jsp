@@ -142,6 +142,10 @@
 						<input type="password" class="form-control-1" size="50" id="MEMBER_PWD2" name="MEMBER_PWD2" placeholder="Confirm Password" onfocus="infocus(this)" onblur="valchk(this)">
 						<span class="collapse" id="pwd2_cl"><font color="red">비밀번호가 일치하지 않습니다.</font></span>
 					</div>
+          <div>
+           <input type="text" class="form-control-1" id="MEMBER_EMAIL" size="30" name="MEMBER_EMAIL" placeholder="Email" onfocus="infocus(this)" onblur="valchk(this)" value="<%=member.getMEMBER_EMAIL()%>">
+           <span class="collapse" id="email_cl"><font color="red">이메일 형식이 올바르지 않습니다.</font></span>
+          </div> 
 					
 					<div class="form-group-1">
 						<input type="text" class="form-control-1" id="MEMBER_TEL" size="50" name="MEMBER_TEL" placeholder="Phone Number" onfocus="infocus(this)" onblur="valchk(this)" value="<%=member.getMEMBER_TEL()%>">

@@ -44,18 +44,18 @@ public class SendEmail {
 			InternetAddress from = new InternetAddress() ;
 			
 			
-			from = new InternetAddress("test<sly6998@gmail.com>");
+			from = new InternetAddress("MODERNA<sly6998@gmail.com>");
 			
 			// 이메일 발신자
 			msg.setFrom(from);
 			
 			
 			// 이메일 수신자
-			InternetAddress to = new InternetAddress("sly6998@naver.com");
+			InternetAddress to = new InternetAddress(emailTo);
 			msg.setRecipient(Message.RecipientType.TO, to);
 			
 			// 이메일 제목
-			msg.setSubject("분실 비밀번호 발송", "UTF-8");
+			msg.setSubject("MODERNA 분실 회원정보 발송", "UTF-8");
 			
 			// 이메일 내용 
 			msg.setText(emailContent, "UTF-8");

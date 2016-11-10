@@ -53,6 +53,7 @@ function infocus(element){
 	var el_id = element.id;// Element id
 	var el_v = element.value;// Element value
 	
+	var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var name_re = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
    /*
 	 * 한글이름 2~4글자, 영문이름은 Fistname Lastname 을 사용하므로 2~10글자 입력 후 한칸 띄고 2~10글자를 입력
@@ -87,6 +88,13 @@ function infocus(element){
 			 element.style.borderBottomColor='red';
 			 return;
 		 }
+	 }else if(el_id == 'MEMBER_EMAIL'){
+		 if(el_v == '' || !email_re.test(el_v)){
+			 $('#email_cl').collapse('show');
+			 el_v = el_v.replace(/-/gi,'');
+			 element.style.borderBottomColor='red';
+			 return;
+		 }
 	 }else if(el_id == 'MEMBER_TEL'){
 		 if(el_v == '' || !tel_re.test(el_v)){
 			 $('#tel_cl').collapse('show');
@@ -116,7 +124,7 @@ function valchk(element){
 	 * 한글이름 2~4글자, 영문이름은 Fistname Lastname 을 사용하므로 2~10글자 입력 후 한칸 띄고 2~10글자를 입력
 	 * 받는다 (영문 2~10글자 (공백) 영문 2~10글자 형식)
 	 */
-	 
+	 var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	 var tel_re = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	 var id_re =  /^[A-za-z0-9]{5,15}/g;
 	 var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
@@ -158,6 +166,14 @@ function valchk(element){
 		 }
 		 $('#pwd2_cl').collapse('hide');
 		 element.style.borderColor="green";
+	 }else if(el_id == 'MEMBER_EMAIL'){
+		 if(el_v == '' || !email_re.test(el_v)){
+			 $('#email_cl').collapse('show');
+			 element.style.borderBottomColor='red';
+			 return;
+		 }
+		 $('#email_cl').collapse('hide');
+		 element.style.borderColor="green";	
 	 }else if(el_id == 'MEMBER_TEL'){
 		 if(el_v == '' || !tel_re.test(el_v)){
 			 $('#tel_cl').collapse('show');
@@ -202,6 +218,7 @@ function member_modify(){
 	 var tel_re = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	 var id_re =  /^[A-za-z0-9]{5,15}/g;
 	 var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	 var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
 
 	 if(document.getElementById('MEMBER_ID').value=='' || !id_re.test(document.getElementById('MEMBER_ID').value)){
 			alert('아이디를 형식에 맞게 입력하여 주세요.');
@@ -216,7 +233,10 @@ function member_modify(){
 		document.getElementById('MEMBER_PWD').value='';
 		document.getElementById('MEMBER_PWD2').value='';
 		document.getElementById('MEMBER_PWD').focus();
-		
+	}else if(document.getElementById('MEMBER_EMAIL').value=='' || !email_re.test(document.getElementById('MEMBER_EMAIL').value)){
+		  alert('이메일을 형식에 맞게 입력하여 주세요.');
+		  document.getElementById('MEMBER_EMAIL').value='';
+		  document.getElementById('MEMBER_EMAIL').focus();	
 	}else if(document.getElementById('MEMBER_TEL').value==''|| !tel_re.test(document.getElementById('MEMBER_TEL').value)){
 		alert('전화번호를 형식에 맞게 입력하여 주세요.');
 		document.getElementById('MEMBER_TEL').value='';

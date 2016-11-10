@@ -23,6 +23,7 @@ public class MemberFindPWDAction implements Action {
 		member.setMEMBER_ID(request.getParameter("MEMBER_ID"));
 		member.setMEMBER_NAME(request.getParameter("MEMBER_NAME"));
 		member.setMEMBER_TEL(request.getParameter("MEMBER_TEL"));
+		member.setMEMBER_EMAIL(request.getParameter("MEMBER_EMAIL"));
 		member.setMEMBER_YEAR(Integer.parseInt(request.getParameter("MEMBER_YEAR")));
 		member.setMEMBER_MONTH(Integer.parseInt(request.getParameter("MEMBER_MONTH")));
 		member.setMEMBER_DAY(Integer.parseInt(request.getParameter("MEMBER_DAY")));
@@ -34,9 +35,7 @@ public class MemberFindPWDAction implements Action {
 			String pwd = (String) member.getMEMBER_PWD();
 			String id = (String) member.getMEMBER_ID();
 			
-			System.out.println(id);
-			System.out.println(member.getMEMBER_ID());
-			String emailTO = "";
+			String emailTO = member.getMEMBER_EMAIL();
 			String emailContent = id+" 고객님의 비밀번호는 \n"+pwd+" 입니다.";
 			boolean result = true;
 			

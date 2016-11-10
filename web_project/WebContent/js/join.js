@@ -214,6 +214,7 @@ function infocus(element){
 	 var tel_re = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	 var id_re =  /^[A-za-z0-9]{5,15}/g;
 	 var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	 var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
  
 	 if(document.getElementById('MEMBER_ID').value=='' || !id_re.test(document.getElementById('MEMBER_ID').value)){
 			alert('아이디를 형식에 맞게 입력하여 주세요.');
@@ -230,7 +231,10 @@ function infocus(element){
 		document.getElementById('MEMBER_PWD').value='';
 		document.getElementById('MEMBER_PWD2').value='';
 		document.getElementById('MEMBER_PWD').focus();
-		
+	}else if(document.getElementById('MEMBER_EMAIL').value=='' || !email_re.test(document.getElementById('MEMBER_EMAIL').value)){
+		  alert('이메일을 형식에 맞게 입력하여 주세요.');
+		  document.getElementById('MEMBER_EMAIL').value='';
+		  document.getElementById('MEMBER_EMAIL').focus();
 	}else if(document.getElementById('MEMBER_TEL').value==''|| !tel_re.test(document.getElementById('MEMBER_TEL').value)){
 		alert('전화번호를 형식에 맞게 입력하여 주세요.');
 		document.getElementById('MEMBER_TEL').value='';

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String id = (String) request.getAttribute("id");
+	boolean result = (boolean) request.getAttribute("result");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,9 +24,9 @@
 			<div align="center">
 				<span class="form-control">
 					<font size="4">
-						<%if(id !=""){%>
-						회원님의 ID는 <br><font color="red"><%=id%></font> 입니다.
-						<%}else if(id == ""){%>
+						<%if(result == true){%>
+						가입하신 회원정보 Email로<br>아이디를 전송하였습니다.
+						<%}else if(result == false){%>
 						일치하는 회원정보가 없습니다.
 						<%}%>
 					</font> 

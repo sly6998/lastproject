@@ -22,6 +22,10 @@
 						<input type="text" class="form-control-1" size="30" id="MEMBER_NAME" name="MEMBER_NAME" placeholder="User Name" onfocus="infocus(this)" onblur="valchk(this)">
 						<span class="collapse" id="name_cl"><font color="red">한글 2~4 글자 / 영문 first last </font></span>
 					</div>
+          <div>
+            <input type="text" class="form-control-1" id="MEMBER_EMAIL" size="30" name="MEMBER_EMAIL" placeholder="Email" onfocus="infocus(this)" onblur="valchk(this)">
+            <span class="collapse" id="email_cl"><font color="red">이메일 형식이 올바르지 않습니다.</font></span>
+          </div> 
 					<div>
 						<input type="text" class="form-control-1" id="MEMBER_TEL" size="30" name="MEMBER_TEL" placeholder="Phone Number" onfocus="infocus(this)" onblur="valchk(this)">
 						<span class="collapse" id="tel_cl"><font color="red">전화번호 형식이 올바르지 않습니다.</font></span>

@@ -42,7 +42,7 @@
  function infocus(element){
  	var el_id = element.id;// Element id
  	var el_v = element.value;// Element value
- 	
+ 	var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
  	var tel_re = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
  	var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
  	/* 특수문자 / 문자 / 숫자 포함 형태의 8~15자리 이내의 암호 정규식 */
@@ -59,6 +59,13 @@
  			 element.style.borderBottomColor='red';
  			 return;
  		 }
+ 	}else if(el_id == 'MEMBER_EMAIL'){
+		 if(el_v == '' || !email_re.test(el_v)){
+			 $('#email_cl').collapse('show');
+			 el_v = el_v.replace(/-/gi,'');
+			 element.style.borderBottomColor='red';
+			 return;
+		 }
  	 }else if(el_id == 'MEMBER_TEL'){
  		 if(el_v == '' || !tel_re.test(el_v)){
  			 $('#tel_cl').collapse('show');
@@ -91,6 +98,7 @@
  	 
  	 var tel_re = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
  	 var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+ 	 var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
  	 var el_id = element.id;// Element id
  	 var el_v = element.value;// Element value
  	 
@@ -111,6 +119,14 @@
  		 }
  		 $('#pwd2_cl').collapse('hide');
  		 element.style.borderColor="green";
+ 	}else if(el_id == 'MEMBER_EMAIL'){
+		 if(el_v == '' || !email_re.test(el_v)){
+			 $('#email_cl').collapse('show');
+			 element.style.borderBottomColor='red';
+			 return;
+		 }
+		 $('#email_cl').collapse('hide');
+		 element.style.borderColor="green";
  	 }else if(el_id == 'MEMBER_TEL'){
  		 if(el_v == '' || !tel_re.test(el_v)){
  			 $('#tel_cl').collapse('show');
@@ -152,13 +168,17 @@
 function member_modify(){
 	var tel_re = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 	var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
 
 	if(document.getElementById('MEMBER_PWD').value==''||document.getElementById('MEMBER_PWD2').value=='' || document.getElementById('MEMBER_PWD').value != document.getElementById('MEMBER_PWD2').value || !pwd_re.test(document.getElementById('MEMBER_PWD').value)){
 		alert('비밀번호를 형식에 맞게 입력하여 주세요.');
 		document.getElementById('MEMBER_PWD').value='';
 		document.getElementById('MEMBER_PWD2').value='';
 		document.getElementById('MEMBER_PWD').focus();
-		
+	}else if(document.getElementById('MEMBER_EMAIL').value=='' || !email_re.test(document.getElementById('MEMBER_EMAIL').value)){
+		  alert('이메일을 형식에 맞게 입력하여 주세요.');
+		  document.getElementById('MEMBER_EMAIL').value='';
+		  document.getElementById('MEMBER_EMAIL').focus();	
 	}else if(document.getElementById('MEMBER_TEL').value==''|| !tel_re.test(document.getElementById('MEMBER_TEL').value)){
 		alert('전화번호를 형식에 맞게 입력하여 주세요.');
 		document.getElementById('MEMBER_TEL').value='';

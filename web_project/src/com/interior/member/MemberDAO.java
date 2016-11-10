@@ -32,7 +32,7 @@ public class MemberDAO {
 
 	public boolean joinMember(MemberBean member) {  // 회원가입 action
 		// TODO Auto-generated method stub
-		String sql = "Insert into member_info (member_num, member_name, member_ID, member_pwd, member_addr_1, member_addr_2, member_addr_zip, member_tel, member_gender, member_year, member_month, member_day, member_date) values (member_info_seq.nextval,?,?,PACK_ENCRYPTION_DECRYPTION.FUNC_ENCRYPT(?),?,?,?,?,?,?,?,?,sysdate)";
+		String sql = "Insert into member_info (member_num, member_name, member_ID, member_pwd, member_email, member_addr_1, member_addr_2, member_addr_zip, member_tel, member_gender, member_year, member_month, member_day, member_date) values (member_info_seq.nextval,?,?,PACK_ENCRYPTION_DECRYPTION.FUNC_ENCRYPT(?),?,?,?,?,?,?,?,?,?,sysdate)";
 		int result = 0;
 		
 		try{
@@ -41,14 +41,15 @@ public class MemberDAO {
 			pstmt.setString(1, member.getMEMBER_NAME());
 			pstmt.setString(2, member.getMEMBER_ID());
 			pstmt.setString(3, member.getMEMBER_PWD());
-			pstmt.setString(4, member.getMEMBER_ADDR_1());
-			pstmt.setString(5, member.getMEMBER_ADDR_2());
-			pstmt.setString(6, member.getMEMBER_ADDR_ZIP());
-			pstmt.setString(7, member.getMEMBER_TEL());
-			pstmt.setString(8, member.getMEMBER_GENDER());
-			pstmt.setInt(9, member.getMEMBER_YEAR());
-			pstmt.setInt(10, member.getMEMBER_MONTH());
-			pstmt.setInt(11, member.getMEMBER_DAY());
+			pstmt.setString(4, member.getMEMBER_EMAIL());
+			pstmt.setString(5, member.getMEMBER_ADDR_1());
+			pstmt.setString(6, member.getMEMBER_ADDR_2());
+			pstmt.setString(7, member.getMEMBER_ADDR_ZIP());
+			pstmt.setString(8, member.getMEMBER_TEL());
+			pstmt.setString(9, member.getMEMBER_GENDER());
+			pstmt.setInt(10, member.getMEMBER_YEAR());
+			pstmt.setInt(11, member.getMEMBER_MONTH());
+			pstmt.setInt(12, member.getMEMBER_DAY());
 			result = pstmt.executeUpdate();
 			
 			if(result!=0){
@@ -100,7 +101,7 @@ public class MemberDAO {
 
 	public MemberBean IDfind(MemberBean member) { // 아이디 찾기 action
 		// TODO Auto-generated method stub
-		String sql = "select * from member_info where member_name=? and member_tel=? and member_year=? and member_month=? and member_day=?";
+		String sql = "select * from member_info where member_name=? and member_tel=? and member_email=? and member_year=? and member_month=? and member_day=?";
 		MemberBean mb = new MemberBean();
 		
 		try{
@@ -108,13 +109,16 @@ public class MemberDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, member.getMEMBER_NAME());
 			pstmt.setString(2, member.getMEMBER_TEL());
-			pstmt.setInt(3, member.getMEMBER_YEAR());
-			pstmt.setInt(4, member.getMEMBER_MONTH());
-			pstmt.setInt(5, member.getMEMBER_DAY());
+			pstmt.setString(3, member.getMEMBER_EMAIL());
+			pstmt.setInt(4, member.getMEMBER_YEAR());
+			pstmt.setInt(5, member.getMEMBER_MONTH());
+			pstmt.setInt(6, member.getMEMBER_DAY());
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
 				mb.setMEMBER_ID(rs.getString("MEMBER_ID"));
+				mb.setMEMBER_EMAIL(rs.getString("MEMBER_EMAIL"));
+				
 			}else if(!rs.next()){
 				mb.setMEMBER_ID("");
 			}else{
@@ -134,7 +138,7 @@ public class MemberDAO {
 
 	public MemberBean pwdfind(MemberBean member) { // 비밀번호 찾기 action
 		// TODO Auto-generated method stub
-		String sql = "select PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) as pwd, member_id from member_info where member_ID=? and member_name=? and member_tel=? and member_year=? and member_month=? and member_day=?";
+		String sql = "select PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) as pwd, member_id, member_email from member_info where member_ID=? and member_name=? and member_tel=? and member_email=? and member_year=? and member_month=? and member_day=?";
 		MemberBean mb = new MemberBean();
 		
 		try{
@@ -143,14 +147,16 @@ public class MemberDAO {
 			pstmt.setString(1, member.getMEMBER_ID());
 			pstmt.setString(2, member.getMEMBER_NAME());
 			pstmt.setString(3, member.getMEMBER_TEL());
-			pstmt.setInt(4, member.getMEMBER_YEAR());
-			pstmt.setInt(5, member.getMEMBER_MONTH());
-			pstmt.setInt(6, member.getMEMBER_DAY());
+			pstmt.setString(4, member.getMEMBER_EMAIL());
+			pstmt.setInt(5, member.getMEMBER_YEAR());
+			pstmt.setInt(6, member.getMEMBER_MONTH());
+			pstmt.setInt(7, member.getMEMBER_DAY());
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
 				mb.setMEMBER_ID(rs.getString("member_id"));
 				mb.setMEMBER_PWD(rs.getString("pwd"));
+				mb.setMEMBER_EMAIL(rs.getString("member_email"));
 			}else if(!rs.next()){
 				mb.setMEMBER_PWD("");
 			}else{
@@ -207,7 +213,7 @@ public class MemberDAO {
 	public MemberBean membermodifyview(String ID) {// 마이페이지 보기 action
 		// TODO Auto-generated method stub
 		String sql = "select member_id, member_name, PACK_ENCRYPTION_DECRYPTION.FUNC_DECRYPT(member_pwd) member_pwd, "
-				+ "member_addr_1, member_addr_2, member_addr_zip, member_tel, member_gender, member_year, "
+				+ "member_addr_1, member_addr_2, member_addr_zip, member_email, member_tel, member_gender, member_year, "
 				+ "member_month, member_day from member_info where member_ID=?";
 		
 		try{
@@ -225,6 +231,7 @@ public class MemberDAO {
 			mb.setMEMBER_ADDR_2(rs.getString("MEMBER_ADDR_2"));
 			mb.setMEMBER_ADDR_ZIP(rs.getString("MEMBER_ADDR_ZIP"));
 			mb.setMEMBER_TEL(rs.getString("MEMBER_TEL"));
+			mb.setMEMBER_EMAIL(rs.getString("MEMBER_EMAIL"));
 			mb.setMEMBER_GENDER(rs.getString("MEMBER_GENDER"));
 			mb.setMEMBER_YEAR(rs.getInt("MEMBER_YEAR"));
 			mb.setMEMBER_MONTH(rs.getInt("MEMBER_MONTH"));
@@ -247,18 +254,19 @@ public class MemberDAO {
 		int result = -1;
 		
 		String sql = "update member_info set member_pwd=PACK_ENCRYPTION_DECRYPTION.FUNC_ENCRYPT(?),";
-		sql+="member_addr_1=?, member_addr_2=?, member_addr_zip=?, member_tel=?, member_gender=? where member_ID=?";
+		sql+="member_email=?, member_addr_1=?, member_addr_2=?, member_addr_zip=?, member_tel=?, member_gender=? where member_ID=?";
 		
 		try{
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member.getMEMBER_PWD());
-			pstmt.setString(2, member.getMEMBER_ADDR_1());
-			pstmt.setString(3, member.getMEMBER_ADDR_2());
-			pstmt.setString(4, member.getMEMBER_ADDR_ZIP());
-			pstmt.setString(5, member.getMEMBER_TEL());
-			pstmt.setString(6, member.getMEMBER_GENDER());
-			pstmt.setString(7, ID);
+			pstmt.setString(2, member.getMEMBER_EMAIL());
+			pstmt.setString(3, member.getMEMBER_ADDR_1());
+			pstmt.setString(4, member.getMEMBER_ADDR_2());
+			pstmt.setString(5, member.getMEMBER_ADDR_ZIP());
+			pstmt.setString(6, member.getMEMBER_TEL());
+			pstmt.setString(7, member.getMEMBER_GENDER());
+			pstmt.setString(8, ID);
 			
 			result = pstmt.executeUpdate();
 			

@@ -17,10 +17,18 @@ public class MemberBean {
 	private int MEMBER_DAY;
 	private Date MEMBER_DATE;
 	private int MEMBER_NUM;
+	private String MEMBER_EMAIL;
 	
 	
 	
-	public String getMEMBER_NAME() {
+	
+	public String getMEMBER_EMAIL() {
+    return MEMBER_EMAIL;
+  }
+  public void setMEMBER_EMAIL(String mEMBER_EMAIL) {
+    MEMBER_EMAIL = mEMBER_EMAIL;
+  }
+  public String getMEMBER_NAME() {
 		return MEMBER_NAME;
 	}
 	public void setMEMBER_NAME(String mEMBER_NAME) {
