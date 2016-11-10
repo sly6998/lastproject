@@ -52,6 +52,7 @@ function infocus(element){
 	 var id_re =  /^[A-za-z0-9]{5,15}/g;
 	 var pwd_re = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 	/* 특수문자 / 문자 / 숫자 포함 형태의 8~15자리 이내의 암호 정규식 */
+	 var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
 	 if(el_id == 'MEMBER_NAME'){
 		 if(el_v == '' || !name_re.test(el_v)){
 			 $('#name_cl').collapse('show');
@@ -79,6 +80,13 @@ function infocus(element){
 	 }else if(el_id == 'MEMBER_TEL'){
 		 if(el_v == '' || !tel_re.test(el_v)){
 			 $('#tel_cl').collapse('show');
+			 el_v = el_v.replace(/-/gi,'');
+			 element.style.borderBottomColor='red';
+			 return;
+		 }
+	 }else if(el_id == 'MEMBER_EMAIL'){
+		 if(el_v == '' || !email_re.test(el_v)){
+			 $('#email_cl').collapse('show');
 			 el_v = el_v.replace(/-/gi,'');
 			 element.style.borderBottomColor='red';
 			 return;
@@ -119,6 +127,7 @@ function infocus(element){
 	 
 	 var el_id = element.id;// Element id
 	 var el_v = element.value;// Element value
+	 var email_re = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	 
 	 
 	 if(el_id == 'MEMBER_NAME'){
@@ -153,6 +162,15 @@ function infocus(element){
 		 }
 		 $('#pwd2_cl').collapse('hide');
 		 element.style.borderColor="green";
+	 }else if(el_id == 'MEMBER_EMAIL'){
+		 if(el_v == '' || !email_re.test(el_v)){
+			 $('#email_cl').collapse('show');
+			 element.style.borderBottomColor='red';
+			 return;
+		 }
+		 el_v = el_v.replace(/-/gi,'');
+		 $('#email_cl').collapse('hide');
+		 element.style.borderColor="green";
 	 }else if(el_id == 'MEMBER_TEL'){
 		 if(el_v == '' || !tel_re.test(el_v)){
 			 $('#tel_cl').collapse('show');
@@ -161,8 +179,7 @@ function infocus(element){
 		 }
 		 el_v = el_v.replace(/-/gi,'');
 		 $('#tel_cl').collapse('hide');
-		 element.style.borderColor="green";
-		 
+		 element.style.borderColor="green";	 
 	 }else if(el_id == 'MEMBER_ZIP'){
 		 if(el_v == ''){
 			 $('#zip_cl').collapse('show');
