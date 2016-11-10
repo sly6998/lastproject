@@ -198,7 +198,7 @@
             <hr width="100%">
 
             <table class="table" style="width: 70%;">
-              <tr align="center">
+              <tr align="center" style="background-color: #EFEFEF">
                 <td style="font-size: 12pt; font-weight: bold; width: 250px;" align="center">주문번호</td>
                 <td style="font-size: 12pt; font-weight: bold;" align="center">결제방법</td>
                 <td style="font-size: 12pt; font-weight: bold;" align="center" width="100">결제금액</td>

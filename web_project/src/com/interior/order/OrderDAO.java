@@ -199,17 +199,16 @@ public class OrderDAO {
 		return null;
 	}
 
-	public List getOrderDetail(String id, String trade_num) {
+	public List getOrderDetail(String trade_num) {
 		// TODO Auto-generated method stub
-		String sql = "select * from ORDER_LIST where ORDER_MEMBER_ID = ? and ORDER_TRADE_NUM = ? order by ORDER_DATE desc";
+		String sql = "select * from ORDER_LIST where ORDER_TRADE_NUM = ? order by ORDER_DATE desc";
 		
 		List list = new ArrayList();
 		
 		try{
 			con=ds.getConnection();
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2,trade_num);
+			pstmt.setString(1,trade_num);
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()){

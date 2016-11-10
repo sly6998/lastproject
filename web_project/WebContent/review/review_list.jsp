@@ -78,7 +78,7 @@
           <div class="navbar-collapse collapse ">
             <ul class="nav navbar-nav">
               <li><a href="./mainpage.html">Home</a></li>
-              <li ><a href="./noti_list.html">Noti</a></li>
+              <li><a href="./noti_list.html">Noti</a></li>
               <li><a href="./catalogue.html">Portfolio</a></li>
               <li><a href="./product_list.html">Product</a></li>
               <li class="active"><a href="./review_list.html">Review</a></li>
@@ -146,8 +146,8 @@
                 <select name="srchFlds" class="form-control-u" style="width: 80px;">
                   <option value="all" <%=srchFlds.equals("all") ? "selected='selected'" : ""%>>모두</option>
                   <option value="sub" <%=srchFlds.equals("sub") ? "selected='selected'" : ""%>>제목</option>
-	                  <option value="au" <%=srchFlds.equals("au") ? "selected='selected'" : ""%>>글쓴이</option>
-	                  <option value="con" <%=srchFlds.equals("con") ? "selected='selected'" : ""%>>내용</option>
+                  <option value="au" <%=srchFlds.equals("au") ? "selected='selected'" : ""%>>글쓴이</option>
+                  <option value="con" <%=srchFlds.equals("con") ? "selected='selected'" : ""%>>내용</option>
                 </select> <input type="text" name="srchKey" class="form-control-u" style="width: 250px" maxlength="50" value="<%=srchKey%>" /> <input type="button" value="검색" class="btn"
                   onClick="submitSrchForm()" />
               </form>
@@ -183,16 +183,11 @@
                   ReviewBean bl = (ReviewBean) boardList.get(i);
               %>
               <tr align="center" valign="middle" style="border: 1px solid #ddd;" onmouseover="this.style.backgroundColor='#F8F8F8'">
-                <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                	<%=bl.getREVIEW_NUM()%>
-                </td>
+                <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getREVIEW_NUM()%></td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                	<a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>" style='text-decoration: none;'>
-                	<%=bl.getREVIEW_SUBJECT()%>
-                	</a>
-                	&nbsp;[<%= bl.getREVIEW_REPLY_AMOUNT() %>]
-                </td>
+                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>"
+                  style='text-decoration: none;'> <%=bl.getREVIEW_SUBJECT()%>
+                </a> &nbsp;[<%=bl.getREVIEW_REPLY_AMOUNT()%>]</td>
 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
@@ -215,53 +210,51 @@
               <%
                 }
               %>
-             
+
             </table>
-
-
-            
-<table width="100%">
-<tr>
-<td >
-              <!-- [이전] / [1] [2] [3] / [다음] -->
-                 <%
-                    if (nowpage <= 1) {
-                  %> [이전]&nbsp; <%
-   } else {
- %> <a href="./review_list.html?page=<%=nowpage - 1%>">[이전]</a>&nbsp; <%
-   }
- %> <%
-   for (int a = startpage; a <= endpage; a++) {
-     if (a == nowpage) {
- %> [<%=a%>] <%
-   } else {
- %> <a href="./review_list.html?page=<%=a%>">[<%=a%>]
-                </a> &nbsp; <%
-   }
- %> <%
-   }
- %> <%
-   if (nowpage >= maxpage) {
- %> [다음] <%
-   } else {
- %> <a href="./review_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
-   }
- %>
-      
-</td>
-
-
-            
-<td align="right">
-<button class="btn" onclick="location.href='./review_write.html'">글쓰기</button>
-</td>
-</tr>
-</table>
-
-            
-
-
-
+            <div align="right">
+              <button class="btn" onclick="location.href='./review_write.html'">글쓰기</button>
+            </div>
+            <div align="center">
+              <%
+                if (nowpage <= 1) {
+              %>
+              [이전]&nbsp;
+              <%
+                } else {
+              %>
+              <a href="./review_list.html?page=<%=nowpage - 1%>">[이전]</a>&nbsp;
+              <%
+                }
+              %>
+              <%
+                for (int a = startpage; a <= endpage; a++) {
+                  if (a == nowpage) {
+              %>
+              [<%=a%>]
+              <%
+                } else {
+              %>
+              <a href="./review_list.html?page=<%=a%>">[<%=a%>]
+              </a> &nbsp;
+              <%
+                }
+              %>
+              <%
+                }
+              %>
+              <%
+                if (nowpage >= maxpage) {
+              %>
+              [다음]
+              <%
+                } else {
+              %>
+              <a href="./review_list.html?page=<%=nowpage + 1%>">[다음]</a>
+              <%
+                }
+              %>
+            </div>
           </div>
         </div>
       </div>

@@ -213,15 +213,18 @@
                 }
               %>
               </table>
-              	
-           
-<table width="100%">
-<tr>
-<td >            
-
-              <!-- [이전] / [1] [2] [3] / [다음] -->
               
-                  <%
+               <div align="right">
+ <%
+     if (id.equals("admin")) {
+ %>
+<button class="btn" onclick="location.href='./noti_write.html'">글쓰기</button>
+ <%
+       }
+ %>
+  </div> 
+ <div align="center">
+ <%
                     if (nowpage <= 1) {
                   %> [이전]&nbsp; <%
    } else {
@@ -244,19 +247,9 @@
  %> <a href="./noti_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
    }
  %>
- </td>
+ </div>             	
+           
  
- <td align="right">
- <%
-     if (id.equals("admin")) {
- %>
-<button class="btn" onclick="location.href='./noti_write.html'">글쓰기</button>
- <%
-       }
- %>
- </td>
- </tr>
- </table>
 <!-- 본문 end -->
              
             
