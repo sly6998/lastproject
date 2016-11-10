@@ -218,10 +218,21 @@
                   <td><br>
                   <br></td>
                 </tr>
+                
                 <tr>
-                  <td width="10%"><input type="hidden" name="QNA_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="QNA_NUM" value="<%=qna.getQNA_NUM()%>" /> <b><%=id%></b></td>
-                  <td width="80%"><textarea name="QNA_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea></td>
-                  <td width="10%" align="center"><input type="submit" class="btn" name="qna_reply_write_form" value="등록"></td>
+                  <td width="10%">
+                  		<input type="hidden" name="QNA_REPLY_MEMBER_ID" value="<%=id%>" />
+                  		<input type="hidden" name="QNA_NUM" value="<%=qna.getQNA_NUM()%>" /> 
+                  		<b><%=id%></b>
+                  </td>
+                  
+                  <td width="80%">
+                  		<textarea name="QNA_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea>
+                  </td>
+                  
+                  <td width="10%" align="center">	
+                  		<input type="submit" class="btn" onclick="javascript:qna_reply_write()" value="등	록">
+                  </td>
                 </tr>
               </form>
               <%

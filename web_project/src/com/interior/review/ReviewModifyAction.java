@@ -23,7 +23,7 @@ public class ReviewModifyAction implements Action {
 		  try{
 		    reviewdata.setREVIEW_NUM(num);
 		    reviewdata.setREVIEW_SUBJECT(request.getParameter("REVIEW_SUBJECT"));
-		    reviewdata.setREVIEW_CONTENT(request.getParameter("REIVEW_CONTENT"));
+		    reviewdata.setREVIEW_CONTENT(request.getParameter("REVIEW_CONTENT"));
 		    
 		    result = reviewdao.reviewModify(reviewdata);
 		    
@@ -36,7 +36,7 @@ public class ReviewModifyAction implements Action {
 		  System.out.println(" Review 게시판 수정 완료");
 		  
 		  forward.setRedirect(true);
-		  forward.setPath("./review_detail.html?num="+reviewdata.getREVIEW_NUM());
+		  forward.setPath("./review_detail.html?REVIEW_NUM="+reviewdata.getREVIEW_NUM());
 		  
 		  }catch(Exception e){
 		    e.printStackTrace();

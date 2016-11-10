@@ -17,13 +17,6 @@ function qna_write_check(){
 }
 
 
-function qna_reply_write_check(){
-	   
-	   var num = document.qna_reply_write_form.QNA_NUM.value;
-	   
-	   alert('댓글이 작성되었습니다');
-	   document.qna_reply_write_form.submit();
-	}
 
 
 
@@ -31,6 +24,14 @@ function qna_modify_check(){
 	
 	document.qna_modify_form.submit();
 
+}
+
+function qna_reply_write(){
+	
+	alert('댓글이 등록되었습니다.');
+	
+	document.qna_reply_write_form.submit();
+	
 }
 
 function submitSrchForm() {

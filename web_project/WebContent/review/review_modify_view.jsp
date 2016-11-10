@@ -31,7 +31,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
 <!-- Theme skin -->
 <link href="<%=request.getContextPath()%>/skins/default.css" rel="stylesheet" />
 <!-- Script -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/qna.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/review.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.easing.1.3.js"></script>
@@ -140,6 +140,7 @@ if (session.getAttribute("MEMBER_NAME") != null) {
         	<td>
         		<textarea id="contents" name="REVIEW_CONTENT">
         		<%=review.getREVIEW_CONTENT() %>
+        		
         		</textarea>
         	</td>
         </TR>

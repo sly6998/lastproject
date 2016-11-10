@@ -25,7 +25,7 @@ function review_write_check(){
 function review_modify_check(){
 		
 	document.review_modify_form.submit();
-	document.qna_modify_form.submit();
+	
 
 	
 	

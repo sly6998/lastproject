@@ -125,7 +125,11 @@
                   <td><input name="NOTI_SUBJECT" type="text" class="form-control" value="<%=noti.getNOTI_SUBJECT()%>" /><p/></td>
                 </tr>
                 <TR>
-                  <td><textarea id="contents" name="NOTI_CONTENT"><%=noti.getNOTI_CONTENT()%></textarea></td>
+                  <td>
+                 	 <textarea id="contents" name="NOTI_CONTENT">
+                 	 <%=noti.getNOTI_CONTENT()%>
+                  	</textarea>
+                  </td>
                 </TR>
                 <tr>
                   <td align="center"><p /><br /><input type="button" value="수정" class="btn" onclick="noti_modify_check()" />&nbsp;&nbsp;&nbsp; <input type="button" class="btn" value="돌아가기" onclick="location.href='./noti_list.html'" /></td>

@@ -12,7 +12,6 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
-import com.interior.noti.NotiBean;
 
 public class ReviewDAO {
 
