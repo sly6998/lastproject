@@ -62,14 +62,17 @@ public class NotiDAO {
 		// TODO Auto-generated method stub
 		String sql = "select * from " + 	
 		"(select rownum rnum, noti_num, NOTI_MEMBER_NAME, noti_subject, noti_content," +
-		"noti_readcount, noti_date from " +
+		"noti_readcount, noti_date,  " +
+		" (select count(*) from noti_reply bb where  bb.noti_reply_num = noti_num) as zzzzz from "+
 		"(select * from noti order by " +
 		"noti_date desc)) " +
 		"where rnum>=? and rnum<=?";
 
 		String sql_2 = "select * from " +
 				"(select rownum rnum, noti_num, NOTI_MEMBER_NAME, noti_subject, noti_content," +
-				"noti_readcount, noti_date from " +
+				"noti_readcount, noti_date, " +
+				" (select count(*) from noti_reply bb where  bb.noti_reply_num = noti_num) as zzzzz from "+
+				
 				"(select * from noti where %s order by " +
 				"noti_date desc)) " +
 				"where rnum>=? and rnum<=?";
@@ -98,6 +101,7 @@ public class NotiDAO {
 				noti.setNOTI_CONTENT(rs.getString("NOTI_CONTENT"));
 				noti.setNOTI_READCOUNT(rs.getInt("NOTI_READCOUNT"));
 				noti.setNOTI_DATE(rs.getDate("NOTI_DATE"));
+				noti.setNOTI_REPLY_AMOUNT(rs.getInt("zzzzz"));
 				list.add(noti);
 			}
 			return list;

@@ -12,6 +12,7 @@ public class NotiBean {
 	private Date NOTI_DATE;
 	private int NOTI_NUM;
 	
+	
 	//NOTI_REPLY 테이블 컬럼
 	private String NOTI_REPLY_MEMBER_NAME;
 	private String NOTI_REPLY_MEMBER_ID;
@@ -21,8 +22,16 @@ public class NotiBean {
 	private int NOTI_REPLY_REF;
 	private int NOTI_REPLY_LEV;
 	private int NOTI_REPLY_NUM;
+	private int NOTI_REPLY_AMOUNT; 
 	
 	
+	
+	public int getNOTI_REPLY_AMOUNT() {
+		return NOTI_REPLY_AMOUNT;
+	}
+	public void setNOTI_REPLY_AMOUNT(int nOTI_REPLY_AMOUNT) {
+		NOTI_REPLY_AMOUNT = nOTI_REPLY_AMOUNT;
+	}
 	public String getNOTI_MEMBER_ID() {
 		return NOTI_MEMBER_ID;
 	}

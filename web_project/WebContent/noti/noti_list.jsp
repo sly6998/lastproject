@@ -185,9 +185,12 @@
               <tr align="center" valign="middle" style="border: 1px solid #ddd;" onmouseover="this.style.backgroundColor='#F8F8F8'">
                 <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getNOTI_NUM()%></td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><a class="navbar-link" href="./noti_detail.html?NOTI_NUM=<%=bl.getNOTI_NUM()%>" style='text-decoration: none;'><%=bl.getNOTI_SUBJECT()%>
-                </a></td>
-
+                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                	<a class="navbar-link" href="./noti_detail.html?NOTI_NUM=<%=bl.getNOTI_NUM()%>" style='text-decoration: none;'><%=bl.getNOTI_SUBJECT()%>
+               		</a>
+               		&nbsp;[<%=bl.getNOTI_REPLY_AMOUNT() %>]
+               	</td>
+ 
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
                   <div align="center"><%=bl.getNOTI_MEMBER_NAME()%>
@@ -209,24 +212,15 @@
               <%
                 }
               %>
-              <tr>
-                <td height="26"></td>
-              </tr>
-            </table>
-            <%
-              if (id.equals("admin")) {
-            %>
-            <p align="right">
-              <button class="btn" onclick="location.href='./noti_write.html'">글쓰기</button>
-            <p /> 
-            <%
-              }
-            %>
-            <table align="center">
+              </table>
+              	
+           
+<table width="100%">
+<tr>
+<td >            
+
               <!-- [이전] / [1] [2] [3] / [다음] -->
-              <tr align="center" height="20">
-                <td colspan="3" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
-                
+              
                   <%
                     if (nowpage <= 1) {
                   %> [이전]&nbsp; <%
@@ -250,9 +244,23 @@
  %> <a href="./noti_list.html?page=<%=nowpage + 1%>">[다음]</a> <%
    }
  %>
-                
-            </table>
-            <!-- 본문 end -->
+ </td>
+ 
+ <td align="right">
+ <%
+     if (id.equals("admin")) {
+ %>
+<button class="btn" onclick="location.href='./noti_write.html'">글쓰기</button>
+ <%
+       }
+ %>
+ </td>
+ </tr>
+ </table>
+	<!-- 본문 end -->
+            
+            
+            
           </div>
         </div>
       </div>

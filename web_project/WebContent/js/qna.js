@@ -21,7 +21,7 @@ function qna_reply_write_check(){
 	   
 	   var num = document.qna_reply_write_form.QNA_NUM.value;
 	   
-	   
+	   alert('댓글이 작성되었습니다');
 	   document.qna_reply_write_form.submit();
 	}
 
