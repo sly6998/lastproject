@@ -106,18 +106,18 @@
               <ul class="slides">
                 <li><img src="<%=request.getContextPath()%>/img/slides/img2.jpg" alt="" />
                   <div class="flex-caption">
-                    <h3>Team Leader</h3>
-                    <p>Park, Jonghwan from SouthKorea</p>
+                    <h3>for your life</h3>
+                    <p>designed by Park, Jonghwan</p>
                   </div></li>
                 <li><img src="<%=request.getContextPath()%>/img/slides/img3.jpg" alt="" />
                   <div class="flex-caption">
-                    <h3>View Developer</h3>
-                    <p>Han, Gyeongtaek from SouthKorea</p>
+                    <h3>by your life</h3>
+                    <p>designed by Han, Gyeongtaek</p>
                   </div></li>
                 <li><img src="<%=request.getContextPath()%>/img/slides/img5.jpg" alt="" />
                   <div class="flex-caption">
-                    <h3>DB Developer</h3>
-                    <p>Yun, Jeongjun from SouthKorea</p>
+                    <h3>of your life</h3>
+                    <p>designed by Yun, Jeongjun</p>
                   </div></li>
               </ul>
             </div>
@@ -156,37 +156,37 @@
                   <li class="col-lg-3 design" data-id="id-0" data-type="web">
                     <div class="item-thumbs">
                       <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                      <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1" href="<%=request.getContextPath()%>/img/works/1.jpg"> <span class="overlay-img"></span> <span
+                      <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BEDROOM DESIGN" href="<%=request.getContextPath()%>/img/works/work1.jpg"> <span class="overlay-img"></span> <span
                         class="overlay-img-thumb font-icon-plus"></span>
                       </a>
                       <!-- Thumb Image and Description -->
-                      <img src="<%=request.getContextPath()%>/img/works/1.jpg"
-                        alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                      <img src="<%=request.getContextPath()%>/img/works/work1.jpg"
+                        alt="We always try to design for you have sweet dream and night. Just contact us right now.<br/>모던아는 항상 당신에게 달콤한 꿈과 밤을 주는 침실을 위해 최선을 다합니다.">
                     </div>
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2" href="img/works/2.jpg"> <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="STUDYROOM DESIGN" href="img/works/work7.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="img/works/2.jpg"
-                    alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </a> <!-- Thumb Image and Description --> <img src="img/works/work7.jpg"
+                    alt="Try to let your children dream fantastic future by themselves.<br/>당신의 아이들이 스스로 환상적인 미래를 꿈꾸게 하세요.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3" href="img/works/3.jpg"> <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BATHROOM DESIGN" href="img/works/work6.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="img/works/3.jpg"
-                    alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </a> <!-- Thumb Image and Description --> <img src="img/works/work6.jpg"
+                    alt="You can get calmness. Have time to recharge yourself.<br/>모던아의 욕실에서 평온함과 재충전의 시간을 가지세요.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4" href="img/works/4.jpg"> <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KITCHEN DESIGN" href="img/works/work8.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="img/works/4.jpg"
-                    alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </a> <!-- Thumb Image and Description --> <img src="img/works/work8.jpg"
+                    alt="Delicious, Sweety, Tasty, Amazing, Comfortable, what you need more?<br/>맛있고 달콤하고 환상적인 음식, 편안한 주방. 모던아의 주방입니다.">
                   </li>
                   <!-- End Item Project -->
                 </ul>
