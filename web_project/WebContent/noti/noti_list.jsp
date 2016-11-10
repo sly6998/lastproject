@@ -182,27 +182,29 @@
                 for (int i = 0; i < boardList.size(); i++) {
                   NotiBean bl = (NotiBean) boardList.get(i);
               %>
-              <tr align="center" valign="middle" style="border: 1px solid #ddd;" onmouseover="this.style.backgroundColor='#F8F8F8'">
-                <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getNOTI_NUM()%></td>
+              <tr align="center" valign="middle">
+                <td height="23" >
+                	<%=bl.getNOTI_NUM()%>
+                </td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                 	<a class="navbar-link" href="./noti_detail.html?NOTI_NUM=<%=bl.getNOTI_NUM()%>" style='text-decoration: none;'><%=bl.getNOTI_SUBJECT()%>
                		</a>
                		&nbsp;[<%=bl.getNOTI_REPLY_AMOUNT() %>]
                	</td>
  
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                   <div align="center"><%=bl.getNOTI_MEMBER_NAME()%>
                   </div>
                 </td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                   <div align="center">
                     <%=bl.getNOTI_DATE()%></div>
                 </td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                   <div align="center"><%=bl.getNOTI_READCOUNT()%>
                   </div>
                 </td>

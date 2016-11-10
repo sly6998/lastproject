@@ -231,7 +231,7 @@
                   </td>
                   
                   <td width="10%" align="center">	
-                  		<input type="submit" class="btn" onclick="javascript:qna_reply_write()" value="등	록">
+                  		<input type="submit" class="btn" onclick="qna_reply_write();" value="등	록">
                   </td>
                 </tr> 
               </form>

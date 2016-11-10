@@ -28,7 +28,9 @@ function qna_modify_check(){
 
 function qna_reply_write(){
 	
-	alert('댓글이 등록되었습니다.');
+	alert("댓글이 등록되었습니다.");
+	System.out.println("qna댓글등록 성공!")
+	
 	
 	document.qna_reply_write_form.submit();
 	
