@@ -6,7 +6,7 @@
 <script src="<%=request.getContextPath()%>/js/pwdFind.js"></script>
 
 <div class="text-center" style="padding:50px 0">
-	<div class="member_logo">Search</div>
+	<div class="member_logo" style="margin-top: 50px; margin-bottom: 100px;">Search</div>
 	<div class="login-form-1">
 		<form id="pwd_search_form" name="pwd_search_form" class="text-left" method="post" action="./MemberFindPWDAction.html">
 			<div class="login-form-main-message"></div>
