@@ -154,8 +154,8 @@ $(function(){
                 <%
                   if (id.equals(noti.getNOTI_REPLY_MEMBER_ID()) || id.equals("admin")) {
                 %>
-                <input class="btn" type="submit" value="수정">&nbsp;&nbsp; <input class="btn" type="button" value="삭제"
-                  onclick="location.href='./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>'">&nbsp;&nbsp;
+                <input class="btn" type="submit" value="수정">&nbsp;&nbsp; 
+                <input class="btn" type="button" value="삭제"  onclick="location.href='./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>'">&nbsp;&nbsp;
                 <%
                   }
                 %>
@@ -226,7 +226,8 @@ $(function(){
                   <b><%=id%></b></td>
                   <td width="80%"><textarea name="NOTI_REPLY_CONTENT" id="NOTI_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"><%=modify_reply.getNOTI_REPLY_CONTENT() %></textarea></td>
                   <input type="hidden" name="NOTI_REPLY_SEQ" value="<%=modify_reply.getNOTI_REPLY_SEQ()%>">
-                  <td width="10%" align="center"><input type="submit" class="btn" value="수정"></td>
+                  <td width="10%" align="center">
+                  <input type="submit" class="btn" value="수정" onclick="alert('댓글이 수정되었습니다');"></td>
                 </tr>
               </form>
               <%

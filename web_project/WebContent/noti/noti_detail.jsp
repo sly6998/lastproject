@@ -148,8 +148,8 @@
                 <%
                   if (id.equals(noti.getNOTI_REPLY_MEMBER_ID()) || id.equals("admin")) {
                 %>
-                <input class="btn" type="submit" value="수정">&nbsp;&nbsp; <input class="btn" type="button" value="삭제"
-                  onclick="location.href='./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>'">&nbsp;&nbsp;
+                <input class="btn" type="submit" value="수정">&nbsp;&nbsp; 
+                <input class="btn" type="button" value="삭제" onclick="location.href='./NotiDeleteAction.html?NOTI_NUM=<%=noti.getNOTI_NUM()%>'">&nbsp;&nbsp;
                 <%
                   }
                 %>

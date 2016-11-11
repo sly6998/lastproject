@@ -226,7 +226,8 @@ $(function(){
                   <b><%=id%></b></td>
                   <td width="80%"><textarea name="QNA_REPLY_CONTENT" id="QNA_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"><%=modify_reply.getQNA_REPLY_CONTENT() %></textarea></td>
                   <input type="hidden" name="QNA_REPLY_SEQ" value="<%=modify_reply.getQNA_REPLY_SEQ()%>">
-                  <td width="10%" align="center"><input type="submit" class="btn" value="수정"></td>
+                  <td width="10%" align="center">
+                  <input type="submit" class="btn" value="수정" onclick="alert('댓글이 수정되었습니다');"></td>
                 </tr>
               </form>
               <%
