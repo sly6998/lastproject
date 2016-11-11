@@ -212,7 +212,7 @@ $(function(){
               <tr>
                 <td><a href="./login.html" data-toggle="modal" data-target="#loginModal">댓글을 작성하시려면 <font color="red">로그인</font> 하시기 바랍니다.
                 </a></td>
-              </tr>
+              </tr> 
               <%
                 } else {
               %>
