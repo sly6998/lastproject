@@ -182,25 +182,25 @@
                 for (int i = 0; i < boardList.size(); i++) {
                   ReviewBean bl = (ReviewBean) boardList.get(i);
               %>
-              <tr align="center" valign="middle">
-                <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getREVIEW_NUM()%></td>
+             <tr align="center" valign="middle">
+                <td align="center"><%=bl.getREVIEW_NUM()%></td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>"
+               <td align="center"><a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>"
                   style='text-decoration: none;'> <%=bl.getREVIEW_SUBJECT()%>
                 </a> &nbsp;[<%=bl.getREVIEW_REPLY_AMOUNT()%>]</td>
 
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                   <div align="center"><%=bl.getREVIEW_MEMBER_NAME()%>
                   </div>
                 </td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                   <div align="center">
                     <%=bl.getREVIEW_DATE()%></div>
                 </td>
 
-                <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
+                <td align="center">
                   <div align="center"><%=bl.getREVIEW_READCOUNT()%>
                   </div>
                 </td>
