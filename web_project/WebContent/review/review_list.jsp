@@ -182,7 +182,7 @@
                 for (int i = 0; i < boardList.size(); i++) {
                   ReviewBean bl = (ReviewBean) boardList.get(i);
               %>
-              <tr align="center" valign="middle" style="border: 1px solid #ddd;" onmouseover="this.style.backgroundColor='#F8F8F8'">
+              <tr align="center" valign="middle">
                 <td height="23" style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><%=bl.getREVIEW_NUM()%></td>
 
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;"><a class="navbar-link" href="./review_detail.html?REVIEW_NUM=<%=bl.getREVIEW_NUM()%>"

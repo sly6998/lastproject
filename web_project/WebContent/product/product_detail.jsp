@@ -224,6 +224,9 @@ if (session.getAttribute("MEMBER_NAME") != null) {
                         <div style="margin-top: 40px;">
                         <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="nowbuy()">바로구매</button>&nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="addbasket()">장바구니</button>
+                        <%if(id.equals("admin")){ %>
+                        <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="location.href='./product_modify.jsp'">제품수정</button>
+                        <%} %>
                         </div>
                   </div>
                 </div>

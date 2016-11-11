@@ -76,53 +76,35 @@
                     } else {
                   %>
                   <li><a href="./basketlist.html">장바구니</a></li>
-                  <li>
-            <a href="./OrderList.html">주문조회</a></li>
-              <li>
-              <a href="./member_modify.html">마이페이지</a>
-              </li>
-              <li>
-              <a href="./logout.html">로그아웃</a>
-              </li>
-              <%
-                }
-              %>
-              </ul>
-            </li>
+                  <li><a href="./OrderList.html">주문조회</a></li>
+                  <li><a href="./member_modify.html">마이페이지</a></li>
+                  <li><a href="./logout.html">로그아웃</a></li>
+                  <%
+                    }
+                  %>
+                </ul></li>
             </ul>
           </div>
         </div>
       </div>
     </header>
     <!-- end header -->
-    
-    <!-- 본문 시작 -->
-    <section id="featured">
-      <!-- start slider -->
+    <!-- 위치 -->
+    <section id="inner-headline">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <!-- Slider -->
-            <div id="main-slider" class="flexslider">
-              <ul class="slides">
-                <li><img src="<%=request.getContextPath()%>/img/slides/img2.jpg" alt="" />
-                  <!-- <div class="flex-caption">
-                    <h3>for your life</h3><p>dgdfgfdh</p>
-                  </div> -->
-                </li>
-                <li><img src="<%=request.getContextPath()%>/img/slides/img3.jpg" alt="" />
-                  </li>
-                <li><img src="<%=request.getContextPath()%>/img/slides/img5.jpg" alt="" />
-                  </li>
-              </ul>
-            </div>
-            <!-- end slider 슬라이더 끝 -->
+            <ul class="breadcrumb">
+              <li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+              <li class="active">Catalog</li>
+            </ul>
           </div>
         </div>
       </div>
-     </section>
-    
-    
+    </section>
+    <!-- 위치 end -->
+    <!-- 본문 시작 -->
+
     <section class="callaction">
       <div class="container">
         <div class="row">
@@ -138,9 +120,9 @@
         </div>
       </div>
     </section>
-    
-    
-    
+
+
+
     <section id="content">
       <div class="container">
         <!-- Portfolio Projects -->
@@ -153,8 +135,8 @@
                   <li class="col-lg-3 design" data-id="id-0" data-type="web">
                     <div class="item-thumbs">
                       <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                      <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BEDROOM DESIGN" href="<%=request.getContextPath()%>/img/works/work1.jpg"> <span class="overlay-img"></span> <span
-                        class="overlay-img-thumb font-icon-plus"></span>
+                      <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BEDROOM DESIGN" href="<%=request.getContextPath()%>/img/works/work1.jpg"> <span class="overlay-img"></span>
+                        <span class="overlay-img-thumb font-icon-plus"></span>
                       </a>
                       <!-- Thumb Image and Description -->
                       <img src="<%=request.getContextPath()%>/img/works/work1.jpg"
@@ -166,16 +148,14 @@
                   <li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="STUDYROOM DESIGN" href="./img/works/work7.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work7.jpg"
-                    alt="Try to let your children dream fantastic future by themselves.<br/>당신의 아이들이 스스로 환상적인 미래를 꿈꾸게 하세요.">
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work7.jpg" alt="Try to let your children dream fantastic future by themselves.<br/>당신의 아이들이 스스로 환상적인 미래를 꿈꾸게 하세요.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BATHROOM DESIGN" href="./img/works/work6.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work6.jpg"
-                    alt="You can get calmness. Have time to recharge yourself.<br/>모던아의 욕실에서 평온함과 재충전의 시간을 가지세요.">
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work6.jpg" alt="You can get calmness. Have time to recharge yourself.<br/>모던아의 욕실에서 평온함과 재충전의 시간을 가지세요.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
@@ -190,23 +170,21 @@
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="LIVINGROOM DESIGN" href="./img/works/work2.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work2.jpg"
-                    alt="All the moments at home will be happy with us.<br/>모던아와 함께라면 가족들과 함께하는 시간이 즐거워집니다.">
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work2.jpg" alt="All the moments at home will be happy with us.<br/>모던아와 함께라면 가족들과 함께하는 시간이 즐거워집니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BEDROOM DESIGN" href="./img/works/work3.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work3.jpg"
-                    alt="Mordena style bedroom.<br/>모던아만의 심플하면서도 깔끔한 디자인의 침실입니다.">
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work3.jpg" alt="Mordena style bedroom.<br/>모던아만의 심플하면서도 깔끔한 디자인의 침실입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="LIVINGROOM DESIGN" href="./img/works/work4.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work4.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work4.jpg" style="width: 260px; height: 195px;"
                     alt="Sunshine, bright livingroom of Moderna<br/>햇살이 반겨주고, 언제나 환한 모던아 스타일의 거실 입니다.">
                   </li>
                   <!-- End Item Project -->
@@ -214,7 +192,7 @@
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="BATHROOM DESIGN" href="./img/works/work5.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work5.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/work5.jpg" style="width: 260px; height: 195px;"
                     alt="Separted shower booth, dried bathroom.<br/>따로 만들어져 더욱 간편한 샤워부스와 건식 욕실입니다.">
                   </li>
                   <!-- End Item Project -->
@@ -222,47 +200,46 @@
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="CAFE DESIGN" href="./img/works/port1.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port1.jpg" style="width:260px; height:195px;"
-                    alt="Enjoy! just Enjoy well!<br/>커피, 맥주, 칵테일로 유명한 EDIYA cafe 입니다.">
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port1.jpg" style="width: 260px; height: 195px;" alt="Enjoy! just Enjoy well!<br/>커피, 맥주, 칵테일로 유명한 EDIYA cafe 입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KIDS DESIGN" href="./img/works/port2.jpg" > <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KIDS DESIGN" href="./img/works/port2.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port2.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port2.jpg" style="width: 260px; height: 195px;"
                     alt="Future of the world, Past of you.<br/>세계의 미래이자, 당신의 과거인 어린이들을 위한 유치원 입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KARAOKE DESIGN" href="./img/works/port3.jpg" > <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KARAOKE DESIGN" href="./img/works/port3.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port3.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port3.jpg" style="width: 260px; height: 195px;"
                     alt="Let's sing and dance all night!<br/>노래부르고 춤 추고 싶어지는 노래방 인테리어 역시 모던아 입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="CAFE DESIGN" href="./img/works/port4.jpg" > <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="CAFE DESIGN" href="./img/works/port4.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port4.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port4.jpg" style="width: 260px; height: 195px;"
                     alt="Would you like some coffee? let's go that cafe!<br/>커피처럼 당신을 따뜻하게 만들어주는 카페 인테리어 역시 모던아 입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KIDS DESIGN" href="./img/works/port5.jpg" > <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="KIDS DESIGN" href="./img/works/port5.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port5.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port5.jpg" style="width: 260px; height: 195px;"
                     alt="Play, Run, Enjoy, Shout at the same time with safe<br/>당신의 소중한 자녀를 항상 안전하게 지켜줄 유치원 인터레어 역시 모던아 입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="GOLF DESIGN" href="./img/works/port6.jpg" > <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="GOLF DESIGN" href="./img/works/port6.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port6.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port6.jpg" style="width: 260px; height: 195px;"
                     alt="I don't know. Where is my stress?<br/>쌓인 스트레스도 저 멀리 날려보내는 골프 연습 룸 디자인도 모던아에 문의하세요.">
                   </li>
                   <!-- End Item Project -->
@@ -270,15 +247,15 @@
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
                     <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="RESTAURANT DESIGN" href="./img/works/port7.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port7.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port7.jpg" style="width: 260px; height: 195px;"
                     alt="I am still hungry because I am in Moderna!<br/>편안함과 깔끔함을 동시에 만족시켜 손님을 더 배고프게 만드는 레스토랑 디자인 입니다.">
                   </li>
                   <!-- End Item Project -->
                   <!-- Item Project and Filter Name -->
                   <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="HOSPITAL DESIGN" href="./img/works/port8.jpg" > <span
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image --> <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="HOSPITAL DESIGN" href="./img/works/port8.jpg"> <span
                       class="overlay-img"></span> <span class="overlay-img-thumb font-icon-plus"></span>
-                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port8.jpg" style="width:260px; height:195px;"
+                  </a> <!-- Thumb Image and Description --> <img src="./img/works/port8.jpg" style="width: 260px; height: 195px;"
                     alt="Han Hospital designed by Moderna designers<br/>유명한 한병원. 화이트 컬러를 사용하여 깔끔한 느낌입니다.">
                   </li>
                   <!-- End Item Project -->
@@ -289,8 +266,8 @@
         </div>
       </div>
     </section>
-    
-        <footer>
+
+    <footer>
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
