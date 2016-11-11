@@ -503,6 +503,110 @@ public class ItemDAO {
 		}
 		return null;
 	}
+
+  public ItemBean ItemModifyView(int num) {
+    String sql = "select * from item where item_seq=?";
+    ItemBean itembean = null;
+    int result = 0;
+    
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setInt(1, num);
+      rs = pstmt.executeQuery();
+
+      while (rs.next()) {
+        itembean = new ItemBean();
+        itembean.setITEM_SEQ(rs.getInt("item_seq"));
+        itembean.setITEM_NAME(rs.getString("item_name"));
+        itembean.setITEM_PRICE(rs.getInt("item_price"));
+        itembean.setITEM_IMAGE(rs.getString("item_image"));
+        itembean.setITEM_TYPE_1(rs.getString("item_type_1"));
+        itembean.setITEM_TYPE_2(rs.getString("item_type_2"));
+        itembean.setITEM_TYPE_3(rs.getString("item_type_3"));
+        itembean.setITEM_TYPE_4(rs.getString("item_type_4"));
+        itembean.setITEM_TYPE_5(rs.getString("item_type_5"));
+        itembean.setITEM_CONTENT(rs.getString("item_content"));
+        
+        return itembean;
+      }
+
+        System.out.println("제품등록 실패");
+        return itembean;
+
+    } catch (Exception e) {
+      System.out.println("Insert Item error : " + e);
+      e.printStackTrace();
+    } finally {
+      if (rs != null)
+        try {
+          rs.close();
+        } catch (SQLException ex) {
+        }
+      if (pstmt != null)
+        try {
+          pstmt.close();
+        } catch (SQLException ex) {
+        }
+      if (con != null)
+        try {
+          con.close();
+        } catch (SQLException ex) {
+        }
+    }
+    return itembean;
+  }
+
+  public ItemBean itemModify(ItemBean itemdata) {
+    String sql = "update item set "
+        + "ITEM_NAME=?, ITEM_PRICE=?, ITEM_TYPE_1=?, ITEM_TYPE_2=?, ITEM_TYPE_3=?, "
+        + "ITEM_TYPE_4=?, ITEM_TYPE_5=?, ITEM_CONTENT=? where item_seq=?";
+    int result = 0;
+    System.out.println(itemdata.getITEM_SEQ()+"  seq");
+    try {
+      con = ds.getConnection();
+      pstmt = con.prepareStatement(sql);
+      pstmt.setString(1, itemdata.getITEM_NAME());
+      pstmt.setInt(2, itemdata.getITEM_PRICE());
+      pstmt.setString(3, itemdata.getITEM_TYPE_1());
+      pstmt.setString(4, itemdata.getITEM_TYPE_2());
+      pstmt.setString(5, itemdata.getITEM_TYPE_3());
+      pstmt.setString(6, itemdata.getITEM_TYPE_4());
+      pstmt.setString(7, itemdata.getITEM_TYPE_5());
+      pstmt.setString(8, itemdata.getITEM_CONTENT());
+      pstmt.setInt(9, itemdata.getITEM_SEQ());
+
+      result = pstmt.executeUpdate();
+      System.out.println(result);
+      if (result != 1) {
+        System.out.println("제품 수정 실패");
+        return null;
+      }
+
+      return itemdata;
+
+    } catch (Exception e) {
+      System.out.println("Update Item error : " + e);
+      e.printStackTrace();
+    } finally {
+      if (rs != null)
+        try {
+          rs.close();
+        } catch (SQLException ex) {
+        }
+      if (pstmt != null)
+        try {
+          pstmt.close();
+        } catch (SQLException ex) {
+        }
+      if (con != null)
+        try {
+          con.close();
+        } catch (SQLException ex) {
+        }
+    }
+    return null;
+  }
 	
 	
 }

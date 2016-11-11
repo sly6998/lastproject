@@ -22,6 +22,8 @@ import com.interior.item.ItemReplyModifyViewAction;
 import com.interior.item.ItemReplyWriteAction;
 import com.interior.item.ProductDetailAction;
 import com.interior.item.ProductListAction;
+import com.interior.item.ProductModifyAction;
+import com.interior.item.ProductModifyViewAction;
 import com.interior.item.ProductWriteAction;
 import com.interior.member.ManagementModifyAction;
 import com.interior.member.MemberFindIDAction;
@@ -360,6 +362,20 @@ public class FrontController extends javax.servlet.http.HttpServlet implements j
         }
       } else if (command.equals("/ItemReplyDeleteAction.html")) {// 제품 상세 댓글 삭제
         action = new ItemReplyDeleteAction();
+        try {
+          forward = action.execute(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else if (command.equals("/product_modify_view.html")) {// 제품 수정 페이지 이동
+        action = new ProductModifyViewAction();
+        try {
+          forward = action.execute(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else if (command.equals("/product_modify.html")) {// 제품 수정 페이지 이동
+        action = new ProductModifyAction();
         try {
           forward = action.execute(request, response);
         } catch (Exception e) {
