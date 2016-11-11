@@ -202,7 +202,6 @@ select * from basket;
 select * from item;
 select * from member_info;
 select * from order_list;
-
 select * from advice;
 select * from noti;
 select * from NOTI_REPLY;

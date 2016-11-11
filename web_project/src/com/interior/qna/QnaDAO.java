@@ -64,7 +64,7 @@ public class QnaDAO {
 		// TODO Auto-generated method stub
 		String sql = "select * from " +
 		"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
-		"qna_subject, qna_content, qna_date, qna_seq, " +
+		"qna_subject, qna_content, qna_date,  " +
 		"qna_readcount , " +
 		" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
 		"(select * from qna_board  order by " +
@@ -73,7 +73,7 @@ public class QnaDAO {
 		
 		String sql_2 = "select * from " +
 				"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
-				"qna_subject, qna_content, qna_date, qna_seq, " +
+				"qna_subject, qna_content, qna_date,  " +
 				"qna_readcount , " +
 				" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
 				"(select * from qna_board  where %s order by " +
@@ -104,7 +104,7 @@ public class QnaDAO {
 				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
-				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
+				
 				qna.setQNA_READCOUNT(rs.getInt("qnA_READCOUNT"));
 				qna.setQNA_REPLY_AMOUNT(rs.getInt("zzzzz"));
 				list.add(qna);
@@ -209,7 +209,6 @@ public class QnaDAO {
 				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
-				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
 				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
 			} 
 			return qna;
@@ -315,8 +314,6 @@ public class QnaDAO {
 				qna.setQNA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
 				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
-				
-				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
 				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
 			}
