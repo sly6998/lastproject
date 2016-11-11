@@ -316,7 +316,7 @@ public class QnaDAO {
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
 				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
-			}
+			} 
 			return qna;
 		}catch(Exception e){
 			System.out.println("2");
