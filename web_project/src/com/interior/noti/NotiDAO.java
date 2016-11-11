@@ -399,8 +399,7 @@ public class NotiDAO {
 					noti2.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
 					noti2.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
 					noti2.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
-					noti2.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
-					noti2.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+					
 					list.add(noti2);
 					
 				}
@@ -518,8 +517,7 @@ public class NotiDAO {
 					noti2.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
 					noti2.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
 					noti2.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
-					noti2.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
-					noti2.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+					
 					reply.add(noti2);
 				}
 				
@@ -537,8 +535,7 @@ public class NotiDAO {
 					modify_re.setNOTI_REPLY_CONTENT(rs.getString("NOTI_REPLY_CONTENT"));
 					modify_re.setNOTI_REPLY_DATE(rs.getDate("NOTI_REPLY_DATE"));
 					modify_re.setNOTI_REPLY_SEQ(rs.getInt("NOTI_REPLY_SEQ"));
-					modify_re.setNOTI_REPLY_REF(rs.getInt("NOTI_REPLY_REF"));
-					modify_re.setNOTI_REPLY_LEV(rs.getInt("NOTI_REPLY_LEV"));
+					
 				}
 				if(result != 1 || result_reply !=1){
 					System.out.println("보여주기 실패");

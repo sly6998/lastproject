@@ -131,8 +131,9 @@
                     </TR>
                     <tr>
                       <td align="center"><p /><br />
-                      <input type="button" class="btn" value="글등록" onclick="noti_write_chek()">&nbsp;&nbsp;&nbsp;
-                          <input type="button" class="btn" value="돌아가기" onclick="location.href='./noti_list.html'"></td>
+                      
+                      <input type="button" class="btn" value="글등록"  onclick="noti_write_chek()">&nbsp;&nbsp;&nbsp;
+                      <input type="button" class="btn" value="돌아가기" onclick="location.href='./noti_list.html'"></td>
                     </tr>
                   </table>
                 </form>

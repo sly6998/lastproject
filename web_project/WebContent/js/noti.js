@@ -8,7 +8,7 @@ function noti_write_chek() {
 	var content = document.noti_write_form.NOTI_CONTENT.value;
 
 	if (subject == null || subject == '') {
-		alert('제목을 입력하여 주세요.');
+		alert('제목을 입력하여 주세요...');
 		return;
 	}
 	document.noti_write_form.submit();

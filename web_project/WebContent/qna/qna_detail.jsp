@@ -234,10 +234,6 @@
                   
                   <td width="10%" align="center">	
                   		<input type="submit" class="btn" onclick="alert('댓글이 등록되었습니다');" value="등	록">
-                  		
-                  		<input type="button" class="btn" value="등록33" onclick="qna_reply_write()">
-                  		<button class="btn" value="등록44"  onclick="qna_reply_write()">등록444</button>
-                  		
                   </td>
                 </tr>  
              

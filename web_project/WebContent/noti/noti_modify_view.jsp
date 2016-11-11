@@ -132,7 +132,11 @@
                   </td>
                 </TR>
                 <tr>
-                  <td align="center"><p /><br /><input type="button" value="수정" class="btn" onclick="noti_modify_check()" />&nbsp;&nbsp;&nbsp; <input type="button" class="btn" value="돌아가기" onclick="location.href='./noti_list.html'" /></td>
+                  <td align="center"><p /><br />
+                  	<input type="button" value="수정" class="btn"  onclick="alert('글이 수정되었습니다');" />&nbsp;&nbsp;&nbsp; 
+                  	<input type="button" class="btn" value="돌아가기" onclick="location.href='./noti_list.html'" />
+                  	
+                  </td>
                 </tr>
               </table>
             </form>

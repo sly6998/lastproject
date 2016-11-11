@@ -111,11 +111,12 @@ CREATE TABLE NOTI
 
 CREATE TABLE NOTI_REPLY
 (
+ NOTI_REPLY_MEMBER_NAME varchar2(20),	
  NOTI_REPLY_MEMBER_ID varchar2(20),
  NOTI_REPLY_CONTENT varchar2(500),
  NOTI_REPLY_DATE date,
  NOTI_REPLY_NUM number,
- NOTI_REPLY_SEQ number,
+ NOTI_REPLY_SEQ number
 );
 
 
@@ -203,16 +204,18 @@ CREATE TABLE REVIEW_REPLY
 
 /* Select Tables */
 
-select * from advice;
 select * from basket;
 select * from item;
 select * from member_info;
-select * from noti;
 select * from order_list;
-select * from qna_board;
-select * from qna_reply 
-select * from review;
+
+select * from advice;
+select * from noti;
 select * from NOTI_REPLY;
+select * from qna_board;
+select * from qna_reply;
+select * from review;
+select * from review_reply;
 
 
 /* Create Sequence(시퀀스 생성) */
@@ -231,12 +234,12 @@ create sequence item_seq start with 1 increment by 1;
 /* drop sequence(시퀀스 삭제)*/
 
 drop sequence member_info_seq;
-drop sequence noti_seq;
 drop sequence review_seq;
 drop sequence qna_board_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
 drop sequence item_seq;
+drop sequence noti_seq;
 drop sequence noti_reply_seq;
 
 

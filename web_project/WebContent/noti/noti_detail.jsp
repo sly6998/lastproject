@@ -219,9 +219,17 @@
                   <br></td>
                 </tr>
                 <tr>
-                  <td width="10%"><input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="NOTI_NUM" value="<%=noti.getNOTI_NUM()%>" /> <b><%=id%></b></td>
+                  <td width="10%">
+                  	<input type="hidden" name="NOTI_REPLY_MEMBER_ID" value="<%=id%>" /> 
+                  	<input type="hidden" name="NOTI_NUM" value="<%=noti.getNOTI_NUM()%>" /> 
+                  	<input type="hidden" name="NOTI_REPLY_MEMBER_NAME" value="<%=MEMBER_NAME%>" /> 
+                  	
+                  	<b><%=id%></b></td>
                   <td width="80%"><textarea name="NOTI_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea></td>
-                  <td width="10%" align="center"><input type="submit" class="btn" name="noti_reply_write_form" value="등록"></td>
+                  <td width="10%" align="center">
+                  	
+                  	<input type="submit" class="btn" onclick="alert('댓글이 등록되었습니다');" value="등	록">
+                  </td>
                 </tr>
               </form>
               <%

@@ -26,6 +26,7 @@ public class NotiReplyWriteAction implements Action{
 		try{
 			
 			notireplydata.setNOTI_REPLY_MEMBER_ID((String)request.getParameter("NOTI_REPLY_MEMBER_ID"));
+			notireplydata.setNOTI_REPLY_MEMBER_NAME((String)request.getParameter("NOTI_REPLY_MEMBER_NAME"));
 			notireplydata.setNOTI_REPLY_CONTENT((String)request.getParameter("NOTI_REPLY_CONTENT"));
 			notireplydata.setNOTI_REPLY_NUM(num2);
 			
