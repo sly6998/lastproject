@@ -223,9 +223,9 @@ if (session.getAttribute("MEMBER_NAME") != null) {
                         <span style="margin-right: 30px; display: inline;"><font size="4"><b>총 금액</b></font></span><span style="display: inline;"name="price_sum" id="price_sum"><%=String.format("%,d", item.getITEM_PRICE())%></span> 원<br>
                         <div style="margin-top: 40px;">
                         <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="nowbuy()">바로구매</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="addbasket()">장바구니</button>
+                        <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="addbasket()">장바구니</button>&nbsp;&nbsp;&nbsp;&nbsp;
                         <%if(id.equals("admin")){ %>
-                        <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="location.href='./product_modify.jsp'">제품수정</button>
+                        <button type="button" class="btn-lg" style="background-color: #eeeeee;" onclick="location.href='./product_modify_view.html?num=<%=item.getITEM_SEQ()%>'">제품수정</button>
                         <%} %>
                         </div>
                   </div>

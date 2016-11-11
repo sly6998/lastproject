@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="com.interior.item.ItemBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
   String id = "";
   String MEMBER_NAME = "";
+  ItemBean item = (ItemBean)request.getAttribute("itembean");
 
   if (session.getAttribute("MEMBER_ID") != null) {
     id = (String) session.getAttribute("MEMBER_ID");
@@ -128,97 +129,52 @@
             <!-- 본문 시작 -->
             <h3 class="heading">제품 수정</h3>
             <br> <br>
-         
-        
-        
-     <form id="contact-form" method="post" enctype="multipart/form-data">                    
-     <fieldset>
-     
-     	<label>
-     		<span class="text-form">모델명 :</span>
-     		<input name="ITEM_MODEL" type="text" />
-     	</label>
-     	
-     	
-     	
-     	<label>
-     		<span class="text-form">제품명 :</span>
-     		<input name="ITEM_NAME" type="text" />
-     	</label>
-     
-     	<label>
-     		<span class="text-form">가격  :</span>
-     		<input name="ITEM_PRICE" type="text" />
-     	</label>
-     	
-     	<label>
-     		<span class="text-form">제품타입</span>
-     		<select name="ITEM_MODEL" >
-     			<option value="선택하세요" selected="selected">선택하세요</option>
-     			<option value="책상">책상</option>
-     			<option value="소파">소파</option>
-     			<option value="침대">침대</option>
-     			<option value="의자">의자</option>
-     			<option value="기타">기타</option>
-     		</select> 
-     	</label>
-     	
-     	<label>
-     		<span class="text-form">제품브랜드</span>
-     		<select name="ITEM_BRAND" >
-     			<option value="선택하세요" selected="selected">선택하세요</option>
-     			<option value="이케아">이케아</option>
-     			<option value="까사미아">까사미아</option>
-     			<option value="HANSEM">HANSEM</option>
-     			<option value="한국가구">한구가구</option>
-     			<option value="기타">기타</option>
-     		</select> 
-     	</label>
-     	
-     	
-     	<label>
-     		<span class="text-form">상품 이미지:</span>
-     		<input name="ITEM_IMAGE" type="file"/>
-     	</label>
-     
-     
-     	<div class="wrapper">
-     		<div class="text-form">내 용 :</div>
-     		<textarea name="ITEM_CONTENT">
-상품수정 부분
-     		
-product_modify.jsp
-     		
-모델명		ITEM_MODEL
-제품명		ITEM_NAME
-가격			ITEM_PRICE
-제품 이미지 	ITEM_IMAGE
-제품 타입 		ITEM_TYPE
-제품 브랜드	ITEM_BRAND
-내용			ITEM_CONTENT
-     		
-     		
-     		</textarea>
-     	</div>
-     	
-     	<label>
-   		</label>
-     	
-     	
-		<label>
-		<span class="text-form">	</span>
-     	
-     	<input type="submit" value="등록">
-     	<input type="reset" value="다시쓰기">
-     	</label>
-     </fieldset>						
-     </form>
-	                               	
-                                                    
-                                                
+
+            <form id="modifyform" method="post" action="./product_modify.html">
+              <input type="hidden" name="ITEM_SEQ" value="<%=item.getITEM_SEQ()%>">
+              <span><font size="3"><b>제품 정보</b></font></span>
+              <div class="row" style="margin-top: 10px;">
+              <div class="col-md-8">
+                <span><input name="ITEM_NAME" style="margin-bottom: 10px;" type="text" size="100%" placeholder="제품명" value=<%=item.getITEM_NAME() %>/></span><br>
+              </div>
+              </div>
+              <span><font size="3"><b>제품 가격</b></font></span>
+              <div class="row" style="margin-top: 10px;">
+              <div class="col-md-8">
+                <span> <input name="ITEM_PRICE" type="text" style="margin-bottom: 10px;" size="20%" placeholder="가격" value="<%=item.getITEM_PRICE() %>" /> <b>원</b></span>
+              </div>
+              </div>
+              <span><font size="3"><b>제품 옵션</b></font></span>
+              <div class="row" style="margin-top: 10px;"> 
+              <div class="col-md-4">
+                <span> <input type="text" style="margin-bottom: 10px;" size="50%"name="ITEM_TYPE_1" placeholder="제품옵션 1" value="<%=item.getITEM_TYPE_1()%>"/></span><br>
+                <span> <input type="text"  style="margin-bottom: 10px;"size="50%"name="ITEM_TYPE_3" placeholder="제품옵션 3" value="<%=item.getITEM_TYPE_3()%>"/></span><br>
+                <span> <input type="text"  style="margin-bottom: 10px;"size="50%" name="ITEM_TYPE_5" placeholder="제품옵션 5" value="<%=item.getITEM_TYPE_5()%>"/></span>
+              </div>
+              <div class="col-md-4" style="margin-left: 10px;">
+                <span> <input type="text" size="50%" style="margin-bottom: 10px;"name="ITEM_TYPE_2" placeholder="제품옵션 2" value="<%=item.getITEM_TYPE_2()%>"/></span><br>
+                <span> <input type="text"  size="50%" style="margin-bottom: 10px;" name="ITEM_TYPE_4" placeholder="제품옵션 4" value="<%=item.getITEM_TYPE_4()%>"/></span><br><br><br>
+              </div>
+              </div>
+              <div style="margin-bottom: 30px;">
+              <div style="margin-bottom: 10px;">
+              <span><font size="3"><b>제품 이미지</b></font></span>
+              </div>
+              <font color="red"><b>메인 이미지</b></font>는 수정이 불가능 합니다.
+              </div>
 
 
-<!-- 본문 end -->
+          <div class="wrapper">
+            <textarea name="ITEM_CONTENT" id="contents" style="width: 500px; height: 100px"></textarea>
+          </div>
+
+          <div align="center" style="margin-top:50px;"> 
+            <input type="submit" class="btn" value="수정">&nbsp;&nbsp;&nbsp;
+            <input type="button" class="btn" onclick="./product_list.html"value="돌아가기">
+          </div>
+
+          </form>
+          <!-- 본문 end -->
           </div>
         </div>
       </div>
@@ -332,24 +288,24 @@ product_modify.jsp
             width:'100%',
             height:'400px',
             'filebrowserUploadUrl':'<%=request.getContextPath()%>/ckeditor/upload.jsp?'
-                          + 'realUrl=upload/img_upload/'
-                          + '&realDir=upload/img_upload',
-                      skin : 'kama'
-                    });
+													+ 'realUrl=upload/img_upload/'
+													+ '&realDir=upload/img_upload',
+											skin : 'kama'
+										});
 
-            CKEDITOR.on('dialogDefinition', function(ev) {
-              var dialogName = ev.data.name;
-              var dialogDefinition = ev.data.definition;
+						CKEDITOR.on('dialogDefinition', function(ev) {
+							var dialogName = ev.data.name;
+							var dialogDefinition = ev.data.definition;
 
-              switch (dialogName) {
-              case 'image': //Image Properties dialog
-                //dialogDefinition.removeContents('info');
-                dialogDefinition.removeContents('Link');
-                dialogDefinition.removeContents('advanced');
-                break;
-              }
-            });
-          });
-        </script>
+							switch (dialogName) {
+							case 'image': //Image Properties dialog
+								//dialogDefinition.removeContents('info');
+								dialogDefinition.removeContents('Link');
+								dialogDefinition.removeContents('advanced');
+								break;
+							}
+						});
+					});
+				</script>
 </body>
 </html>
