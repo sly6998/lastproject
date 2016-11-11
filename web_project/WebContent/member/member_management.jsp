@@ -210,7 +210,8 @@
                 <td style="font-family: Tahoma; font-size: 10pt; border: 0px solid #000;">
                   <div align="center">
                     <%
-                      if (id.equals("admin")) {
+                    	String userid = (String)bl.getMEMBER_ID();
+                      if (userid.equals("admin")) {
                     %>
                     -
                     <%

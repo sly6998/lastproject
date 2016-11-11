@@ -134,13 +134,13 @@ CREATE TABLE ORDER_LIST
  ORDER_MEMBER_TEL varchar2(20),
  ORDER_EMAIL varchar2(50),
  ORDER_MEMBER_ZIP varchar2(10),
- ORDER_MEMBER_ADDR_1 varchar2(50),
- ORDER_MEMBER_ADDR_2 varchar2(50),
+ ORDER_MEMBER_ADDR_1 varchar2(100),
+ ORDER_MEMBER_ADDR_2 varchar2(100),
  ORDER_NAME varchar2(20),
  ORDER_TEL varchar2(20),
  ORDER_ZIP varchar2(10),
- ORDER_ADDR_1 varchar2(50),
- ORDER_ADDR_2 varchar2(50),
+ ORDER_ADDR_1 varchar2(100),
+ ORDER_ADDR_2 varchar2(100),
  ORDER_MEMO varchar2(500),
  ORDER_TRADE_TYPE varchar2(20),
  ORDER_TRADE_PAYER varchar2(20),
@@ -223,6 +223,7 @@ create sequence qna_reply_seq start with 1 increment by 1;
 create sequence advice_seq start with 1 increment by 1; 
 create sequence basket_seq start with 1 increment by 1;
 create sequence item_seq start with 1 increment by 1;
+create sequence item_reply_seq start with 1 increment by 1;
 
 /* drop sequence(시퀀스 삭제)*/
 
@@ -234,6 +235,7 @@ drop sequence qna_reply_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
 drop sequence item_seq;
+drop sequence item_reply_seq;
 drop sequence noti_seq;
 drop sequence noti_reply_seq;
 
