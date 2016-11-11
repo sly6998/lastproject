@@ -307,20 +307,16 @@ public class ReviewDAO {
 		
 		try{
 			sql = "insert into review_reply "
-					+ "(review_REPLY_MEMBER_ID, review_REPLY_CONTENT, review_REPLY_DATE, review_REPLY_NUM, review_REPLY_SEQ) "
-					+ "values (?,?,sysdate,?,review_reply_seq.NEXTVAL)";
+					+ "(review_REPLY_MEMBER_ID, review_REPLY_MEMBER_NAME, review_REPLY_CONTENT, review_REPLY_DATE, review_REPLY_NUM, review_REPLY_SEQ) "
+					+ "values (?,?,?,sysdate,?,review_reply_seq.NEXTVAL)";
 			
-			/*/////////////////////////////////
-			sql = "insert into qna_reply "
-					+ "(QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM, QNA_REPLY_SEQ) "
-					+ "values (?,?,sysdate,?,qna_reply_seq.NEXTVAL)";
-			*/
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, reviewdata.getREVIEW_REPLY_MEMBER_ID());
-			pstmt.setString(2, reviewdata.getREVIEW_REPLY_CONTENT());
-			pstmt.setInt(3, reviewdata.getREVIEW_REPLY_NUM());
+			pstmt.setString(2, reviewdata.getREVIEW_REPLY_MEMBER_NAME());
+			pstmt.setString(3, reviewdata.getREVIEW_REPLY_CONTENT());
+			pstmt.setInt(4, reviewdata.getREVIEW_REPLY_NUM());
 			
 			
 			result = pstmt.executeUpdate();
@@ -421,8 +417,7 @@ public class ReviewDAO {
 				review2.setREVIEW_REPLY_CONTENT(rs.getString("REVIEW_REPLY_CONTENT"));
 				review2.setREVIEW_REPLY_DATE(rs.getDate("REVIEW_REPLY_DATE"));
 				review2.setREVIEW_REPLY_SEQ(rs.getInt("REVIEW_REPLY_SEQ"));
-				review2.setREVIEW_REPLY_REF(rs.getInt("REVIEW_REPLY_REF"));
-				review2.setREVIEW_REPLY_LEV(rs.getInt("REVIEW_REPLY_LEV"));
+				
 				list.add(review2);
 				
 			}
@@ -538,8 +533,6 @@ public class ReviewDAO {
 				review2.setREVIEW_REPLY_CONTENT(rs.getString("REVIEW_REPLY_CONTENT"));
 				review2.setREVIEW_REPLY_DATE(rs.getDate("REVIEW_REPLY_DATE"));
 				review2.setREVIEW_REPLY_SEQ(rs.getInt("REVIEW_REPLY_SEQ"));
-				review2.setREVIEW_REPLY_REF(rs.getInt("REVIEW_REPLY_REF"));
-				review2.setREVIEW_REPLY_LEV(rs.getInt("REVIEW_REPLY_LEV"));
 				reply.add(review2);
 			}
 			
@@ -557,8 +550,6 @@ public class ReviewDAO {
 				modify_re.setREVIEW_REPLY_CONTENT(rs.getString("REVIEW_REPLY_CONTENT"));
 				modify_re.setREVIEW_REPLY_DATE(rs.getDate("REVIEW_REPLY_DATE"));
 				modify_re.setREVIEW_REPLY_SEQ(rs.getInt("REVIEW_REPLY_SEQ"));
-				modify_re.setREVIEW_REPLY_REF(rs.getInt("REVIEW_REPLY_REF"));
-				modify_re.setREVIEW_REPLY_LEV(rs.getInt("REVIEW_REPLY_LEV"));
 			}
 			if(result != 1 || result_reply !=1){
 				System.out.println("보여주기 실패");

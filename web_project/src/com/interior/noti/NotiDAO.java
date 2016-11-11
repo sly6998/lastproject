@@ -447,15 +447,16 @@ public class NotiDAO {
 			
 			try{
 				sql = "insert into noti_reply "
-						+ "(noti_REPLY_MEMBER_ID, noti_REPLY_CONTENT, noti_REPLY_DATE, noti_REPLY_NUM, noti_REPLY_SEQ) "
-						+ "values (?,?,sysdate,?,noti_reply_seq.NEXTVAL)";
+						+ "(noti_REPLY_MEMBER_ID, noti_REPLY_MEMBER_NAME, noti_REPLY_CONTENT, noti_REPLY_DATE, noti_REPLY_NUM, noti_REPLY_SEQ) "
+						+ "values (?,?,?,sysdate,?,noti_reply_seq.NEXTVAL)";
 				
 				con=ds.getConnection();
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, notidata.getNOTI_REPLY_MEMBER_ID());
-				pstmt.setString(2, notidata.getNOTI_REPLY_CONTENT());
-				pstmt.setInt(3, notidata.getNOTI_REPLY_NUM());
+				pstmt.setString(2, notidata.getNOTI_REPLY_MEMBER_NAME());
+				pstmt.setString(3, notidata.getNOTI_REPLY_CONTENT());
+				pstmt.setInt(4, notidata.getNOTI_REPLY_NUM());
 				
 				
 				result = pstmt.executeUpdate();

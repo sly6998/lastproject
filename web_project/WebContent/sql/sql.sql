@@ -158,9 +158,7 @@ CREATE TABLE QNA_BOARD
  QNA_SUBJECT varchar2(50),
  QNA_CONTENT varchar2(2000),
  QNA_DATE date,
- QNA_SEQ number(5),
- QNA_REF number(5),
- QNA_LEV number(5),
+ QNA_SEQ number(5),\
  QNA_READCOUNT number(10)
 );
 
@@ -171,10 +169,9 @@ CREATE TABLE QNA_REPLY
  QNA_REPLY_MEMBER_ID varchar2(20),
  QNA_REPLY_CONTENT varchar2(500),
  QNA_REPLY_DATE date,
+ QNA_READCOUNT number(5),
  QNA_REPLY_NUM number,
- QNA_REPLY_REF number,
- QNA_REPLY_SEQ number,
- QNA_REPLY_LEV number
+ QNA_REPLY_SEQ number
 );
 
 
@@ -197,9 +194,7 @@ CREATE TABLE REVIEW_REPLY
  REVIEW_REPLY_CONTENT varchar2(500),
  REVIEW_REPLY_DATE date,
  REVIEW_REPLY_NUM number,
- REVIEW_REPLY_REF number,
- REVIEW_REPLY_SEQ number,
- REVIEW_REPLY_LEV number
+ REVIEW_REPLY_SEQ number
 );
 
 /* Select Tables */
@@ -235,7 +230,9 @@ create sequence item_seq start with 1 increment by 1;
 
 drop sequence member_info_seq;
 drop sequence review_seq;
+drop sequence review_reply_seq;
 drop sequence qna_board_seq;
+drop sequence qna_reply_seq;
 drop sequence advice_seq;
 drop sequence basket_seq;
 drop sequence item_seq;

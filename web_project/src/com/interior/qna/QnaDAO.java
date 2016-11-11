@@ -64,7 +64,7 @@ public class QnaDAO {
 		// TODO Auto-generated method stub
 		String sql = "select * from " +
 		"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
-		"qna_subject, qna_content, qna_date, qna_seq, qna_ref, qna_lev," +
+		"qna_subject, qna_content, qna_date, qna_seq, " +
 		"qna_readcount , " +
 		" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
 		"(select * from qna_board  order by " +
@@ -73,7 +73,7 @@ public class QnaDAO {
 		
 		String sql_2 = "select * from " +
 				"(select rownum rnum, qna_num, qna_member_ID, qna_member_name," +
-				"qna_subject, qna_content, qna_date, qna_seq, qna_ref, qna_lev," +
+				"qna_subject, qna_content, qna_date, qna_seq, " +
 				"qna_readcount , " +
 				" (select count(*) from qna_reply bb where  bb.qna_reply_num = qna_num) as zzzzz from "+
 				"(select * from qna_board  where %s order by " +
@@ -105,8 +105,6 @@ public class QnaDAO {
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
 				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
-				qna.setQNA_REF(rs.getInt("qnA_REF"));
-				qna.setQNA_LEV(rs.getInt("qnA_LEV"));
 				qna.setQNA_READCOUNT(rs.getInt("qnA_READCOUNT"));
 				qna.setQNA_REPLY_AMOUNT(rs.getInt("zzzzz"));
 				list.add(qna);
@@ -151,8 +149,6 @@ public class QnaDAO {
 			   	qna2.setQNA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
 				qna2.setQNA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
 				qna2.setQNA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
-				qna2.setQNA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
-				qna2.setQNA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
 				list.add(qna2);
 				
 			}
@@ -214,8 +210,6 @@ public class QnaDAO {
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
 				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
-				qna.setQNA_REF(rs.getInt("QNA_REF"));
-				qna.setQNA_LEV(rs.getInt("QNA_LEV"));
 				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
 			} 
 			return qna;
@@ -272,15 +266,16 @@ public class QnaDAO {
 		
 		try{
 			sql = "insert into qna_reply "
-					+ "(QNA_REPLY_MEMBER_ID, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM, QNA_REPLY_SEQ) "
-					+ "values (?,?,sysdate,?,qna_reply_seq.NEXTVAL)";
+					+ "(QNA_REPLY_MEMBER_ID,QNA_REPLY_MEMBER_NAME, QNA_REPLY_CONTENT, QNA_REPLY_DATE, QNA_REPLY_NUM, QNA_REPLY_SEQ) "
+					+ "values (?,?,?,sysdate,?,qna_reply_seq.NEXTVAL)";
 			
 			con=ds.getConnection();
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, qnadata.getQNA_REPLY_MEMBER_ID());
-			pstmt.setString(2, qnadata.getQNA_REPLY_CONTENT());
-			pstmt.setInt(3, qnadata.getQNA_REPLY_NUM());
+			pstmt.setString(2, qnadata.getQNA_REPLY_MEMBER_NAME());
+			pstmt.setString(3, qnadata.getQNA_REPLY_CONTENT());
+			pstmt.setInt(4, qnadata.getQNA_REPLY_NUM());
 			
 				
 			result = pstmt.executeUpdate();
@@ -320,8 +315,7 @@ public class QnaDAO {
 				qna.setQNA_MEMBER_NAME(rs.getString("QNA_MEMBER_NAME"));
 				qna.setQNA_SUBJECT(rs.getString("QNA_SUBJECT"));
 				qna.setQNA_CONTENT(rs.getString("QNA_CONTENT"));
-				qna.setQNA_REF(rs.getInt("QNA_REF"));
-				qna.setQNA_LEV(rs.getInt("QNA_LEV"));
+				
 				qna.setQNA_SEQ(rs.getInt("QNA_SEQ"));
 				qna.setQNA_READCOUNT(rs.getInt("QNA_READCOUNT"));
 				qna.setQNA_DATE(rs.getDate("QNA_DATE"));
@@ -479,8 +473,6 @@ public class QnaDAO {
 				qna2.setQNA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
 				qna2.setQNA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
 				qna2.setQNA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
-				qna2.setQNA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
-				qna2.setQNA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
 				reply.add(qna2);
 			}
 			
@@ -498,8 +490,6 @@ public class QnaDAO {
 				modify_re.setQNA_REPLY_CONTENT(rs.getString("QNA_REPLY_CONTENT"));
 				modify_re.setQNA_REPLY_DATE(rs.getDate("QNA_REPLY_DATE"));
 				modify_re.setQNA_REPLY_SEQ(rs.getInt("QNA_REPLY_SEQ"));
-				modify_re.setQNA_REPLY_REF(rs.getInt("QNA_REPLY_REF"));
-				modify_re.setQNA_REPLY_LEV(rs.getInt("QNA_REPLY_LEV"));
 			}
 			if(result != 1 || result_reply !=1){
 				System.out.println("질문게시판 수정할 댓글 보여주기 실패");

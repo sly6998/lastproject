@@ -224,6 +224,7 @@
                 <tr>
                   <td width="10%">
                   		<input type="hidden" name="QNA_REPLY_MEMBER_ID" value="<%=id%>" />
+                  		<input type="hidden" name="QNA_REPLY_MEMBER_NAME" value="<%=MEMBER_NAME%>" />
                   		<input type="hidden" name="QNA_NUM" value="<%=qna.getQNA_NUM()%>" /> 
                   		<b><%=id%></b>
                   </td>

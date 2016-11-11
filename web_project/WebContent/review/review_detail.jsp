@@ -221,7 +221,11 @@
                   <br></td>
                 </tr>
                 <tr>
-                  <td width="10%"><input type="hidden" name="REVIEW_REPLY_MEMBER_ID" value="<%=id%>" /> <input type="hidden" name="REVIEW_NUM" value="<%=review.getREVIEW_NUM()%>" /> <b><%=id%></b></td>
+                  <td width="10%">
+                  	<input type="hidden" name="REVIEW_REPLY_MEMBER_ID" value="<%=id%>" /> 
+                  	<input type="hidden" name="REVIEW_NUM" value="<%=review.getREVIEW_NUM()%>" /> 
+                  	<input type="hidden" name="REVIEW_REPLY_MEMBER_NAME" value="<%=MEMBER_NAME %>"/>
+                  	<b><%=id%></b></td>
                   <td width="80%"><textarea name="REVIEW_REPLY_CONTENT" type="text" style="width: 100%; height: 150px; resize: none;"></textarea></td>
                   <td width="10%" align="center">
                   	<input type="submit" class="btn" onclick="alert('댓글이 등록되었습니다');" value="등	록">
