@@ -158,7 +158,6 @@ CREATE TABLE QNA_BOARD
  QNA_SUBJECT varchar2(50),
  QNA_CONTENT varchar2(2000),
  QNA_DATE date,
- QNA_SEQ number(5),\
  QNA_READCOUNT number(10)
 );
 
