@@ -89,13 +89,13 @@
             <li><a href="./product_list.html">Product</a></li>
             <li><a href="./review_list.html">Review</a></li>
             <li><a href="./qna_list.html">QnA</a></li>
-            <li><a href="./advice_request.html">Contact</a></li>
-            <li class="active dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Member<b
+            <li class="active"><a href="./advice_request.html">Contact</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Member<b
                 class=" icon-angle-down"></b></a>
               <ul class="dropdown-menu">
                 <%
                   if (id == null || id == "") {
-                %>
+                %>	
                 <li><a href="./login.html" data-toggle="modal" data-target="#loginModal">로그인</a></li>
                 <li><a href="./join.html" data-toggle="modal" data-target="#joinModal">회원가입</a></li>
                 <li><a href="./idfind.html" data-toggle="modal" data-target="#idModal">ID 찾기</a></li>
@@ -132,7 +132,7 @@
         <div class="col-lg-12">
           <ul class="breadcrumb">
             <li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-            <li class="active">Member > Advice List</li>
+            <li class="active">CONTACT</li>
           </ul>
         </div>
       </div>
@@ -152,8 +152,8 @@
             <form name="srchForm" action="./advice_list.html" method="post">
               <select name="srchFlds" class="form-control-u" style="width: 80px;">
                 <option value="all" <%=srchFlds.equals("all") ? "selected='selected'" : ""%>>모두</option>
-                <option value="sub" <%=srchFlds.equals("sub") ? "selected='selected'" : ""%>>제목</option>
-                <option value="au" <%=srchFlds.equals("au") ? "selected='selected'" : ""%>>글쓴이</option>
+                <option value="sub" <%=srchFlds.equals("sub") ? "selected='selected'" : ""%>>연락처</option>
+                <option value="au" <%=srchFlds.equals("au") ? "selected='selected'" : ""%>>신청자</option>
                 <option value="con" <%=srchFlds.equals("con") ? "selected='selected'" : ""%>>내용</option>
               </select> <input type="text" name="srchKey" class="form-control-u" style="width: 250px" maxlength="50" value="<%=srchKey%>" /> <input type="button" value="검색" class="btn"
                 onClick="submitSrchForm()" />

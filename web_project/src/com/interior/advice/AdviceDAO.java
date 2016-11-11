@@ -11,7 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.interior.qna.QnaBean;
 
 public class AdviceDAO {
 	Connection con;
@@ -29,13 +28,17 @@ public class AdviceDAO {
 		}
 	}
 
-	public int getListCount() {  //총 Advice 리스트 수
+	public int getListCount(String cond) {  //총 Advice 리스트 수
 		// TODO Auto-generated method stub
 		int count = 0;
+		String sql = "select count(*) from Advice";
+		if (cond != null && !cond.equals("")) {
+			sql = sql + " where " + cond;
+		}
 		
 		try{
 			con = ds.getConnection();
-			pstmt = con.prepareStatement("select count(*) from Advice");
+			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -51,13 +54,23 @@ public class AdviceDAO {
 			return count;
 		}
 
-	public List getAdviceList(int page, int limit) {//Advice 리스트 불러오기
+	public List getAdviceList(int page, int limit, String cond) {//Advice 리스트 불러오기
 		// TODO Auto-generated method stub
 		String sql = "select * from " +
 		"(select rownum rnum, advice_num, advice_name, advice_tel, advice_content, advice_date from " +
 		"(select * from advice order by " +
 		"advice_date desc)) " +
 		"where rnum>=? and rnum<=?";
+		
+		String sql_2 = "select * from " +
+				"(select rownum rnum, advice_num, advice_name, advice_tel, advice_content, advice_date from " +
+				"(select * from advice where %s order by " +
+				"advice_date desc)) " +
+				"where rnum>=? and rnum<=?";
+		
+		if (cond != null && !cond.equals("")) {
+			sql = String.format(sql_2, cond);
+		}
 		
 		List list = new ArrayList();
 		

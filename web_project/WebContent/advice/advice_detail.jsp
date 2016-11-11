@@ -128,27 +128,31 @@ if (session.getAttribute("MEMBER_NAME") != null) {
 <div class="col-lg-12">
  <!-- 본문 시작 -->
 <h3>contact us detail (관리자)</h3>
-                                                    
-                  
+    <br> <br>
+             <table class="table">
+                <tr>
+                  <td width="15%" bgcolor="eeeeee">상담신청자</td>
+                  <td width="85%"> <%= advice.getADVICE_NAME()%> </td>
+                </tr>
+                <tr>
+                  <td width="15%" bgcolor="eeeeee">연락처</td>
+                  <td width="85%"><%= advice.getADVICE_TEL()%> </td>
+                </tr>
+                <tr>
+                  <td width="15%" bgcolor="eeeeee">작성일</td>
+                  <td width="85%"><%= advice.getADVICE_DATE() %></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><%= advice.getADVICE_CONTENT()%></td>
+                </tr>
+              </table>
 
-
-	<table>
-		<tr><td><LABEL>NAME : </LABEL></td></tr>
-		<tr><td style="border:1px solid #ddd; width:300px;"><%= advice.getADVICE_NAME()%></td></tr>
-		
-		
-		<tr><td><LABEL>TEL : </LABEL></td></tr>
-		<tr><td style="border:1px solid #ddd; width:300px;"><%= advice.getADVICE_TEL()%></td></tr>
-		
-		<tr><td><label >Message:</label></td></tr>
-		
-		<tr><td style="border:1px solid #ddd; height:300px; width:400px;"><%= advice.getADVICE_CONTENT()%></td></tr>
-		
-		<tr>
-			<td><a href="advice_list.html">목록보기 </a></td>
-		</tr> 
-	</table>
-
+              <hr style="border: solid 2px #eeeeee; margin-top: 50px;"width="100%">
+              <div align="center">
+                
+                <input class="btn" type="button" value="목록" onclick="location.href='./advice_list.html'">
+              </div>
+        
 
 
 
